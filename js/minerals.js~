@@ -1,0 +1,6 @@
+var minerals=$('<divclass="col-lg-12wellalpha-bluralpha-shadow"style="border:0px;color:white;text-align:center"id="smart_minerals"><divclass="col-lg-12"style="text-align:center;"><imgsrc="images/minerals.png"width="58px"height="55px"></div><h3id="commodity">Gold</h3><h4>LivePrice:<spanid="Live_Price">57</span></h4></div>');
+$("#smart_col").html("").append(minerals);
+$("#commodity").text(window.val["name"]);
+$("#Live_Price").text(window.val["value"]);
+$("#smart_col").removeClass("hide");
+

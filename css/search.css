@@ -1,0 +1,344 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6 Jan, 2015, 10:16:03 PM
+    Author     : tilak
+*/
+
+/*
+ * Base structure
+ */
+
+
+html,body {
+  width: 100%;
+  height: 100%;
+min-width:320px;
+  
+}
+.background{
+    position: fixed;
+    top:0px;
+    width: 100%;
+    height: 100%;
+background: -webkit-linear-gradient(90deg, #232526 10%, #414345 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #232526 10%, #414345 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #232526 10%, #414345 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #232526 10%, #414345 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #232526 10%, #414345 90%); /* W3C */
+
+}
+.fostyle{
+      font-family: 'arial', sans-serif;font-weight: 500;color:#FFFFFF;
+    }   
+.fostyle1{
+      font-family: 'Quicksand', sans-serif;font-weight: 700;color:#FFFFFF;font-size:2.2em;margin-bottom: 0px;
+      text-shadow: black 0.1em 0.1em 0.2em;
+    }
+.fostyle2{
+      font-family: 'Quicksand', sans-serif;font-weight: 400;color:#FFFFFF;font-size:1em;
+    }
+.cast_link{
+color: white;
+font-size: 16px;
+word-wrap: break-word;
+}    
+.cast_link:hover{
+color:#ee1d00;
+}  
+.no-back{
+border:0px;
+background:rgba(0,0,0,0);
+}      
+    #movie_extra{
+
+border:0px;margin-top:15px;margin-left:2px;margin-right:2px;margin-bottom:0px;
+}
+.btn1{
+      border:0px solid transparent;background-color:#282828;
+
+    }
+.spanbtn{
+
+border:0px solid transparent;background-color:#282828;color:white;
+}
+    .form-control1:focus{border-color:#505050;outline:0;-webkit-box-shadow:inset 0 0px 0px rgba(0,0,0,.075),0 0 0px rgba(102,175,233,.6);box-shadow:inset 0 0px 0px rgba(0,0,0,.075),0 0 0px rgba(102,175,233,.6)}
+    .search_bar{
+        width: 100%;
+       
+    }
+.nav-panel{
+
+position:fixed;
+top:0px;
+z-index:100;
+width:100%;/*moz*/
+}
+.nav-panel>div{
+    //backgound: #333 !important;
+background: #333333 !important;
+
+}
+.alpha-blur{
+  background: rgba(33,33,33,0.8) !important;
+//-webkit-filter: blur(1px) !important;
+//-webkit-filter: drop-shadow(1px 1px 20px black) !important;
+}
+   .ui-autocomplete{
+        
+        background-color:rgba(28,28,28,0.95);
+        z-index: 105;
+        position: absolute;
+padding-left:15px !important;
+padding-right:15px !important;
+        
+    }
+    .ui-autocomplete > li    {
+        
+        list-style: none;
+    }    
+    
+    .ui-autocomplete > li>a{
+         width:100%;
+         display: block;
+        list-style: none;
+        cursor:pointer;
+        text-decoration: none;
+       font-family: 'arial', sans-serif;font-weight: 500;color:#FFFFFF;font-size:1.5em;
+        
+        
+    }
+   
+   
+  
+    .red-theme{
+        background-color:#bd0018 !important;
+    }
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+
+#smart_col{
+
+margin-top:82px;
+}
+#smart_answer{
+    margin-top: 25px;
+margin-bottom:25px;
+    border-radius:4px;border:0px !important;
+    color:white;
+    word-wrap:break-word;
+    padding-top:10px !important;
+background-color:rgba(34,34,34,0.7) !important;    
+}
+@media (max-width: 1000px) {
+    .affix {
+        position: static;
+    }
+}
+#collapsee{
+    margin-bottom: 20px;
+}
+.full-height{
+    height: 100% !important;
+}
+.side{
+padding-right:0px !important;
+padding-top:20px !important;
+
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+
+  margin-left: -20px;
+margin-top:82px;
+ 
+
+}
+
+.nav-sidebar > li > a{
+
+color: #e2e2e2;
+
+}
+.nav-sidebar > li > a:hover,
+.nav-sidebar > li > a:focus {
+  color: #e2e2e2;
+  background-color:rgba(189,0,24,0.3);
+}
+
+
+.active{
+    background-color: #bd0018;
+   
+}
+
+#centre_parent{
+
+margin-top:82px;
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+.table{
+
+border-radius:4px !important;
+
+}
+
+
+
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { 
+.background{
+background-image:url("/dfs.jpg");
+
+}
+
+
+ }
+.search_result{}
+.search_title{color:#DDDDDD;font-size: 18px;word-wrap:break-word;}
+.search_title:hover{text-decoration: underline;word-wrap:break-word;}
+.search_green{color:#2ECC40;font-size:14px;word-wrap:break-word;}
+.search_info{color:#3d3d3d;word-break:normal;word-wrap:break-word;}
+.search_title:hover{
+color:#DDDDDD;
+}
+#search{
+
+font-size:1.5em;display:block;
+}
+.full-width{
+
+width:100%;
+}
+#poster{
+border:0px;
+}
+#name{
+border:0px;text-align:center;padding:4px;
+}
+#smart_movie{
+border:0px;color:white;
+}
+#logo > span{
+    cursor:pointer;
+    
+}
+
+#logo{
+height:62px;
+
+}
+.padded_body{
+    padding-top: 20px !important; 
+padding-right:15px !important;   
+}
+
+
+
+.input-group{
+    width: 100%;
+    //padding-top:8px !important;
+    //padding-bottom:8px !important;
+    
+}
+form{
+
+margin-top:8px !important;
+margin-bottom:8px !important;
+
+}
+#search{
+//margin-top:8px !important;
+//height:32px;
+//padding-bottom:8px !important;
+}
+.btn1{
+//margin-top:8px !important;
+//height:32px !important;
+
+}
+#logo{
+    padding-top: 9px !important;
+padding-bottom:8px !important;
+}
+.alpha-blur td{
+border:0px !important;
+//-webkit-filter: blur(7px);
+}
+.no-results{
+font-size:1em;
+background-color:#333333;
+color:white;
+font-family: 'Quicksand', sans-serif;font-weight: 400;color:#FFFFFF;font-size:18px;
+}
+
+#predefined_questions{
+
+margin:0px !important;
+margin-bottom:20px !important;
+
+}
+
+
+#collapsee>a{
+
+border-top-left-radius:0px !important;
+border-top-right-radius:0px !important;
+
+}
+
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    background: #bd0018;
+    border: none;
+    color:#000;
+    border-radius:0;
+    font-weight: normal;
+}
+.highlight{
+font-family: 'Quicksand', sans-serif;font-weight: 800;color:#FFFFFF;
+
+}
+
+.truncate {
+  width: 500px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media(max-width:480px){
+
+.col-tn-1{float:none;}
+.col-tn-10{float:none;}
+}
+.stocks_font{
+
+font-size:0.9em;
+
+}
