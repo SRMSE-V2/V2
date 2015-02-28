@@ -57,10 +57,18 @@ background:rgba(0,0,0,0);
 
 border:0px;margin-top:15px;margin-left:2px;margin-right:2px;margin-bottom:0px;
 }
-.btn1{
-      border:0px solid transparent;background-color:#282828;
+.btn2{
+      border:0px solid transparent;background-color:#282828 !important;
 
     }
+.btn1{
+      border:0px solid transparent !important;background-color:transparent !important;
+
+    }
+.backinput{
+      font-family: 'arial', sans-serif !important;font-weight: 400 !important;color:#656565 !important;
+padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !important;padding-right:16px !important;cursor:text !important;position:absolute !important;left:0px !important;z-index:0 !important;font-size:1.5em;display:block;border:none;background-color:#282828 !important;
+     }
 .spanbtn{
 
 border:0px solid transparent;background-color:#282828;color:white;

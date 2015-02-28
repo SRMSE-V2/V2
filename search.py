@@ -57,9 +57,30 @@ else:
 		window.query=\""""+keyword+"""\";
          });
       </script>
+<script>
+var screensize=$("html").height();
+ $(function(){ 
+
+$(window).on('scroll',function(){
+
+if($(window).scrollTop()>600){
+$("#smart_col").addClass("affix affix-top");
+console.log("added");
+
+}
+else{
+$("#smart_col").removeClass("affix affix-top");
+}
+
+
+});
+$(document).on( 'scroll', function(){ 
+
+if ($(window).scrollTop() > 100) {
+ $('.scroll-top-wrapper').addClass('show');setTimeout(function(){$('.scroll-top-wrapper').removeClass('show');},4000); } else { $('.scroll-top-wrapper').removeClass('show'); } }); $('.scroll-top-wrapper').on('click', scrollToTop); }); function scrollToTop() { verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0; element = $('body'); offset = element.offset(); offsetTop = offset.top; $('html, body').animate({scrollTop: offsetTop}, 500, 'linear'); } </script>
       <script type="text/javascript" src="/ver1/js/search.js"></script>
    </head>
-   <body>
+   <body><div class="scroll-top-wrapper alpha-blur"> <span class="scroll-top-inner"> <i class="glyphicon glyphicon-arrow-up"></i> </span> </div>
       <div class="background"></div>
       <div class="container-fluid full-height">
          <div class="row nav-panel">
@@ -71,7 +92,7 @@ else:
                <form id="frm" action="/cgi-bin/search.py" method="POST">
                   <div class="input-group input-group-lg">
                      <input  type="text" class="form-control form-control1 fostyle btn1" placeholder="Search here" name="q" id="search">
-                     <span class="input-group-btn"> 
+                     <span class="input-group-btn" style="z-index:10;"> 
                      <button type="submit" id="search_btn" class="btn btn-default spanbtn">
                      <span class="glyphicon glyphicon-search"></span>
                      </button>
@@ -90,7 +111,7 @@ else:
             </div>
 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-push-7 col-md-push-7">
 
-<div class="affix affix-top" id="smart_col">
+<div class="" id="smart_col">
 
 </div>
                 </div>

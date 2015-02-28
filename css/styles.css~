@@ -36,8 +36,8 @@ margin:0px !important;
       font-family: 'arial', sans-serif;font-weight: 500;color:#FFFFFF;
     }
 .backinput{
-      font-family: 'arial', sans-serif !important;font-weight: 400 !important;color:#434343 !important;
-padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !important;padding-right:16px !important;
+      font-family: 'arial', sans-serif !important;font-weight: 400 !important;color:#656565 !important;
+padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !important;padding-right:16px !important;cursor:text !important;position:absolute !important;left:0px !important;z-index:0 !important;
     }
     .fostyle1{
       font-family: 'Quicksand', sans-serif ;font-weight: 600;color:#FFFFFF;font-size:6em;margin-bottom: 0px;

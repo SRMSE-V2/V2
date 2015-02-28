@@ -37,7 +37,7 @@ margin:0px !important;
     }
 .backinput{
       font-family: 'arial', sans-serif !important;font-weight: 400 !important;color:#656565 !important;
-padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !important;padding-right:16px !important;
+padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !important;padding-right:16px !important;cursor:text !important;position:absolute !important;left:0px !important;z-index:0 !important;
     }
     .fostyle1{
       font-family: 'Quicksand', sans-serif ;font-weight: 600;color:#FFFFFF;font-size:6em;margin-bottom: 0px;
@@ -169,6 +169,7 @@ padding-right:15px !important;
 .table>tbody>tr>th, .table>tbody>tr>td {
     border-top: none;padding: 0px; padding-left:5px;padding-right: 5px;
 }
+#search{z-index:10 !important;}
 #search_result{border:1px;}
 #search_title{color:#2A5DB0;font-size: 16px;}
 #search_title:hover{text-decoration: underline;}

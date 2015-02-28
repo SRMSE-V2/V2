@@ -4,7 +4,6 @@ window.leftauto=-1;
 window.firstresize=true;
 window.strlen=0;
 //shadowing parthere
-$("#search").css("z-index","10");
 $(".backinput").remove();
 var inp=$("#search").clone();
 inp.removeClass("fostyle");
@@ -15,10 +14,8 @@ inp.removeClass("ui-autocomplete-input");
 inp.removeClass("btn2");
 inp.addClass("btn1");
 inp.addClass("backinput");
-inp.css("z-index","0");
 inp.attr("disabled","");
-inp.css("position","absolute");
-inp.css("left","0px");
+
 
 $(".input-group").append(inp);
     $("#search").autocomplete({
@@ -43,7 +40,7 @@ $(".ui-autocomplete >li>a").css("white-space","nowrap");//,($("#search").width()
         },
             focus: function (event, ui) {
               
-               inp.val("");
+               inp.val(ui["item"]["value"]);
               
 if(window.originalquery){
               if(window.originalquery!=""){
@@ -133,9 +130,14 @@ inp.val("");
     });
 
 $("#search").on("keydown",function(event){
+if(event.keyCode===8){
+$(".backinput").val("");
+}
 if(event.keyCode===39){
-console.log(document.getElementById('search').selectionStart);
+if(document.getElementById('search').selectionStart===$("#search").val().length){
 $("#search").val($(".backinput").val());
+}
+
 }
 
 if($("#search").val().trim()===""){
