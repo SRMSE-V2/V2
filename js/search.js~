@@ -8,6 +8,7 @@
  github http://github.com/tilakpatidar      
   */
 $(document).ready(function() {
+$.ajaxSetup({cache:true});
     window.i = 0;
     window.j = 20;
     IDS = [];
@@ -39,7 +40,7 @@ $(".nav-sidebar").css("width","inherit");
         //hides autocomplete dropdown on screen resize
         $(".ui-autocomplete").removeClass("show");
         if ($(window).width() <= 1000) {
-if($("#tap").length<=0 && !window.tap){
+if($("#tap").length<=0 && !window.tap && window.clusters.length>0){
 var tap=$("<div id=\"tap\" style=\"position:absolute;top:122px;width:100%;height:40px;z-index:99;\"><button class=\"btn btn-danger\" style=\"width:100%;height:100%;\" type=\"button\">Tap to see clusters</button></div>");
 $("body").append(tap);
 tap.on("click",function(){
@@ -55,8 +56,14 @@ else if(window.tap){
 else{
 $("#tap").show();
 }
+if(window.clusters.length===0){
+$("#smart_answer").css("margin-top","102px");
+
+}
+else{
 $("#smart_col").css("margin-top","62px");
-            $(".side").addClass("hide");
+}     
+       $(".side").addClass("hide");
 
 
 
@@ -158,6 +165,9 @@ $(".newside").css("margin-top","82px");
 $("#smart_col").css("margin-top","82px");
 if(window.clusters.length>0){
             $(".side").removeClass("hide");
+}
+else{
+$("#smart_answer").css("margin-top","22px");
 }
 
         }
@@ -290,7 +300,7 @@ if(window.clusters.length>0){
                         prnt.css("padding", "20px");
                         prnt.css("clear", "both");
                         var title = $("<div style=\"display:block;\"></div>");
-                        title.css("padding-bottom", "10px");
+                        title.css("padding-bottom", "5px");
                         titlea = $("<a></a>");
                         titlea.addClass("search_title");
                         titlea.attr("href", element["url"]);
@@ -301,7 +311,7 @@ imgspan.addClass("search_green");
                         imgspan.append(element["url"]);
 var img=new Image();
 var u="http://www.google.com/s2/favicons?domain=" + element['url'];
-img.onload=function(){imgspan.prepend(img);prnt.append(imgspan);};
+img.onload=function(){imgspan.prepend(img);prnt.find("p").before(imgspan);};
 img.src=u;
 img.width=20;
 img.height=20;
@@ -312,9 +322,8 @@ $(img).css("margin-right","10px");
                         p.text(element["description"]);
                         prnt.append(title);
                         prnt.append(imgspan);
-                        prnt.append($("</br>"));
+                        
                         prnt.append(p);
-                        prnt.append($("</br>"));
                         main = main.add(prnt);
 
 
@@ -459,7 +468,13 @@ $(img).css("margin-right","10px");
                             break;
                            case "minerals":
                                $.getScript("/ver1/js/modules/minerals.js");
-				
+			 break;
+			 case "differences":
+                               $.getScript("/ver1/js/modules/differences.js");	
+			break;
+			case "wiki":
+                               $.getScript("/ver1/js/modules/wiki.js");
+			 break;
                             default:
 				
 				
@@ -484,7 +499,6 @@ $(img).css("margin-right","10px");
         }
 
     };
-
     function getClusters() {
         if ($("#search").val().trim() !== "") {
             //console.log("getClusters q:" + $("#search").val().trim().toLowerCase());
@@ -497,7 +511,6 @@ $(img).css("margin-right","10px");
                     q: $("#search").val().trim().toLowerCase()
                 },
                 error: function() {
-
                     //console.log("error clusters");
                     // $(".side").removeClass("show");
                 }
@@ -515,7 +528,7 @@ if(element){
 			a.attr("data-toggle","tooltip");
 			a.attr("data-placement","right");
 			a.attr("title",element.capitalizeMe());
-                        a.attr("href", "#");
+                        a.attr("href", "/cgi-bin/search.py?q="+window.query+"&c="+element);
                         a.text(element.capitalizeMe());
                         li.append(a);
                         main = main.add(li);
@@ -548,9 +561,8 @@ $("#smart_col").parent().addClass("col-lg-push-9 col-md-push-9");
     getIds(false);
     getResults(window.i, window.j, false);
     getSuggestedQuestions();
-if(document.cookie.indexOf("latitude")>=0){
     window.getSmartAns();
-}
+
     getClusters();
 
 });
@@ -594,7 +606,7 @@ $(this).html(t);
 
 
 };
-window.asyncImg=function(src1,w,h){
+window.asyncImage=function(src1,w,h){
 var img=new Image();
 img.width=w;
 img.height=h;

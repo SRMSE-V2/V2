@@ -3,18 +3,19 @@ html,body {
  height:100%;
   width:100%;
 min-width:320px;
-}
-#back{
-    width:100%;
-    height:100%;
-  //  background-image: url('/ver1/images/bg.jpg');
-  //  background-repeat: no-repeat;
-  //  background-size: cover;
- background: -webkit-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* Chrome 10+, Saf5.1+ */
+background: -webkit-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* Chrome 10+, Saf5.1+ */
   background:    -moz-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* FF3.6+ */
   background:     -ms-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* IE10 */
   background:      -o-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* Opera 11.10+ */
   background:         linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* W3C */
+
+}
+#back{
+    width:100%;
+    height:90%;
+  //  background-image: url('/ver1/images/bg.jpg');
+  //  background-repeat: no-repeat;
+  //  background-size: cover;
 
 }
 #search_front_page{
@@ -34,9 +35,12 @@ margin:0px !important;
     .fostyle{
       font-family: 'arial', sans-serif;font-weight: 500;color:#FFFFFF;
     }
-
+.backinput{
+      font-family: 'arial', sans-serif !important;font-weight: 500 !important;color:#FFFFFF !important;
+padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !important;padding-right:16px !important;
+    }
     .fostyle1{
-      font-family: 'Quicksand', sans-serif;font-weight: 600;color:#FFFFFF;font-size:6em;margin-bottom: 0px;
+      font-family: 'Quicksand', sans-serif ;font-weight: 600;color:#FFFFFF;font-size:6em;margin-bottom: 0px;
       text-shadow: black 0.1em 0.1em 0.2em;
     }
 
@@ -44,7 +48,11 @@ margin:0px !important;
       font-family: 'Quicksand', sans-serif;font-weight: 400;color:#FFFFFF;font-size:3em;
     }
     .btn1{
-      border:0px solid transparent;background-color:#000000;
+      border:0px solid transparent !important;background-color:#000000 !important;
+
+    }
+.btn2{
+      border:0px solid transparent !important;background-color:#000000 !important;
 
     }
 .spanbtn{
@@ -68,6 +76,7 @@ border:0px solid transparent;background-color:#000000;color:white;
         z-index: 99;
         position: absolute;
 padding-left:15px !important;
+padding-right:15px !important;
         
     }
     .ui-autocomplete > li    {
@@ -176,4 +185,5 @@ padding-left:15px !important;
 font-family: 'Quicksand', sans-serif;font-weight: 800;color:#FFFFFF;
 
 }
+
 

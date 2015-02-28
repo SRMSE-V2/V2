@@ -8,6 +8,7 @@
  github http://github.com/tilakpatidar      
   */
 $(document).ready(function() {
+$.ajaxSetup({cache:true});
     window.i = 0;
     window.j = 20;
     IDS = [];
@@ -467,10 +468,14 @@ $(img).css("margin-right","10px");
                             break;
                            case "minerals":
                                $.getScript("/ver1/js/modules/minerals.js");
-				
+			 break;
+			 case "differences":
+                               $.getScript("/ver1/js/modules/differences.js");	
+			break;
+			case "wiki":
+                               $.getScript("/ver1/js/modules/wiki.js");
+			 break;
                             default:
-				
-				
                                 $("#smart_answer").addClass("hide");
                             
 

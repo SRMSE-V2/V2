@@ -1,4 +1,6 @@
 $(document).ready(function(){
+window.orignalinput=$("#search");
+$.ajaxSetup({cache:true});
 window.leftauto=-1;
 window.firstresize=true;
 window.strlen=0;
@@ -6,13 +8,13 @@ window.strlen=0;
                   
             source: "/cgi-bin/getWords.py",
             minLength: 1,
-            autoFocus: true,
+            autoFocus: false,
             appendTo:".search_div",
             html:true,
             open: function(event, ui) {
                 $(".ui-helper-hidden-accessible").remove();
                     $(this).autocomplete("widget").css({
-                "width": ($("#search").width() + "px")
+                "width": ($("#search").parent().width() + "px")
             });
 if(window.leftauto!==-1){
             $(".ui-autocomplete").css("postion","relative").css("left",window.leftauto+"px");
@@ -24,7 +26,7 @@ $(".ui-autocomplete >li>a").css("white-space","nowrap");//,($("#search").width()
         },
             focus: function (event, ui) {
               
-               
+               console.log(event);
               
 if(window.originalquery){
  console.log(ui); 
@@ -37,23 +39,46 @@ var arr=window.originalquery.split(" ");
               
               }
              }
+
+//shadowing parthere
+$("#search").css("z-index","10");
+$(".backinput").remove();
+var inp=$("#search").clone();
+inp.removeClass("fostyle");
+inp.removeAttr("id","");
+inp.removeClass("ui-autocomplete-input");
+inp.addClass("backinput");
+inp.css("z-index","0");
+inp.attr("disabled","");
+inp.val(ui["item"]["value"]);
+inp.css("position","absolute");
+inp.css("left","0px");
+
+$(".input-group").append(inp);
+
+$("#search").removeClass("btn1");
+$("#search").addClass("btn2");
         },
 response:function(event,ui){
 console.log(ui);
 if(ui.content[0]["resize"]==="true"){
 window.originalquery=$("#search").val().trim();
 	if(window.firstresize){
+window.space=false;
 		window.defaultleft=parseInt($("#search").offset().left);
 		window.firstresize=false;
 		var pos=$("#search").val().length*parseInt($("#search").css("font-size").replace("px",""));
-window.strlen=parseInt(pos)*0.8;
-		window.leftauto=(window.defaultleft+parseInt(pos))*0.8;
+window.strlen=parseInt(pos)*0.7;
+		window.leftauto=(window.defaultleft+parseInt(pos))*0.7;
 	}
 	else{
+if(window.space){
 		var pos=$("#search").val().length*parseInt($("#search").css("font-size").replace("px",""));
-window.strlen=parseInt(pos)*0.8;
-		window.leftauto=(window.defaultleft+parseInt(pos))*0.8;
-	}
+window.strlen=parseInt(pos)*0.7;
+		window.leftauto=(window.defaultleft+parseInt(pos))*0.7;
+window.space=false;
+}	
+}
 
 
 }
@@ -147,5 +172,28 @@ $.getScript("/ver1/js/location_centric.js");
 
 };
    window.loadLocation();
-    
+ $("#search").on("keyup",function(event){
+if(event.keyCode===32)
+{window.space=true;}
+else if(event.keyCode===8){
+var a=$("#search").val();
+if(a.slice(a.length-1,a.length)===" "){
+if(a.slice(a.length-2,a.length)==="  "){window.space=false;}
+else{
+window.space=true;
+}
+
+}
+}
+});   
+var img1=$("#nixi-logo");
+img1.attr("src","/ver1/images/nixi.png");
+img1.attr("alt","Nixi");
+img1.attr("width","60");
+img1.attr("height","30");
+var img=$("#srm-logo");
+img.attr("src","/ver1/images/srm-logo.png");
+img.attr("alt","SRM University");
+img.attr("width","30");
+img.attr("height","30");
 });
