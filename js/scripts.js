@@ -1,9 +1,26 @@
 $(document).ready(function(){
-window.orignalinput=$("#search");
 $.ajaxSetup({cache:true});
 window.leftauto=-1;
 window.firstresize=true;
 window.strlen=0;
+//shadowing parthere
+$("#search").css("z-index","10");
+$(".backinput").remove();
+var inp=$("#search").clone();
+inp.removeClass("fostyle");
+inp.removeAttr("id");
+inp.removeAttr("placeholder");
+inp.removeAttr("name");
+inp.removeClass("ui-autocomplete-input");
+inp.removeClass("btn2");
+inp.addClass("btn1");
+inp.addClass("backinput");
+inp.css("z-index","0");
+inp.attr("disabled","");
+inp.css("position","absolute");
+inp.css("left","0px");
+
+$(".input-group").append(inp);
     $("#search").autocomplete({
                   
             source: "/cgi-bin/getWords.py",
@@ -26,12 +43,10 @@ $(".ui-autocomplete >li>a").css("white-space","nowrap");//,($("#search").width()
         },
             focus: function (event, ui) {
               
-               
+               inp.val("");
               
 if(window.originalquery){
- console.log(ui); 
               if(window.originalquery!=""){
-              console.log(ui); 
 event.preventDefault();
 var arr=window.originalquery.split(" ");
 		var temp=arr.slice(0,arr.length-1).join(" ");
@@ -40,28 +55,13 @@ var arr=window.originalquery.split(" ");
               }
              }
 
-//shadowing parthere
-/*
-$("#search").css("z-index","10");
-$(".backinput").remove();
-var inp=$("#search").clone();
-inp.removeClass("fostyle");
-inp.removeAttr("id","");
-inp.removeClass("ui-autocomplete-input");
-inp.addClass("backinput");
-inp.css("z-index","0");
-inp.attr("disabled","");
-inp.val(ui["item"]["value"]);
-inp.css("position","absolute");
-inp.css("left","0px");
 
-$(".input-group").append(inp);
 
-$("#search").removeClass("btn1");
-$("#search").addClass("btn2");
-*/
+
+
         },
 response:function(event,ui){
+inp.val(ui.content[0]["value"]);
 console.log(ui);
 if(ui.content[0]["resize"]==="true"){
 window.originalquery=$("#search").val().trim();
@@ -116,6 +116,11 @@ window.leftauto=-1;
 
     });
     $("#search").on("keypress",function(event){
+
+
+if($("#search").val().trim()===""){
+inp.val("");
+}
     console.log($("#search").val());
     if((event.keyCode===13) && ($("#search").val()!=="")){
             var query=$("#search").val().trim();
@@ -126,6 +131,19 @@ window.leftauto=-1;
     }
     
     });
+
+$("#search").on("keydown",function(event){
+if(event.keyCode===39){
+if(document.getElementById('search').selectionStart===$("#search").val().length){
+$("#search").val($(".backinput").val());
+}
+
+}
+
+if($("#search").val().trim()===""){
+inp.val("");
+}
+});
     $("#search_btn").on("click",function(){
         if($("#search").val().trim()!==""){
             var query=$("#search").val().trim();
@@ -175,7 +193,13 @@ $.getScript("/ver1/js/location_centric.js");
 };
    window.loadLocation();
  $("#search").on("keyup",function(event){
+
+
+if($("#search").val().trim()===""){
+inp.val("");
+}
 if(event.keyCode===32)
+
 {window.space=true;}
 else if(event.keyCode===8){
 var a=$("#search").val();
