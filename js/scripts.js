@@ -130,14 +130,17 @@ inp.val("");
     });
 
 $("#search").on("keydown",function(event){
-if(event.keyCode===8){
-$(".backinput").val("");
-}
+
+
+
 if(event.keyCode===39){
 if((document.getElementById('search').selectionStart===$("#search").val().length)&&$("#search").val().length<$(".backinput").val().length){
 $("#search").val($(".backinput").val());
 }
 
+}
+else{
+$(".backinput").val("");
 }
 
 if($("#search").val().trim()===""){
