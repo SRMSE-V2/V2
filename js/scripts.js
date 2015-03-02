@@ -39,8 +39,10 @@ $(".ui-autocomplete >li>a").css("white-space","nowrap");//,($("#search").width()
             event.preventDefault();
         },
             focus: function (event, ui) {
-              
-               inp.val(ui["item"]["value"]);
+              if($("#search").val().trim()!==""){
+		inp.val(ui["item"]["value"]);
+}
+               
               
 if(window.originalquery){
               if(window.originalquery!=""){
@@ -58,7 +60,11 @@ var arr=window.originalquery.split(" ");
 
         },
 response:function(event,ui){
-inp.val(ui.content[0]["value"]);
+          if($("#search").val().trim()!==""){
+		inp.val(ui.content[0]["value"]);
+}
+   
+
 console.log(ui);
 if(ui.content[0]["resize"]==="true"){
 window.originalquery=$("#search").val().trim();
