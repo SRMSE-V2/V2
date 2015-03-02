@@ -17,7 +17,7 @@ inp.addClass("backinput");
 inp.attr("disabled","");
 
 
-$(".input-group").append(inp);
+$("#div_for_back").append(inp);
     $("#search").autocomplete({
                   
             source: "/cgi-bin/getWords.py",

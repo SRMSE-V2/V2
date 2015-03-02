@@ -10,6 +10,9 @@ background: -webkit-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* Chrome 
   background:         linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* W3C */
 
 }
+#div_for_back{
+z-index:0;position:absolute;width:100%;height:46px;
+}
 #back{
     width:100%;
     height:90%;
@@ -37,7 +40,7 @@ margin:0px !important;
     }
 .backinput{
       font-family: 'arial', sans-serif !important;font-weight: 400 !important;color:#656565 !important;
-padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !important;padding-right:16px !important;cursor:text !important;position:absolute !important;left:0px !important;z-index:0 !important;
+padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !important;padding-right:16px !important;cursor:text !important;position:absolute !important;left:0px !important;z-index:0 !important;height:100%;
     }
     .fostyle1{
       font-family: 'Quicksand', sans-serif ;font-weight: 600;color:#FFFFFF;font-size:6em;margin-bottom: 0px;
