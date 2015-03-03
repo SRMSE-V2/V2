@@ -1,9 +1,13 @@
-var meaning=$("<div class=\"well alpha-blur\" style=\"border:0px;color:white;text-align:left;\" id=\"dictionary\"> <h2 id=\"dict_keyword\" style=\"margin:0px;\"></h2><div id=\"dict_details\" style=\"padding-top:0px\"></div> <button class=\"btn-group btn-group-xs\" id=\"dict_button\" style=\"color:white;border:0px;background-color:transparent;\"> <span class=\"glyphicon glyphicon-th-list\" aria-hidden=\"true\"></span> Verbs, synonyms etc</button> </div>");
+var meaning=$("<div class=\"well alpha-blur\" style=\"border:0px;color:white;text-align:left;\" id=\"dictionary\"> <h2 id=\"dict_keyword\" style=\"margin:0px;\"></h2><div id=\"dict_details\" style=\"padding-top:0px\"></div> <div style=\"padding-top:0px;display:block;height:28px;\"><button class=\"btn glyphicon glyphicon-th-list\" id=\"dict_button\" style=\"color:white;border:0px;background-color:transparent;\">&nbsp;Verbs, synonyms etc</button><a href=\"http://dictionary.reference.com/browse/"+window.val["keyword"]+"\" target=\"_blank\" class=\"btn\" style=\"float:right;color:white;border:0px;background-color:transparent;line-height:16px;font-size:16px;\"><img src=\"http://www.google.com/s2/favicons?domain=http://dictionary.com\" height=\"16\" style=\"padding-right:5px;\"/>Dictionary.com</a> </div></div>");
 $("#predefined_questions").before(meaning);
 once=1;
 $("#dict_keyword").html("<b>"+window.val["keyword"]+"</b>");
 var count=0;
-$.each(window.val,function(key,element){
+var keys=Object.keys(window.val);
+keys.sort();
+$.each(keys,function(index,el){
+	key=el;
+	element=window.val[el];
 	if(key!=="keyword"){
 	if(once===1){
 	$("#dict_keyword").after("<h4 id=\"fs_key\"><i>"+key+"</i></h4>");
