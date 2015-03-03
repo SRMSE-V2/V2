@@ -475,9 +475,13 @@ $(img).css("margin-right","10px");
 			case "wiki":
                                $.getScript("/ver1/js/modules/wiki.js");
 			 break;
+			case "dict":
+                               $.getScript("/ver1/js/modules/meaning.js");
+			 break;
+			case "theater":
+                               $.getScript("/ver1/js/modules/theater.js");
+			 break;
                             default:
-				
-				
                                 $("#smart_answer").addClass("hide");
                             
 
@@ -485,7 +489,6 @@ $(img).css("margin-right","10px");
 
                     });
                 } else {
-  
                     if ($("#search").val().trim().toLowerCase().indexOf('convert') > -1) {
   					$.getScript("/ver1/js/modules/convert.js");}
                     console.log("No smart  ans questions !");
@@ -577,7 +580,17 @@ catch(err){
 return "";
 }
     } 
+   String.prototype.filter=function() {
+try{
+        data = this + " ";
+	data = data.replace(/®/g, " ").replace(/©/g, " ").replace(/[\.\,-\/#!<>?$%\^&\*;:\+{}=\-_`~()\[\]]/g, " ").replace(/\\u.*\s/g, " ").replace(/\\n+/g, " ").replace(/\\t+/g, " ").replace(/\\r+/g, " ").replace(/\\x.*\s/g, " ").replace(/\\/g,"").replace(/\./g,"").replace(/\'/g,"").replace(/\"/g,"").replace(/\\/g,"").replace(/\s+/g, " ").trim();
 
+	return data;
+}
+catch(err){
+return "";
+}
+    } 
 $.prototype.setTextValue=function(t){
 if(t===""||t===undefined){
 //console.log("empty");
