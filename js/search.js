@@ -58,12 +58,13 @@ $("#tap").show();
 }
 if(window.clusters.length===0){
 $("#smart_answer").css("margin-top","102px");
-
+$(".side").removeClass("full-height");
 }
 else{
 $("#smart_col").css("margin-top","62px");
+$(".side").addClass("full-height");
 }     
-       $(".side").addClass("hide");
+       
 
 
 
@@ -514,8 +515,15 @@ $(img).css("margin-right","10px");
                     q: $("#search").val().trim().toLowerCase()
                 },
                 error: function() {
-                    //console.log("error clusters");
-                    // $(".side").removeClass("show");
+                    console.log("error clusters");
+                    window.clusters=[];
+                   $(".side").html("");
+$(".side").removeClass("col-md-2 col-lg-2");
+$(".side").addClass("col-md-1 col-lg-1");
+$("#centre_parent").parent().removeClass("col-lg-7 col-md-7 col-lg-pull-3 col-md-pull-3");
+$("#centre_parent").parent().addClass("col-lg-9 col-md-9 col-lg-pull-2 col-md-pull-2");
+$("#smart_col").parent().removeClass("col-lg-push-7 col-md-push-7 col-lg-3 col-md-3");
+$("#smart_col").parent().addClass("col-lg-push-9 col-md-push-9 col-lg-2 col-md-2");
                 }
 
             }).done(function(textt) {
@@ -541,13 +549,15 @@ if(element){
                     });
                     $(".nav-sidebar").append(main);
                 } else {
-                    //console.log("no clusters");
+                    console.log("no clusters");
 window.clusters=[];
-                    $(".side").addClass("hide");
-$("#centre_parent").parent().removeClass("col-lg-7 col-md-7");
-$("#centre_parent").parent().addClass("col-lg-9 col-md-9");
-$("#smart_col").parent().removeClass("col-lg-push-7 col-md-push-7");
-$("#smart_col").parent().addClass("col-lg-push-9 col-md-push-9");
+                   $(".side").html("");
+$(".side").removeClass("col-md-2 col-lg-2");
+$(".side").addClass("col-md-1 col-lg-1");
+$("#centre_parent").parent().removeClass("col-lg-7 col-md-7 col-lg-pull-3 col-md-pull-3");
+$("#centre_parent").parent().addClass("col-lg-9 col-md-9 col-lg-pull-2 col-md-pull-2");
+$("#smart_col").parent().removeClass("col-lg-push-7 col-md-push-7 col-lg-3 col-md-3");
+$("#smart_col").parent().addClass("col-lg-push-9 col-md-push-9 col-lg-2 col-md-2");
                 }
 
 
