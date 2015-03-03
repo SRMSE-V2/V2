@@ -476,7 +476,7 @@ $(img).css("margin-right","10px");
                                $.getScript("/ver1/js/modules/wiki.js");
 			 break;
 			case "dict":
-                               $.getScript("/ver1/js/modules/meaning.js");
+                            $.getScript("/ver1/js/modules/meaning.js");
 			 break;
 			case "theater":
                                $.getScript("/ver1/js/modules/theater.js");

@@ -476,19 +476,21 @@ $(img).css("margin-right","10px");
                                $.getScript("/ver1/js/modules/wiki.js");
 			 break;
 			case "dict":
-                               $.getScript("/ver1/js/modules/meaning.js");
+                            $.getScript("/ver1/js/modules/meaning.js");
 			 break;
 			case "theater":
                                $.getScript("/ver1/js/modules/theater.js");
 			 break;
                             default:
-                                $("#smart_answer").addClass("hide");
-                            
+   $.getScript("/ver1/js/modules/theater.js");                              
+//  $("#smart_answer").addClass("hide");
+                            break;
 
                         }
 
                     });
                 } else {
+   $.getScript("/ver1/js/modules/theater.js");
                     if ($("#search").val().trim().toLowerCase().indexOf('convert') > -1) {
   					$.getScript("/ver1/js/modules/convert.js");}
                     console.log("No smart  ans questions !");
