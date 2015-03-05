@@ -1,3 +1,4 @@
+if($("#differences").length===0){
 var differences=$('<div class="well alpha-blur" style="border:0px;color:white;text-align:left" id="differences"><h3>Difference between <span id="dif_title1"></span> and <span id="dif_title2"></span></h3><h6 id="dif_text"></h6><h5><a href="#" style="color:green" id="dif_link"></a></h5></div>');
 $("#predefined_questions").before(differences);
 $("#smart_answer").addClass("hide");
@@ -16,5 +17,5 @@ $("#dif_link").attr("target","_blank");
 $("#dif_link").css('font-size','14px');
 $("#dif_text").css('font-size','16px');
 $("#smart_col").removeClass("hide");
-
+}
 

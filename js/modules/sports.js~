@@ -19,6 +19,7 @@ var batsmen_1_score = window.val["Batting"].match(patt)[0];
                                 var batsmen_1_name = window.val["Batting"].replace(batsmen_1_score, "").trim();
 var batsmen_2_name="";
 var batsmen_2_score ="";
+$(".batimg")[1].remove();
 }
 
 				var w=window.val["General"].replace(/[/]/g,"");

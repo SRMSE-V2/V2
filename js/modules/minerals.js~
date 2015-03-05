@@ -3,7 +3,7 @@ $("#smart_col").html("").append(minerals);
 $("#smart_answer").addClass("hide");
 console.log(window.val);
 $("#commodity").setTextValue(window.val["name"].capitalizeMe());
-$("#Live_Price").setTextValue(window.val["value"].replace("Rs.","₹"));
+$("#Live_Price").setTextValue(window.val["value"].replace("Rs.","₹ "));
 $("#smart_col").removeClass("hide");
 
 

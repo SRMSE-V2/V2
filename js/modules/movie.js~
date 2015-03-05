@@ -54,8 +54,7 @@ $("#poster").attr("src",window.val["image"]);
 
                                 });
                                 $("#cast").append(prnt);
-$("#smart_col").show();
-                     $("#smart_col").parent().show();
+$("#smart_col").removeClass("hide");
 cycle3=0;
 $("#smart_cast").hide();
 

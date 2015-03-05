@@ -3,3 +3,4 @@ $("#smart_col").html("").append(convert);
 $("#smart_answer").addClass("hide");
 
 
+

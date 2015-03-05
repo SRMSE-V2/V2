@@ -18,5 +18,4 @@ $("#stocks_current").text(window.val["Present window.value"]);
 $("#stocks_name").text(window.val["Company Name"]);
 $("#stocks_previous").text(window.val["Previous window.value"]);
 $("#stocks").removeClass("hide");
-$("#smart_col").show();
-                     $("#smart_col").parent().show();
+$("#smart_col").removeClass("hide");

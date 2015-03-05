@@ -440,8 +440,7 @@ $(img).css("margin-right","10px");
                         switch (key) {
 
                             case "general":
-
-                                $.getScript("/ver1/js/modules/general.js");
+				$.getScript("/ver1/js/modules/general.js");
                                 break;
                             case "sports":
                                 $.getScript("/ver1/js/modules/sports.js");
@@ -479,7 +478,7 @@ $(img).css("margin-right","10px");
 			case "dict":
                             $.getScript("/ver1/js/modules/meaning.js");
 			 break;
-			case "theater":
+			case "theatre":
                                $.getScript("/ver1/js/modules/theater.js");
 			 break;
                             default:

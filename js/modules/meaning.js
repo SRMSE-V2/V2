@@ -1,3 +1,4 @@
+if($("#meaning").length===0){
 var meaning=$("<div class=\"well alpha-blur\" style=\"border:0px;color:white;text-align:left;\" id=\"dictionary\"> <h1 id=\"dict_keyword\" style=\"margin:0px;\"></h1><div id=\"dict_details\" style=\"padding-top:0px\"></div> <div style=\"padding-top:0px;display:block;height:28px;\"><button class=\"btn glyphicon glyphicon-th-list\" id=\"dict_button\" style=\"color:white;border:0px;background-color:transparent;\">&nbsp;Verbs, synonyms etc</button><a href=\"http://dictionary.reference.com/browse/"+window.val["keyword"]+"\" target=\"_blank\" class=\"btn\" style=\"float:right;color:white;border:0px;background-color:transparent;line-height:16px;font-size:16px;\"><img src=\"http://www.google.com/s2/favicons?domain=http://dictionary.com\" height=\"16\" style=\"padding-right:5px;\"/>Dictionary.com</a> </div></div>");
 $("#predefined_questions").before(meaning);
 once=1;
@@ -72,3 +73,4 @@ $("#dict_button").click ( function() { $("#dict_details").slideToggle(); } );
 
 $("#smart_answer").addClass("hide");
 $("#smart_col").removeClass("hide");
+}
