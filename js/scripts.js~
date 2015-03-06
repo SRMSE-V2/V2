@@ -95,19 +95,12 @@ window.leftauto=-1;
             select:function (e, ui) {
             
                e.preventDefault();
-               if(e.keyCode===13){
+              
                     var query=$("#search").val().trim();
                     console.log("Query submitted");
                     console.log(query);
-                    window.location="/cgi-bin/search.py?q="+query;
-               }
+                    window.location="/cgi-bin/s.py?q="+query;
                
-               else{
-                  var query=ui.item.value;
-                    console.log("Query submitted");
-                    console.log(ui.item.value);
-                    window.location="/cgi-bin/search.py?q="+ui.item.value;
-               }
                     
                
               
@@ -119,8 +112,9 @@ window.leftauto=-1;
 
     });
     $("#search").on("keypress",function(event){
-
+if($("#search").val().indexOf(" ")===0){
 $("#search").val($("#search").val().replace(/\s+/g," ").trim());
+}
 if($("#search").val().trim()===""){
 inp.val("");
 }
@@ -129,7 +123,7 @@ inp.val("");
             var query=$("#search").val().trim();
             console.log("Query submitted");
             console.log(query);
-            window.location="/cgi-bin/search.py?q="+query;
+            window.location="/cgi-bin/s.py?q="+query;
     
     }
     
@@ -159,7 +153,7 @@ inp.val("");
             var query=$("#search").val().trim();
             console.log("Query submitted");
             console.log(query);
-            window.location="/cgi-bin/search.py?q="+query;
+            window.location="/cgi-bin/s.py?q="+query;
         }
     });
     
@@ -197,11 +191,11 @@ window.connect({"lat":obj["latitude"], "long":obj["longitude"]});
 
 }
 else{
-$.getScript("/ver1/js/location_centric.js");
+$.getScript("/main/js/location_centric.js");
 }
 
 };
-   window.loadLocation();
+  //uncomment to ask for location window.loadLocation();
  $("#search").on("keyup",function(event){
 
 
@@ -221,15 +215,19 @@ window.space=true;
 
 }
 }
-});   
+});
+if(window.location.toString().indexOf("s.py")<0){
+$("input .input-group").removeClass("hide");
+
 var img1=$("#nixi-logo");
-img1.attr("src","/ver1/images/nixi.png");
+img1.attr("src","/main/images/nixi.png");
 img1.attr("alt","Nixi");
 img1.attr("width","60");
 img1.attr("height","30");
 var img=$("#srm-logo");
-img.attr("src","/ver1/images/srm-logo.png");
+img.attr("src","/main/images/srm-logo.png");
 img.attr("alt","SRM University");
 img.attr("width","30");
 img.attr("height","30");
+}
 });
