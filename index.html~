@@ -46,7 +46,7 @@ and open the template in the editor.
                                     </span>
                                     </div>
  </div>
-<div id="div_for_back" style="z-index:0;position:absolute;width:100%;height:46px;">  
+<div id="div_for_back">  
                               </div>
                         <div class="col-lg-3 col-md-3 hidden-xs hidden-sm hidden-phone hidden-tablet">
                           </div>

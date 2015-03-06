@@ -119,8 +119,9 @@ window.leftauto=-1;
 
     });
     $("#search").on("keypress",function(event){
-
-
+if($("#search").val().indexOf(" ")===0){
+$("#search").val($("#search").val().replace(/\s+/g," ").trim());
+}
 if($("#search").val().trim()===""){
 inp.val("");
 }
@@ -136,8 +137,9 @@ inp.val("");
     });
 
 $("#search").on("keydown",function(event){
-
-
+if($("#search").val().indexOf(" ")===0){
+$("#search").val($("#search").val().replace(/\s+/g," ").trim());
+}
 
 if(event.keyCode===39){
 if((document.getElementById('search').selectionStart===$("#search").val().length)&&$("#search").val().length<$(".backinput").val().length){
