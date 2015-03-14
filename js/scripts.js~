@@ -1,3 +1,4 @@
+(function($){var proto = $.ui.autocomplete.prototype,	initSource = proto._initSource;function filter( array, term ) {	var matcher = new RegExp( $.ui.autocomplete.escapeRegex(term), "i" );	return $.grep( array, function(value) {		return matcher.test( $( "<div>" ).html( value.label || value.value || value ).text() );	});}$.extend( proto, {	_initSource: function() {		if ( this.options.html && $.isArray(this.options.source) ) {			this.source = function( request, response ) {				response( filter( this.options.source, request.term ) );			};		} else {			initSource.call( this );		}	},	_renderItem: function( ul, item) {		return $( "<li></li>" )			.data( "item.autocomplete", item )			.append( $( "<a></a>" )[ this.options.html ? "html" : "text" ]( item.label ) )			.appendTo( ul );	}});})( jQuery );
 $(document).ready(function(){
 $.ajaxSetup({cache:true});
 window.leftauto=-1;
@@ -217,17 +218,18 @@ window.space=true;
 }
 });
 if(window.location.toString().indexOf("s.py")<0){
-$("input .input-group").removeClass("hide");
-
+$("input").removeClass("hide");
+$(".input-group").removeClass("hide");
+var img2=$("#srmse-logo");
+img2.attr("src","/main/images/srmselogo.png");
+img2.attr("alt","SRM Search Engine");
 var img1=$("#nixi-logo");
-img1.attr("src","/main/images/nixi.png");
+img1.attr("src","/main/images/nixi-white.png");
 img1.attr("alt","Nixi");
-img1.attr("width","60");
-img1.attr("height","30");
+img1.attr("width","127px");
+img1.attr("height","44px");
 var img=$("#srm-logo");
-img.attr("src","/main/images/srm-logo.png");
+img.attr("src","/main/images/srm.png");
 img.attr("alt","SRM University");
-img.attr("width","30");
-img.attr("height","30");
 }
 });

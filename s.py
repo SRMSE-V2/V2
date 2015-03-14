@@ -86,14 +86,14 @@ if ($(window).scrollTop() > 100) {
             </div>
             <div class="col-lg-7 col-sm-12 col-xs-12 col-md-7">
                <form id="frm" action="/cgi-bin/s.py" method="POST">
-                   <div style="z-index:10;position:absolute;height:46px;">
+                   <div style="z-index:10;position:absolute;width:100%;height:46px;">
                               <div class="input-group input-group-lg">
                                  
                                       <input data-toggle="tooltip" title="Search" style="font-size:1.5em;display:block;" type="text" class="form-control form-control1 fostyle btn2" placeholder="Search here" name="q" id="search" autofocus/>
 
                                   <span class="input-group-btn" style="z-index:10;"> 
                                       <button id="search_btn" class="btn btn-default spanbtn">
-                                        <span class="glyphicon glyphicon-search"></span>
+                                        <span style="color:#474747;" class="glyphicon glyphicon-search"></span>
                                       </button>
                                     </span>
                                     </div>

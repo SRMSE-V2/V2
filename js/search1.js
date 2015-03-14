@@ -9,14 +9,19 @@
   */
 $(document).ready(function() {
 $.ajaxSetup({cache:true});
+$("head").append("<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Quicksand:400,700' />");
 $("head").append("<link rel='stylesheet' type='text/css' href='/main/css/search.css' />");
+$.getScript("/main/js/jquery-ui.min.js",function(){
+$.getScript("/main/js/jquery.ui.autocomplete.html.js",function(){
+$.getScript("/main/js/scripts.js",function(){
 
-    $.getScript( "/main/js/jquery-ui.min.js",function(){
- $.getScript( "/main/js/scripts.js");
 
 });
-   
 
+});
+
+
+});
 
     window.i = 0;
     window.j = 10;
@@ -33,7 +38,7 @@ $("head").append("<link rel='stylesheet' type='text/css' href='/main/css/search.
     window.clocation=0;
     window.val={};
 window.tap=false;
-window.scrolled=false;
+
 
 //caching scripts
    $.ajaxSetup({
@@ -75,9 +80,11 @@ $(".side").removeClass("full-height");
 else{
 $("#smart_col").css("margin-top","62px");
 $(".side").addClass("full-height");
+$(".side").addClass("hide");
 }     
        
-$(".side").addClass("hide");
+
+
 
 $("#centre_parent").css("margin-top","20px");
 console.log("resize");
@@ -337,22 +344,10 @@ $(img).css("margin-right","10px");
 
                     });
                     fat.append(main);
-			if(wiki===""){
-			fat.append("<div class=\"container\" style=\"width:inherit;\"><div class=\"row\" style=\"height:60px;\">  <div class=\"alpha-blur col-lg-9 col-md-9 hidden-sm hidden-xs\" style=\"height:inherit;\"></div>  <div id=\"load_wiki\" class=\"col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center\" style=\"cursor:pointer;height:inherit;padding-top:10px;	\">  <img src=\"http://www.google.com/s2/favicons?domain=http://en.wikipedia.org/\" width=\"20\" height=\"20\" style=\"margin-right: 10px;margin-top:5px;\"><span style=\"font-size:18px;color:#DDDDDD;top:5px;position:relative;\">More Results</span></div></div></div>");
-			}
                     $("#loading").remove();
                     $(window).scroll(bindScroll);
                 } else {
-			if(!window.scrolled){
-				if(!(IDSwiki.length>0 || IDSnews.length>0)){
-					load.remove();
-                        var prnt = $("<div><span></span></div>");
-                        prnt.width($("#search_results").width());
-                        prnt.addClass("h6 text-center no-results");
-                        prnt.text("No more results available");
-				}
-			}
-                    else if (window.results) {
+                    if (window.results) {
                         load.remove();
                         var prnt = $("<div><span></span></div>");
                         prnt.width($("#search_results").width());
@@ -367,7 +362,7 @@ $(img).css("margin-right","10px");
 
 }
     function getResultsResults(i, j, bool) {
-if(i>IDS.length){
+
         if (IDS && window.results) {
             $.ajax({
                 url: "/cgi-bin/queryret/getMore.py",
@@ -401,18 +396,6 @@ console.log(arr);
             });
 
         }
-}
-else{
- load.remove();
-$(".no-results").remove();
-                    var prnt = $("<div><span></span></div>");
-                    prnt.width($("#search_results").width());
-                    prnt.addClass("h6 text-center no-results");
-                    prnt.text("No more results available");
-                    load.remove();
-                    $("#search_results").append(prnt);
-                    window.results = false;
-}
 
 
 
@@ -422,7 +405,6 @@ $(".no-results").remove();
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
             $(window).unbind('scroll');
             if (window.results) {
-		window.scrolled=true;
                 $("#search_results").append(load);
                 $("#loading").width($("#search_results").width());
                 setTimeout(function() {
@@ -664,7 +646,6 @@ $(".side").removeClass("hide");
                     console.log("no clusters");
 window.clusters=[];
                    $(".side").html("");
-$(".side").removeClass("hide");
 $(".side").removeClass("col-md-2 col-lg-2");
 $(".side").addClass("col-md-1 col-lg-1");
 $("#centre_parent").parent().removeClass("col-lg-7 col-md-7 col-lg-pull-3 col-md-pull-3");

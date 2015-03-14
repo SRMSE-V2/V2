@@ -11,7 +11,6 @@ and open the template in the editor.
 /*
  * Base structure
  */
-
 #frm{
 height:46px;
 
@@ -69,16 +68,16 @@ border:0px;margin-top:15px;margin-left:2px;margin-right:2px;margin-bottom:0px;
 
     }
 .btn1{
-      border:0px solid transparent !important;background-color:#000000 !important;
+      border:0px solid transparent !important;background-color:#DDDDDD !important;width:inherit;
 
     }
 .backinput{
-      font-family: 'arial', sans-serif !important;font-weight: 400 !important;color:#656565 !important;
-padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !important;padding-right:16px !important;cursor:text !important;position:absolute !important;left:0px !important;z-index:0 !important;font-size:1.5em !important;display:block !important;border:none;background-color:#282828 !important;height:100%;
+      font-family: 'arial', sans-serif !important;font-weight: 400 !important;color:##7b7b7b  !important;
+padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !important;padding-right:16px !important;cursor:text !important;position:absolute !important;left:0px !important;z-index:0 !important;font-size:1.5em !important;display:block !important;border:none;height:100%;
      }
 .spanbtn{
 
-border:0px solid transparent;background-color:#282828;color:white;
+border:0px solid transparent;background-color:#DDDDDD;color:white;
 }
     .form-control1:focus{border-color:#505050;outline:0;-webkit-box-shadow:inset 0 0px 0px rgba(0,0,0,.075),0 0 0px rgba(102,175,233,.6);box-shadow:inset 0 0px 0px rgba(0,0,0,.075),0 0 0px rgba(102,175,233,.6)}
     .search_bar{
@@ -104,11 +103,10 @@ background: #333333 !important;
 }
    .ui-autocomplete{
         
-        background-color:rgba(28,28,28,0.95);
+        background-color:rgba(45,45,45,0.9);
         z-index: 105;
         position: absolute;
-padding-left:15px !important;
-padding-right:15px !important;
+	padding-left:0px !important;
         
     }
     .ui-autocomplete > li    {
@@ -121,6 +119,7 @@ padding-right:15px !important;
          display: block;
         list-style: none;
         cursor:pointer;
+	padding-left:10px !important;
         text-decoration: none;
        font-family: 'arial', sans-serif;font-weight: 500;color:#FFFFFF;font-size:1.5em;
         
@@ -251,7 +250,7 @@ color:#DDDDDD;
 }
 #search{
 
-font-size:1.5em;display:block;
+font-size:1.5em;display:block;color:#474747;
 }
 .full-width{
 
@@ -336,7 +335,7 @@ border-top-right-radius:0px !important;
 
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-    background: #bd0018;
+    background: #232323;
     border: none;
     color:#000;
     border-radius:0;
