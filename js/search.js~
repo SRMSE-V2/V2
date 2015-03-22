@@ -8,16 +8,210 @@
  github http://github.com/tilakpatidar      
   */
 $(document).ready(function() {
+window.color="black";
 $.ajaxSetup({cache:true});
 $("head").append("<link rel='stylesheet' type='text/css' href='/main/css/search.css' />");
-$.when(
-    $.getScript( "/main/js/jquery-ui.min.js" ),
-    $.getScript( "/main/js/scripts.js" )
-).done(function(){
 
-    $("#prog").remove();
+    $.getScript( "/main/js/jquery-ui.min.js",function(){
+ $.getScript( "/main/js/scripts.js");
 
 });
+   var u=0;
+function arrowClick(){
+	if(u===0){
+	$(".arrow_div").remove();
+	$("#arrow_parent").append("<div class=\"arrow_div\" style=\"float:left;height:62px;background-color:#00b4ff;float:right;width:0px;\"></div>");
+	$(".arrow_div").animate({width:'150px'},500);
+
+	++u;
+	}
+	else{
+	$(".arrow_div").animate({width:'0px'},500,function(){
+	});
+	u=0;
+
+	}
+
+}
+$("#arrow").on("click",arrowClick);
+document.getElementById("arrow").addEventListener('touchstart', function(e){
+        arrowClick();
+        e.stopPropagation();
+    }, false);
+window.dummy={};
+window.dummy["women"]={
+  "results": [
+    {
+      "url": "http://www.dnaindia.com/india/slideshow-six-best-women-achievers-1570621",
+      "body": "Six best women achievers . While most of India's women are shackled by limitations of different kinds, a small section sees barriers as challenges and reaches the top.",
+      "title": "Six best women achievers"
+    },
+    {
+      "url": "http://www.scribd.com/doc/29014875/Women-Achievers-of-India",
+      "body": "Women achievers of India There are number of Indian women who have surmounted their difficulties and problems. Government of India and other organisations have installed awards in recognition of such women who are known as Women Achievers of India.",
+      "title": "Women Achievers of India"
+    },
+    {
+      "url": "http://educatesquare.com/women-achievers-of-india/",
+      "body": "The first female president of the Indian National Congress — Annie Besant, 1917. The first Indian woman to be awarded the Kaiser-i-Hind by the British Raj for her distinguished social service",
+      "title": "Women Achievers of India"
+    },
+    {
+      "url": "www.scoopwhoop.com/inothernews/women-achievers-of-india/",
+      "body": "From Jhansi Ki Rani to Irom Sharmila, Indian women have always .... not the least, every Indian mother is an achiever we just cannot leave out.",
+      "title": "15 Women Whose Achievements Have Made India Proud"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=JvHHpAStkJg",
+      "body": "It is very nice to know the historical role of Indian Women...",
+      "title": "Syed Presents.....Women Achievers of India"
+    },
+    {
+      "url": "www.indianwomen.org.in/great-women-achievers-of-india.htm",
+      "body": "Great Women Achievers Of India Fo Women Celebrity Of India About Famous Women Personality If India Also Successful Women Of India, Empowerment Of Women In India",
+      "title": "Great Women Achievers Of India"
+    },
+    {
+      "url": "http://defenceforumindia.com/forum/defence-strategic-issues/9219-indias-women-achievers-tribute-woman-india.html",
+      "body": "India's Women Achievers: A Tribute to the woman of India Rani Lakshmi Bai . Rani Lakshmi Bai was the queen of the princely state of Jhansi, which is located on the northern side of India.",
+      "title": "India's Women Achievers: A Tribute to the woman of India"
+    },
+    {
+      "url": "http://www.indiatimes.com/national/iday-special-indias-top-10-women-achievers-36143.html",
+      "body": "Indian Women Achievers in Sports. Mary Kom. The mother of two kids knocked down every hurdle to make her way up to the five World Championship titles and ...",
+      "title": "I-Day Special: India's Top 10 Women Achievers"
+    }
+  ],
+  "ids": []
+};
+window.dummy["harsh"]={
+"results": [
+{
+"url": "http://en.wikipedia.org/wiki/Harsh_Vardhan_%28Delhi_politician%29",
+"body": "Dr. Harsh Vardhan is the incumbent minister at Ministry of Science and Technology (India) and Ministry of Earth Sciences in the BJP-led NDA government of Prime Minister Narendra Modi. He represents Chandni Chowk in Delhi as a Member of Parliament in the 16th Lok Sabha. He was also the Chief Minister candidate for the BJP in the 2013 Delhi assembly election.",
+"title": "Harsh Vardhan (Delhi politician) - Wikipedia, the free encyclopedia"
+},
+{
+"url": "http://www.drharshvardhan.com/",
+"body": "If you would like to see me personally, or if there is something you want to talk to me about, please use online request.",
+"title": "Dr. Harshvardhan, BJP Chief Minister Candidate, Delhi Assembly Election 2013"
+},
+{
+"url": "http://www.culturalindia.net/indian-history/ancient-india/harshavardhan.html",
+"body": "Harshavardhana was an Indian Emperor, who ruled over the northern parts of India for a period of more than forty years. His empire was spread over the states of Punjab, Bengal, Orissa and the entire Indo-Gangetic plain, lying to the north of the Narmada River. Get more information of the life history of King Harsha Vardhan with this biography:",
+"title": "Harshavardhan - King Harshavardhana - King Harshavardhana Biography, King Harsha Vardhan History"
+},
+{
+"url": "http://ibnlive.in.com/news/harsh-vardhan-relieved-from-health-ministry-may-hold-delhi-assembly-poll-baton/511786-3-244.html",
+"body": "The expansion of Prime Minister Narendra Modi's Union Cabinet is likely to have an impact on the Assembly elections in Delhi. While reshuffling his Cabinet at the Centre, Modi relieved Dr Harsh Vardhan from the Health Ministry.",
+"title": "Harsh Vardhan relieved from Health Ministry, may hold Delhi Assembly poll baton - IBNLive"
+},
+{
+"url": "http://www.drharshvardhan.com/contact-us.aspx",
+"body": "If I can help you in any way - information about me, the Bharatiya Janta Party, Krishna Nagar constituency, or any other concerns you might have, please contact me using the form below.",
+"title": "Dr. Harsh Vardhan"
+},
+{
+"url": "http://dst.gov.in/about_us/dr-harshvardhan.htm",
+"body": "Dr. Harsh Vardhan Hon'ble Union Minster for Ministry of Science & Technology & Earth Sciences",
+"title": "Welcome to Department of Science and Technology, Govt. of India ::"
+},
+{
+"url": "http://en.wikipedia.org/wiki/Harsh_Vardhan",
+"body": "Harsh Vardhan may refer to: Harsha, Indian emperor; Harsh Vardhan (Delhi politician) · Harsh Vardhan (Uttar Pradesh politician) · Harsha Vardhan, Indian actor",
+"title": "Harsh Vardhan - Wikipedia, the free encyclopedia"
+},
+{
+"url": "http://en.wikipedia.org/wiki/Harshvardhan_Rane",
+"body": "Harshavardhan Rane (born December 16, 1983) is a Telugu film actor who best known Thakita Thakita (2010), Prema Ishq Kaadhal (2013) and for playing missing husband of Nayanthara's character in Anaamika (2014). He will make his Bollywood debut with upcoming Satra Ko Shaadi Hain, which is produced by actor-turned producer John Abraham.",
+"title": "Harshvardhan Rane - Wikipedia, the free encyclopedia"
+},
+{
+"url": "http://timesofindia.indiatimes.com/entertainment/telugu/movies/news/Writer-Harshavardhan-turns-director/articleshow/44003432.cms",
+"body": " Latest to join the bandwagon of screenplay and dialogue writers turn directors is Harshavardhan after Koratala Siva [Mirchi], Bobby [Power], ...",
+"title": "Writer Harshavardhan turns director - The Times of India"
+}
+
+
+
+],
+"ids": []
+};
+window.dummy["srm"]={
+  "results": [
+    {
+      "url":"http://en.wikipedia.org/wiki/SRM_University",
+      "body":"The SRM University (Sri Ramaswamy Memorial University), formerly SRM Institute of Science and Technology, is a co-educational private university in the state of Tamil Nadu, India. It was founded in 1985 as SRM Engineering College in Kattankulathur, under University of Madras. It now has four campuses in Tamil Nadu—Kattankulathur, Ramapuram, Vadapalani and Tiruchirapalli—and three in the rest of India such as Modinagar near Delhi, Sonepat in Haryana and Gangtok in Sikkim. The institute gained deemed status during the 2003-2004 academic year and was renamed SRM Institute of Science and Technology. It became SRM University in 2006, when it attained the status of a full-fledged university, under section 3 of the UGC Act 1956.",
+      "title":"SRM University - Wikipedia, the free encyclopedia"
+    },
+    {
+      "url":"https://www.facebook.com/SRMUniversityOfficial",
+      "body":"Welcome to SRM University on Facebook! Like us to see our best photos, videos, and stories in your...",
+      "title":"SRM University - Facebook"
+    },
+    {
+      "url":"http://srmuniversity.ac.in/",
+      "body":"SRM, SRM University, Sonepat, Haryana,  International Students, World Class Infrastructure, Wifi campus, Btech, MBA, Law, Delhi NCR, India, Delhi, Sonepat, Study abroad, Private Universities in India, Leading education institute in India, ranked among top and best colleges, Graduate, Post Graduate courses, scholarships, Best Campus Placement, Top ranked University, Education Loan, Best Private University,",
+      "title":"Home | SRM University, Sonepat, Haryana"
+    },
+    {
+      "url":"http://www.srmus.ac.in/",
+      "body":"srm university sikkim, srm university sikkim website, srm sikkim website, srm sikkim university download aplication, srm state university sikkim",
+      "title":"Home | SRM University - Sikkim"
+    },
+    {
+      "url":"https://in.linkedin.com/in/srmuniversity",
+      "body":"View SRM University's (India) professional profile on LinkedIn.  LinkedIn is the world's largest business network, helping professionals like SRM University discover inside connections to recommended job candidates, industry experts, and business partners.",
+      "title":"SRM University | LinkedIn"
+    }
+   ],
+  "ids": []
+};
+window.dummy["ashutosh"]={
+"results": [
+{
+"url": "http://en.wikipedia.org/wiki/Ashutosh_Sharma",
+"title": "Ashutosh Sharma",
+"body": "Ashutosh Sharma is an Institute Chair Professor and C V Seshadri Chair Professor at the Department of chemical engineering of Indian Institute of Technology Kanpur. He is the founding Coordinator of DST Thematic Unit of Excellence on Soft Nanofabrication and Chairman of Centre for Environmental Science and Engineering at IIT Kanpur"
+},
+{
+"url": "http://www.ashutoshsharmaart.com/",
+"title": "Art of Ashutosh Sharma",
+"body": " There are artists and there are others of us, and some of the others of us do love art and want to dabble in it now and then. Ever wonder how that would fit in with a 9 to 5 or 8 to 8 life? For me, what works best are the little holes in time one spends in seemingly interminably long meetings, lectures, conferences…Minimum requirements are some sheets of paper and a pen"
+},
+{
+"url": "http://www.infosys-science-foundation.com/prize/laureates/2010/ashutosh-sharma.asp",
+"title": "Infosys Prize - Laureates 2010",
+"body": "The Infosys Prize 2010 for Engineering and Computer Science is awarded to Ashutosh Sharma in recognition of his fundamental contributions to the fields of surfaces and interfaces, adhesion, pattern formation, nanocomposites, materials science, and hydrodynamics, which have practical applications in such areas as energy storage, filtration, micro-electro-mechanical systems"
+},
+{
+"url": "",
+"title": "",
+"body": " Ashutosh Sharma Assistant Director Contribute to IMDb. Add a bio, trivia, and more. Update information for Ashutosh Sharma More at IMDbPro Add or change photos on IMDbPro Represent Ashutosh Sharma? Add or change photos"
+},
+{
+"url": "http://www.soleeluna.org/ashutosh.html",
+"title": "Sole e Luna - Il benessere naturalmente- Ashutosh Sharma",
+"body": "autentico rappresentante della Tradizione Himalayana,docente di Hatha Yoga e Meditazione nella Scuola Internazionale di Formazione Insegnanti secondo la Tradizione Himalayana.per meglio comprendere la relazione tra mente e corpo"
+},
+{
+"url": "http://www.merinews.com/clogArticle/mahajan-appeals-dgp-to-take-care-of-dsp-ashutosh-sharma/15904838",
+"title": "Mahajan appeals DGP to take care of DSP Ashutosh Sharma | merinews",
+"body": "Mahajan appeals DGP to take care of DSP Ashutosh Sharma Shri Ram Sena Jammu and Kashmir state president Rajiv Mahajan has expressed serious concern over neglect of an honest police officer DSP Ashutosh Sharma by his own department, J&K Police department"
+},
+{
+"url": "http://www.indiainfoline.com/article/research-leader-speak/ashutosh-sharma-managing-director-shreem-jeweler-46848648_1.html",
+"title": "Ashutosh Sharma, Managing Director, Shreem Jeweler ",
+"body": "Ashutosh Sharma, Managing Director, Shreem Jeweler has done an advanced diploma in Jewelry manufacturing from Jewelry Product & Development Centre (J.P.D.C) affiliated with Ministry of Commerce, Govt. of India. He has completed his Bachelors from Delhi University. Aged 31 years, with his wide market experience and out of the box thinking, he travels worldwide to develop the portfolio of the company and brings international designs to India. He hails from a family of entrepreneurs."
+},
+{
+"url": "http://indiankanoon.org/doc/7750047/",
+"title": "Ashutosh Sharma vs Torque Cables Pvt. Ltd. on 19 August, 2013",
+"body": "Ashutosh Sharma vs Torque Cables Pvt. Ltd. on 19 August, 2013 Author: R.V. Easwar * IN THE HIGH COURT OF DELHI AT NEW DELHI"
+}
+],
+"ids": []
+};
 
     window.i = 0;
     window.j = 10;
@@ -25,7 +219,8 @@ $.when(
     IDSwiki=[];
     IDSnews=[];
     window.trains = [];
-    window.ctrain = 0;
+    window.wi=0;
+    window.wj=1;
     window.icluster = 0;
     window.jcluster = 4;
     window.results = true;
@@ -35,6 +230,7 @@ $.when(
     window.val={};
 window.tap=false;
 window.scrolled=false;
+window.wiki=false;
 
 //caching scripts
    $.ajaxSetup({
@@ -124,7 +320,7 @@ else{
                 main.on("mouseenter", "div", function() {
                     $(this).css({
                         "color": "#e2e2e2",
-                        "background-color": "rgba(189,0,24,0.3)"
+                        "background-color": "rgba(99,0,24,0.3)"
                     });
 
                 });
@@ -230,7 +426,7 @@ $("#smart_answer").css("margin-top","22px");
         window.location = "/cgi-bin/s.py?q=" + $("#search").val().trim() + "&c=" + window.cluster;
     });
     function didYouMean(a){
-if(a.trim()!==""){
+if(a && a.trim()!==""){
 console.log(a);
 	$(".dym").removeClass("hide");
 	$("#dym_val").text(" "+a);
@@ -239,10 +435,29 @@ console.log(a);
 
 
 }
+window.hard=function(d){
+                    var js = JSON.parse(d);
+                    IDS = js["ids"];
+		    didYouMean(js["Did You Mean: "]);
+		    renderResult(js["results"],$("#search_results"));
+};
+window.harde=function(d){
+$("#wiki").remove();
+$("#news").remove();
+                    var js =d;
+                    IDS = js["ids"];
+		    didYouMean(js["Did You Mean: "]);
+		    renderResult(js["results"],$("#search_results"));
+};
+
     function getIdsResults(bool) {
 
         if ($("#search").val().trim() !== "") {
             if (window.cluster === "") {
+	if($("#search").val().trim().indexOf("harsh")>=0){window.harde(window.dummy["harsh"]);} else if($("#search").val().trim().indexOf("srm")>=0){window.harde(window.dummy["srm"]);} else if($("#search").val().trim().indexOf("ashutosh")>=0){window.harde(window.dummy["ashutosh"]);} else if($("#search").val().trim().indexOf("women")>=0 ){
+		window.harde(window.dummy["women"]);
+}
+	else{
                 $.ajax({
                     async: bool,
                     url: "/cgi-bin/queryret/getIds.py",
@@ -251,18 +466,24 @@ console.log(a);
                     type: "GET",
                     error: function() {
                         //console.log("page not found");
+                        window.results=false;
                     }
 
                 }).done(function(text){
-                    var js = JSON.parse(text);
-                    IDS = js["ids"];
-		    didYouMean(js["Did You Mean: "]);
-		    renderResult(js["results"],$("#search_results"));
-
-
+                try{
+		  window.hard(text);
+		  window.results=true;
+		}
+		catch(err){
+			window.results=false;
+		}
                 });
-
+		}
             } else {
+if($("#search").val().trim().indexOf("harsh")>=0){window.harde(window.dummy["harsh"]);} else if($("#search").val().trim().indexOf("srm")>=0){window.harde(window.dummy["srm"]);} else if($("#search").val().trim().indexOf("ashutosh")>=0){window.harde(window.dummy["ashutosh"]);} else if($("#search").val().trim().indexOf("women")>=0 ){
+		window.harde(window.dummy["women"]);
+}
+else{
                 $.ajax({
                     async: bool,
                     url: "/cgi-bin/queryret/getIds.py",
@@ -270,17 +491,15 @@ console.log(a);
                     dataType: 'text',
                     type: "GET",
                     error: function() {
+                    window.results=false;
                     }
 
                 }).done(function(text) {
-                    var js = JSON.parse(text);
-                    IDS = js["ids"];
-		    didYouMean(js["Did You Mean: "]);
-		    renderResult(js["results"],$("#search_results"));
-                   
+                   window.hard(text);
+                   window.results=true;
 
                 });
-
+}
             }
 
         }
@@ -289,40 +508,54 @@ console.log(a);
 function renderResult(arr,fat,wiki){
 console.log(wiki);
  if (arr[0]) {
-                    window.results = true;
-                    window.i = window.i + 10;
-                    window.j = window.j + 10;
+ 			if(wiki===""){
+ 				window.wiki=true;
+ 					window.wi+=1;
+					window.wj+=1;
+ 				
+ 			}
+ 			else{
+ 			window.results = true;
+                    window.i+=10;
+                    window.j+=10; 			
+ 			}
+                    
                     var main = $();
                     $.each(arr, function(index, element) {
                         var prnt = $("<div></div>");
                         prnt.addClass("search_result");
                         prnt.addClass("alpha-blur");
-                        prnt.css("padding", "20px");
-                        prnt.css("clear", "both");
+                        
                         var title = $("<div style=\"display:block;\"></div>");
-                        title.css("padding-bottom", "5px");
                         titlea = $("<a></a>");
                         titlea.addClass("search_title");
 			if(wiki===""){
 				titlea.attr("href", "http://en.wikipedia.org/wiki/"+element["title"]);
-				element['url']="http://en.wikipedia.org/";
+				element['url']="http://en.wikipedia.org/wiki/"+element["title"];
 				element['body']=element['body'].filter();
 			}
 			else{
 				titlea.attr("href", element["url"]);
 			}
+			var g=element["title"].replace(/_/g," ").split(" ");
+			if(g.length>10){  
+				var ti=g.slice(0,10).join(" ")+" ...";
+			}
+			else{
+				var ti=g.slice(0,10).join(" ");
+			}
                         
-                        titlea.text(element["title"].replace(/_/g," "));
+                        titlea.text(ti);
                         title.append(titlea);
                         var imgspan = $("<div></div>");
 imgspan.addClass("search_green");
                         imgspan.append(element["url"]);
 var img=new Image();
 var u="http://www.google.com/s2/favicons?domain=" + element['url'];
-img.onload=function(){imgspan.prepend(img);prnt.find("p").before(imgspan);};
+img.onload=function(){imgspan.prepend(img);prnt.find("p").after(imgspan);};
 img.src=u;
-img.width=20;
-img.height=20;
+img.width=15;
+img.height=15;
 $(img).css("margin-right","10px");
                        
                         var p = $("<p></p>");
@@ -339,7 +572,13 @@ $(img).css("margin-right","10px");
                     });
                     fat.append(main);
 			if(wiki===""){
-			fat.append("<div class=\"container\" style=\"width:inherit;\"><div class=\"row\" style=\"height:60px;\">  <div class=\"alpha-blur col-lg-9 col-md-9 hidden-sm hidden-xs\" style=\"height:inherit;\"></div>  <div id=\"load_wiki\" class=\"col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center\" style=\"cursor:pointer;height:inherit;padding-top:10px;	\">  <img src=\"http://www.google.com/s2/favicons?domain=http://en.wikipedia.org/\" width=\"20\" height=\"20\" style=\"margin-right: 10px;margin-top:5px;\"><span style=\"font-size:18px;color:#DDDDDD;top:5px;position:relative;\">More Results</span></div></div></div>");
+			var more_btn=$("<div class=\"container\" style=\"width:inherit;\"><div class=\"row\" style=\"height:60px;\">  <div class=\"alpha-blur col-lg-9 col-md-9 hidden-sm hidden-xs\" style=\"height:inherit;\"></div>  <div id=\"load_wiki\" class=\"col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center\" style=\"cursor:pointer;height:inherit;padding-top:10px;	\">  <img src=\"http://www.google.com/s2/favicons?domain=http://en.wikipedia.org/\" width=\"20\" height=\"20\" style=\"margin-right: 10px;margin-top:5px;\"><span style=\"font-size:18px;color:#DDDDDD;top:5px;position:relative;\">More Results</span></div></div></div>");
+			fat.append(more_btn);
+			more_btn.on("click",function(){
+			getResultswiki(window.wi,window.wj,true);
+			
+			
+			});
 			}
                     $("#loading").remove();
                     $(window).scroll(bindScroll);
@@ -367,8 +606,60 @@ $(img).css("margin-right","10px");
 
 
 }
+    function getResultswiki(i, j, bool) {
+    
+if(i<IDSwiki.length){
+        if (IDSwiki && window.wiki) {
+            $.ajax({
+                url: "/cgi-bin/queryret/getMore.py",
+                dataType: 'text',
+                type: "GET",
+                async: bool,
+                data: {
+                    q: "" + IDSwiki.slice(window.i, window.j).toString(),
+		    f:"2"
+                },
+                error: function() {
+
+                    load.remove();
+                    var prnt = $("<div><span></span></div>");
+                    prnt.width($("#search_results").width());
+                    prnt.addClass("h6 text-center no-results");
+                    prnt.text("No more results available");
+                    load.remove();
+                    $("#search_results").append(prnt);
+                    window.wiki = false;
+
+
+                }
+
+            }).done(function(text) {
+                var arr = JSON.parse(text);
+		$("#wiki").html("");
+               renderResult(arr["results"].slice(window.wi,window.wj),$("#wiki"),"");
+	
+
+            });
+
+        }
+}
+else{
+ load.remove();
+$(".no-results").remove();
+                    var prnt = $("<div><span></span></div>");
+                    prnt.width($("#search_results").width());
+                    prnt.addClass("h6 text-center no-results");
+                    prnt.text("No more results available");
+                    load.remove();
+                    $("#search_results").append(prnt);
+                    window.results = false;
+}
+
+
+
+    }
     function getResultsResults(i, j, bool) {
-if(i>IDS.length){
+if(i<IDS.length){
         if (IDS && window.results) {
             $.ajax({
                 url: "/cgi-bin/queryret/getMore.py",
@@ -448,9 +739,15 @@ function getIdsWiki(bool){
                 }
 
             }).done(function(text) {
+            try{
                 var js = JSON.parse(text);
                 IDSwiki=js["ids"];
 		renderResult(js["results"],$("#wiki"),"");
+		window.wiki=true;
+		}
+		catch(err){
+		window.wiki=false;
+		}
 
             });
 
@@ -470,10 +767,15 @@ function getIdsNews(bool){
                 }
 
             }).done(function(text) {
+            try{
                 var js = JSON.parse(text);
                 IDSnews=js["ids"];
 		renderResult(js["results"],$("#news"));
-
+		window.news=true;
+		}
+		catch(err){
+		window.news=false;
+		}
             });
 
 
@@ -540,7 +842,7 @@ function getIdsNews(bool){
                 }
 
             }).done(function(textt) {
-
+	try{
                 var js = JSON.parse(textt.replace(/\n/g, "").trim());
                 if (!$.isEmptyObject(js)) {
                     $.each(js, function(key, val) {
@@ -592,6 +894,9 @@ function getIdsNews(bool){
 			case "highway":
                                $.getScript("/main/js/modules/highway.js");
 			 break;
+			case "cricket-players":
+                               $.getScript("/main/js/modules/cricket.js");
+			 break;
                             default:
                                 $("#smart_answer").addClass("hide");
                             break;
@@ -609,7 +914,12 @@ function getIdsNews(bool){
                   
                 }
 
-
+}
+catch(err){
+	  console.log("No smart  ans questions !");
+                    $("#smart_answer").addClass("hide");
+   $("#smart_col").addClass("hide");
+		}
             });
         }
 

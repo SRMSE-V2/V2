@@ -1,5 +1,7 @@
 (function($){var proto = $.ui.autocomplete.prototype,	initSource = proto._initSource;function filter( array, term ) {	var matcher = new RegExp( $.ui.autocomplete.escapeRegex(term), "i" );	return $.grep( array, function(value) {		return matcher.test( $( "<div>" ).html( value.label || value.value || value ).text() );	});}$.extend( proto, {	_initSource: function() {		if ( this.options.html && $.isArray(this.options.source) ) {			this.source = function( request, response ) {				response( filter( this.options.source, request.term ) );			};		} else {			initSource.call( this );		}	},	_renderItem: function( ul, item) {		return $( "<li></li>" )			.data( "item.autocomplete", item )			.append( $( "<a></a>" )[ this.options.html ? "html" : "text" ]( item.label ) )			.appendTo( ul );	}});})( jQuery );
+$("#prog").remove();
 $(document).ready(function(){
+
 $.ajaxSetup({cache:true});
 window.leftauto=-1;
 window.firstresize=true;
@@ -16,8 +18,12 @@ inp.removeClass("btn2");
 inp.addClass("btn1");
 inp.addClass("backinput");
 inp.attr("disabled","");
-
-
+inp.autocomplete({});
+if(window.location.toString().indexOf("s.py")>0){
+inp.css("margin-top","8px");
+inp.css("width","80%");
+inp.attr("id","input_back");
+}
 $("#div_for_back").append(inp);
     $("#search").autocomplete({
                   
@@ -62,9 +68,13 @@ var arr=window.originalquery.split(" ");
         },
 response:function(event,ui){
           if($("#search").val().trim()!==""){
-		inp.val(ui.content[0]["value"]);
+if(ui.content[0]["resize"]==="true"){
+var arrr=$("#search").val().trim().split(" ");
+		inp.val(arrr.slice(0,arrr.length-1).join(" ")+" "+ui.content[0]["value"]);
 }
-   
+else{inp.val(ui.content[0]["value"]);}
+}
+                 
 
 console.log(ui);
 if(ui.content[0]["resize"]==="true"){
@@ -113,6 +123,7 @@ window.leftauto=-1;
 
     });
     $("#search").on("keypress",function(event){
+
 if($("#search").val().indexOf(" ")===0){
 $("#search").val($("#search").val().replace(/\s+/g," ").trim());
 }
@@ -127,10 +138,12 @@ inp.val("");
             window.location="/cgi-bin/s.py?q="+query;
     
     }
+    if(event.keyCode!==39){inp.val("");}
     
     });
 
 $("#search").on("keydown",function(event){
+if(event.keyCode!==39){inp.val("");}
 if($("#search").val().indexOf(" ")===0){
 $("#search").val($("#search").val().replace(/\s+/g," ").trim());
 }
@@ -231,5 +244,28 @@ img1.attr("height","44px");
 var img=$("#srm-logo");
 img.attr("src","/main/images/srm.png");
 img.attr("alt","SRM University");
+var u=0;
+
+$("#arrow").on("click",function(){
+if(u===0){
+$(".arrow_div").remove();
+$("#arrow_parent").append("<div class=\"arrow_div\" style=\"float:left;height:75px;background-color:#00b4ff;float:right;width:0px;margin-top:5px;\"></div>");
+$(".arrow_div").append("<div style=\"position:absolute;top:0;bottom:0;margin:auto;height:50px;\"><span><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/lighttheme.png"\></span><span><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/darktheme.png\">   </span> <span>  <img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/howtouse.png\">      </span> </div>");
+$("#arrow").css("right","-1px");
+$(".arrow_div").animate({width:'150px'},500);
+
+++u;
 }
+else{
+$(".arrow_div").animate({width:'0px'},500,function(){
+$("#arrow").css("right","0px");
+$(".arrow_div").append("<div style=\"position:absolute;top:0;bottom:0;margin:auto;height:50px;\"><span><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/lighttheme.png"\></span><span><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/darktheme.png\">   </span> <span>  <img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/howtouse.png\">      </span> </div>");
+});
+u=0;
+
+}
+
+});
+}
+
 });

@@ -5,17 +5,91 @@ min-width:320px;
 background-color:#474747;
 
 }
+#arrow{
+
+position:relative;right:0px;float:left;cursor:pointer;height:80px;width:50px;background-repeat:no-repeat;background-size:contain;background-image:url('/main/images/arrow.png');
+}
+#arrow_span{
+color:white;font-size:18px;position:relative;top:33px;left:25px;
+
+}
+#load{
+height:inherit;padding-left:0px;padding-right:0px;
+
+}
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+#top_bar{
+height:60px !important;
+
+}
+#srmse-logo{
+margin-top:50px;
+width:200px !important;
+height:39px !important;
+
+}
+#srm-logo{
+width:83px !important;
+height:39px !important;
+
+}
+#nixi-logo{
+width:83px !important;
+height:30px !important;
+
+}
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+#top_bar{
+height:60px !important;
+
+}
+#srmse-logo{
+margin-top:50px;
+width:200px !important;
+height:39px !important;
+
+}
+#srm-logo{
+width:83px !important;
+height:39px !important;
+
+}
+#nixi-logo{
+width:83px !important;
+height:30px !important;
+
+}
+}
 #div_for_back{
 z-index:0;position:absolute;width:100%;height:46px;
 }
 .footer-a{
 text-align:center;
 color:#ffffff;
-
+padding-bottom:15px;
 }
 #back{
     width:100%;
-    height:75%;
+    height:60%;
 
 
 }
@@ -31,7 +105,7 @@ margin:0px !important;
 .search_div{
     height: 60%;
     width:100%;
-    padding-top: 10%;
+    padding-top: 3%;
 }
     .fostyle{
       font-family: 'arial', sans-serif;font-weight: 500;color:#FFFFFF;

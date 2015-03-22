@@ -10,7 +10,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <link href="/main/bootstrap.fp/css/bootstrap.min.css" rel="stylesheet">
-         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
          
 
 <script>
@@ -39,13 +39,20 @@ $.getScript( "/main/js/jquery-ui.min.js",function(){
          
     </head>
     <body>
-<div style="width:inherit;height:70px;padding-top:25px;">
+<div id="top_bar" style="height:80px;padding-top:15px;box-shadow: 0px 3px 10px #000;">
 <div class="container-fluid" style="width:inherit;height:70px;">
 <div class="row" style="width:inherit;height:70px;">
 <div class="col-lg-12" style="height:70px;">
 <img id="srm-logo" />
 <img id="nixi-logo" style="float:right;" />
 </div>
+</div>
+</div>
+</div>
+<div style="height:90px;">
+<div id="arrow_parent" style="float:right;">
+<div id="arrow">
+  <span id="arrow_span" class="glyphicon glyphicon-menu-hamburger"></span>
 </div>
 </div>
 </div>
@@ -65,11 +72,11 @@ $.getScript( "/main/js/jquery-ui.min.js",function(){
                                <div style="z-index:10;position:absolute;width:100%;height:46px;">
                               <div class="hide input-group input-group-lg">
                                  
-                                      <input data-toggle="tooltip" title="Search" style="font-size:1.5em;display:block;" type="text" class="hide form-control form-control1 fostyle btn2" placeholder="Search here" name="q" id="search" autofocus/>
+                                      <input data-toggle="tooltip" title="Search" style="font-size:1.5em;display:block;" type="text" class="hide form-control form-control1 fostyle btn2" placeholder="Search here" name="q" id="search" autocomplete="off" autofocus/>
 
                                   <span class="input-group-btn" style="z-index:10;"> 
                                       <button id="search_btn" class="btn btn-default spanbtn">
-                                        <span style="color:#DDDDDD;" class="glyphicon glyphicon-search"></span>
+                                        <span style="color:#474747;" class="glyphicon glyphicon-search"></span>
                                       </button>
                                     </span>
                                     </div>

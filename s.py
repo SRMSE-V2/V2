@@ -40,7 +40,7 @@ else:
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="/main/bootstrap/css/bootstrap.min.css">
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
      
  
    
@@ -76,22 +76,32 @@ if ($(window).scrollTop() > 100) {
  $('.scroll-top-wrapper').addClass('show');setTimeout(function(){$('.scroll-top-wrapper').removeClass('show');},4000); } else { $('.scroll-top-wrapper').removeClass('show'); } }); $('.scroll-top-wrapper').on('click', scrollToTop); }); function scrollToTop() { verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0; element = $('body'); offset = element.offset(); offsetTop = offset.top; $('html, body').animate({scrollTop: offsetTop}, 500, 'linear'); } </script>
       <script type="text/javascript" src="/main/js/search.js"></script>
    </head>
-   <body><div class="scroll-top-wrapper alpha-blur"> <span class="scroll-top-inner"> <i class="glyphicon glyphicon-arrow-up"></i> </span> </div>
-      <div class="background"></div>
+   <body class="background">
+ 
+   <div id="arrow_parent" style="position:fixed;top:0px;z-index:110;right:0px;">
+<div id="arrow" style="position:relative;right:0px;float:left;cursor:pointer;height:68px;top:-6px;width:50px;background-repeat:no-repeat;background-size:contain;background-image:url('/main/images/arrow.png');background-position:right;">
+  <span class="glyphicon glyphicon-menu-hamburger" style="color:white;font-size:14px;position:relative;top:30px;left:29px;"></span>
+</div>
+</div>
+   
+   <div class="scroll-top-wrapper alpha-blur"> <span class="scroll-top-inner"> <i class="glyphicon glyphicon-arrow-up"></i> </span> </div>
       <div class="container-fluid full-height">
          <div class="row nav-panel">
-            <div id="logo" class="col-lg-2 col-sm-12 col-md-2 col-xs-12" style="">
-               <span class="fostyle1" >SRM</span>
-               <span class="fostyle2" >Search Engine</span>
+            <div id="logo"  class="col-lg-2 col-md-2 hidden-sm hidden-xs" style="">
+	
             </div>
-            <div class="col-lg-7 col-sm-12 col-xs-12 col-md-7">
-               <form id="frm" action="/cgi-bin/s.py" method="POST">
-                   <div style="z-index:10;position:absolute;width:100%;height:46px;">
-                              <div class="input-group input-group-lg">
-                                 
-                                      <input data-toggle="tooltip" title="Search" style="font-size:1.5em;display:block;" type="text" class="form-control form-control1 fostyle btn2" placeholder="Search here" name="q" id="search" autofocus/>
+            <div class="col-lg-8 col-sm-12 col-xs-12 col-md-8" style="height:62px;">
+<div class="container-fluid" style="padding-left:0px !important;padding-right:0px !important;">
+<div class="row">
+<div class="col-lg-2 col-md-2" style="height:62px;"><a href="/main/"><img style="margin-top:18px;" src="/main/images/srmselogo.png" width="120" height="27"/></a></div>
+<div class="col-lg-10 col-md-10" style="height:60px;background: #2d2d2d !important;">
 
-                                  <span class="input-group-btn" style="z-index:10;"> 
+                   <div id="search_bar" style="z-index:10;position:absolute;width:80%;height:46px;margin-top:8px;">
+                              <div class="input-group input-group-lg" style="">
+                                 
+                                      <input data-toggle="tooltip" title="Search" style="font-size:1.5em;display:block;" type="text" class="form-control form-control1 fostyle btn2" placeholder="Search here" name="q" id="search" autocomplete="off" autofocus/>
+
+                                  <span class="input-group-btn" style="font-size:18px;z-index:10;"> 
                                       <button id="search_btn" class="btn btn-default spanbtn">
                                         <span style="color:#474747;" class="glyphicon glyphicon-search"></span>
                                       </button>
@@ -100,9 +110,13 @@ if ($(window).scrollTop() > 100) {
  </div>
 <div id="div_for_back">  
                               </div>
-               </form>
+              </div>
+</div>
+</div>
+
+              
             </div>
-            <div class="col-lg-3 col-md-3 hidden-sm hidden-xs" style="height:62px;">      
+            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs" style="height:62px;">      
             </div>
          </div>
          <div class="nav_changer row full-height">

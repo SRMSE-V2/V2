@@ -20,12 +20,12 @@ cycle=0;
 		}
 });
 });
-var imgs=["clear sky","haze","light rain","mainly clearly sky","mainly or generally cloudy sky","mainly or generally cloudy sky with possibility of rain","mist","moderate rain","moderate snow","partly cloud sky with possibility of rain or thunder","partly cloudy","partly cloudy sky","partly cloudy sky with thundery development","rain or snow","thunderstorm with rain","fog"];
+var imgs=["clear sky","clear","haze","light rain","mainly clearly sky","mainly or generally cloudy sky","mainly or generally cloudy sky with possibility of rain","mist","moderate rain","moderate snow","partly cloud sky with possibility of rain or thunder","partly cloudy","partly cloudy sky","partly cloudy sky with thundery development","rain or snow","thunderstorm with rain","fog"];
 
                                 $.each(imgs,function(index,element){
 
                                 if(window.val['forecast'].indexOf(element)>-1){
-                                $("#img_today").attr("src","/ver1/images/"+element+".png");
+                                $("#img_today").attr("src","/main/images/"+window.color+"/"+element+".png");
                                 $("#img_today").css("-webkit-filter","invert(100%)");
 $("#img_today").css("-moz-filter","invert(100%)");
 }
@@ -76,7 +76,7 @@ console.log("sdf");
 
                                 if(future[i]['forecast'].indexOf(element)>-1){
 
-                                img.attr("src","/ver1/images/"+element+".png");
+                                img.attr("src","/main/images/"+window.color+"/"+element+".png");
                                 img.css("-webkit-filter","invert(100%)");
 
 }

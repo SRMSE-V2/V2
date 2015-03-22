@@ -1,0 +1,65 @@
+process.count=0;
+process.up=0;
+global.filter=function(data) {
+	data = data + " ";
+	//approved by sai prashanth
+	data = data.replace(/®/g, " ").replace(/©/g, " ").replace(/[\.\,-\/#!<>?$%\^&\*;:\+{}=\-_`~()\[\]]/g, " ").replace(/\\u.*\s/g, " ").replace(/\\n+/g, " ").replace(/\\t+/g, " ").replace(/\\r+/g, " ").replace(/\\x.*\s/g, " ").replace(/\\/g,"").replace(/\'/g,"").replace(/\"/g,"").replace(/\\/g,"").replace(/\s+/g, " ").trim();
+
+	return data;
+};
+global.toUnderscore = function(str){
+	return str.replace(/([A-Z])/g, function($1){return "_"+$1.toLowerCase();});
+};
+process.on('message',function(m){
+global.data=eval(m["data"]);
+	var MongoClient = require('mongodb').MongoClient;
+	MongoClient.connect("mongodb://localhost:27017/starkIndex", function(err, db) {
+			var collection=db.collection("wiki1");
+			process.col=collection;
+			global.mongoInsert=function(i,k){
+		
+		
+		k=global.toUnderscore(k).replace(/_/g," ").trim();
+		k=k.split(" ");
+		var q={};
+		i="101"+i;
+		q[i]=1/k.length;
+		console.log(q);
+		process.up+=k.length;
+		for(l=0;l<k.length;l++){
+		console.log(k[l]);
+		(function(test,q,w){
+			process.col.update({keyword:global.filter(test.toLowerCase())},{$set:q},{upsert:true},function(err,results){
+				console.log(results);
+				if(!err){}else{console.log(err);}
+				++process.count;
+				if(process.up===process.count){process.exit();}
+
+
+			});
+
+		})(k[l],q,k.length);
+
+		}
+		
+
+};
+	
+	for(h=0;h<global.data.length;h++){
+
+		(function(test){global.mongoInsert(test["page_id"],test["page_title"]);})(global.data[h]);
+
+
+	}
+	});
+	
+
+});
+process.on('exit',function(){
+
+process.send({
+		msg: "EXIT"
+	});
+
+});
+
