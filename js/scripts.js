@@ -1,7 +1,6 @@
 (function($){var proto = $.ui.autocomplete.prototype,	initSource = proto._initSource;function filter( array, term ) {	var matcher = new RegExp( $.ui.autocomplete.escapeRegex(term), "i" );	return $.grep( array, function(value) {		return matcher.test( $( "<div>" ).html( value.label || value.value || value ).text() );	});}$.extend( proto, {	_initSource: function() {		if ( this.options.html && $.isArray(this.options.source) ) {			this.source = function( request, response ) {				response( filter( this.options.source, request.term ) );			};		} else {			initSource.call( this );		}	},	_renderItem: function( ul, item) {		return $( "<li></li>" )			.data( "item.autocomplete", item )			.append( $( "<a></a>" )[ this.options.html ? "html" : "text" ]( item.label ) )			.appendTo( ul );	}});})( jQuery );
 $("#prog").remove();
 $(document).ready(function(){
-
 $.ajaxSetup({cache:true});
 window.leftauto=-1;
 window.firstresize=true;
@@ -33,6 +32,7 @@ $("#div_for_back").append(inp);
             appendTo:".search_div",
             html:true,
             open: function(event, ui) {
+            $('ul.ui-autocomplete').addClass('opened');
                 $(".ui-helper-hidden-accessible").remove();
                     $(this).autocomplete("widget").css({
                 "width": ($("#search").parent().width() + "px")
@@ -44,10 +44,30 @@ $(".ui-autocomplete >li").css("width","100%");
 $(".ui-autocomplete >li>a").css("white-space","nowrap");//,($("#search").width()-window.strlen)+"px");
 }
             event.preventDefault();
-        },
+        },close: function () { 
+    $('ul.ui-autocomplete')
+      .removeClass('opened')
+      .css('display','block'); 
+  },
             focus: function (event, ui) {
+            console.log(ui);
               if($("#search").val().trim()!==""){
-		inp.val(ui["item"]["value"]);
+              if(ui["item"]["resize"]){
+              var d=$("#search").val().split(" ");
+              
+              inp.val((d.slice(0,d.length-1)+" "+ui["item"]["value"]).replace($("#search").val().toLowerCase(),$("#search").val()));
+              }else{
+              
+              if(ui["item"]["resize"]){
+             
+		inp.val(ui["item"]["value"].replace($("#search").val().toLowerCase(),$("#search").val()));
+}
+else{
+$("#search").val(ui["item"]["value"]);
+inp.val(ui["item"]["value"]);
+
+}
+}
 }
                
               
@@ -64,7 +84,6 @@ var arr=window.originalquery.split(" ");
 
 
 
-
         },
 response:function(event,ui){
           if($("#search").val().trim()!==""){
@@ -72,7 +91,7 @@ if(ui.content[0]["resize"]==="true"){
 var arrr=$("#search").val().trim().split(" ");
 		inp.val(arrr.slice(0,arrr.length-1).join(" ")+" "+ui.content[0]["value"]);
 }
-else{inp.val(ui.content[0]["value"]);}
+else{inp.val(ui.content[0]["value"].replace($("#search").val().toLowerCase(),$("#search").val()));}
 }
                  
 
@@ -209,7 +228,7 @@ $.getScript("/main/js/location_centric.js");
 }
 
 };
-  //uncomment to ask for location window.loadLocation();
+ window.loadLocation();
  $("#search").on("keyup",function(event){
 
 
@@ -234,38 +253,69 @@ if(window.location.toString().indexOf("s.py")<0){
 $("input").removeClass("hide");
 $(".input-group").removeClass("hide");
 var img2=$("#srmse-logo");
-img2.attr("src","/main/images/srmselogo.png");
+if(window.color==="black"){img2.attr("src","/main/images/dark/srmselogo.png");}else{img2.attr("src","/main/images/light/srmselogo.png");}
+
 img2.attr("alt","SRM Search Engine");
 var img1=$("#nixi-logo");
-img1.attr("src","/main/images/nixi-white.png");
+if(window.color==="black"){img1.attr("src","/main/images/dark/nixi.png");}else{img1.attr("src","/main/images/light/nixi.png");}
 img1.attr("alt","Nixi");
 img1.attr("width","127px");
 img1.attr("height","44px");
 var img=$("#srm-logo");
-img.attr("src","/main/images/srm.png");
+if(window.color==="black"){img.attr("src","/main/images/dark/srm.png");}else{img.attr("src","/main/images/light/srm.png");}
 img.attr("alt","SRM University");
+img.attr("width","130px");
+img.attr("height","50px");
 var u=0;
+var dispBtns=function(){$(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:18px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/lighttheme.png\"></span><span id=\"dark\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/darktheme.png\">   </span> <span id=\"help\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/howtouse.png\">      </span> </div>");$(".side_btns").css("cursor","pointer");
+
+$("#light").on('click',function(){
+	document.cookie="color=white;path=/";
+	window.color="white";
+	$("#dark_theme").remove();
+
+	$("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/main/css/light/styles.css' />");
+	$("#nixi-logo").attr("src","/main/images/light/nixi.png");
+	$("#srmse-logo").attr("src","/main/images/light/srmselogo.png");
+	$("#srm-logo").attr("src","/main/images/light/srm.png");
+});
+
+$("#dark").on('click',function(){
+	document.cookie="color=black;path=/";
+	window.color="black";
+	$("#light_theme").remove();
+
+	$("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/main/css/dark/styles.css' />");
+	$("#nixi-logo").attr("src","/main/images/dark/nixi.png");
+	$("#srmse-logo").attr("src","/main/images/dark/srmselogo.png");
+	$("#srm-logo").attr("src","/main/images/dark/srm.png");
+});
+};
 
 $("#arrow").on("click",function(){
 if(u===0){
 $(".arrow_div").remove();
-$("#arrow_parent").append("<div class=\"arrow_div\" style=\"float:left;height:75px;background-color:#00b4ff;float:right;width:0px;margin-top:5px;\"></div>");
-$(".arrow_div").append("<div style=\"position:absolute;top:0;bottom:0;margin:auto;height:50px;\"><span><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/lighttheme.png\"></span><span><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/darktheme.png\">   </span> <span>  <img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/howtouse.png\">      </span> </div>");
+$("#arrow_parent").append("<div class=\"arrow_div\" style=\"float:left;height:75px;float:right;width:0px;margin-top:5px;\"></div>");
+dispBtns();
+$(".side_btns").hide();
 $("#arrow").css("right","-1px");
-$(".arrow_div").animate({width:'150px'},500);
+$(".arrow_div").animate({width:'150px'},500,function(){$(".side_btns").fadeIn();});
 
 ++u;
 }
 else{
-$(".arrow_div").animate({width:'0px'},500,function(){
+$(".side_btns").fadeOut(function(){$(".side_btns").hide();$(".arrow_div").animate({width:'0px'},500,function(){
 $("#arrow").css("right","0px");
-$(".arrow_div").append("<div style=\"position:absolute;top:0;bottom:0;margin:auto;height:50px;\"><span><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/lighttheme.png\"></span><span><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/darktheme.png\">   </span> <span>  <img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/howtouse.png\">      </span> </div>");
 });
-u=0;
+u=0;});
+	
+
 
 }
 
 });
+
+
 }
 
 });

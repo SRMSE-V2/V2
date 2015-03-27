@@ -58,7 +58,7 @@ $("#location").on("click", "#location_prev", function() {
                                 $("#location_state").setHtmlValue("<h4>"+state.capitalizeMe()+"</h4>",state);
                                 $("#location_address").setHtmlValue("<h5>"+address.capitalizeMe()+"</h5>",address);
 $("#location_description").setHtmlValue("<h5>"+description.capitalizeMe()+"</h5>",description);
-$("#location_co").setHtmlValue("<h5>"+(type+" "+co).capitalizeMe()+"</h5>",type+co);
+//$("#location_co").setHtmlValue("<h5>"+(type+" "+co).capitalizeMe()+"</h5>",type+co);
             $("#location_next").removeAttr("disabled");
             $("#smart_answer").addClass("hide");
         }

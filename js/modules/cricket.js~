@@ -3,7 +3,14 @@ var cricket_stats=$("<div class=\"well alpha-blur\" id=\"cricket_players\" style
 $("#predefined_questions").before(cricket_stats);
 $("#cricket_players_details").hide();
 $("#smart_answer").addClass("hide");
+ 
+$("#cricket_players_details").append("<ul class=\"nav nav-tabs\"><li role=\"presentaenttion\" class=\"active\"><a href=\"#\">Career Statistics</a></li><li role=\"presentation\"><a href=\"#bowling\">Bowling</a></li><li role=\"presentation\"><a href=\"#batting\">Batting</a></li><li role=\"presentation\"><a href=\"#recent\">Recent</a></li></ul>");
+$("#cricket_players_details").append("<div class=\"row\" id=\"cont\"></div");
 cycle=0;
+var cs="";
+var bowl="";
+var bat="";
+var recent="";
 $("#cricket_players_button").on("click",function(){
 
   $("#cricket_players_details").slideToggle(function(){
@@ -22,11 +29,11 @@ $("#cricket_players_button").on("click",function(){
 });
 $.each(window.val["main-ans"],function(k,v){
 
-
 if(k==="player-info"){
 	$("#pl_info").append("<h3 style=\"margin:0px !important;\">"+window.val["main-ans"]["name"]+"</h3>");
 	$("#pl_info").append("<h4 style=\"margin:0px !important;padding-top:5px !important;\">"+window.val["main-ans"]["team"]+"</h4><hr style=\"margin-top:8px !important;\">");
 	$.each(v,function(k1,v1){
+	
 	$("#pl_info").append("<div style=\"margin-bottom:5px;\"><h4 style=\"display:inline;\">"+k1+" :</h4><h5 style=\"display:inline;\"> <span id=\"player_team\">"+v1+"</span></h5></div>");
 
 
@@ -38,32 +45,30 @@ else if (k==="img"){
 	$("#cric_img").css({"display":"block","margin-left":"auto","margin-right":"auto"});
 }
 else if(k!=="name" && k!=="team" && k!=="link"){
-$("#cricket_players_details").append("<h4>"+k+"</h4>");
 $.each(v,function(key,element){
+
 	if(JSON.stringify(element).slice(0,1)==="{"){
 	
 		var temp="";
 		$.each(element,function(kk,ee){
-		try{
-			parseInt(kk);
-		
-		}
-		catch(err){
-		
+		console.log(JSON.stringify(kk)+JSON.stringify(ee));
 		temp+="<li class=\"alert alpha-blur\" style=\"padding:5px\">"+kk+" <span class=\"badge\">"+ee+"</span></li>";
-		}
-		
-		
 		});
-		$("#cricket_players_details").append("<ul class=\"nav nav-pills\">"+temp+"</ul>");
+		console.log(temp);
+		if(k==="CAREER STATISTICS"){cs="<ul class=\"nav nav-pills\">"+temp+"</ul>";$("#cont").append("<ul class=\"nav nav-pills\">"+temp+"</ul>");}
+		if(k=="BOWLING"){bowl="<ul class=\"nav nav-pills\">"+temp+"</ul>";}
+		if(k==="BATTING"){bat="<ul class=\"nav nav-pills\">"+temp+"</ul>";}
+		if(k==="RECENT"){recent="<ul class=\"nav nav-pills\">"+temp+"</ul>";}
+		
 	
 	}
 	else{
-	$("#cricket_players_details").append("<div style=\"margin-bottom:5px;\"><h4 style=\"display:inline;\">"+key+" :</h4><h5 style=\"display:inline;\">"+element+"</br></div>                     ");
-}
-
-
-
+	
+	}
+//console.log(cs);
+//console.log(bowl);
+//console.log(bat);
+console.log("Hello world") ;
 });
 }
 	
