@@ -25,12 +25,12 @@ $.ajaxSetup({cache:true});
 
 });
    var u=0;
-   var dispBtns=function(){$(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:13px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/lighttheme.png\"></span><span   class=\"side_btns\" id=\"dark\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/darktheme.png\">   </span> <span class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;\" src=\"/main/images/howtouse.png\">      </span> </div>");$(".side_btns").css("cursor","pointer");
+   var dispBtns=function(){$(".arrow_div").css("padding-left","20px");$(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:18px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;\" src=\"/main/images/lighttheme.png\"></span><span   class=\"side_btns\" id=\"dark\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/main/images/darktheme.png\">   </span> <span class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/main/images/howtouse.png\">      </span> </div>");$(".side_btns").css("cursor","pointer");
    $("#light").on('click',function(){
 	window.color="white";
 document.cookie="color=white;path=/";
 	$("#dark_theme").remove();
-
+$("#light_theme").remove();
 	$("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/main/css/light/search.css' />");
 	$("#srmse-logo").attr("src","/main/images/light/srmselogo.png");
 });
@@ -39,7 +39,7 @@ $("#dark").on('click',function(){
 	window.color="black";
 document.cookie="color=black;path=/";
 	$("#light_theme").remove();
-
+	$("#dark_theme").remove();
 		$("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/main/css/dark/search.css' />");
 	$("#srmse-logo").attr("src","/main/images/dark/srmselogo.png");
 });
@@ -56,7 +56,7 @@ function arrowClick(){
 	++u;
 	}
 	else{
-	$(".side_btns").fadeOut(function(){$(".side_btns").hide();$(".arrow_div").animate({width:'0px'},500,function(){
+	$(".side_btns").fadeOut(function(){$(".side_btns").hide();$(".arrow_div").css("padding-left","0px");$(".arrow_div").animate({width:'0px'},500,function(){
 	});
 	u=0;});
 	
@@ -65,11 +65,7 @@ function arrowClick(){
 
 }
 $("#arrow").on("click",arrowClick);
-/*document.getElementById("arrow").addEventListener('touchstart', function(e){
-        arrowClick();
-        e.stopPropa
-        gation();
-    }, false);*/
+
 
 
     window.i = 0;
@@ -117,7 +113,7 @@ $(".nav-sidebar").css("width","inherit");
         if ($(window).width() <= 1000) {
 
 if($("#tap").length<=0 && !window.tap && window.clusters.length>0){
-var tap=$("<div id=\"tap\" style=\"position:absolute;top:122px;width:100%;height:40px;z-index:99;\"><button class=\"btn btn-danger\" style=\"width:100%;height:100%;\" type=\"button\">Tap to see clusters</button></div>");
+var tap=$("<div id=\"tap\" style=\"position:absolute;top:122px;width:100%;height:50px;z-index:99;\"><button class=\"btn btn-danger\" style=\"width:100%;height:100%;\" type=\"button\">Tap to see clusters</button></div>");
 $("body").append(tap);
 tap.on("click",function(){
  $(this).slideUp("fast",function(){
@@ -146,10 +142,10 @@ $(".side").addClass("hide");
 $("#centre_parent").css("margin-top","20px");
 console.log("resize");
             var newnav = $("<div class=\"alpha-blur newside\" style=\"width:"+$(".nav_changer").width()+"px;\"></div");
-            var lbtn = $("<button style=\"color:white;border:none;\" class=\"btn alpha-blur glyphicon glyphicon-chevron-left\"></button>");
+            var lbtn = $("<button style=\"\" class=\"cluster_lbtn btn alpha-blur glyphicon glyphicon-chevron-left\"></button>");
             var rcol = $("<div style=\"float:left;height:100%;width:40px;\" class=\"\"></div>");
             var lcol = $("<div style=\"float:left;height:100%;width:40px;\" class=\"\"></div>");
-            var rbtn = $("<button style=\"color:white;border:none;\" class=\"btn alpha-blur glyphicon glyphicon-chevron-right\"></button>");
+            var rbtn = $("<button style=\"\" class=\"cluster_rbtn btn alpha-blur glyphicon glyphicon-chevron-right\"></button>");
             var r = $("<div style=\"width:100%;height:100%;padding-top:5px;padding-bottom:5px;\"></div>");
             var main = $("<div style=\"padding:0px !important;height:50px;width:"+($(".nav_changer").width()-80)+"px;\" class=\"col-lg-10 col-md-10 col-sm-10 col-xs-10\"></div>");
             rcol.append(rbtn);
@@ -165,13 +161,13 @@ console.log("resize");
                     //console.log(element);
                     var h=($(".nav_changer").width()-105)/4;
 if(index===window.jcluster){
-var temp = $("<div data-toggle=\"tooltip\" data-placement=\"bottom\" class=\"\" title=\""+element.capitalizeMe()+"\" style=\"display:box;border-radius:8px;box-shadow: inset 0 0 2px 2px rgba(51,51,51,.5);line-height:40px;overflow: hidden;text-overflow: ellipsis;color:#e2e2e2;text-align:center;height:40px;width:"+h+"px;float:left;margin-left:5px;margin-right:5px;cursor:pointer;font-size:0.9em;\"></div>");
+var temp = $("<div data-toggle=\"tooltip\" data-placement=\"bottom\" class=\"cluster_btn\" title=\""+element.capitalizeMe()+"\" style=\"width:"+h+"px;\"></div>");
 
                     temp.text(element.capitalizeMe());
                     m = m.add(temp);
 }
 else{
-                    var temp = $("<div data-toggle=\"tooltip\" data-placement=\"bottom\" class=\"\" title=\""+element.capitalizeMe()+"\" style=\"display:box;border-radius:8px;box-shadow: inset 0 0 2px 2px rgba(51,51,51,.5);line-height:40px;overflow: hidden;text-overflow: ellipsis;color:#e2e2e2;text-align:center;height:40px;width:"+h+"px;float:left;margin-left:5px;cursor:pointer;font-size:0.9em;\"></div>");
+                    var temp = $("<div data-toggle=\"tooltip\" data-placement=\"bottom\" class=\"cluster_btn\" title=\""+element.capitalizeMe()+"\" style=\"width:"+h+"px;\"></div>");
 
                     temp.text(element.capitalizeMe());
                     m = m.add(temp);
@@ -384,6 +380,9 @@ function renderResult(arr,fat,wiki){
                         titlea = $("<a></a>");
                         titlea.addClass("search_title");
 			if(wiki===""){
+			if($(".wiki_nav").length===0){
+				fat.append("<div class=\"wiki_nav\"><nav class=\"navbar navbar-default\">  <div class=\"container-fluid\">    <div class=\"navbar-header\" style=\"float:left;\">      <a class=\"navbar-brand\" href=\"#\">        <img alt=\"Brand\" src=\"http://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Black_W_for_promotion.png/40px-Black_W_for_promotion.png\">      </a>      </div><div class=\"wiki_head\"><h4 style=\"float:left;\">Results from Wikipedia.org</h4></div>  </div></nav></div> ");
+				}
 				titlea.attr("href", "http://en.wikipedia.org/wiki/"+element["title"]);
 				element['url']="http://en.wikipedia.org/wiki/"+element["title"];
 				element['body']=element['body'].filter();
@@ -498,7 +497,7 @@ console.log("yes");
 
             }).done(function(text) {
                 var arr = JSON.parse(text);
-               renderResult(arr["results"],$("#wiki"),"");
+               renderResult(arr["results"],$("#wikiMain"),"");
 	
 
             });
@@ -597,7 +596,7 @@ function getIdsWiki(bool){
             try{
                 var js = JSON.parse(text);
                 IDSwiki=js["ids"];
-		renderResult(js["results"],$("#wiki"),"");
+		renderResult(js["results"],$("#wikiMain"),"");
 		window.wiki=true;
 		}
 		catch(err){
@@ -763,6 +762,10 @@ function getIdsNews(bool){
 			break;
 			case "site":
 				$.getScript("/main/js/modules/site.js");
+
+			break;
+			case "highcourt":
+				$.getScript("/main/js/modules/highcourt.js");
 
 			break;
                             default:

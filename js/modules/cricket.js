@@ -32,7 +32,7 @@ $("#predefined_questions").before(cricket_stats);
 $("#cricket_players_details").hide();
 $("#smart_answer").addClass("hide");
  
-$("#cricket_players_details").append("<ul class=\"nav nav-tabs\"><li role=\"presentaenttion\" class=\"active\"><a href=\"#\" onclick=\"changeDiv('cs');return false;\">Career Statistics</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('bowl');return false;\">Bowling</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('bat');return false;\">Batting</a></li><li role=\"presentation\"><a href=\"#recent\">Recent</a></li></ul>");
+$("#cricket_players_details").append("<ul class=\"nav nav-tabs\"><li role=\"presentaenttion\" class=\"active\"><a href=\"#\" onclick=\"changeDiv('cs');return false;\">Career Statistics</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('bowl');return false;\">Bowling</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('bat');return false;\">Batting</a></li></ul>");
 $("#cricket_players_details").append("<div class=\"row\" id=\"cont\"></div>");
 $("#bowling").click(function(){$("#cont").empty();$("#cont").append(bowl);});
 
@@ -84,14 +84,14 @@ else if (k==="img"){
 }
 else if (k==="CAREER STATISTICS")
 {
-	console.log("hi");
+
 	cs="";
 	cs = "<div class =\"col-sm-12\">"+returnValue(k,v)+"</div>";
 }
 
 else if (k==="BATTING")
 {
-        console.log("hi");
+
         bat = "<div class =\"col-sm-12\">"+ returnValue(k,v)+"</div>";
 
 
@@ -110,7 +110,8 @@ $.each(v,function(key,element){
 		temp+="<li class=\"alert alpha-blur\" style=\"padding:5px\">"+kk+" <span class=\"badge\">"+ee+"</span></li>";
 		});
 		$("#"+k).append("<ul class=\"nav nav-pills\">"+temp+"</ul>");
-		if(k==="CAREER STATISTICS"){console.log("Entered Here");cs="<ul class=\"nav nav-pills\">"+temp+"</ul>";
+		if(k==="CAREER STATISTICS"){
+		cs="<ul class=\"nav nav-pills\">"+temp+"</ul>";
 		$("#cont").append(temp);
 		}
 		if(k=="BOWLING"){bowl="<ul class=\"nav nav-pills\">"+temp+"</ul>";}
@@ -122,11 +123,8 @@ $.each(v,function(key,element){
 	else{
 	$("#"+k).append("<p>"+element+"</p>");
 	}
-console.log(cs);
-console.log(bowl);
-console.log(bat);
-//$("#cont").append(cs);
-//console.log("Hello world") ;
+
+
 });
 }	
 

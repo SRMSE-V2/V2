@@ -31,8 +31,8 @@ window.color=undefined;
 if(!window.color){
 
 if(Math.random()*10>5){
-window.color="black";
-document.cookie="color=black;path=/";
+	window.color="black";
+	document.cookie="color=black;path=/";
 }else{
 	window.color="white";
 	document.cookie="color=white;path=/";
@@ -40,10 +40,14 @@ document.cookie="color=black;path=/";
 }
 }
 if(window.color==="white"){$("head").append("<link id=\"light_theme\" href=\"/main/css/light/styles.css\" rel=\"stylesheet\"> ");}else{$("head").append("<link id=\"dark_theme\" href=\"/main/css/dark/styles.css\" rel=\"stylesheet\"> ");}
-
-var l=$("<div id=\"prog\" class=\"progress progress-striped active\" style=\"margin-bottom:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>");
+if(window.color==="white"){
+var l=$("<div id=\"prog\" class=\"progress\" style=\"margin-bottom:0;\"><div class=\"progress-bar progress-bar-danger progress-bar-striped active\" style=\"width: 100%\"></div></div>");
 $("#load").append(l);
-
+}
+else{
+var l=$("<div id=\"prog\" class=\"progress\" style=\"margin-bottom:0;\"><div class=\"progress-bar progress-bar-striped active\" style=\"width: 100%\"></div></div>");
+$("#load").append(l);
+}
     
  
 
@@ -62,12 +66,12 @@ $.getScript( "/main/js/jquery-ui.min.js",function(){
          
     </head>
     <body>
-<div id="top_bar" style="height:80px;padding-top:15px;box-shadow: 0px 3px 10px #000;">
+<div id="top_bar">
 <div class="container-fluid" style="width:inherit;height:70px;">
 <div class="row" style="width:inherit;height:70px;">
 <div class="col-lg-12" style="height:70px;">
-<img id="srm-logo" />
-<img id="nixi-logo" style="float:right;" />
+<img class="logo" id="srm-logo" data-toggle="tooltip" title="Visit http://srmuniv.ac.in/" />
+<img class="logo" id="nixi-logo" style="float:right;" data-toggle="tooltip" title="Visit http://www.nixi.in/" />
 </div>
 </div>
 </div>
@@ -85,7 +89,7 @@ $.getScript( "/main/js/jquery-ui.min.js",function(){
                     <div class="row full-size">
                         <div class="col-lg-12 search_div">
                             <p class="text-center">
-                              <img id="srmse-logo"/>
+                              <img class="logo" id="srmse-logo" data-toggle="tooltip" title="Home page srmse"/>
                           </p>
 <div class="container" style="height:inherit;margin-top:50px;">
                           <div class="row" style="height:inherit;">

@@ -11,8 +11,20 @@ and open the template in the editor.
 /*
  * Base structure
  */
+ .wiki_head{
+ 
+ padding-top:15px;
+ }
+ .wiki_head>h4{
+ padding-left:10px;margin:0px;color:#474747;
+ 
+ }
 #frm{
 height:46px;
+
+}
+#predefined_questions >a {
+background-color: #00b4ff !important;
 
 }
 #div_for_back{
@@ -103,6 +115,7 @@ width:100%;/*moz*/
 background: #2d2d2d !important;
 
 }
+.alpha-blur >*{color:#dfdddd !important;}
 .alpha-blur{
 
   background: rgba(45,45,45,1.0) !important;
@@ -175,7 +188,22 @@ padding-top:20px !important;
 padding-left:0px !important;
 
 }
+.ui-autocomplete {
+    opacity: 0;
+    display: none;
+    transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+}
 
+.ui-autocomplete.opened {
+    opacity: 1;
+    transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+}
 /* Sidebar navigation */
 .nav-sidebar {
 

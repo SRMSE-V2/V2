@@ -5,8 +5,43 @@ min-width:320px;
 background-color:#474747;
 
 }
+#top_bar{
+
+height:60px;padding-top:15px;box-shadow: 0px 1px 15px #000;
+
+}
 .arrow_div{
 background-color:#00b4ff;
+}
+
+.scheme{ 
+position: absolute;
+left: 0;
+right: 0;
+margin: auto;  
+height: 70px;
+width: 500px; 
+padding: 20px;
+  bottom:20%;
+background-color:#00B4FF; 
+font-weight:bold;
+color:
+margin-right: auto;
+margin-right: auto;
+
+
+-webkit-border-radius: 12px;
+-moz-border-radius: 7px; 
+border-radius: 7px;
+
+}
+
+.text{
+
+color:#FFFFFF;
+}
+.hr_color{
+  border-top: 1px solid #FFF;
 
 }
 .simplebox {

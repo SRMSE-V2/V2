@@ -1,4 +1,4 @@
-/*
+./*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
@@ -11,14 +11,27 @@ and open the template in the editor.
 /*
  * Base structure
  */
+
 #frm{
 height:46px;
 
+}
+.cluster_btn{
+
+display:box;border-radius:8px;box-shadow: inset 0 0 2px 2px rgba(51,51,51,.5);line-height:40px;overflow: hidden;text-overflow: ellipsis;color:#e2e2e2;text-align:center;height:40px;float:left;margin-left:5px;cursor:pointer;font-size:0.9em;
+}
+#tap>button{
+background-color:#00b4ff !important;
+border:0px !important;
 }
 #predefined_questions >a {
 background-color: #00b4ff !important;
 
 }
+.cluster_lbtn,.clluster_rbtn
+ {
+ color:white;
+ }
 #div_for_back{
 z-index:0;position:absolute;width:100%;height:46px;
 }
@@ -28,6 +41,14 @@ html,body {
   height: 100%;
 min-width:320px;
   
+}
+
+ 
+.wiki_head>h4{
+color:#474747;
+margin-top:15px !important;
+margin-bottom:10px !important;
+
 }
 .background{
 
@@ -252,6 +273,19 @@ margin-top:82px;
 border-radius:4px !important;
 
 }
+.dic,#dict_button{
+color:white;
+
+}
+.dict_noun_meaning{
+
+color:#c2cebf;
+}
+#location_name>h3{
+
+color:white !important;
+
+}
 .arrow_div{
 background-color:#00b4ff;
 }
@@ -275,7 +309,7 @@ background-color:#00b4ff !important;
 .btn-primary:hover{
 background-color:#028cc5 !important;
 }
-#news,#wiki{
+#news,#wikiMain{
 margin-bottom:15px;
 
 }

@@ -156,7 +156,7 @@ else:
                         <div class="collapse" id="collapsee">
                         </div>
                         <div class="table">
- <div class="alpha-blur" id="wiki">
+ <div class="alpha-blur" id="wikiMain">
                            </div>
  <div class="alpha-blur" id="news">
                            </div>

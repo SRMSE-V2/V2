@@ -11,6 +11,14 @@ and open the template in the editor.
 /*
  * Base structure
  */
+ .wiki_head{
+ 
+ padding-top:15px;
+ }
+ .wiki_head>h4{
+ padding-left:10px;margin:0px;color:#474747;
+ 
+ }
 #frm{
 height:46px;
 
