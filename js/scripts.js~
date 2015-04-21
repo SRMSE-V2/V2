@@ -34,7 +34,6 @@ ENABLE_BACKINPUT=true;
 $(window).on("resize",checkback);
 checkback();
 $("#search").on("keypress",function(){
-console.log($("#search").val().length*11.5);
 if(($("#search").val().length*12.5)>=$("#search").width()){
 inp.val("");
 ENABLE_BACKINPUT=false;
@@ -292,11 +291,16 @@ var wait=0;
 var dispBtns=function(){$(".arrow_div").css("padding-left","20px");$(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:24px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"width:31px;height:27px;top:0;bottom:0;margin:auto;\" src=\"images/lighttheme.png\"></span><span id=\"dark\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/darktheme.png\">   </span> <span id=\"help\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/howtouse.png\">      </span> </div>");$(".side_btns").css("cursor","pointer");
 
 $("#light").on('click',function(){
+$('#myModal').modal('show');
+
 	document.cookie="color=white;path=/";
 	window.color="white";
 	$("#dark_theme").remove();
 $("#light_theme").remove();
 	$("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.css' />");
+	$("head").on("load",function(){
+		$("#myModal").addClass("hide");
+	});
 	$("#nixi-logo").attr("src","images/light/nixi.png");
 	$("#srmse-logo").attr("src","images/light/srmselogo.png");
 	$("#srm-logo").attr("src","images/light/srm.png");
