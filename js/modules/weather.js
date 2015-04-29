@@ -1,6 +1,6 @@
 if($("#weather").length===0){
 
-var weather = $("<div class=\"col-md-12 well hide alpha-blur alpha-shadow\" id=\"weather\" style=\"color:white;margin-top:20px;border:0px;\">                  <div class=\"row\">                                         <div class=\"col-lg-7 col-md-7 col-sm-7 col-xs-7\" id=\"weather\">                        <div style=\"font-size:20px;font-weight:bold;text-align: left;color:white\" id=\"weather_city\">Chennai</div>                                             </div>                     <div class=\"col-lg-5 col-md-5 col-sm-5 col-xs-5\">                        <img width=\"60\" height=\"60\" id=\"img_today\"  src=\"\">                         <div style=\"color:white;font-size:18px;\" id=\"weather_max\"></div>                     </div>                                       </div>                                                                             <div class=\"row\" id=\"weather_details\" style=\"color:white;\">                   <div class=\"col-lg-12\">                   <hr>                  <table class=\"table\">                  <tbody>                   <tr>                  <td class=\"h5\">                  Today Sunset&nbsp;                  </td>                  <td id=\"weather_today_sunset\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Tomorrow Sunrise&nbsp;                  </td>                  <td id=\"weather_tomorrow_sunrise\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Today Moonrise&nbsp;                  </td>                  <td id=\"weather_moonrise\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Tomorrow Moonset&nbsp;                  </td>                  <td id=\"weather_moonset\">                  </td>                  </tr>                  </tbody>                  </table>                  <hr>                  </div>                                       <div class=\"col-lg-12\" id=\"days_weather\" style=\"\">                                            </div>                                          <div class=\"col-lg-4\"></div>                     <div class=\"col-lg-4\"></div>                     <div class=\"col-lg-12\" style=\"text-align:center;\">                     </div>                  </div>                  <div class=\"row\" style=\"color:#999999;text-align:center;\">                     <button id=\"weather_button\" style=\"color:black;top:5px;color:white;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Click to see more statistics\" class=\"btn btn-primary glyphicon glyphicon-chevron-down\"></button>                  </div>               </div>");
+var weather = $("<div class=\"col-md-12 well hide alpha-blur alpha-shadow\" id=\"weather\" style=\"color:white;margin-top:20px;border:0px;\">                  <div style=\"margin-bottom:15px;\" class=\"row\">                                         <div class=\"col-lg-7 col-md-7 col-sm-7 col-xs-7\">                        <div  id=\"weather_city\">Chennai</div>                                             </div>                     <div class=\"col-lg-5 col-md-5 col-sm-5 col-xs-5\">                        <img width=\"60\" height=\"60\" id=\"img_today\" class=\"switch\"  src=\"\">                         <div style=\"color:white;font-size:18px;\" id=\"weather_max\"></div>                     </div>                                       </div>                                                                             <div class=\"row\" id=\"weather_details\" style=\"color:white;\">                   <div class=\"col-lg-12\">                   <hr>                  <table class=\"table\">                  <tbody>                   <tr>                  <td class=\"h5\">                  Today Sunset&nbsp;                  </td>                  <td id=\"weather_today_sunset\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Tomorrow Sunrise&nbsp;                  </td>                  <td id=\"weather_tomorrow_sunrise\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Today Moonrise&nbsp;                  </td>                  <td id=\"weather_moonrise\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Tomorrow Moonset&nbsp;                  </td>                  <td id=\"weather_moonset\">                  </td>                  </tr>                  </tbody>                  </table>                  <hr>                  </div>                                       <div class=\"col-lg-12\" id=\"days_weather\" style=\"\">                                            </div>                                          <div class=\"col-lg-4\"></div>                     <div class=\"col-lg-4\"></div>                     <div class=\"col-lg-12\" style=\"text-align:center;\">                     </div>                  </div>                  <div class=\"row\" style=\"color:#999999;text-align:center;\">                     <button id=\"weather_button\" style=\"top:5px;color:white;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Click to see more statistics\" class=\"btn btn-us glyphicon glyphicon-chevron-down\"></button>                  </div>               </div>");
 $("#smart_col").html("");
 $("#smart_col").append(weather);
 $("#weather_details").hide();
@@ -26,9 +26,11 @@ var imgs=["clear sky","clear","haze","light rain","mainly clearly sky","mainly o
                                 $.each(imgs,function(index,element){
 
                                 if(window.val['forecast'].indexOf(element)>-1){
-                                $("#img_today").attr("src","/main/images/"+window.color+"/"+element+".png");
-                                $("#img_today").css("-webkit-filter","invert(100%)");
-$("#img_today").css("-moz-filter","invert(100%)");
+                                
+                                $("#img_today").attr("src","/oh/images/"+window.color+"/"+element+".png");
+                                
+                                $("#img_today").css("-webkit-filter");
+$("#img_today").css("-moz-filter");
 }
 
 
@@ -48,11 +50,9 @@ $("#img_today").css("-moz-filter","invert(100%)");
                                 var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
                                 var today = days.indexOf(window.val["day"]);
                                 var future = window.val["future"];
-				$("#weather_city").text(city);
+				$("#weather_city").text(city.toLowerCase().capitalizeMe());
 				$("#weather_city").append("<br/>");
-console.log("sdf");
-				$("#weather_city").append("<span style=\"font-weight:400;font-size:0.65em;line-height:1.3em;max-width:200px;display:block;\">"+window.val["forecast"].capitalizeMe()+"</span>");
-console.log("sdf");
+				$("#weather_city").append("<span style=\"font-weight:400;line-height:1.3em;max-width:200px;display:block;\">"+window.val["forecast"].capitalizeMe()+"</span>");
                                 var w = [];
                                 var i = 0;
                                 var row = $("<div></div>");
@@ -76,9 +76,9 @@ console.log("sdf");
  $.each(imgs,function(index,element){
 
                                 if(future[i]['forecast'].indexOf(element)>-1){
-
-                                img.attr("src","/main/images/"+window.color+"/"+element+".png");
-                                img.css("-webkit-filter","invert(100%)");
+				img.addClass("switch");
+                                img.attr("src","/oh/images/"+window.color+"/"+element+".png");
+                                img.css("-webkit-filter");
 
 }
 

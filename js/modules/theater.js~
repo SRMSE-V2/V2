@@ -1,6 +1,6 @@
 function main(){
 if($("#theater").length===0){
-var theater=$("<div class=\"well alpha-blur\" style=\"border:0px;color:white;text-align:left;\" id=\"theater\">    <div class=\"container-fluid box\">        <div class=\"row row_data\" style=\"height:100%;\">            <div class=\"col-lg-3 col-md-3\" style=\"height:100%;padding-left:0px;\"><img id=\"img_link\" style=\"display:block;margin-left:auto;margin-right:auto;\" class=\"\"/>            </div>            <div class=\"col-lg-9 col-md-9\" style=\"height:100%;\">                <div class=\"topcrop2\">                        <div class=\"moviedesc\">                            <div class=\"movietitle\"></div>     <div class=\"theatre_name\"></div>                     </div>                                                       <table class=\"minfo\" style=\"padding-top:10px;\"><td>Locations Available</td><td><div class=\"dropdown\">  <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"loc\" data-toggle=\"dropdown\" aria-expanded=\"true\">  Locations    <span class=\"caret\"></span>  </button>  <ul class=\"dropdown-menu\" id=\"loc-ul\" role=\"menu\" aria-labelledby=\"dropdownMenu1\">   </ul></div> </td></table>                    </div> <div id=\"theatre_toggle\" class=\"hide\">                              <div class=\"\" style=\"padding-top:20px;\">                    <div class=\"table-responsive\">                        <table style=\"width:100%;\">                            <tbody class=\"time-table\">                                <tr style=\"height:30px;\">                                    <td>Theatre</td><td>                                    Show Times</td> </tbody>                        </table>                    </div>                </div>   </div>         </div>        </div>    </div>");
+var theater=$("<div class=\"well alpha-blur\" style=\"border:0px;color:white;text-align:left;\" id=\"theater\">    <div class=\"container-fluid box\">        <div class=\"row row_data\" style=\"height:100%;\">            <div class=\"col-lg-4 col-md-4\" style=\"height:100%;padding-left:0px;\"><img id=\"img_link\" style=\"display:block;margin-left:auto;margin-right:auto;\" class=\"\"/>            </div>            <div class=\"col-lg-8 col-md-8\" style=\"height:100%;\">                <div class=\"topcrop2\">                        <div class=\"moviedesc\">                            <div class=\"movietitle\"></div>     <div class=\"theatre_name\"></div>                     </div>                                                       <table class=\"minfo\" style=\"padding-top:10px;\"><td>Locations Available</td><td><div class=\"dropdown\">  <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"loc\" data-toggle=\"dropdown\" aria-expanded=\"true\" style=\"color: rgb(0,0,0) !important; background-color: white !important;\">  Locations    <span class=\"caret\"></span>  </button>  <ul class=\"dropdown-menu\" id=\"loc-ul\" role=\"menu\" aria-labelledby=\"dropdownMenu1\">   </ul></div> </td></table>                    </div> <div id=\"theatre_toggle\" class=\"hide\">                              <div class=\"\" style=\"padding-top:20px;\">                    <div class=\"table-responsive\">                        <table style=\"width:100%;\">                            <tbody class=\"time-table\">                                <tr style=\"height:30px;\">                                    <td>Theatre</td><td>                                    Show Times</td> </tbody>                        </table>                    </div>                </div>   </div>         </div>        </div>    </div>");
 var m=window.val[0];
 $("#predefined_questions").before(theater);
 $("#loc").css({'color':'whitesmoke','background-color':'#2d2d2d'});
@@ -21,7 +21,7 @@ $(".time-table").append(" <tr style=\"border-top:1px solid;width:100%;\"><td>"+v
 });
 $("#loc-ul").on('click',"li",function(){
 
-var city=$("#search").val().replace(m["city"],$("#loc option:selected").val());
+var city=$("#search").val().replace(m["city"],$(this).find("a").text());
 	$.ajax({
                     async: true,
                     url: "/cgi-bin/new2/smart/getSmartAns.py",
@@ -48,7 +48,7 @@ $("#loc-ul").append("<li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-
 
 });
 $(".row_data").after("<div id=\"ttgl\" style=\"cursor:pointer;text-align:center;height:40px;font-size:18px;padding-top:10px;padding-bottom:10px;\" class=\"row\">Show More</div>");
-$("#theatre_toggle").prepend("<div style=\"margin-top:35px;\">"+m["synopsis"]+"</div>");
+$("#theatre_toggle").prepend("<div style=\"margin-top:35px;\">"+m["synopsis"].replace(/<\\\/strong>/g,"</strong>")+"</div>");
 $(".movietitle").css({'font-size':'25px','font-weight':'400','padding-bottom':'10px'});
 $(".theatre_name").css({'font-size':'18px','font-weight':'400','padding-bottom':'10px'});
 var tt=0;

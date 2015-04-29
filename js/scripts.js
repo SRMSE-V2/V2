@@ -22,6 +22,23 @@ inp.css("margin-top","8px");
 inp.css("width","80%");
 inp.attr("id","input_back");
 }
+
+function switchImg(){
+
+var imgs=$(".switch");
+$.each(imgs,function(i){
+	if(window.color==="dark")
+	{
+		$(this).attr("src",$(this).attr("src").replace("/light/","/dark/"));
+	}
+	if(window.color==="light")
+	{
+		$(this).attr("src",$(this).attr("src").replace("/dark/","/light/"));
+	}
+	
+});
+
+}
 function checkback(){
 if($(window).width()<=600){
 inp.val("");
@@ -244,7 +261,7 @@ window.connect({"lat":obj["latitude"], "long":obj["longitude"]});
 
 }
 else{
-$.getScript("/main/js/location_centric.js");
+$.getScript("/oh/js/location_centric.js");
 }
 
 };
@@ -273,16 +290,19 @@ if(window.location.toString().indexOf("s.py")<0){
 $("input").removeClass("hide");
 $(".input-group").removeClass("hide");
 var img2=$("#srmse-logo");
-if(window.color==="black"){img2.attr("src","images/dark/srmselogo.png");}else{img2.attr("src","images/light/srmselogo.png");}
+img2.addClass("switch");
+if(window.color==="dark"){img2.attr("src","images/dark/srmselogo.png");}else{img2.attr("src","images/light/srmselogo.png");}
 
 img2.attr("alt","SRM Search Engine");
 var img1=$("#nixi-logo");
-if(window.color==="black"){img1.attr("src","images/dark/nixi.png");}else{img1.attr("src","images/light/nixi.png");}
+if(window.color==="dark"){img1.attr("src","images/dark/nixi.png");}else{img1.attr("src","images/light/nixi.png");}
+img1.addClass("switch");
 img1.attr("alt","Nixi");
 img1.attr("width","103px");
 img1.attr("height","36px");
 var img=$("#srm-logo");
-if(window.color==="black"){img.attr("src","images/dark/srm.png");}else{img.attr("src","images/light/srm.png");}
+if(window.color==="dark"){img.attr("src","images/dark/srm.png");}else{img.attr("src","images/light/srm.png");}
+img.addClass("switch");
 img.attr("alt","SRM University");
 img.attr("width","93px");
 img.attr("height","36px");
@@ -292,28 +312,31 @@ var dispBtns=function(){$(".arrow_div").css("padding-left","20px");$(".arrow_div
 
 $("#light").on('click',function(){
 
-	document.cookie="color=white;path=/";
-	window.color="white";
+	document.cookie="color=light;path=/";
+	window.color="light";
 	$("#dark_theme").remove();
-$("#light_theme").remove();
+	$("#light_theme").remove();
+	switchImg();
+
 	$("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.css' />");
 	$("head").on("load",function(){
 		$("#myModal").addClass("hide");
 	});
-	$("#nixi-logo").attr("src","images/light/nixi.png");
-	$("#srmse-logo").attr("src","images/light/srmselogo.png");
-	$("#srm-logo").attr("src","images/light/srm.png");
+	//$("#nixi-logo").attr("src","images/light/nixi.png");
+	//$("#srmse-logo").attr("src","images/light/srmselogo.png");
+	//$("#srm-logo").attr("src","images/light/srm.png");
 });
 
 $("#dark").on('click',function(){
-	document.cookie="color=black;path=/";
-	window.color="black";
+	document.cookie="color=dark;path=/";
+	window.color="dark";
 	$("#light_theme").remove();
-$("#dark_theme").remove();
+	$("#dark_theme").remove();
+	switchImg();
 	$("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='css/dark/styles.css' />");
-	$("#nixi-logo").attr("src","images/dark/nixi.png");
-	$("#srmse-logo").attr("src","images/dark/srmselogo.png");
-	$("#srm-logo").attr("src","images/dark/srm.png");
+//	$("#nixi-logo").attr("src","images/dark/nixi.png");
+	//$("#srmse-logo").attr("src","images/dark/srmselogo.png");
+	//$("#srm-logo").attr("src","images/dark/srm.png");
 });
 var clicked=false;
 

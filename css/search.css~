@@ -275,7 +275,7 @@ background-image:url("/dfs.jpg");
 
  }
  .btn-primary{
-background-color:#00b4ff !important;
+background-color:#00b4ff;
 }
 .btn-primary:hover{
 background-color:#028cc5 !important;

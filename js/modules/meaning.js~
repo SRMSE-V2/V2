@@ -18,11 +18,11 @@ $.each(keys,function(index,el){
 		$.each(element,function(k,element){
 			if(element.indexOf(":")>=0){
 				var k=element.split(":");
-				main=main.add($("<h5 id=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+k[0]+"</h5>"));
-	main=main.add($("<h5 id=\"dict_noun_meaning\" style=\"padding-left:25px;color:#c2cebf;\" >\""+k[1]+"\"</h5>"));
+				main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+k[0]+"</h5>"));
+	main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:25px;\" >\""+k[1]+"\"</h5>"));
 			}
 else{
-			main=main.add($("<h5 id=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+element+"</h5>"));
+			main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+element+"</h5>"));
 }
 		});
 		$("#fs_key").after(main);
@@ -39,11 +39,11 @@ else{
 else{
 		if(e.indexOf(":")>=0){
 				var k=e.split(":");
-				main=main.add($("<h5 id=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+k[0]+"</h5>"));
-	main=main.add($("<h5 id=\"dict_noun_meaning\" style=\"padding-left:25px;\" ><i>\""+k[1].trim()+"\"</i></h5>"));
+				main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+k[0]+"</h5>"));
+	main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:25px;\" ><i>\""+k[1].trim()+"\"</i></h5>"));
 			}
 else{
-			main=main.add($("<h5 id=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+e+"</h5>"));
+			main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+e+"</h5>"));
 }
 rem=false;
 }
