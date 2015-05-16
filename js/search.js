@@ -9,58 +9,28 @@
   */
 $(document).ready(function() {
 
-function switchImg(){
-
-var imgs=$(".switch");
-$.each(imgs,function(i){
-	if(window.color==="dark")
-	{
-		$(this).attr("src",$(this).attr("src").replace("/light/","/dark/"));
-		//$(".btn-primary").addClass("temp");
-		//$(".btn-primary").removeClass(".btn-primary");
-		//$(".temp").css("background-color", "#028cc5");
-	}
-	if(window.color==="light")
-	{
-		$(this).attr("src",$(this).attr("src").replace("/dark/","/light/"));
-		//$(".btn-primary").addClass("temp");
-		//$(".btn-primary").removeClass(".btn-primary");
-		//$(".temp").css("background-color", "#FF3E39");
-		
-	}
-	
-
-
-
-
+//load scripts
+$.ajaxSetup({cache:true});
+$.getScript( "/js/jquery-ui.min.js",function(){
+$.getScript( "/js/scripts.js");
 });
+//end load scripts
 
-}
+//start of theme switch
 
 var img2=$("#srmse-logo");
 img2.addClass("switch");
-if(window.color==="dark"){$("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/oh/css/dark/search.css' />");img2.attr("src","/oh/images/dark/srmselogo.png");}else{img2.attr("src","/oh/images/light/srmselogo.png");$("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/oh/css/light/search.css' />");}
-
+if(window.color==="dark"){$("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.css' />");img2.attr("src","/images/dark/srmselogo.png");}else{img2.attr("src","/images/light/srmselogo.png");$("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.css' />");}
 img2.attr("alt","SRM Search Engine");
-
-$.ajaxSetup({cache:true});
-
-
-
-
-    $.getScript( "/oh/js/jquery-ui.min.js",function(){
- $.getScript( "/oh/js/scripts.js");
-
-});
-   var u=0;
-   var dispBtns=function(){$(".arrow_div").css("padding-left","20px");$(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:18px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;\" src=\"/oh/images/lighttheme.png\"></span><span   class=\"side_btns\" id=\"dark\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/oh/images/darktheme.png\">   </span> <span class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/oh/images/howtouse.png\">      </span> </div>");$(".side_btns").css("cursor","pointer");
+var u=0;
+var dispBtns=function(){$(".arrow_div").css("padding-left","20px");$(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:18px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;\" src=\"/images/lighttheme.png\"></span><span   class=\"side_btns\" id=\"dark\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/images/darktheme.png\">   </span> <span class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/images/howtouse.png\">      </span> </div>");$(".side_btns").css("cursor","pointer");
    $("#light").on('click',function(){
 	window.color="light";
 document.cookie="color=light;path=/";
 	$("#dark_theme").remove();
 $("#light_theme").remove();
-switchImg();
-	$("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/oh/css/light/search.css' />");
+window.switchImg();
+	$("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.css' />");
 });
 
 $("#dark").on('click',function(){
@@ -68,8 +38,8 @@ $("#dark").on('click',function(){
 document.cookie="color=dark;path=/";
 	$("#light_theme").remove();
 	$("#dark_theme").remove();
-	switchImg();
-		$("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/oh/css/dark/search.css' />");
+	window.switchImg();
+		$("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.css' />");
 });
    
    };
@@ -93,17 +63,15 @@ function arrowClick(){
 
 }
 $("#arrow").on("click",arrowClick);
+//end of theme switch
 
-
-
+//global vars start
     window.i = 0;
     window.j = 10;
     IDS = [];
     IDSwiki=[];
     IDSnews=[];
     window.trains = [];
-    window.wi=0;
-    window.wj=1;
     window.icluster = 0;
     window.jcluster = 4;
     window.results = true;
@@ -114,34 +82,34 @@ $("#arrow").on("click",arrowClick);
 window.tap=false;
 window.scrolled=false;
 window.wiki=false;
+//global vars closed
 
-//caching scripts
-   $.ajaxSetup({
-  cache: true
-});
-//scroll button
 
+
+//scroll button start
 var screensize=$("html").height();
  $(function(){ 
-
 $(document).on( 'scroll', function(){ 
-
 if ($(window).scrollTop() > 100) {
- $('.scroll-top-wrapper').addClass('show');setTimeout(function(){$('.scroll-top-wrapper').removeClass('show');},4000); } else { $('.scroll-top-wrapper').removeClass('show'); } }); $('.scroll-top-wrapper').on('click', scrollToTop); }); function scrollToTop() { verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0; element = $('body'); offset = element.offset(); offsetTop = offset.top; $('html, body').animate({scrollTop: offsetTop}, 500, 'linear'); } 
+ $('.scroll-top-wrapper').addClass('show');setTimeout(function(){$('.scroll-top-wrapper').removeClass('show');},4000);
+ } 
+ else { $('.scroll-top-wrapper').removeClass('show'); } });
+$('.scroll-top-wrapper').on('click', scrollToTop); });
+function scrollToTop() { verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0; element = $('body'); offset = element.offset(); offsetTop = offset.top; $('html, body').animate({scrollTop: offsetTop}, 500, 'linear'); } 
+//scroll button ends
 
-    var load = $("<div id=\"loading\" style=\"background-color:#333333;\"><img src=\"/oh/images/ajax-loader.gif\" width=\"20\" height=\"20\"/></div>");
+    var load = $("<div id=\"loading\" style=\"background-color:#333333;\"><img src=\"/images/ajax-loader.gif\" width=\"20\" height=\"20\"/></div>");
     function navChanger() {
         $(".newside").remove();
-//fixing affix
-$("#smart_col").width($("#smart_col").parent().width());
-$(".nav-sidebar").css("width","inherit");
-
-        //hides autocomplete dropdown on screen resize
+  //hides autocomplete dropdown on screen resize
         $(".ui-autocomplete").removeClass("show");
         if ($(window).width() <= 1000) {
+        if($(".disc_back")){
+        $(".disc_back").css("top","180px");
+        }
 
 if($("#tap").length<=0 && !window.tap && window.clusters.length>0){
-var tap=$("<div id=\"tap\" style=\"position:absolute;top:122px;width:100%;height:50px;z-index:99;\"><button class=\"btn-us\" style=\"width:100%;height:100%;\" type=\"button\">Tap to see clusters</button></div>");
+var tap=$("<div id=\"tap\" style=\"position:absolute;top:122px;width:100%;height:46px;z-index:99;\"><button class=\"btn tap-btn\" style=\"width:100%;height:100%;\" type=\"button\">Tap to see clusters</button></div>");
 $("body").append(tap);
 tap.on("click",function(){
  $(this).slideUp("fast",function(){
@@ -170,10 +138,10 @@ $(".side").addClass("hide");
 $("#centre_parent").css("margin-top","20px");
 console.log("resize");
             var newnav = $("<div class=\"alpha-blur newside\" style=\"width:"+$(".nav_changer").width()+"px;\"></div");
-            var lbtn = $("<button style=\"\" class=\"cluster_lbtn btn alpha-blur glyphicon glyphicon-chevron-left\"></button>");
+            var lbtn = $("<button style=\"\" class=\"cluster_lbtn btn glyphicon glyphicon-chevron-left\"></button>");
             var rcol = $("<div style=\"float:left;height:100%;width:40px;\" class=\"\"></div>");
             var lcol = $("<div style=\"float:left;height:100%;width:40px;\" class=\"\"></div>");
-            var rbtn = $("<button style=\"\" class=\"cluster_rbtn btn alpha-blur glyphicon glyphicon-chevron-right\"></button>");
+            var rbtn = $("<button style=\"\" class=\"cluster_rbtn btn glyphicon glyphicon-chevron-right\"></button>");
             var r = $("<div style=\"width:100%;height:100%;padding-top:5px;padding-bottom:5px;\"></div>");
             var main = $("<div style=\"padding:0px !important;height:50px;width:"+($(".nav_changer").width()-80)+"px;\" class=\"col-lg-10 col-md-10 col-sm-10 col-xs-10\"></div>");
             rcol.append(rbtn);
@@ -211,7 +179,7 @@ else{
                 main.on("mouseenter", "div", function() {
                     $(this).css({
                         "color": "#e2e2e2",
-                        "background-color": "rgba(99,0,24,0.3)"
+                        "background-color": "#383838"
                     });
 
                 });
@@ -221,12 +189,8 @@ else{
                         "background-color": "transparent"
                     });
                     main.on("click", "div", function() {
-
                         $(this).addClass("active");
-                        var old = $("#search").val();
-                        window.cluster = $(this).text();
-
-                        window.location = "/cgi-bin/s.py?q=" + $("#search").val().trim() + "&c=" + window.cluster;
+                      clickOnCluster(this);
 
                     });
 
@@ -280,22 +244,8 @@ $("#smart_answer").css("margin-top","22px");
     navChanger();
     $(window).on("resize", navChanger);
 
-    //clusters click event
-    $(".nav-sidebar").on("click", "a", function() {
-
-        $(this).addClass("active");
-        var old = $("#search").val();
-        window.cluster = $(this).text();
-        window.location = "/cgi-bin/s.py?q=" + $("#search").val().trim() + "&c=" + window.cluster;
-
-    });
-    $("#predefined_questions").hover(function() {
-        $("#collapsee").collapse('show');
-
-    });
-    $("#collapsee").on("mouseleave", function() {
-        $("#collapsee").collapse('hide');
-    });
+   
+  
     $("#search_btn").on("submit", function() {
         if ($("#search").val().trim() !== "") {
             var query = $("#search").val().trim();
@@ -306,66 +256,22 @@ $("#smart_answer").css("margin-top","22px");
 
     $("#logo").on("click", function() {
 
-        window.location = "/oh/";
+        window.location = "/";
     });
 
-    //click on suggested ques
-    $("#collapsee").on("click", "a", function() {
-        var v = $(this).text();
-        $("#search").val(v);
-        $("#search").attr("value", v);
-        window.location = "/cgi-bin/s.py?q=" + $("#search").val().trim() + "&c=" + window.cluster;
-    });
-    function didYouMean(a){
-if(a && a.trim()!==""){
-console.log(a);
-	$(".dym").removeClass("hide");
-	$("#dym_val").text(" "+a);
-	$("#dym_val").attr("href","http://srmsearchengine.in/cgi-bin/s.py?q="+a+"&c="+window.cluster);
-}
-
-
-}
-window.hard=function(d){
-                    var js = JSON.parse(d);
-                    IDS = js["ids"];
-		    didYouMean(js["Did You Mean: "]);
-		    renderResult(js["results"],$("#search_results"));
-};
+  
+  
 
 
     function getIdsResults(bool) {
 
         if ($("#search").val().trim() !== "") {
-            if (window.cluster === "") {
-	
-                $.ajax({
-                    async: bool,
-                    url: "/cgi-bin/queryret/getIds.py",
-		    data:{q:$("#search").val().trim().toLowerCase(),f:1},
-                    dataType: 'text',
-                    type: "GET",
-                    error: function() {
-                        //console.log("page not found");
-                        window.results=false;
-                    }
-
-                }).done(function(text){
-                try{
-		  window.hard(text);
-		  window.results=true;
-		}
-		catch(err){
-			window.results=false;
-		}
-                });
-		
-            } else {
+         
 
                 $.ajax({
                     async: bool,
                     url: "/cgi-bin/queryret/getIds.py",
-	            data:{q:$("#search").val().trim().toLowerCase(),f:1,c:window.cluster},
+	            data:{q:$("#search").val().trim().toLowerCase(),f:1},
                     dataType: 'text',
                     type: "GET",
                     error: function() {
@@ -373,23 +279,23 @@ window.hard=function(d){
                     }
 
                 }).done(function(text) {
-                   window.hard(text);
+                   var js = JSON.parse(text);
+                    IDS = js["ids"];
+		    renderResult(js["results"],$("#search_results"),undefined,true);
                    window.results=true;
 
                 });
 
-            }
+            
 
         }
 
     }
-function renderResult(arr,fat,wiki){
+function renderResult(arr,fat,wiki,isappend){
  if (arr[0]) {
 
  			if(wiki===""){
  				window.wiki=true;
- 					window.wi+=1;
-					window.wj+=1;
  				
  			}
  			else{
@@ -407,26 +313,26 @@ function renderResult(arr,fat,wiki){
                         var title = $("<div style=\"display:block;\"></div>");
                         titlea = $("<a></a>");
                         titlea.addClass("search_title");
-			if(wiki===""){
-			if($(".wiki_nav").length===0){
-				fat.append("<div class=\"wiki_nav\"><nav class=\"navbar navbar-default\">  <div class=\"container-fluid\">    <div class=\"navbar-header\" style=\"float:left;\">      <a class=\"navbar-brand\" href=\"#\">        <img alt=\"Brand\" src=\"http://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Black_W_for_promotion.png/40px-Black_W_for_promotion.png\">      </a>      </div><div class=\"wiki_head\"><h4 style=\"float:left;\">Results from Wikipedia.org</h4></div>  </div></nav></div> ");
-				}
-				titlea.attr("href", "http://en.wikipedia.org/wiki/"+element["title"]);
-				element['url']="http://en.wikipedia.org/wiki/"+element["title"];
-				element['body']=element['body'].filter();
-			}
-			else{
-				titlea.attr("href", element["url"]);
-			}
-			var g=element["title"].replace(/_/g," ").split(" ");
+                        var g=element["title"].replace(/_/g," ").split(" ");
 			if(g.length>10){  
 				var ti=g.slice(0,10).join(" ")+" ...";
 			}
 			else{
 				var ti=g.slice(0,10).join(" ");
 			}
+			if(wiki===""){
+				titlea.text(ti.capitalizeMe()+" - Wikipedia, the free encyclopedia");
+				titlea.attr("href", "http://en.wikipedia.org/wiki/"+element["title"]);
+				element['url']="http://en.wikipedia.org/wiki/"+element["title"];
+				element['body']="";//element['body'].filter();
+			}
+			else{
+				titlea.text(ti.capitalizeMe());
+				titlea.attr("href", element["url"]);
+			}
+			
                         
-                        titlea.text(ti.capitalizeMe());
+                        
                         title.append(titlea);
                         var imgspan = $("<div></div>");
 imgspan.addClass("search_green");
@@ -451,21 +357,43 @@ $(img).css("margin-right","10px");
 
 
                     });
-                   
+                   main=main.add("<hr class=\"hr_breaker\">");
+                   if(isappend){
                     fat.append(main);
-                    $(".effect").hide();
-                    $(".effect").show("slow");
+                    }
+                    else{
+                    fat.html(main);
+                    }
+                    $(".search_result").on("click",function(){
+                    window.location=$(this).find(".search_title").attr("href");
+                    
+                    });
+                      $(".search_result").on("mouseenter",function(){
+                      if(window.color==="light"){
+                      $(this).find(".search_title").css("color","rgba(71, 71, 71, 0.85)");
+                      $(this).find(".search_title").css("text-decoration","underline");
+                      }
+                      else if(window.color==="dark"){
+                      $(this).find(".search_title").css("color","#DDDDDD");
+                      $(this).find(".search_title").css("text-decoration","underline");
+                      }
+                      });
+                       $(".search_result").on("mouseleave",function(){
+                       if(window.color==="light"){
+                       $(".search_title").css("color","#474747");
+                      $(".search_title").css("text-decoration","none");
+                       }
+                       else if(window.color==="dark"){
+                         $(".search_title").css("color","#DFDDDD");
+                      $(".search_title").css("text-decoration","none");
+                       
+                       }
+                       
+                       });
+                  //  $(".effect").hide();
+                    
+                    $(".effect").animate({opacity:1.0,queue:false},1000,function(){});
                     $(".effect").removeClass("effect");
-			if(wiki===""){
-			$(".wiki_more_btn").remove();
-			var more_btn=$("<div class=\"wiki_more_btn container\" style=\"width:inherit;\"><div class=\"row\" style=\"height:60px;\">  <div class=\"alpha-blur col-lg-9 col-md-9 hidden-sm hidden-xs\" style=\"height:inherit;\"></div>  <div id=\"load_wiki\" class=\"col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center\" style=\"cursor:pointer;height:inherit;padding-top:10px;	\">  <img src=\"http://www.google.com/s2/favicons?domain=http://en.wikipedia.org/\" width=\"20\" height=\"20\" style=\"margin-right: 10px;margin-top:5px;\"><span style=\"font-size:18px;color:#DDDDDD;top:5px;position:relative;\">More Results</span></div></div></div>");
-			fat.append(more_btn);
-			more_btn.on("click",function(){
-			getResultswiki(window.wi,window.wj,true);
-			
-			
-			});
-			}
                     $("#loading").remove();
                     $(window).scroll(bindScroll);
                 } else {
@@ -525,7 +453,7 @@ console.log("yes");
 
             }).done(function(text) {
                 var arr = JSON.parse(text);
-               renderResult(arr["results"],$("#wikiMain"),"");
+               renderResult(arr["results"],$("#wikiMain"),"",true);
 	
 
             });
@@ -567,7 +495,7 @@ if(i<IDS.length){
             }).done(function(text) {
                 var arr = JSON.parse(text);
 console.log(arr);
-               renderResult(arr["results"],$("#search_results"));
+               renderResult(arr["results"],$("#search_results"),undefined,true);
 
 
             });
@@ -615,7 +543,7 @@ function getIdsWiki(bool){
                 dataType: 'text',
                 type: "GET",
                 data: {
-                    q: $("#search").val().trim().toLowerCase(),f:2,c:window.cluster
+                    q: $("#search").val().trim().toLowerCase(),f:2
                 },
                 error: function() {
                 }
@@ -624,7 +552,7 @@ function getIdsWiki(bool){
             try{
                 var js = JSON.parse(text);
                 IDSwiki=js["ids"];
-		renderResult(js["results"],$("#wikiMain"),"");
+		renderResult(js["results"],$("#wikiMain"),"",true);
 		window.wiki=true;
 		}
 		catch(err){
@@ -643,7 +571,7 @@ function getIdsNews(bool){
                 dataType: 'text',
                 type: "GET",
                 data: {
-                    q: $("#search").val().trim().toLowerCase(),f:3,c:window.cluster
+                    q: $("#search").val().trim().toLowerCase(),f:3
                 },
                 error: function() {
                 }
@@ -652,7 +580,7 @@ function getIdsNews(bool){
             try{
                 var js = JSON.parse(text);
                 IDSnews=js["ids"];
-		renderResult(js["results"],$("#news"));
+		renderResult(js["results"],$("#news"),undefined,true);
 		window.news=true;
 		}
 		catch(err){
@@ -663,47 +591,7 @@ function getIdsNews(bool){
 
 
 }
-    function getSuggestedQuestions() {
-        if ($("#search").val().trim() !== "") {
-            //console.log("getSuggestedQuestions q:" + $("#search").val().trim().toLowerCase());
-            $.ajax({
-                async: true,
-                url: "/cgi-bin/getQuestions.py",
-                dataType: 'text',
-                type: "GET",
-                data: {
-                    q: $("#search").val().trim().toLowerCase()
-                },
-                error: function() {
-                    //console.log("err suggested");
-                    $("#predefined_questions").removeClass("show");
-                }
 
-            }).done(function(text) {
-                var arr = JSON.parse(text);
-              //  console.log(arr);
-                if (arr.length > 0) {
-                    var prnt = $();
-                    $.each(arr.slice(0,5), function(index, element) {
-                        var a = $("<a></a>");
-                        a.addClass("list-group-item");
-                        a.addClass("list-group-item");
-                        a.attr("href", "#");
-                        a.text(element.capitalizeMe());
-                        prnt = prnt.add(a);
-                    });
-                    $("#collapsee").append(prnt);
-                    $("#predefined_questions").removeClass("hide");
-                } else {
-                    //console.log("No suggested questions !");
-                    $("#predefined_questions").removeClass("show");
-                }
-
-
-            });
-        }
-
-    }
 
    window.getSmartAns=function() {
         if ($("#search").val().trim() !== "") {
@@ -733,71 +621,71 @@ function getIdsNews(bool){
                         switch (key) {
 
                             case "general":
-				$.getScript("/oh/js/modules/general.js");
+				$.getScript("/js/modules/general.js");
                                 break;
                             case "sports":
-                                $.getScript("/oh/js/modules/sports.js");
+                                $.getScript("/js/modules/sports.js");
                                 break;
                             case "stock":
-                                $.getScript("/oh/js/modules/stocks.js");
+                                $.getScript("/js/modules/stocks.js");
                                 break;
                             case "train":
-                                $.getScript("/oh/js/modules/train.js");
+                                $.getScript("/js/modules/train.js");
                                 break;
 
                             case "weather":
 
-                              $.getScript("/oh/js/modules/weather.js");
+                              $.getScript("/js/modules/weather.js");
                                 break;
                             case "movie":
-                               $.getScript("/oh/js/modules/movie.js"); 
+                               $.getScript("/js/modules/movie.js"); 
                             break;
                             case "exam":
-			       $.getScript("/oh/js/modules/exam.js");
+			       $.getScript("/js/modules/exam.js");
 				 
                             break;
                            case "location":
-                              $.getScript("/oh/js/modules/locations.js");
+                              $.getScript("/js/modules/locations.js");
                             break;
                            case "minerals":
-                               $.getScript("/oh/js/modules/minerals.js");
+                               $.getScript("/js/modules/minerals.js");
 			 break;
 			 case "differences":
-                               $.getScript("/oh/js/modules/differences.js");	
+                               $.getScript("/js/modules/differences.js");	
 			break;
 			case "wiki":
-                               $.getScript("/oh/js/modules/wiki.js");
+                               $.getScript("/js/modules/wiki.js");
 			 break;
 			case "dict":
-                            $.getScript("/oh/js/modules/meaning.js");
+                            $.getScript("/js/modules/meaning.js");
 			 break;
 			case "theatre":
-                               $.getScript("/oh/js/modules/theater.js");
+                               $.getScript("/js/modules/theater.js");
 			 break;
 			case "highway":
-                               $.getScript("/oh/js/modules/highway.js");
+                               $.getScript("/js/modules/highway.js");
 			 break;
 			case "cricket-players":
-				$.getScript("/oh/js/modules/cricket.js");
+				$.getScript("/js/modules/cricket.js");
 			 break;
 			 case "ministers":
-				$.getScript("/oh/js/modules/ministers.js");
+				$.getScript("/js/modules/ministers.js");
 
 			break;
 			 case "bank":
-				$.getScript("/oh/js/modules/bank.js");
+				$.getScript("/js/modules/bank.js");
 
 			break;
 			case "site":
-				$.getScript("/oh/js/modules/site.js");
+				$.getScript("/js/modules/site.js");
 
 			break;
 			case "highcourt":
-				$.getScript("/oh/js/modules/highcourt.js");
+				$.getScript("/js/modules/highcourt.js");
 
 			break;
 			case "discography":
-				$.getScript("/oh/js/modules/discography.js");
+				$.getScript("/js/modules/discography.js");
 
 			break;
                             default:
@@ -811,9 +699,9 @@ function getIdsNews(bool){
 
                     if ($("#search").val().trim().toLowerCase().indexOf('convert') > -1) {
                     
-                            $.getScript("/oh/js/modules/glaConv.js");
-  			    $.getScript("/oh/js/modules/metric.js");
-  			     $.getScript("/oh/js/modules/convert.js");
+                            $.getScript("/js/modules/glaConv.js");
+  			    $.getScript("/js/modules/metric.js");
+  			     $.getScript("/js/modules/convert.js");
   			}		
                     console.log("No smart  ans questions !");
                     $("#smart_answer").addClass("hide");
@@ -831,12 +719,13 @@ catch(err){
         }
 
     };
+  
     function getClusters() {
         if ($("#search").val().trim() !== "") {
             //console.log("getClusters q;:" + $("#search").val().trim().toLowerCase());
             $.ajax({
                 async: true,
-                url: "/cgi-bin/getClusters.py",
+                url: "/cgi-bin/cluster/getClusters.py",
                 dataType: 'text',
                 type: "GET",
                 data: {
@@ -854,8 +743,14 @@ $("#smart_col").parent().addClass("col-lg-push-8 col-md-push-8 col-lg-3 col-md-3
                 }
 
             }).done(function(textt) {
-
-                var arr = JSON.parse(textt);
+		var res=JSON.parse(textt);
+		window.clusterResponse=res;
+		var arr=[];
+		$.each(res,function(k,v){
+		var map={"100":"Architecture","101":"Arts","102":"Education","103":"Entertainment","104":"Finance","105":"Food","106":"Health","107":"History","108":"News","109":"Sports","110":"Technology","111":"Religion"}
+		
+		
+		arr.push(map[k]);});
                 if (arr.length > 0) {
                     var main = $();
                     window.clusters = arr;
@@ -863,13 +758,13 @@ $("#smart_col").parent().addClass("col-lg-push-8 col-md-push-8 col-lg-3 col-md-3
 if(element){
                         var li = $("<li></li>");
                         var a = $("<a></a>");
-			li.addClass("alpha-blur");
 			a.attr("data-toggle","tooltip");
 			a.attr("data-placement","right");
 			a.attr("title",element.capitalizeMe());
-                        a.attr("href", "/cgi-bin/s.py?q="+window.query+"&c="+element);
+                        a.on("click",function(){clickOnCluster(this)});
                         a.text(element.capitalizeMe());
                         li.append(a);
+                        li.css("opacity","0");
                         main = main.add(li);
 $(".side").removeClass("hide");
                         navChanger(); //for nav
@@ -877,6 +772,7 @@ $(".side").removeClass("hide");
 
                     });
                     $(".nav-sidebar").append(main);
+                    main.animate({opacity:"1",queue:false},1000,function(){});
 		
                 } else {
                     console.log("no clusters");
@@ -899,13 +795,55 @@ $("#smart_col").parent().addClass("col-lg-push-8 col-md-push-8 col-lg-3 col-md-3
 
    
 
+function clickOnCluster(that){
 
+                        var rmap={"Architecture":"100","Arts":"101","Education":"102","Entertainment":"103","Finance":"104","Food":"105","Health":"106","History":"107","News":"108","Sports":"109","Technology":"110","Religion":"111"};
+		
+                        var cluster=$(that).text();
+                        if(cluster!=="News"){
+                        $("#news").addClass("hide");
+                        }
+                        else{
+                        
+                        $("#news").removeClass("hide");
+                        }
+                        var cid=rmap[cluster];
+                        var ids=window.clusterResponse[cid];
+                        IDS=ids;
+                        window.i=0;
+                        window.j=10;
+                         $.ajax({
+				async: true,
+				url: "/cgi-bin/queryret/getMore.py",
+				dataType: 'text',
+				type: "GET",
+				data: {
+				    q: IDS.slice(window.i,window.j).toString(),f:1
+				},
+				error: function() {
+
+                    load.remove();
+                    var prnt = $("<div><span></span></div>");
+                    prnt.width($("#search_results").width());
+                    prnt.addClass("h6 text-center no-results");
+                    prnt.text("No more results available");
+                    load.remove();
+                    $("#search_results").append(prnt);
+                    window.wiki = false;
+
+
+                }}).done(function(textt) {
+                		
+				var js=JSON.parse(textt);
+					renderResult(js["results"],$("#search_results"),undefined,false);
+				});
+                     	   return false;
+                     }
     //fix scroll later
     $(window).bind('scroll', bindScroll);
     getIdsResults(true);
     getIdsWiki(true);
     getIdsNews(true);
-    getSuggestedQuestions();
     window.getSmartAns();
     getClusters();
 

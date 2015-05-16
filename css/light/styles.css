@@ -5,6 +5,7 @@ min-width:320px;
 background-color:#F7F7F7;
 
 }
+
 .logo{
 
 cursor:pointer;
@@ -18,10 +19,7 @@ height:60px;padding-top:15px;box-shadow: 0px 1px 15px #474747;
 background-color:#FF3E38;
 
 }
-.text{
 
-color:#000000;
-}
 .hr_color{
   border-top: 1px solid #000;
 
@@ -35,7 +33,7 @@ color:#000000;
 }
 #arrow{
 
-position:relative;right:0px;float:left;cursor:pointer;height:80px;width:50px;background-repeat:no-repeat;background-size:contain;background-image:url('/oh/images/light/arrow.png');
+position:relative;right:0px;float:left;cursor:pointer;height:80px;width:50px;background-repeat:no-repeat;background-size:contain;background-image:url('/images/light/arrow.png');
 }
 #arrow_span{
 color:white;font-size:18px;position:relative;top:33px;left:25px;
@@ -112,8 +110,12 @@ z-index:0;position:absolute;width:100%;height:46px;
 }
 .footer-a{
 text-align:center;
-color:#ffffff;
+color:#333333 !important;
 padding-bottom:15px;
+}
+.a_btm{
+
+color:#333333 !important;
 }
 #back{
     width:100%;

@@ -13,19 +13,9 @@
     		
 		}
 
-        function connect(data_pass){
-            var data = data_pass;
-            $.ajax({
-                type: 'get',
-                url:'/cgi-bin/locentric.py',
-                data: data,
-                success : function(response){
-                    window.locentric = response;
-if(window.getSmartAns){window.getSmartAns();}
-                    console.log(response);
-                }
-            });
-        }
+       
+
+
 		
         function showPosition(position) {
     		
@@ -40,10 +30,9 @@ now.setTime(time);
     		document.cookie="longitude="+longitude+";expires="+now.toUTCString();	
 		
 
-                var data_pass = {"lat":latitude, "long":longitude};//Passing data to python script
+                var data_pass = {"lat":latitude, "long":longitude};
 
-                
-                connect(data_pass);//Calling function connect to do ajax calls.
+                if(window.getSmartAns){window.getSmartAns();}//calling smart ans again if location was not with us beforehand
 		}
 		$(document).ready(function(){
                 getLocation(); 

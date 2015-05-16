@@ -4,9 +4,8 @@ print "Content-type:text/html\r\n\r\n"
 cgitb.enable()  # for troubleshooting
 form = cgi.FieldStorage() 
 keyword=form.getvalue('q',"").strip()
-cluster=form.getvalue('c','').strip()
-#keyword is #123none123# when input from form is None
-#print keyword
+keyword=keyword.replace("\\","")
+#keyword is #123none123# when input from form is None is
 if keyword=="":
 	print """<!DOCTYPE html>
 <!--
@@ -20,7 +19,7 @@ if keyword=="":
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <script>
-         window.location="/main/";
+         window.location="/";
       </script>
    </head>
    <body>
@@ -39,17 +38,16 @@ else:
       <title>SRM Search Engine</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="/main/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
      
  
    
-      <script src="/main/bootstrap/js/bootstrap.min.js"></script>
+      <script src="/bootstrap/js/bootstrap.min.js"></script>
       <script>
          $(document).ready(function(){
          	$("#search").val(\""""+keyword+"""\");
          	$("#search").attr("value",\""""+keyword+"""\");
-         	window.cluster=\""""+cluster+"""\";
 		window.query=\""""+keyword+"""\";
 
 		var cook=document.cookie.split(";");
@@ -78,7 +76,7 @@ else:
          });
       </script>
 
-      <script type="text/javascript" src="/main/js/search.js"></script>
+      <script type="text/javascript" src="/js/search.js"></script>
    </head>
    <body class="background">
  
@@ -88,7 +86,7 @@ else:
 </div>
 </div>
    
-   <div class="scroll-top-wrapper alpha-blur"> <span class="scroll-top-inner"> <i class="glyphicon glyphicon-arrow-up"></i> </span> </div>
+   <div class="scroll-top-wrapper "> <span class="scroll-top-inner"> <i class="glyphicon glyphicon-arrow-up"></i> </span> </div>
       <div class="container-fluid full-height">
          <div class="row nav-panel">
             <div id="logo"  class="col-lg-2 col-md-2 hidden-sm hidden-xs" style="">
@@ -97,11 +95,11 @@ else:
             <div class="col-lg-8 col-sm-12 col-xs-12 col-md-8" style="height:62px;">
 <div class="container-fluid" style="padding-left:0px !important;padding-right:0px !important;">
 <div class="row">
-<div class="col-lg-2 col-md-2" style="height:62px;"><a href="/main/"><img id="srmse-logo" style="margin-top:18px;" width="120" height="27"/></a></div>
+<div class="col-lg-2 col-md-2" style="height:62px;"><a href="/"><img id="srmse-logo" style="margin-top:18px;" width="120" height="27"/></a></div>
 <div class="col-lg-10 col-md-10 nav_col" style="height:60px;">
 
                    <div id="search_bar" style="z-index:10;position:absolute;width:80%;height:46px;margin-top:8px;">
-                              <div class="input-group input-group-lg" style="">
+                              <div class="input_div input-group input-group-lg" style="">
                                  
                                       <input data-toggle="tooltip" title="Search" style="font-size:1.5em;display:block;" type="text" class="form-control form-control1 fostyle btn2 simplebox" placeholder="Search here" name="q" id="search" autocomplete="off" autofocus/>
 
@@ -124,8 +122,8 @@ else:
             </div>
          </div>
          <div class="nav_changer row full-height">
-            <div class="hide col-xs-12 col-sm-12 col-md-2 col-lg-2 full-height side">
-               <ul class="affix affix-top nav nav-sidebar" >
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 full-height side">
+               <ul class="nav nav-sidebar" >
                   <li class="active"><a href="#">Clusters<span class="sr-only">(current)</span></a></li>
                </ul>
             </div>
@@ -136,11 +134,11 @@ else:
 </div>
                 </div>
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 padded_body col-lg-pull-3 col-md-pull-3">
-               <div id="centre_parent" class="container full-height full-width">
+               <div id="centre_parent" class="container-fluid full-height full-width">
                  
                   
                   <div class="row">
-                     <div id="smart_answer" class="hide col-lg-12 col-sm-12 col-md-12 col-xs-12 alpha-blur" style="">
+                     <div id="smart_answer" class="module hide col-lg-12 col-sm-12 col-md-12 col-xs-12 " style="">
                      </div>
                   </div>
                   <div class="row">
@@ -148,19 +146,13 @@ else:
 <div class="dym hide" style="padding-bottom:15px;">
 <span class="dym" style="color:#FFFFFF;font-size:18px;">Did You Mean :</span><a href="" id="dym_val" class="dym" style="color:#DDDDDD;font-size:18px;"></a>
 </div>
-                        <div class="list-group hide" id="predefined_questions">
-                           <a data-toggle="collapse" href="#collapsee" aria-expanded="false" aria-controls="collapse" class="list-group-item active">
-                           Would you also like to know?
-                           </a>
-                        </div>
-                        <div class="collapse" id="collapsee">
-                        </div>
+                      
                         <div class="table">
- <div class="alpha-blur" id="wikiMain">
+ <div class="" id="wikiMain">
                            </div>
- <div class="alpha-blur" id="news">
+ <div class="" id="news">
                            </div>
-                           <div class="alpha-blur" id="search_results">
+                           <div class="" id="search_results">
                            </div>
                         </div>
                      </div>

@@ -393,12 +393,14 @@
     "progress-bars.less",
     "list-group.less",
     "component-animations.less",
-    "dropdowns.less"
+    "dropdowns.less",
+    "modals.less"
   ],
   "js": [
     "button.js",
     "dropdown.js",
+    "modal.js",
     "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=a3544f99807dc44d5b66"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=92bb01dfb2ebb1fbdb66"
 }

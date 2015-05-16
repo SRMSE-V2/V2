@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"IAlex"
+		]
+	},
+	"opensearchxml-desc": "Interface XML pour [http://www.opensearch.org OpenSearch] avec des extraits du texte"
+}
