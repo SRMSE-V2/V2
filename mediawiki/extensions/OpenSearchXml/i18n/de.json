@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Kghbln"
-		]
-	},
-	"opensearchxml-desc": "Stellt eine [http://www.opensearch.org OpenSearch]-XML-Schnittstelle für Textauszüge bereit"
-}
