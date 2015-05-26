@@ -24,7 +24,7 @@ $("#loc-ul").on('click',"li",function(){
 var city=$("#search").val().replace(m["city"],$(this).find("a").text());
 	$.ajax({
                     async: true,
-                    url: window.domain+"/cgi-bin/new2/smart/getSmartAns.py",
+                    url: "/cgi-bin/new2/smart/getSmartAns.py",
 		    data:{q:city},
                     dataType: 'text',
                     type: "GET",

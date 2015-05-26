@@ -1,7 +1,7 @@
 $("#prog").remove();
 $(document).ready(function(){
 window.domain="";//global var for patching from local git
-$.ajaxSetup({cache:true,dataType:"jsonp",crossDomain:true});
+$.ajaxSetup({cache:true});
 
 window.leftauto=-1;
 window.firstresize=true;

@@ -8,7 +8,7 @@
  github http://github.com/tilakpatidar      
   */
 $(document).ready(function() {
-window.domain="";//for patching using local git
+
 //load scripts
 $.ajaxSetup({cache:true});
 $.getScript( "/js/jquery-ui.min.js",function(){

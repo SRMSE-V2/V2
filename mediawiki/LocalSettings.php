@@ -58,7 +58,7 @@ $wgDBtype = "mysql";
 $wgDBserver = "localhost";
 $wgDBname = "wiki";
 $wgDBuser = "root";
-$wgDBpassword = "********";
+$wgDBpassword = "#srmseONserver1";
 
 # MySQL specific settings
 $wgDBprefix = "";
@@ -157,5 +157,5 @@ require_once "$IP/extensions/Cite/Cite.php";
 require_once "$IP/extensions/TitleBlacklist/TitleBlacklist.php";
 require_once "$IP/extensions/Scribunto/Scribunto.php";
 $wgScribuntoDefaultEngine = 'luastandalone';
-$wgScribuntoEngineConf['luastandalone']['luaPath'] = '/var/www/html/srm/oh/mediawiki/extensions/Scribunto/engines/LuaStandalone/binaries/lua5_1_5_linux_64_generic/lua';
+$wgScribuntoEngineConf['luastandalone']['luaPath'] = '/var/www/html/srm/SRMSE/mediawiki/extensions/Scribunto/engines/LuaStandalone/binaries/lua5_1_5_linux_64_generic/lua';
 require_once "$IP/extensions/ParserFunctions/ParserFunctions.php";

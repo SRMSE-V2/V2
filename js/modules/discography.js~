@@ -93,7 +93,7 @@ function nextEvent(){
 if(count%27===0){
 $.ajax({
                     async:true,
-                    url: window.domain+"/cgi-bin/new2/smart/getMoreDisco.py",
+                    url: "/cgi-bin/new2/smart/getMoreDisco.py",
 		    data:{query:$("#search").val().trim().toLowerCase(),num:count},
                     dataType: 'text',
                     type: "GET"
