@@ -404,7 +404,7 @@ var dispBtns=function(){$(".arrow_div").css("padding-left","20px");$(".arrow_div
 
 $("#light").on('click',function(){
 
-	document.cookie="color=light;path=/";
+	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
 	window.color="light";
 	$("#dark_theme").remove();
 	$("#light_theme").remove();
@@ -417,7 +417,7 @@ $("#light").on('click',function(){
 });
 
 $("#dark").on('click',function(){
-	document.cookie="color=dark;path=/";
+	document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
 	window.color="dark";
 	$("#light_theme").remove();
 	$("#dark_theme").remove();

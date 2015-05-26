@@ -26,7 +26,7 @@ var u=0;
 var dispBtns=function(){$(".arrow_div").css("padding-left","20px");$(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:18px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;\" src=\"/images/lighttheme.png\"></span><span   class=\"side_btns\" id=\"dark\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/images/darktheme.png\">   </span> <span class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/images/howtouse.png\">      </span> </div>");$(".side_btns").css("cursor","pointer");
    $("#light").on('click',function(){
 	window.color="light";
-document.cookie="color=light;path=/";
+document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
 	$("#dark_theme").remove();
 $("#light_theme").remove();
 window.switchImg();
@@ -35,7 +35,7 @@ window.switchImg();
 
 $("#dark").on('click',function(){
 	window.color="dark";
-document.cookie="color=dark;path=/";
+document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
 	$("#light_theme").remove();
 	$("#dark_theme").remove();
 	window.switchImg();
@@ -137,7 +137,7 @@ $(".side").addClass("hide");
 
 $("#centre_parent").css("margin-top","20px");
 console.log("resize");
-            var newnav = $("<div class=\"alpha-blur newside\" style=\"width:"+$(".nav_changer").width()+"px;\"></div");
+            var newnav = $("<div class=\"newside\" style=\"width:"+$(".nav_changer").width()+"px;\"></div");
             var lbtn = $("<button style=\"\" class=\"cluster_lbtn btn glyphicon glyphicon-chevron-left\"></button>");
             var rcol = $("<div style=\"float:left;height:100%;width:40px;\" class=\"\"></div>");
             var lcol = $("<div style=\"float:left;height:100%;width:40px;\" class=\"\"></div>");
@@ -308,7 +308,6 @@ function renderResult(arr,fat,wiki,isappend){
                     $.each(arr, function(index, element) {
                         var prnt = $("<div></div>");
                         prnt.addClass("search_result effect");
-                        prnt.addClass("alpha-blur");
                         
                         var title = $("<div style=\"display:block;\"></div>");
                         titlea = $("<a></a>");
@@ -364,6 +363,7 @@ $(img).css("margin-right","10px");
                     else{
                     fat.html(main);
                     }
+                     
                     $(".search_result").on("click",function(){
                     window.location=$(this).find(".search_title").attr("href");
                     
@@ -420,52 +420,7 @@ $(img).css("margin-right","10px");
 
 
 }
-    function getResultswiki(i, j, bool) {
-    console.log(i);
-    var r=IDSwiki.slice(i,j);
-    console.log(r);
-if(r.length!==0){
-console.log("yes");
-        
-        
-            $.ajax({
-                url: "/cgi-bin/queryret/getMore.py",
-                dataType: 'text',
-                type: "GET",
-                async: bool,
-                data: {
-                    q: "" + r.toString(),
-		    f:"2"
-                },
-                error: function() {
 
-                    load.remove();
-                    var prnt = $("<div><span></span></div>");
-                    prnt.width($("#search_results").width());
-                    prnt.addClass("h6 text-center no-results");
-                    prnt.text("No more results available");
-                    load.remove();
-                    $("#search_results").append(prnt);
-                    window.wiki = false;
-
-
-                }
-
-            }).done(function(text) {
-                var arr = JSON.parse(text);
-               renderResult(arr["results"],$("#wikiMain"),"",true);
-	
-
-            });
-
-        
-}
-else{
-window.wiki=false;
-                    $(".wiki_more_btn").remove();
-    
-    }
-    }
     function getResultsResults(i, j, bool) {
 if(i<IDS.length){
         if (IDS && window.results) {
@@ -552,7 +507,10 @@ function getIdsWiki(bool){
             try{
                 var js = JSON.parse(text);
                 IDSwiki=js["ids"];
+                
+                window.wikiTitle=js["results"][0]["title"];
 		renderResult(js["results"],$("#wikiMain"),"",true);
+		$.getScript("/js/modules/wiki.js");
 		window.wiki=true;
 		}
 		catch(err){
@@ -654,10 +612,21 @@ function getIdsNews(bool){
                                $.getScript("/js/modules/differences.js");	
 			break;
 			case "wiki":
-                               $.getScript("/js/modules/wiki.js");
+			function dispInfoBox(){$("#smart_col").html("").append(window.InfoBox);
+				$("#wiki>a").on("click",function(e){e.stopPropagation();});
+				$("#smart_answer").addClass("hide");
+				$("#smart_col").removeClass("hide");
+				}
+			function recur(){
+			setTimeout(function(){
+					if(window.InfoBox){dispInfoBox();}else{recur();}
+				},2000);
+				}
+				recur();
 			 break;
 			case "dict":
                             $.getScript("/js/modules/meaning.js");
+                            recur();
 			 break;
 			case "theatre":
                                $.getScript("/js/modules/theater.js");
@@ -761,9 +730,10 @@ if(element){
 			a.attr("data-toggle","tooltip");
 			a.attr("data-placement","right");
 			a.attr("title",element.capitalizeMe());
-                        a.on("click",function(){clickOnCluster(this)});
+                        a.on("click",function(){$(".active").toggleClass("active not_active");$(this).parent().toggleClass("not_active active");clickOnCluster(this)});
                         a.text(element.capitalizeMe());
                         li.append(a);
+                        li.addClass("not_active");
                         li.css("opacity","0");
                         main = main.add(li);
 $(".side").removeClass("hide");
@@ -829,7 +799,6 @@ function clickOnCluster(that){
                     prnt.text("No more results available");
                     load.remove();
                     $("#search_results").append(prnt);
-                    window.wiki = false;
 
 
                 }}).done(function(textt) {

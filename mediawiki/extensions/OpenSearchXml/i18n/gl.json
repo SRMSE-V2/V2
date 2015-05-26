@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"opensearchxml-desc": "A interface que [http://www.opensearch.org OpenSearch] XML proporciona para extractar textos"
+}

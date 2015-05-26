@@ -65,10 +65,10 @@ else:
 		if(!window.color){
 		if(Math.random()*10>5){
 		window.color="black";
-	document.cookie="color=black;path=/";
+	document.cookie="color=black;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
 	}else{
 	window.color="white";
-	document.cookie="color=white;path=/";
+	document.cookie="color=white;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
 	
 	}
 		}
@@ -124,7 +124,7 @@ else:
          <div class="nav_changer row full-height">
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 full-height side">
                <ul class="nav nav-sidebar" >
-                  <li class="active"><a href="#">Clusters<span class="sr-only">(current)</span></a></li>
+                  <!--li class="active"><a href="#">Clusters<span class="sr-only">(current)</span></a></li-->
                </ul>
             </div>
 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-push-7 col-md-push-7">

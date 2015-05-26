@@ -288,7 +288,7 @@ margin-bottom:25px;
 }
 .side{
 padding-right:0px !important;
-padding-top:20px !important;
+padding-top:0px !important;
 padding-left:0px !important;
 
 }
@@ -310,27 +310,24 @@ padding-left:0px !important;
 }
 /* Sidebar navigation */
 .nav-sidebar {
-
-margin-left: 15px;
+padding-top:15px;
+margin-left: 0px;
 margin-top:82px;
 }
-.nav-sidebar > li {
- width:88%;
-}
+
 .nav-sidebar > li > a{
-color:#dfdddd;
-border-top: 2px solid #373737;
+color:#dfdddd !important;
 
 
 }
 
-.nav-sidebar > li > a:hover{
+.not_active>a:hover{
 border-top: 2px solid #373737;
 background-color:#373737 !important;
 cursor:pointer;
 
 }
-.nav-sidebar > li > a:focus {
+.not_active>a:focus {
 border-top: 2px solid #373737;
 background-color:#373737 !important;
 cursor:pointer;
@@ -339,9 +336,14 @@ cursor:pointer;
 
 .active{
     background-color: #00b4ff;
+    
    
 }
-
+.active>a{
+    background-color: #00b4ff !important;
+    
+   
+}
 #centre_parent{
 
 margin-top:82px;
@@ -411,7 +413,10 @@ border-color:none;
 color:#00b4ff !important;
 font-size:32px;
 }
+#wiki>*{
+color:#DFDDDD!important;
 
+}
 #news,#wikiMain{
 margin-bottom:15px;
 
@@ -422,7 +427,9 @@ cursor:pointer;
 background-color:#383838!important;
 
 }
-.search_title{color:#DFDDDD!important;;font-weight:500;font-size: 20px;word-wrap:break-word;}
+a{color:#DFDDDD!important;font-weight:500word-wrap:break-word;}
+a:hover{text-decoration: underline;word-wrap:break-word;}
+.search_title{color:#DFDDDD!important;font-weight:500;font-size: 20px;word-wrap:break-word;}
 .search_title:hover{text-decoration: underline;word-wrap:break-word;}
 .search_green{color:#bcbbbb!important;;font-size:14px;word-wrap:break-word;}
 .search_info{color:#bcbbbb!important;;font-size:14px;margin-bottom:5px !important;word-break:normal;word-wrap:break-word;padding-top:5px !important;}
@@ -456,7 +463,7 @@ height:62px;
 
 }
 .padded_body{
-    padding-top: 20px !important; 
+    padding-top: 0px !important; 
 padding-right:15px !important;   
 }
 
@@ -536,4 +543,14 @@ font-size:0.9em;
 .effect{
 opacity:0;
 
+}
+.infobox{
+margin-left:auto;
+margin-right:auto;
+ table-layout:fixed;
+    width:100%;
+}
+td{
+overflow: hidden;
+word-wrap:break-word;
 }
