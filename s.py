@@ -1,12 +1,11 @@
 #!/usr/bin/python
-import cgi,cgitb,MySQLdb,json
+import cgi,json,urllib2 as u
 print "Content-type:text/html\r\n\r\n"
-cgitb.enable()  # for troubleshooting
+#cgitb.enable()  # for troubleshooting
 form = cgi.FieldStorage() 
-keyword=form.getvalue('q',"").strip()
-keyword=keyword.replace("\\","")
+keyword=form.getvalue('q',"#123none123#").strip()
 #keyword is #123none123# when input from form is None is
-if keyword=="":
+if keyword=="#123none123#" or keyword=="":
 	print """<!DOCTYPE html>
 <!--
    To change this license header, choose License Headers in Project Properties.
@@ -46,9 +45,9 @@ else:
       <script src="/bootstrap/js/bootstrap.min.js"></script>
       <script>
          $(document).ready(function(){
-         	$("#search").val(\""""+keyword+"""\");
-         	$("#search").attr("value",\""""+keyword+"""\");
-		window.query=\""""+keyword+"""\";
+         	$("#search").val(\""""+u.unquote(keyword)+"""\");
+         	$("#search").attr("value",\""""+u.unquote(keyword)+"""\");
+		window.query=\""""+u.unquote(keyword)+"""\";
 
 		var cook=document.cookie.split(";");
 		var co={};

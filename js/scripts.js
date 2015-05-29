@@ -1,12 +1,13 @@
 $("#prog").remove();
 $(document).ready(function(){
-window.domain="";//global var for patching from local git
 $.ajaxSetup({cache:true,dataType:"jsonp",crossDomain:true});
 
 window.leftauto=-1;
 window.firstresize=true;
 window.strlen=0;
-
+function searchQuery(q){
+ window.location="/cgi-bin/s.py?q="+encodeURIComponent(q);
+}
 //setting up backinput for shadow suggestion
 $(".backinput").remove();
 var inp=$("#search").clone();
@@ -84,7 +85,7 @@ $("#srmse-logo").on("click",function(){
 (function($){var proto = $.ui.autocomplete.prototype,	initSource = proto._initSource;function filter( array, term ) {	var matcher = new RegExp( $.ui.autocomplete.escapeRegex(term), "i" );	return $.grep( array, function(value) {		return matcher.test( $( "<div>" ).html( value.label || value.value || value ).text() );	});}$.extend( proto, {	_initSource: function() {		if ( this.options.html && $.isArray(this.options.source) ) {			this.source = function( request, response ) {				response( filter( this.options.source, request.term ) );			};		} else {			initSource.call( this );		}	},	_renderItem: function( ul, item) {		return $( "<li></li>" )			.data( "item.autocomplete", item )			.append( $( "<a></a>" )[ this.options.html ? "html" : "text" ]( item.label ) )			.appendTo( ul );	}});})( jQuery );
     
     $("#search").autocomplete({
-            source: window.domain+"/cgi-bin/getWords.py",
+            source: "/cgi-bin/getWords.py",
             minLength: 1,
             autoFocus: false,
             appendTo:".search_div",//setting up the container for the rendered list from autocomplete
@@ -192,9 +193,8 @@ leftauto=-1;
                e.preventDefault();
               
                     var query=$("#search").val().trim();
-                    //#DEBUGconsole.log("Query submitted");
-                    //#DEBUGconsole.log(query);
-                    window.location=window.domain+"/cgi-bin/s.py?q="+query;
+                   searchQuery(query);
+                   
                 
         }
         ,delay:300
@@ -213,9 +213,7 @@ function commonTest(event){
 function submit(event){
     if((event.keyCode===13) && ($("#search").val()!=="")){
             var query=$("#search").val().trim();
-            console.log("Query submitted");
-            console.log(query);
-            window.location=window.domain+"/cgi-bin/s.py?q="+query;
+             searchQuery(query);
     
     }
 
@@ -248,9 +246,7 @@ $("#search").on("keydown",function(event){
     $("#search_btn").on("click",function(){
         if($("#search").val().trim()!==""){
             var query=$("#search").val().trim();
-            console.log("Query submitted");
-            console.log(query);
-            window.location=window.domain+"/cgi-bin/s.py?q="+query;
+             searchQuery(query);
         }
     });
     
@@ -348,7 +344,7 @@ console.log(fk);
 
                 $.ajax({
                     async: true,
-                    url: window.domain+"/cgi-bin/feedback.py",
+                    url: "/cgi-bin/feedback.py",
 	            data:{feedback:JSON.stringify(fk)},
                     dataType: 'text',
                     type: "GET",

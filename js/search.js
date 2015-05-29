@@ -8,7 +8,6 @@
  github http://github.com/tilakpatidar      
   */
 $(document).ready(function() {
-window.domain="";//for patching using local git
 //load scripts
 $.ajaxSetup({cache:true});
 $.getScript( "/js/jquery-ui.min.js",function(){
@@ -270,7 +269,7 @@ $("#smart_answer").css("margin-top","22px");
 
                 $.ajax({
                     async: bool,
-                    url: window.domain+"/cgi-bin/queryret/getIds.py",
+                    url: "/cgi-bin/queryret/getIds.py",
 	            data:{q:$("#search").val().trim().toLowerCase(),f:1},
                     dataType: 'text',
                     type: "GET",
@@ -295,6 +294,7 @@ function renderResult(arr,fat,wiki,isappend){
  if (arr[0]) {
 
  			if(wiki===""){
+ 			window.InfoBox=arr[0]["infobox"];
  				window.wiki=true;
  				
  			}
@@ -305,6 +305,7 @@ function renderResult(arr,fat,wiki,isappend){
  			}
                     
                     var main = $();
+                    
                     $.each(arr, function(index, element) {
                         var prnt = $("<div></div>");
                         prnt.addClass("search_result effect");
@@ -323,7 +324,6 @@ function renderResult(arr,fat,wiki,isappend){
 				titlea.text(ti.capitalizeMe()+" - Wikipedia, the free encyclopedia");
 				titlea.attr("href", "http://en.wikipedia.org/wiki/"+element["title"]);
 				element['url']="http://en.wikipedia.org/wiki/"+element["title"];
-				element['body']="";//element['body'].filter();
 			}
 			else{
 				titlea.text(ti.capitalizeMe());
@@ -334,22 +334,21 @@ function renderResult(arr,fat,wiki,isappend){
                         
                         title.append(titlea);
                         var imgspan = $("<div></div>");
-imgspan.addClass("search_green");
+			imgspan.addClass("search_green");
                         imgspan.append(element["url"]);
-var img=new Image();
-var u="http://www.google.com/s2/favicons?domain=" + element['url'];
-img.onload=function(){imgspan.prepend(img);prnt.find("p").after(imgspan);};
-img.src=u;
-img.width=15;
-img.height=15;
-$(img).css("margin-right","10px");
+			var img=new Image();
+			var u="http://www.google.com/s2/favicons?domain=" + element['url'];
+		
+			img.onload=function(){imgspan.prepend(img);prnt.find(".search_info").after(imgspan);};
+			img.src=u;
+			img.width=15;
+			img.height=15;
+			$(img).css("margin-right","10px");
                        
                         var p = $("<p></p>");
                         p.addClass("search_info");
-                        p.text(element["body"]);
+                        if(wiki===""){p.html(element["body"]);}else{p.text(element["body"]);}
                         prnt.append(title);
-                        prnt.append(imgspan);
-                        
                         prnt.append(p);
                         main = main.add(prnt);
 
@@ -425,7 +424,7 @@ $(img).css("margin-right","10px");
 if(i<IDS.length){
         if (IDS && window.results) {
             $.ajax({
-                url: window.domain+"/cgi-bin/queryret/getMore.py",
+                url: "/cgi-bin/queryret/getMore.py",
                 dataType: 'text',
                 type: "GET",
                 async: bool,
@@ -494,7 +493,7 @@ $(".no-results").remove();
 function getIdsWiki(bool){
  $.ajax({
                 async: bool,
-                url: window.domain+"/cgi-bin/queryret/getIds.py",
+                url: "/cgi-bin/queryret/getIds.py",
                 dataType: 'text',
                 type: "GET",
                 data: {
@@ -510,7 +509,7 @@ function getIdsWiki(bool){
                 
                 window.wikiTitle=js["results"][0]["title"];
 		renderResult(js["results"],$("#wikiMain"),"",true);
-		$.getScript("/js/modules/wiki.js");
+		
 		window.wiki=true;
 		}
 		catch(err){
@@ -525,7 +524,7 @@ function getIdsWiki(bool){
 function getIdsNews(bool){
  $.ajax({
                 async: bool,
-                url: window.domain+"/cgi-bin/queryret/getIds.py",
+                url: "/cgi-bin/queryret/getIds.py",
                 dataType: 'text',
                 type: "GET",
                 data: {
@@ -556,7 +555,7 @@ function getIdsNews(bool){
             //console.log("getSmartAns q:" + $("#search").val().trim().toLowerCase());
             $.ajax({
                 async: true,
-                url: window.domain+"/cgi-bin/new2/smart/getSmartAns.py",
+                url: "/cgi-bin/new2/smart/getSmartAns.py",
                 dataType: 'text',
                 type: "GET",
                 data: {
@@ -612,7 +611,18 @@ function getIdsNews(bool){
                                $.getScript("/js/modules/differences.js");	
 			break;
 			case "wiki":
-			function dispInfoBox(){$("#smart_col").html("").append(window.InfoBox);
+			function dispInfoBox(){
+			var table=$(window.InfoBox.replace(/<img (.*?)\/>/g,""));
+			$.each(table.find("a"),function(){
+                	if($(this).attr("href")&&$(this).attr("href").indexOf("File")>=0){
+                	$(this).text("");
+                	var img=$("<img>");
+                	var fn=$(this).attr("href").split("/");
+                	img.attr("src","http://en.wikipedia.org/wiki/en:Special:Filepath/"+fn[fn.length-1].replace("File:","")+"?width=140");
+                	$(this).append(img);
+                	}
+                });
+                $("#smart_col").html("").append(table.addClass("module").attr("id","wiki"));
 				$("#wiki>a").on("click",function(e){e.stopPropagation();});
 				$("#smart_answer").addClass("hide");
 				$("#smart_col").removeClass("hide");
@@ -694,7 +704,7 @@ catch(err){
             //console.log("getClusters q;:" + $("#search").val().trim().toLowerCase());
             $.ajax({
                 async: true,
-                url: window.domain+"/cgi-bin/cluster/getClusters.py",
+                url: "/cgi-bin/cluster/getClusters.py",
                 dataType: 'text',
                 type: "GET",
                 data: {
@@ -784,7 +794,7 @@ function clickOnCluster(that){
                         window.j=10;
                          $.ajax({
 				async: true,
-				url: window.domain+"/cgi-bin/queryret/getMore.py",
+				url: "/cgi-bin/queryret/getMore.py",
 				dataType: 'text',
 				type: "GET",
 				data: {
