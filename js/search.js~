@@ -59,6 +59,9 @@
             "110": "Technology",
             "111": "Religion"
         };
+        var modal=$('<div class="modal fade" id="modalSwitchTheme" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">  <div class="modal-dialog">    <div class="modal-content">      <div class="modal-header">        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        <h4 class="modal-title" id="myModalLabel">Modal title</h4>      </div>      <div class="modal-body">        ...      </div>      <div class="modal-footer">        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>        <button type="button" class="btn btn-primary">Save changes</button>      </div>    </div>  </div></div>');
+        $('body').append(modal);
+        
         function searchQuery(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
@@ -121,7 +124,12 @@
                 $("#dark_theme").remove();
                 $("#light_theme").remove();
                 window.switchImg();
-                $("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.css' />");
+                var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.css' />");
+                $("head").append(stylesheet);
+                showModal();
+                stylesheet.load(function(){
+                	$('.modal').modal('hide');
+                });
             });
             $("#dark").on('click', function() {
                 window.color = "dark";
@@ -129,11 +137,17 @@
                 $("#light_theme").remove();
                 $("#dark_theme").remove();
                 window.switchImg();
-                $("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.css' />");
+                var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.css' />");
+                $("head").append(stylesheet);
+                $('#modalSwitchTheme').modal('show');
+                stylesheet.load(function(){
+                	$('.modal').modal('hide');
+                });
+                
             });
         };
+var u = 0; //toggle var
         function arrowClick() {
-            var u = 0; //toggle var
             if (u === 0) {
                 $(".arrow_div").remove();
                 $("#arrow_parent").append("<div class=\"arrow_div\"></div>");
@@ -482,7 +496,7 @@
             }).done(function(text) {
                 try {
                     var js = JSON.parse(text);
-                    renderResult(js["results"], $("#wikiMain"), "", true);
+                    renderResult(js["results"], $("#wikiMain"),true, true);
                 } catch (err) {}
             });
         }
