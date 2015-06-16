@@ -12,7 +12,19 @@
         var ORIGINAL_QUERY="";
         var SPACE=false;
         var DEFAULT_LEFT=0;
+        var MODAL_BACK="";
 	//globals end
+	function showModal(){
+        $("#modalSwitchTheme").remove();
+        if(window.color==="dark"){
+        	MODAL_BACK="rgba(241, 241, 241, 0.74)";
+        }
+        else if(window.color==="light"){
+        	MODAL_BACK="rgba(51, 51, 51, 0.74)";
+        }
+        var modal=$('<div id="modalSwitchTheme"  style="width:'+$(document).width()+'px;height:'+$(document).height()+'px;position:absolute;left:0px;top:0px;z-index:1000;background-color:'+MODAL_BACK+';"></div>');
+        modal.hide().appendTo('body').fadeIn(1000);	
+        }
         function searchQuery(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
@@ -354,10 +366,7 @@
                 }
             }
         });
-        if (window.location.toString().indexOf("s.py") < 0) {
-            //feedback form
-            
-
+       
             $("#email").on("focusout", function() {
 
                 if (!validateEmail($(this).val())) {
@@ -465,20 +474,31 @@
                     $("#dark_theme").remove();
                     $("#light_theme").remove();
                     window.switchImg();
-
-                    $("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.css' />");
-                    $("head").on("load", function() {
-                        $("#myModal").addClass("hide");
-                    });
+                     var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.css' />");
+                    $("head").append(stylesheet);
+                    showModal();
+                    stylesheet.load(function(){
+                	$("#dark_theme").remove();
+                	$('#modalSwitchTheme').fadeOut(1000,function(){
+                		$(this).remove();
+                	});
+                });
                 });
 
                 $("#dark").on('click', function() {
+                $("#dark_theme").remove();
                     document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                     window.color = "dark";
-                    $("#light_theme").remove();
-                    $("#dark_theme").remove();
                     window.switchImg();
-                    $("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='css/dark/styles.css' />");
+                    var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/styles.css' />");
+                $("head").append(stylesheet);
+                showModal();
+                stylesheet.load(function(){
+                	$("#light_theme").remove();
+                	$('#modalSwitchTheme').fadeOut(1000,function(){
+                		$(this).remove();
+                	});
+                });
                 });
                 var clicked = false;
                 $('#help').on("click", function() {
@@ -536,7 +556,7 @@
 
             });
 
-        }
+        
         $.getScript("bootstrap.fp/js/bootstrap.min.js");
     });
 

@@ -69,7 +69,7 @@
         else if(window.color==="light"){
         	MODAL_BACK="rgba(51, 51, 51, 0.74)";
         }
-        var modal=$('<div id="modalSwitchTheme"  style="width:100%;height:100%;position:absolute;left:0px;top:0px;z-index:1000;background-color:'+MODAL_BACK+';"></div>');
+        var modal=$('<div id="modalSwitchTheme"  style="width:'+$(document).width()+'px;height:'+$(document).height()+'px;position:absolute;left:0px;top:0px;z-index:1000;background-color:'+MODAL_BACK+';"></div>');
         modal.hide().appendTo('body').fadeIn(1000);	
         }
         function searchQuery(q) {
@@ -129,6 +129,7 @@
             $(".arrow_div").append(ARROW_DIV_BTNS);
             $(".side_btns").css("cursor", "pointer");
             $("#light").on('click', function() {
+            	$("#light_theme").remove();
                 window.color = "light";
                 document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                 window.switchImg();
@@ -143,6 +144,7 @@
                 });
             });
             $("#dark").on('click', function() {
+            	$("#dark_theme").remove();
                 window.color = "dark";
                 document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                 window.switchImg();
