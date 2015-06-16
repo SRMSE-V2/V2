@@ -1,5 +1,5 @@
 (function() {
-    var CYCLE = 1;
+    var CYCLE = 0;
     var CS = "";
     var BOWL = "";
     var BAT = "";
@@ -32,7 +32,7 @@
     function changeDiv(typ) {
 
         CRICKET_STATS.find(".cricket_cont").empty();
-        CRICKET_STATS.find(".cricket_cont").append(eval(typ));
+        CRICKET_STATS.find(".cricket_cont").append(typ);
     }
 
 
@@ -41,8 +41,8 @@
         CRICKET_STATS.find(".cricket_players_details").hide();
         CRICKET_STATS.find(".cricket_players_details").append("<ul class=\"nav nav-tabs\"><li role=\"presentation\" class=\"active\"><a class=\"cricket_stats\" href=\"#\">Career Statistics</a></li><li role=\"presentation\"><a href=\"#\" class=\"cricket_bowl\">Bowling</a></li><li role=\"presentation\"><a class=\"cricket_bat\" href=\"#\">Batting</a></li></ul><div class=\"row cricket_cont\"></div>");
         CRICKET_STATS.find(".cricket_bowl").on("click",function(){changeDiv(BOWL);return false;});
-        CRICKET_STATS.find(".cricket_stats").on("click",function(){changeDiv(BOWL);return false;});
-        CRICKET_STATS.find(".cricket_bat").on("click",function(){changeDiv(CS);return false;});
+        CRICKET_STATS.find(".cricket_stats").on("click",function(){changeDiv(CS);return false;});
+        CRICKET_STATS.find(".cricket_bat").on("click",function(){changeDiv(BAT);return false;});
 
 
         CRICKET_STATS.find(".cricket_players_button").on("click", function() {
@@ -50,9 +50,11 @@
             CRICKET_STATS.find(".cricket_players_details").slideToggle(function() {
                 if (CYCLE === 0) {
                     CRICKET_STATS.find(".cricket_players_button").attr("title", "Click to see less statistics");
+                    CRICKET_STATS.find(".cricket_players_button").text("Click to see less statistics");
                     ++CYCLE;
                 } else {
                     CRICKET_STATS.find(".cricket_players_button").attr("title", "Click to see more statistics");
+                    CRICKET_STATS.find(".cricket_players_button").text("Click to see more statistics");
                     CRICKET_STATS.find(".cricket_cont").empty();
 		    CRICKET_STATS.find(".cricket_cont").append(CS);
                     CYCLE = 0;
