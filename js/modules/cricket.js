@@ -39,12 +39,9 @@
     if ($("#cricket_players").length === 0) {
     $("#smart_answer").addClass("hide");
         CRICKET_STATS.find(".cricket_players_details").hide();
-        CRICKET_STATS.find(".cricket_players_details").append("<ul class=\"nav nav-tabs\"><li role=\"presentaenttion\" class=\"active\"><a href=\"#\" onclick=\"changeDiv('cs');return false;\">Career Statistics</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('bowl');return false;\">Bowling</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('bat');return false;\">Batting</a></li></ul>");
-        CRICKET_STATS.find(".cricket_players_details").append("<div class=\"row\" class=\"cricket_cont\"></div>");
-        $("#bowling").click(function() {
-            CRICKET_STATS.find(".cricket_cont").empty();
-            CRICKET_STATS.find(".cricket_cont").append(BOWL);
-        });
+        CRICKET_STATS.find(".cricket_players_details").append("<ul class=\"nav nav-tabs\"><li role=\"presentaenttion\" class=\"active\"><a href=\"#\" onclick=\"changeDiv('CS');return false;\">Career Statistics</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('BOWL');return false;\">Bowling</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('BAT');return false;\">Batting</a></li></ul>");
+        CRICKET_STATS.find(".cricket_players_details").append("<div class=\"row cricket_cont\"></div>");
+       
 
 
         CRICKET_STATS.find(".cricket_players_button").on("click", function() {
@@ -55,7 +52,8 @@
                     ++CYCLE;
                 } else {
                     CRICKET_STATS.find(".cricket_players_button").attr("title", "Click to see more statistics");
-
+                    CRICKET_STATS.find(".cricket_cont").empty();
+		    CRICKET_STATS.find(".cricket_cont").append(CS);
                     CYCLE = 0;
                 }
             });
@@ -129,8 +127,7 @@
         });
 	$("#centre_parent").prepend(CRICKET_STATS);
         $("#smart_col").removeClass("hide");
-        CRICKET_STATS.find(".cricket_cont").append(CS);
-        CRICKET_STATS.find(".cricket_players_details").show();
+        
 
 
     }
