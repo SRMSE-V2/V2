@@ -16,20 +16,7 @@
         function searchQuery(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
-        window.switchImg = function() {
-            //To switch images path when switching themes shared by both the pages
-            var imgs = $(".switch");
-            $.each(imgs, function() {
-                if (window.color === "dark") {
-                    $(this).attr("src", $(this).attr("src").replace("/light/", "/dark/"));
-                }
-                if (window.color === "light") {
-                    $(this).attr("src", $(this).attr("src").replace("/dark/", "/light/"));
-                }
-
-            });
-
-        };
+        
         //setting up backinput for shadow suggestion
         $(".backinput").remove();
         var BACKINPUT = $("#search").clone();
