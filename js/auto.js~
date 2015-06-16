@@ -1,5 +1,5 @@
 (function() {
-    $("#prog").remove(); //remove loading when script loaded
+   
     $(document).ready(function() {
         $.ajaxSetup({
             cache: true
@@ -43,39 +43,12 @@
         BACKINPUT.addClass("backinput");
         BACKINPUT.attr("disabled", "");
         
-        function validateEmail(sEmail) {
-                var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-                if (filter.test(sEmail)) {
-
-                    return true;
-                } else {
-
-                    return false;
-                }
-            }
-        function alertBox(color, text) {
-                var alert = $("<div class=\"alert\" style=\"border-radius:4px;background-color:" + color + ";opacity:0;position:absolute;padding-top:15px;z-index:1100;height:50px;text-align:center;width:40%;left:30%;top:70%;\">" + text + "</div>");
-
-                $("body").append(alert);
-                $(".alert").animate({
-                    opacity: 1.0
-                }, 2000, function() {
-
-                    setTimeout(function() {
-                        $(".alert").animate({
-                            opacity: 0
-                        }, 1000, function() {
-                            $(".alert").remove();
-                        });
-
-                    }, 2000);
-
-
-                });
-
-
-            }
-     
+       
+            //code for search page
+            BACKINPUT.css("margin-top", "8px");
+            BACKINPUT.css("width", "80%");
+            BACKINPUT.attr("id", "input_back");
+      
         $("#div_for_back").append(BACKINPUT);
         
 
@@ -354,7 +327,10 @@
                 }
             }
         });
-       
+        if (window.location.toString().indexOf("s.py") < 0) {
+            //feedback form
+            
+
             $("#email").on("focusout", function() {
 
                 if (!validateEmail($(this).val())) {
@@ -533,7 +509,7 @@
 
             });
 
-        
+        }
         $.getScript("bootstrap.fp/js/bootstrap.min.js");
     });
 

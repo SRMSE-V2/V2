@@ -354,7 +354,10 @@
                 }
             }
         });
-       
+        if (window.location.toString().indexOf("s.py") < 0) {
+            //feedback form
+            
+
             $("#email").on("focusout", function() {
 
                 if (!validateEmail($(this).val())) {
@@ -533,7 +536,7 @@
 
             });
 
-        
+        }
         $.getScript("bootstrap.fp/js/bootstrap.min.js");
     });
 

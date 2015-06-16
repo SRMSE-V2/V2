@@ -1,5 +1,5 @@
 (function() {
-    $("#prog").remove(); //remove loading when script loaded
+   
     $(document).ready(function() {
         $.ajaxSetup({
             cache: true
@@ -43,39 +43,12 @@
         BACKINPUT.addClass("backinput");
         BACKINPUT.attr("disabled", "");
         
-        function validateEmail(sEmail) {
-                var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-                if (filter.test(sEmail)) {
-
-                    return true;
-                } else {
-
-                    return false;
-                }
-            }
-        function alertBox(color, text) {
-                var alert = $("<div class=\"alert\" style=\"border-radius:4px;background-color:" + color + ";opacity:0;position:absolute;padding-top:15px;z-index:1100;height:50px;text-align:center;width:40%;left:30%;top:70%;\">" + text + "</div>");
-
-                $("body").append(alert);
-                $(".alert").animate({
-                    opacity: 1.0
-                }, 2000, function() {
-
-                    setTimeout(function() {
-                        $(".alert").animate({
-                            opacity: 0
-                        }, 1000, function() {
-                            $(".alert").remove();
-                        });
-
-                    }, 2000);
-
-
-                });
-
-
-            }
-     
+       
+            //code for search page
+            BACKINPUT.css("margin-top", "8px");
+            BACKINPUT.css("width", "80%");
+            BACKINPUT.attr("id", "input_back");
+      
         $("#div_for_back").append(BACKINPUT);
         
 
@@ -354,187 +327,7 @@
                 }
             }
         });
-       
-            $("#email").on("focusout", function() {
-
-                if (!validateEmail($(this).val())) {
-                    alertBox("#fcf8e3", "<strong>Warning !</strong> Better check yourself, you're email address not looking too good.  !!!");
-                    $(this).val("");
-                }
-
-            });
-
-            
-            $("#save_btn").on("click", function() {
-                var fk = {};
-                var queries = [];
-                var i = 0;
-                $.each($(".query"), function() {
-                    i += 1;
-                    var temp = {};
-                    temp["query"] = $(this).val();
-                    temp["status"] = $("input[name=optionsRadios" + i + "]:checked").val();
-                    queries.push(temp);
-
-                });
-                fk["email"] = $("#email").val();
-                fk["name"] = $("#name").val();
-                fk["queries"] = queries;
-                fk["feedback"] = $("#feedback_comments").val();
-                console.log(fk);
-
-
-                $.ajax({
-                    async: true,
-                    url: "/cgi-bin/feedback.py",
-                    data: {
-                        feedback: JSON.stringify(fk)
-                    },
-                    dataType: 'text',
-                    type: "GET",
-                    error: function() {
-                        //some error
-                    }
-
-                }).done(function(text) {
-                    text = text.trim();
-                    if (text === "SUCCESS") {
-                        alertBox("#dff0d8", "<strong>Thank You !</strong> Your response has been saved !!!");
-
-                    } else if (text === "DUPLICATE") {
-                        alertBox("#f1dddd", "<strong>Duplicate!</strong> email address  !!!");
-                    } else if (text === "WRONG") {
-                        alertBox("#f1dddd", "<strong>Oops</strong> Something Went Wrong !!!");
-                    }
-
-
-                });
-            });
-            $("#more_btn").on("click", function() {
-                var num = parseInt($(".y_n").attr("name").replace("optionsRadios", "").trim()) + 1;
-                $(".y_n").removeClass("y_n");
-                var new_row = $("<tr> <td style=\"padding-top:8px;width:70%;\"> <input type=\"text\" class=\"form-control query\" placeholder=\"Query\"> </td> <td style=\"padding:8px 0px 0px 10px;width:30%;\"> <div class=\"form-inline\"> <div class=\"radio\"> <label><input class=\"y_n\" type=\"radio\" name=\"optionsRadios" + num + "\" id=\"Yes\" value=\"Yes\" >Yes &nbsp &nbsp </label> </div> <div class=\"radio\"> <label><input class=\"y_n\" type=\"radio\" name=\"optionsRadios" + num + "\" id=\"No\" value=\"No\">No</label> </div> </div> </td> </tr>");
-                $(".td_row").last().after(new_row);
-
-            });
-            $("input").removeClass("hide");
-            $(".input-group").removeClass("hide");
-            var img2 = $("#srmse-logo");
-            img2.addClass("switch");
-            if (window.color === "dark") {
-                img2.attr("src", "images/dark/srmselogo.png");
-            } else {
-                img2.attr("src", "images/light/srmselogo.png");
-            }
-
-            img2.attr("alt", "SRM Search Engine");
-            var img1 = $("#nixi-logo");
-            if (window.color === "dark") {
-                img1.attr("src", "images/dark/nixi.png");
-            } else {
-                img1.attr("src", "images/light/nixi.png");
-            }
-            img1.addClass("switch");
-            img1.attr("alt", "Nixi");
-            img1.attr("width", "103px");
-            img1.attr("height", "36px");
-            var img = $("#srm-logo");
-            if (window.color === "dark") {
-                img.attr("src", "images/dark/srm.png");
-            } else {
-                img.attr("src", "images/light/srm.png");
-            }
-            img.addClass("switch");
-            img.attr("alt", "SRM University");
-            img.attr("width", "93px");
-            img.attr("height", "36px");
-            var u = 0;
-            var wait = 0;
-            var dispBtns = function() {
-                $(".arrow_div").css("padding-left", "20px");
-                $(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:24px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"width:31px;height:27px;top:0;bottom:0;margin:auto;\" src=\"images/lighttheme.png\"></span><span id=\"dark\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/darktheme.png\">   </span> <span id=\"help\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/howtouse.png\">      </span> </div>");
-                $(".side_btns").css("cursor", "pointer");
-
-                $("#light").on('click', function() {
-
-                    document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-                    window.color = "light";
-                    $("#dark_theme").remove();
-                    $("#light_theme").remove();
-                    window.switchImg();
-
-                    $("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.css' />");
-                    $("head").on("load", function() {
-                        $("#myModal").addClass("hide");
-                    });
-                });
-
-                $("#dark").on('click', function() {
-                    document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-                    window.color = "dark";
-                    $("#light_theme").remove();
-                    $("#dark_theme").remove();
-                    window.switchImg();
-                    $("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='css/dark/styles.css' />");
-                });
-                var clicked = false;
-                $('#help').on("click", function() {
-                    if (!clicked) {
-                        $.getScript('js/modules/help.js');
-                        clicked = true;
-                    } else {
-                        $("#help_box").animate({
-                            opacity: '0'
-                        }, 500, function() {
-                            $("#help_box").remove();
-                        });
-
-                        clicked = false;
-                    }
-                });
-
-
-            };
-            $("#arrow").on("click", function() {
-                if (u === 0 && wait === 0) {
-                    $(".arrow_div").remove();
-                    $("#arrow_parent").append("<div class=\"arrow_div\" style=\"float:left;height:75px;float:right;width:0px;margin-top:5px;\"></div>");
-                    dispBtns();
-                    $(".side_btns").hide();
-                    $("#arrow").css("right", "-1px");
-                    wait = 1;
-                    $(".arrow_div").animate({
-                        width: '150px'
-                    }, 500, function() {
-                        $(".side_btns").fadeIn();
-                        $("#arrow").css("right", "-1px");
-                        wait = 0;
-                    });
-
-                    ++u;
-                } else if (u !== 0 && wait === 0) {
-                    $(".side_btns").fadeOut(function() {
-                        $(".side_btns").hide();
-                        $(".arrow_div").css("padding-left", "0px");
-                        wait = 1;
-                        $(".arrow_div").animate({
-                            width: '0px'
-                        }, 500, function() {
-
-                            $("#arrow").css("right", "0px");
-                            wait = 0;
-                        });
-                        u = 0;
-                    });
-
-
-
-                }
-
-            });
-
-        
-        $.getScript("bootstrap.fp/js/bootstrap.min.js");
+      
     });
 
 
