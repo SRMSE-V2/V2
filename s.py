@@ -39,13 +39,39 @@ else:
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-      <script src="/js/cookie.js"></script>
       <script src="/bootstrap/js/bootstrap.min.js"></script>
       <script>
-         $(document).ready(function(){
-         	$("#search").val(\""""+u.unquote(keyword)+"""\");
+      $(document).ready(function(){
+      $("#search").val(\""""+u.unquote(keyword)+"""\");
          	$("#search").attr("value",\""""+u.unquote(keyword)+"""\");
 		window.query=\""""+u.unquote(keyword)+"""\";
+var cook=document.cookie.split(";");
+var co={};
+if(cook.toString().indexOf("color")>-1){
+$.each(cook,function(index,element){
+co[element.split("=")[0].trim()]=element.split("=")[1].trim();
+
+});
+window.color=co["color"];//default theme
+$.ajaxSetup({ cache: true });
+}
+else{
+window.color=undefined;
+}
+if(!window.color){
+
+if(Math.random()*10>5){
+	window.color="dark";
+	document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+}else{
+	window.color="light";
+	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+	
+}
+}
+    
+ 
+         	
 	});
 		
       </script>
