@@ -249,6 +249,22 @@ $(".side_btns").fadeOut(function() {
                 });
 
 }
+ $.getScript("/js/jquery.mobile.custom.min.js",function(){
+        $("#arrow,#arrow_parent").on("swipeleft",function(){
+            if (u === 0 && wait === 0) {
+                    showArrow();
+                    }
+            
+            });
+            $("#arrow,#arrow_parent").on("swiperight",function(){
+            if (u !== 0 && wait === 0) {
+                   hideArrow();
+                }
+            
+            });
+        
+        
+        });//load swipe event
         function arrowClick() {
             if (u === 0) {
                showArrow();
@@ -868,20 +884,5 @@ $(".side_btns").fadeOut(function() {
             $(this).html(t);
         }
     };
-    $.getScript("/js/jquery.mobile.custom.min.js",function(){
-        $("#arrow,#arrow_parent").on("swipeleft",function(){
-            if (u === 0 && wait === 0) {
-                    showArrow();
-                    }
-            
-            });
-            $("#arrow,#arrow_parent").on("swiperight",function(){
-            if (u !== 0 && wait === 0) {
-                   hideArrow();
-                }
-            
-            });
-        
-        
-        });//load swipe event
+   
 })();
