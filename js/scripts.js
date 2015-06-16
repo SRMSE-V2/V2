@@ -29,6 +29,7 @@
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
         window.switchImg = function() {
+        var callbacks=[];
             //To switch images path when switching themes shared by both the pages
             var imgs = $(".switch");
             $.each(imgs, function() {
@@ -38,9 +39,10 @@
                 if (window.color === "light") {
                     $(this).attr("src", $(this).attr("src").replace("/dark/", "/light/"));
                 }
+                callbacks.push($(this));
 
             });
-
+	return callbacks;
         };
         //setting up backinput for shadow suggestion
         $(".backinput").remove();
@@ -466,20 +468,48 @@
                 $(".arrow_div").css("padding-left", "20px");
                 $(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:24px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"width:31px;height:27px;top:0;bottom:0;margin:auto;\" src=\"images/lighttheme.png\"></span><span id=\"dark\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/darktheme.png\">   </span> <span id=\"help\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/howtouse.png\">      </span> </div>");
                 $(".side_btns").css("cursor", "pointer");
+function loadedLightTheme(){
 
+$("#dark_theme").remove();
+                	$('#modalSwitchTheme').fadeOut(1000,function(){
+                		$(this).remove();
+                	});
+
+}
+function loadedDarkTheme(){
+$("#light_theme").remove();
+                	$('#modalSwitchTheme').fadeOut(1000,function(){
+                		$(this).remove();
+                	});
+
+}
                 $("#light").on('click', function() {
 			$("#light_theme").remove();
                     document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                     window.color = "light";
-                    window.switchImg();
+                    var calls=window.switchImg();
+                    var fin=calls.length+1;
+                    var loaded=0;
                      var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.css' />");
                     $("head").append(stylesheet);
                     showModal();
+                    $.each(calls,function(index,element){
+                    (function(el){
+                    	el.load(function(){
+                    	++loaded;
+                    	if(loaded===fin){
+                    	loadedLightTheme();
+                    	}
+                    	});
+                    
+                    })(element);
+                    });
                     stylesheet.load(function(){
-                	$("#dark_theme").remove();
-                	$('#modalSwitchTheme').fadeOut(1000,function(){
-                		$(this).remove();
-                	});
+                    ++loaded;
+                    if(loaded===fin){
+                    	loadedLightTheme();
+                    	}
+                	
                 });
                 });
 
@@ -487,15 +517,29 @@
                 $("#dark_theme").remove();
                     document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                     window.color = "dark";
-                    window.switchImg();
+                    var calls=window.switchImg();
+                    var fin=calls.length+1;
+                    var loaded=0;
                     var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/styles.css' />");
                 $("head").append(stylesheet);
                 showModal();
-                stylesheet.load(function(){
-                	$("#light_theme").remove();
-                	$('#modalSwitchTheme').fadeOut(1000,function(){
-                		$(this).remove();
-                	});
+                $.each(calls,function(index,element){
+                    (function(el){
+                    	el.load(function(){
+                    	++loaded;
+                    	if(loaded===fin){
+                    	loadedDarkTheme();
+                    	}
+                    	});
+                    
+                    })(element);
+                    });
+                    stylesheet.load(function(){
+                    ++loaded;
+                    if(loaded===fin){
+                    	loadedDarkTheme();
+                    	}
+                	
                 });
                 });
                 var clicked = false;
