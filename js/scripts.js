@@ -606,13 +606,13 @@ $("#light_theme").remove();
         
         $.getScript("/bootstrap.fp/js/bootstrap.min.js");
         $.getScript("/js/jquery.mobile.custom.min.js",function(){
-        $("#arrow").on("swipeleft",function(){
+        $("#arrow,#arrow_parent").on("swipeleft",function(){
             if (u === 0 && wait === 0) {
                     showArrow();
                     }
             
             });
-            $("#arrow").on("swiperight",function(){
+            $("#arrow,#arrow_parent").on("swiperight",function(){
             if (u !== 0 && wait === 0) {
                    hideArrow();
                 }

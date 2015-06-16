@@ -601,7 +601,12 @@ $("#light_theme").remove();
                 }
 
             });
-            $("#arrow").on("swipeleft",function(){
+            
+
+        
+        $.getScript("/bootstrap.fp/js/bootstrap.min.js");
+        $.getScript("/js/jquery.mobile.custom.min.js",function(){
+        $("#arrow,#arrow_parent").on("swipeleft",function(){
             if (u === 0 && wait === 0) {
                     showArrow();
                     }
@@ -613,11 +618,6 @@ $("#light_theme").remove();
                 }
             
             });
-
-        
-        $.getScript("/bootstrap.fp/js/bootstrap.min.js");
-        $.getScript("/js/jquery.mobile.custom.min.js",function(){
-        
         
         
         });//load swipe event
