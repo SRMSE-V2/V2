@@ -42,6 +42,9 @@ else:
       <script src="/bootstrap/js/bootstrap.min.js"></script>
       <script>
       $(document).ready(function(){
+      $("#search").val(\""""+u.unquote(keyword)+"""\");
+         	$("#search").attr("value",\""""+u.unquote(keyword)+"""\");
+		window.query=\""""+u.unquote(keyword)+"""\";
 var cook=document.cookie.split(";");
 var co={};
 if(cook.toString().indexOf("color")>-1){
@@ -60,11 +63,14 @@ if(!window.color){
 if(Math.random()*10>5){
 	window.color="dark";
 	document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+	$("head").append("<link id=\"dark_theme\" href=\"css/dark/styles.css\" rel=\"stylesheet\"> ");
 }else{
 	window.color="light";
 	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+	$("head").append("<link id=\"light_theme\" href=\"css/light/styles.css\" rel=\"stylesheet\"> ");
 	
 }
+if(window.color==="light"){}else{}
 }
     
  
