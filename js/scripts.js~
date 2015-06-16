@@ -537,7 +537,7 @@ $("#light_theme").remove();
                     stylesheet.load(function(){
                     ++loaded;
                     if(loaded===fin){
-                    	loadedLightTheme();
+                    	loadedDarkTheme();
                     	}
                 	
                 });
@@ -560,9 +560,8 @@ $("#light_theme").remove();
 
 
             };
-            $("#arrow").on("click", function() {
-                if (u === 0 && wait === 0) {
-                    $(".arrow_div").remove();
+            function showArrow(){
+            $(".arrow_div").remove();
                     $("#arrow_parent").append("<div class=\"arrow_div\" style=\"float:left;height:75px;float:right;width:0px;margin-top:5px;\"></div>");
                     dispBtns();
                     $(".side_btns").hide();
@@ -577,8 +576,9 @@ $("#light_theme").remove();
                     });
 
                     ++u;
-                } else if (u !== 0 && wait === 0) {
-                    $(".side_btns").fadeOut(function() {
+            }
+            function hideArrow(){
+             $(".side_btns").fadeOut(function() {
                         $(".side_btns").hide();
                         $(".arrow_div").css("padding-left", "0px");
                         wait = 1;
@@ -591,15 +591,36 @@ $("#light_theme").remove();
                         });
                         u = 0;
                     });
-
-
-
+            
+            }
+            $("#arrow").on("click", function() {
+                if (u === 0 && wait === 0) {
+                    showArrow();
+                } else if (u !== 0 && wait === 0) {
+                   hideArrow();
                 }
 
             });
+            $("#arrow").on("swipeleft",function(){
+            if (u === 0 && wait === 0) {
+                    showArrow();
+                    }
+            
+            });
+            $("#arrow").on("swiperight",function(){
+            if (u !== 0 && wait === 0) {
+                   hideArrow();
+                }
+            
+            });
 
         
-        $.getScript("bootstrap.fp/js/bootstrap.min.js");
+        $.getScript("/bootstrap.fp/js/bootstrap.min.js");
+        $.getScript("/js/jquery.mobile.custom.min.js",function(){
+        
+        
+        
+        });//load swipe event
     });
 
 

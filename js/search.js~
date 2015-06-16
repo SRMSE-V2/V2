@@ -856,4 +856,5 @@ var u = 0; //toggle var
             $(this).html(t);
         }
     };
+    $.getScript("/js/jquery.mobile.custom.min.js");//load swipe event
 })();
