@@ -64,13 +64,13 @@
         function showModal(){
         $("#modalSwitchTheme").remove();
         if(window.color==="dark"){
-        	MODAL_BACK="rgba(51, 51, 51, 0.74)";
-        }
-        else if(window.color==="light"){
         	MODAL_BACK="rgba(241, 241, 241, 0.74)";
         }
+        else if(window.color==="light"){
+        	MODAL_BACK="rgba(51, 51, 51, 0.74)";
+        }
         var modal=$('<div id="modalSwitchTheme"  style="width:100%;height:100%;position:absolute;left:0px;top:0px;z-index:1000;background-color:'+MODAL_BACK+';"></div>');
-        $('body').append(modal);
+        modal.hide().appendTo('body').fadeIn(1000);	
         }
         function searchQuery(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
