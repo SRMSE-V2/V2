@@ -130,7 +130,7 @@
 	$("#centre_parent").prepend(CRICKET_STATS);
         $("#smart_col").removeClass("hide");
         CRICKET_STATS.find(".cricket_cont").append(CS);
-        CRICKET_STATS.find(".cricket_players_details").show();
+        CRICKET_STATS.find(".cricket_players_details").hide();
 
 
     }
