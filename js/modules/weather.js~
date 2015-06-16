@@ -116,7 +116,7 @@ WEATHER.find(".img_today").css("-moz-filter");
                                 WEATHER.find(".weather_moonset").text(moonset);
                                 WEATHER.find(".weather_today_sunset").text(today_sunset);
                                 WEATHER.find(".weather_tomorrow_sunrise").text(tomorow_sunrise);
-$('head').append("<style>#weather{font-size:18px !important;text-align: left;}#weather>.weather_city{font-size:36px;}#weather_city>span{font-size:18px;}</style>");
+$('head').append("<style>#weather{font-size:18px !important;text-align: left;}#weather>.weather_city{font-size:36px;}#weather>.weather_city>span{font-size:18px;}</style>");
 $("#smart_col").html(WEATHER);
         $("#smart_col").removeClass("hide");
 }
