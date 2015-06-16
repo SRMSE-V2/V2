@@ -71,7 +71,7 @@ DICTIONARY.find(".dict_details").prepend("<hr>");
 DICTIONARY.find(".dict_details").hide();
 DICTIONARY.find(".dict_button").click ( function() { $(".dict_details").slideToggle(); } );
 }
-DICTIONARY.find(".fs_key").before("<span class=\"glyphicon glyphicon-volume-up\" class=\"speak\" style=\"font-size:22px;padding-left:15px;cursor:pointer;\"></span>");
+DICTIONARY.find(".fs_key").before("<span class=\"glyphicon glyphicon-volume-up\" id=\"speak\" style=\"font-size:22px;padding-left:15px;cursor:pointer;\"></span>");
 DICTIONARY.find(".speak").click(function(){
 
 responsiveVoice.speak(window.SA["keyword"]);

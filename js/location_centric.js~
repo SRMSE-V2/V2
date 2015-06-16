@@ -1,5 +1,6 @@
 (function(){
 var latitude, longitude, data;
+window.locentric = "";
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);

@@ -72,7 +72,6 @@ cities.push(element);
 
 });
 $("#smart_col").html("").append(HIGHWAY);
-$("#smart_col").removeClass("hide");
 }
 
 })();

@@ -7,7 +7,7 @@
         var LOCATION = $("<div id=\"location\" class=\"col-lg-12 module\" style=\"border:0px;margin-top:20px;\">                  <div class=\"row\">                     <div class=\"col-lg-12\" style=\"text-align:center;\">                        <img class=\"location_img\" src=\"\"  height=\"62\" width=\"65\">                     </div>                  </div>                                                     <div class=\"row\">                     <div class=\"col-lg-12 location_name\" style=\"font-size:14px;text-align:center;word-break:none;color:white;\"></div>                  </div>                  <div class=\"row\" style=\"text-align:center;color:white;\">                     <span class=\"location_city\" style=\"font-size:25px;\"></span><span class=\"location_state\" style=\"font-size:25px;\"></span>                  </div><div class=\"row\" style=\"text-align:center;color:white;\">                     <span class=\"location_address\" style=\"font-size:25px;\"></span></span>                  </div><div class=\"row\" style=\"text-align:center;color:white;\">                     <span class=\"location_description\" style=\"font-size:25px;\"></span></span>                  </div><div class=\"row\" style=\"text-align:center;color:white;\">                    </span></br>                  </div>                  <div class=\"row\" style=\"text-align:center;\">                     <div style=\"float:left;width:50&percnt;;height:34px;\">                        <button  style=\"background-color:#008EFF;\" class=\"btn btn-us glyphicon glyphicon-chevron-left location_prev\" value=\"Previous\"/>                     </div>                     <div style=\"float:left;width:50&percnt;;height:34px;\">                     <button  style=\"background-color:#008EFF;\" class=\"btn btn-us glyphicon glyphicon-chevron-right location_next\" value=\"Next\"/>                     </div>                  </div>               </div>");
 
        
-        LOCATION.on("click", "#location_next", function() {
+        $("#location").on("click", "#location_next", function() {
 
             if (LOCATIONS_ARR.length > 1 && CURRENT_LOC < (LOCATIONS_ARR.length - 1)) {
                 ++CURRENT_LOC;
@@ -28,7 +28,7 @@
                 LOCATION.find("#location_address").setHtmlValue("<h5>" + address.capitalizeMe() + "</h5>", address);
 
                 LOCATION.find("#location_description").setHtmlValue("<h5>" + description.capitalizeMe() + "</h5>", description);
-                LOCATION.removeClass("hide");
+                $("#location").removeClass("hide");
                 $("#smart_answer").addClass("hide");
             }
             if ((CURRENT_LOC === (LOCATIONS_ARR.length - 1)) && (LOCATIONS_ARR.length !== 1)) {
@@ -37,7 +37,7 @@
 
             }
         });
-        LOCATION.on("click", "#location_prev", function() {
+        $("#location").on("click", "#location_prev", function() {
 
 
 

@@ -14,7 +14,7 @@ $.each(dic,function(k,v){
 }
 	
 });
-$("#smart_col").html("").append(HC);
 $("#smart_col").removeClass("hide");
+$("#smart_col").html("").append(HC);
 }
 })();

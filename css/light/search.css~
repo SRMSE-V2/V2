@@ -45,7 +45,6 @@ background-color:#f1f1f1;
 }
 .arrow_div{
 background-color:#FF3E39;
-float:left;height:62px;float:right;width:0px;
 }
 .dic{
 color:#474747;

@@ -3,22 +3,22 @@ var MOVIE=$("<div class=\"row module\" id=\"movie\">                     <div cl
 if($("#movie").length===0){
 $("#smart_answer").addClass("hide");
 
-                                MOVIE.find(".movie_name").setHtmlValue("<h2>" + window.SA["name"] + "</h2>",window.SA["name"]);
-                                MOVIE.find(".movie_director").setHtmlValue("<b>Director : </b> <span>"+window.SA["director"]+"</span>",window.SA["director"]);
-                                MOVIE.find(".movie_producer").setHtmlValue("<b>Producer : </b> <span>"+window.SA["producer"]+"</span>",window.SA["producer"]);
-MOVIE.find(".movie_runtime").setHtmlValue("<b>Runtime : </b> <span>"+window.SA["runtime"]+"</span>",window.SA["runtime"]);
+                                MOVIE.find("#movie_name").setHtmlValue("<h2>" + window.SA["name"] + "</h2>",window.SA["name"]);
+                                MOVIE.find("#movie_director").setHtmlValue("<b>Director : </b> <span>"+window.SA["director"]+"</span>",window.SA["director"]);
+                                MOVIE.find("#movie_producer").setHtmlValue("<b>Producer : </b> <span>"+window.SA["producer"]+"</span>",window.SA["producer"]);
+MOVIE.find("#movie_runtime").setHtmlValue("<b>Runtime : </b> <span>"+window.SA["runtime"]+"</span>",window.SA["runtime"]);
 
-MOVIE.find(".movie_writer").setHtmlValue("<b>Writer : </b> <span>"+window.SA["writer"]+"</span>",window.SA["writer"]);
-                                MOVIE.find(".movie_music").setHtmlValue("<b>Music : </b> <span>"+window.SA["music"]+"</span>",window.SA["music"]);
-                                MOVIE.find(".movie_editor").setHtmlValue("<b>Editor : </b> <span>"+window.SA["editor"]+"</span>",window.SA["editor"]);
-                                MOVIE.find(".movie_cinematography").setHtmlValue("<b>Cinematography : </b> <span>"+window.SA["cinematography"]+"</span>",window.SA["cinematography"]);
-                                MOVIE.find(".movie_country").setHtmlValue("<b>Country : </b> <span>"+window.SA["country"]+"</span>",window.SA["country"]);
+MOVIE.find("#movie_writer").setHtmlValue("<b>Writer : </b> <span>"+window.SA["writer"]+"</span>",window.SA["writer"]);
+                                MOVIE.find("#movie_music").setHtmlValue("<b>Music : </b> <span>"+window.SA["music"]+"</span>",window.SA["music"]);
+                                MOVIE.find("#movie_editor").setHtmlValue("<b>Editor : </b> <span>"+window.SA["editor"]+"</span>",window.SA["editor"]);
+                                MOVIE.find("#movie_cinematography").setHtmlValue("<b>Cinematography : </b> <span>"+window.SA["cinematography"]+"</span>",window.SA["cinematography"]);
+                                MOVIE.find("#movie_country").setHtmlValue("<b>Country : </b> <span>"+window.SA["country"]+"</span>",window.SA["country"]);
 
-                                MOVIE.find(".movie_lang").setHtmlValue("<b>Language : </b> <span>"+window.SA["language"]+"</span>",window.SA["language"]);
-MOVIE.find(".movie_distributor").setHtmlValue("<b>Distributor : </b> <span>"+window.SA["distributor"]+"</span>",window.SA["distributor"]);
-MOVIE.find(".movie_rating").setHtmlValue("<b>Rating : </b> <span>"+window.SA["rating"]+"</span>",window.SA["rating"]);
-                                MOVIE.find(".movie_plot").setTextValue(window.SA["plot"]);
-MOVIE.find(".movie_poster").attr("src",window.SA["image"]);
+                                MOVIE.find("#movie_lang").setHtmlValue("<b>Language : </b> <span>"+window.SA["language"]+"</span>",window.SA["language"]);
+MOVIE.find("#movie_distributor").setHtmlValue("<b>Distributor : </b> <span>"+window.SA["distributor"]+"</span>",window.SA["distributor"]);
+MOVIE.find("#movie_rating").setHtmlValue("<b>Rating : </b> <span>"+window.SA["rating"]+"</span>",window.SA["rating"]);
+                                MOVIE.find("#movie_plot").setTextValue(window.SA["plot"]);
+MOVIE.find("#movie_poster").attr("src",window.SA["image"]);
 
                                 var cast = window.SA["cast"].split("\t");
                                 var prnt = $();
@@ -53,34 +53,34 @@ MOVIE.find(".movie_poster").attr("src",window.SA["image"]);
                                     count++;
 
                                 });
-                                MOVIE.find(".movie_cast1").append(prnt);
-
+                                MOVIE.find("#movie_cast1").append(prnt);
+$("#smart_col").removeClass("hide");
 cycle3=0;
-MOVIE.find(".movie_cast").hide();
+MOVIE.find("#movie_cast").hide();
 
-    MOVIE.find(".movie_extra").hide();
-    MOVIE.find(".movie_cast_button").click(
+    MOVIE.find("#movie_extra").hide();
+    MOVIE.find("#movie_cast_button").click(
         function() {
-            MOVIE.find('.movie_plot').slideToggle();
-            MOVIE.find('.movie_cast').slideToggle();
+            MOVIE.find('#movie_plot').slideToggle();
+            MOVIE.find('#movie_cast').slideToggle();
         }
     );
-    MOVIE.find(".movie_plot_button").click(
+    MOVIE.find("#movie_plot_button").click(
         function() {
-            MOVIE.find('.movie_plot').slideToggle();
-            MOVIE.find('.movie_cast').slideToggle();
+            MOVIE.find('#movie_plot').slideToggle();
+            MOVIE.find('#movie_cast').slideToggle();
         }
     );
-    MOVIE.find(".movie_button").click(
+    MOVIE.find("#movie_button").click(
         function() {
 
 if(cycle3===0){
-	    		MOVIE.find('.movie_extra').slideToggle();
+	    		MOVIE.find('#movie_extra').slideToggle();
                         $(this).text("Less");
 			++cycle3;
 			}
 		else{
-			MOVIE.find('.movie_extra').slideToggle();
+			MOVIE.find('#movie_extra').slideToggle();
 $(this).text("More");
 			cycle3=0;
 		}
@@ -89,7 +89,7 @@ $(this).text("More");
         }
     );
     $("#centre_parent").prepend(MOVIE);
-    $("#smart_col").removeClass("hide");
+    
 }
 
 })();

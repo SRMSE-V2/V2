@@ -4,7 +4,7 @@ if($("#minerals").length===0){
 $("#smart_answer").addClass("hide");
 MINERALS.find(".commodity").setTextValue(window.SA["name"].capitalizeMe());
 MINERALS.find(".live_price").setTextValue(window.SA["value"].replace("Rs.","₹ "));
-$("#smart_col").html("").append(MINERALS);
+$("#smart_col").html("").append(minerals);
 $("#smart_col").removeClass("hide");
 }
 })();
