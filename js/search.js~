@@ -28,6 +28,8 @@
         var HIDE_INFOBOX = false;
         var CLUSTER_RESPONSE = [];
         var INFO_BOX = "";
+        var MODAL_BACK="";
+        
         var LOAD = $("<div id=\"loading\" style=\"background-color:#333333;\"><img src=\"/images/ajax-loader.gif\" width=\"20\" height=\"20\"/></div>");
         var ARROW_DIV_BTNS = $("<div style=\"position:relative;top:0;bottom:0;padding-top:18px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;\" src=\"/images/lighttheme.png\"></span><span   class=\"side_btns\" id=\"dark\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/images/darktheme.png\">   </span> <span class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/images/howtouse.png\">      </span> </div>");
         var TAP_DIV = $("<div id=\"tap\" style=\"position:absolute;top:122px;width:100%;height:46px;z-index:99;\"><button class=\"btn tap-btn\" style=\"width:100%;height:100%;\" type=\"button\">Tap to see clusters</button></div>");
@@ -59,9 +61,17 @@
             "110": "Technology",
             "111": "Religion"
         };
-        var modal=$('<div id="modalSwitchTheme" class="hide" style="width:100%;height:100%;position:absolute;left:0px;top:0px;z-index:1000;background-color:rgba(51, 51, 51, 0.74);"></div>');
+        function showModal(){
+        $("#modalSwitchTheme").remove();
+        if(window.color==="dark"){
+        	MODAL_BACK="rgba(51, 51, 51, 0.74)";
+        }
+        else if(window.color==="light"){
+        	MODAL_BACK="rgba(241, 241, 241, 0.74)";
+        }
+        var modal=$('<div id="modalSwitchTheme" class="hide" style="width:100%;height:100%;position:absolute;left:0px;top:0px;z-index:1000;background-color:'+MODAL_BACK+';"></div>');
         $('body').append(modal);
-        
+        }
         function searchQuery(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
@@ -124,7 +134,7 @@
                 window.switchImg();
                 var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.css' />");
                 $("head").append(stylesheet);
-                $('#modalSwitchTheme').modal('show');
+                showModel();
                 stylesheet.load(function(){
                 	$("#dark_theme").remove();
                 	$('#modalSwitchTheme').addClass('hide');
