@@ -387,7 +387,6 @@ color:white !important;
 }
 .arrow_div{
 background-color:#00b4ff;
-float:left;height:62px;float:right;width:0px;
 }
 #arrow{
 position:relative;right:0px;float:left;cursor:pointer;height:68px;top:-6px;width:50px;background-repeat:no-repeat;background-size:contain;background-image:url('/images/dark/arrow.png');background-position:right;color:white !important;
