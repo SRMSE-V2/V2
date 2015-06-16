@@ -444,10 +444,14 @@ var u = 0; //toggle var
                 $("#loading").remove();
                 $(window).scroll(bindScroll);
             } else {
+           
                 var prnt = ADD_NO_RESULTS();
-                fat.append(prnt);
+                
                 if (!wiki) {
                     HAS_RESULTS = false;
+                }
+                else{
+               		fat.append(prnt);
                 }
             }
         }
