@@ -1,22 +1,21 @@
+var WEATHER = $("<div class=\"col-md-12 module\" id=\"weather\" style=\"color:white;margin-top:20px;border:0px;\">                  <div style=\"margin-bottom:15px;\" class=\"row\">                                         <div class=\"col-lg-7 col-md-7 col-sm-7 col-xs-7\">                        <div  class=\"weather_city\"></div>                                             </div>                     <div class=\"col-lg-5 col-md-5 col-sm-5 col-xs-5\">                        <img width=\"60\" height=\"60\" class=\"img_today switch\"  src=\"\">                         <div style=\"color:white;font-size:18px;\" class=\"weather_max\"></div>                     </div>                                       </div>                                                                             <div class=\"row\" class=\"weather_details\">                   <div class=\"col-lg-12\">  <table class=\"table\">                  <tbody>                   <tr>                  <td class=\"h5\">                  Today Sunset&nbsp;                  </td>                  <td class=\"weather_today_sunset\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Tomorrow Sunrise&nbsp;                  </td>                  <td class=\"weather_tomorrow_sunrise\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Today Moonrise&nbsp;                  </td>                  <td class=\"weather_moonrise\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Tomorrow Moonset&nbsp;                  </td>                  <td class=\"weather_moonset\">                  </td>                  </tr>                  </tbody>                  </table>                  <hr>                  </div>                                       <div class=\"col-lg-12 days_weather\">                                            </div>                                          <div class=\"col-lg-4\"></div>                     <div class=\"col-lg-4\"></div>                     <div class=\"col-lg-12\" style=\"text-align:center;\">                     </div>                  </div>                  <div class=\"row\" style=\"color:#999999;text-align:center;\">                     <button style=\"top:5px;color:white;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Click to see more statistics\" class=\"btn btn-us glyphicon glyphicon-chevron-down weather_button\"></button>                  </div>               </div>");
+var CYCLE=0;
 if($("#weather").length===0){
-
-var weather = $("<div class=\"col-md-12 module\" id=\"weather\" style=\"color:white;margin-top:20px;border:0px;\">                  <div style=\"margin-bottom:15px;\" class=\"row\">                                         <div class=\"col-lg-7 col-md-7 col-sm-7 col-xs-7\">                        <div  id=\"weather_city\">Chennai</div>                                             </div>                     <div class=\"col-lg-5 col-md-5 col-sm-5 col-xs-5\">                        <img width=\"60\" height=\"60\" id=\"img_today\" class=\"switch\"  src=\"\">                         <div style=\"color:white;font-size:18px;\" id=\"weather_max\"></div>                     </div>                                       </div>                                                                             <div class=\"row\" id=\"weather_details\" style=\"\">                   <div class=\"col-lg-12\">  <table class=\"table\">                  <tbody>                   <tr>                  <td class=\"h5\">                  Today Sunset&nbsp;                  </td>                  <td id=\"weather_today_sunset\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Tomorrow Sunrise&nbsp;                  </td>                  <td id=\"weather_tomorrow_sunrise\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Today Moonrise&nbsp;                  </td>                  <td id=\"weather_moonrise\">                  </td>                  </tr>                  <tr>                  <td class=\"h5\">                  Tomorrow Moonset&nbsp;                  </td>                  <td id=\"weather_moonset\">                  </td>                  </tr>                  </tbody>                  </table>                  <hr>                  </div>                                       <div class=\"col-lg-12\" id=\"days_weather\" style=\"\">                                            </div>                                          <div class=\"col-lg-4\"></div>                     <div class=\"col-lg-4\"></div>                     <div class=\"col-lg-12\" style=\"text-align:center;\">                     </div>                  </div>                  <div class=\"row\" style=\"color:#999999;text-align:center;\">                     <button id=\"weather_button\" style=\"top:5px;color:white;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Click to see more statistics\" class=\"btn btn-us glyphicon glyphicon-chevron-down\"></button>                  </div>               </div>");
-$("#smart_col").html(weather);
-$("#weather_details").hide();
-cycle=0;
-    $("#weather_button").click(
+$("#smart_answer").addClass("hide");
+WEATHER.find(".weather_details").hide();
+    WEATHER.find(".weather_button").click(
         function() {
-		$("#weather_button").toggleClass("glyphicon-chevron-down glyphicon-chevron-up");
+		WEATHER.find(".weather_button").toggleClass("glyphicon-chevron-down glyphicon-chevron-up");
 
-            $("#weather_details").slideToggle(function(){
-    		if(cycle===0){
-	    		$("#weather_button").attr("title","Click to see less statistics");
-			++cycle;
+            WEATHER.find(".weather_details").slideToggle(function(){
+    		if(CYCLE===0){
+	    		WEATHER.find(".weather_button").attr("title","Click to see less statistics");
+			++CYCLE;
 			}
 		else{
-			$("#weather_button").attr("title","Click to see more statistics");
+			WEATHER.find(".weather_button").attr("title","Click to see more statistics");
 
-			cycle=0;
+			CYCLE=0;
 		}
 });
 });
@@ -24,12 +23,12 @@ var imgs=["clear sky","clear","haze","light rain","mainly clearly sky","mainly o
 
                                 $.each(imgs,function(index,element){
 
-                                if(window.val['forecast'].indexOf(element)>-1){
+                                if(window.SA['forecast'].indexOf(element)>-1){
                                 
-                                $("#img_today").attr("src","/images/"+window.color+"/"+element+".png");
+                                WEATHER.find(".img_today").attr("src","/images/"+window.color+"/"+element+".png");
                                 
-                                $("#img_today").css("-webkit-filter");
-$("#img_today").css("-moz-filter");
+                                WEATHER.find(".img_today").css("-webkit-filter");
+WEATHER.find(".img_today").css("-moz-filter");
 }
 
 
@@ -37,21 +36,21 @@ $("#img_today").css("-moz-filter");
 
 });
 
-                                var city = window.val['City'];
-                                var maxx = window.val['Maximum'];
-                                var minn = window.val['Minimum'];
-                                var moonrise = window.val['Moonrise'];
-                                var moonset = window.val['Moonset'];
-                                var rainfall = window.val['Rainfall'];
-                                var today_sunset = window.val['Today_Sunset'];
-                                var tomorow_sunrise = window.val['Tomorrow_Sunrise'];
-                                var forecast = window.val['forecast'];
+                                var city = window.SA['City'];
+                                var maxx = window.SA['Maximum'];
+                                var minn = window.SA['Minimum'];
+                                var moonrise = window.SA['Moonrise'];
+                                var moonset = window.SA['Moonset'];
+                                var rainfall = window.SA['Rainfall'];
+                                var today_sunset = window.SA['Today_Sunset'];
+                                var tomorow_sunrise = window.SA['Tomorrow_Sunrise'];
+                                var forecast = window.SA['forecast'];
                                 var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-                                var today = days.indexOf(window.val["day"]);
-                                var future = window.val["future"];
-				$("#weather_city").text(city.toLowerCase().capitalizeMe());
-				$("#weather_city").append("<br/>");
-				$("#weather_city").append("<span style=\"font-weight:400;line-height:1.3em;max-width:200px;display:block;\">"+window.val["forecast"].capitalizeMe()+"</span>");
+                                var today = days.indexOf(window.SA["day"]);
+                                var future = window.SA["future"];
+				WEATHER.find(".weather_city").text(city.toLowerCase().capitalizeMe());
+				WEATHER.find(".weather_city").append("<br/>");
+				WEATHER.find(".weather_city").append("<span style=\"font-weight:400;line-height:1.3em;max-width:200px;display:block;\">"+window.SA["forecast"].capitalizeMe()+"</span>");
                                 var w = [];
                                 var i = 0;
                                 var row = $("<div></div>");
@@ -99,7 +98,7 @@ $("#img_today").css("-moz-filter");
                                     d.append(l);
                                     row.append(d);
                                     if (i == 1) {
-                                        $("#days_weather").append(row);
+                                        WEATHER.find(".days_weather").append(row);
                                         var row = $("<div></div>");
                                         row.addClass("row");
 
@@ -111,14 +110,13 @@ $("#img_today").css("-moz-filter");
                                     ++i;
 
                                 }
-                                $("#days_weather").append(row);
-                                $("#weather_max").html(maxx + "/" + minn + "<sup>&deg;C</sup>");
-                                $("#weather_moonrise").text(moonrise);
-                                $("#weather_moonset").text(moonset);
-                                $("#weather_today_sunset").text(today_sunset);
-                                $("#weather_tomorrow_sunrise").text(tomorow_sunrise);
+                                WEATHER.find(".days_weather").append(row);
+                                WEATHER.find(".weather_max").html(maxx + "/" + minn + "<sup>&deg;C</sup>");
+                                WEATHER.find(".weather_moonrise").text(moonrise);
+                                WEATHER.find(".weather_moonset").text(moonset);
+                                WEATHER.find(".weather_today_sunset").text(today_sunset);
+                                WEATHER.find(".weather_tomorrow_sunrise").text(tomorow_sunrise);
 
-                                $("#weather").removeClass("hide");
-                                $("#smart_answer").addClass("hide");
-$("#smart_col").removeClass("hide");
+$("#smart_col").html(WEATHER);
+        $("#smart_col").removeClass("hide");
 }

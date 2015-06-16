@@ -33,7 +33,7 @@ var BANK = $("<div class=\"module col-lg-12\" style=\"margin-top:20px;border:0px
             }
 
         });
-	$("#smart_col").html(BANK);
+	$("#smart_col").html("").append(BANK);
         $("#smart_col").removeClass("hide");
     }
 })();
