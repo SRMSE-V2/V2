@@ -16,7 +16,7 @@
         DIFFERENCES.find(".dif_link").attr("target", "_blank");
         DIFFERENCES.find(".dif_link").css('font-size', '14px');
         DIFFERENCES.find(".dif_text").css('font-size', '16px');
-        $("#predefined_questions").before(DIFFERENCES);
+        $("#centre_parent").prepend(DIFFERENCES);
         $("#smart_col").removeClass("hide");
 
     }
