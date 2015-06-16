@@ -137,7 +137,9 @@
                 showModal();
                 stylesheet.load(function(){
                 	$("#dark_theme").remove();
-                	$('#modalSwitchTheme').remove();
+                	$('#modalSwitchTheme').fadeOut(1000,function(){
+                		$(this).remove();
+                	});
                 });
             });
             $("#dark").on('click', function() {
@@ -451,7 +453,7 @@ var u = 0; //toggle var
                     HAS_RESULTS = false;
                 }
                 else{
-                	fat.append(prnt);
+               		fat.append(prnt);
                 }
             }
         }

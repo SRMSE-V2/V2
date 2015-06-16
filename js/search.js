@@ -137,7 +137,9 @@
                 showModal();
                 stylesheet.load(function(){
                 	$("#dark_theme").remove();
-                	$('#modalSwitchTheme').remove();
+                	$('#modalSwitchTheme').fadeOut(1000,function(){
+                		$(this).remove();
+                	});
                 });
             });
             $("#dark").on('click', function() {
@@ -149,7 +151,9 @@
                 showModal();
                 stylesheet.load(function(){
                 	$("#light_theme").remove();
-                	$('#modalSwitchTheme').remove();
+                	$('#modalSwitchTheme').fadeOut(1000,function(){
+                		$(this).remove();
+                	});
                 });
                 
             });
