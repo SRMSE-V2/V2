@@ -63,11 +63,11 @@ if(!window.color){
 if(Math.random()*10>5){
 	window.color="dark";
 	document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-	$("head").append("<link id="dark_theme" href="css/dark/search.css" rel="stylesheet"> ");
+	$("head").append('<link id="dark_theme" href="css/dark/search.css" rel="stylesheet"> ');
 }else{
 	window.color="light";
 	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-	$("head").append("<link id="light_theme" href="css/light/search.css" rel="stylesheet"> ");
+	$("head").append('<link id="light_theme" href="css/light/search.css" rel="stylesheet"> ');
 	
 }
 }
