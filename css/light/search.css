@@ -15,13 +15,6 @@ and open the template in the editor.
 height:46px;
 
 }
-#weather_max{
-
-color:#474747 !important;
-}
-
-
-
 #div_for_back{
 z-index:0;position:absolute;width:100%;height:46px;
 }
@@ -127,18 +120,6 @@ font-size:32px;
 color:white;
 }
 
-#weather{
-font-size:18px !important;
-text-align: left;
-}
-#weather_city{
-font-size:36px;
-
-}
-#weather_city>span{
-font-size:18px;
-
-}
 .cluster_btn{
 
 display:box;border-radius:8px;box-shadow: inset 0 0 2px 2px rgba(51,51,51,.5);line-height:40px;overflow: hidden;text-overflow: ellipsis;color:#474747;text-align:center;height:40px;float:left;margin-left:5px;cursor:pointer;font-size:0.9em;

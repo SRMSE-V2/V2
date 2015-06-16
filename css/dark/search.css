@@ -12,18 +12,7 @@ and open the template in the editor.
  * Base structure
  */
 
-#weather{
-font-size:18px !important;
-text-align: left;
-}
-#weather_city{
-font-size:36px;
 
-}
-#weather_city>span{
-font-size:18px;
-
-}
 .disc_back{
  height:180px;position:absolute;top:90px;margin:0px;width:100%;
  background:#222222 !important;
