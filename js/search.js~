@@ -11,7 +11,7 @@
             cache: true
         });
         $.getScript("/js/jquery-ui.min.js", function() {
-            $.getScript("/js/scripts.js");
+            $.getScript("/js/auto.js");
         });
         //end load scripts
         //global vars start
