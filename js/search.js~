@@ -530,7 +530,7 @@
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "sports":
-                                        $.getScript("/js/modules/sports.js");
+                                        $.getScript("/js/modules/cric_score.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "stock":

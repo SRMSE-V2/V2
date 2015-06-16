@@ -482,7 +482,7 @@
             }).done(function(text) {
                 try {
                     var js = JSON.parse(text);
-                    renderResult(js["results"], $("#wikiMain"), "", true);
+                    renderResult(js["results"], $("#wikiMain"),true, true);
                 } catch (err) {}
             });
         }
