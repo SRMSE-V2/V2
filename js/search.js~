@@ -126,7 +126,7 @@
                 window.switchImg();
                 var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.css' />");
                 $("head").append(stylesheet);
-                showModal();
+                $('#modalSwitchTheme').modal('show');
                 stylesheet.load(function(){
                 	$('.modal').modal('hide');
                 });
