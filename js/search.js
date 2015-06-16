@@ -132,8 +132,8 @@
                 $("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.css' />");
             });
         };
+var u = 0; //toggle var
         function arrowClick() {
-            var u = 0; //toggle var
             if (u === 0) {
                 $(".arrow_div").remove();
                 $("#arrow_parent").append("<div class=\"arrow_div\"></div>");
