@@ -1,5 +1,5 @@
 (function() {
-    var CYCLE = 0;
+    var CYCLE = 1;
     var CS = "";
     var BOWL = "";
     var BAT = "";
@@ -39,9 +39,10 @@
     if ($("#cricket_players").length === 0) {
     $("#smart_answer").addClass("hide");
         CRICKET_STATS.find(".cricket_players_details").hide();
-        CRICKET_STATS.find(".cricket_players_details").append("<ul class=\"nav nav-tabs\"><li role=\"presentaenttion\" class=\"active\"><a href=\"#\" onclick=\"changeDiv('CS');return false;\">Career Statistics</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('BOWL');return false;\">Bowling</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('BAT');return false;\">Batting</a></li></ul>");
-        CRICKET_STATS.find(".cricket_players_details").append("<div class=\"row cricket_cont\"></div>");
-       
+        CRICKET_STATS.find(".cricket_players_details").append("<ul class=\"nav nav-tabs\"><li role=\"presentation\" class=\"active\"><a class=\"cricket_stats\" href=\"#\">Career Statistics</a></li><li role=\"presentation\"><a href=\"#\" class=\"cricket_bowl\">Bowling</a></li><li role=\"presentation\"><a class=\"cricket_bat\" href=\"#\">Batting</a></li></ul><div class=\"row cricket_cont\"></div>");
+        CRICKET_STATS.find(".cricket_bowl").on("click",function(){changeDiv(BOWL);return false;});
+        CRICKET_STATS.find(".cricket_stats").on("click",function(){changeDiv(BOWL);return false;});
+        CRICKET_STATS.find(".cricket_bat").on("click",function(){changeDiv(CS);return false;});
 
 
         CRICKET_STATS.find(".cricket_players_button").on("click", function() {

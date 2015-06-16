@@ -1,10 +1,10 @@
 (function() {
-    var CYCLE = 0;
+    var CYCLE = 1;
     var CS = "";
     var BOWL = "";
     var BAT = "";
     var RECENT = "";
-    var CRICKET_STATS = $("<div class=\"module\" id=\"cricket_players\" style=\"border:0px;color:white;\">                <!-- Player info -->                  <div class=\"row player_info\">                        <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\" style=\"margin-top:10px;\">                            <img class=\"cric_img media-object img-responsive\"  alt=\"image\">                        </div>                        <div class=\"pl_info col-xs-12 col-sm-9 col-md-9 col-lg-9\" style=\"margin-top:10px\">                                                                             </div>                  </div>                <!-- /Player info -->                              <div class=\"row cricket_players_details\" style=\"margin:0px\">                  <div id=\"pl_other_info\" class=\"col-xs-12 alpha-blur\" style=\"border:0px solid;margin-bottom:5px>                                                                                                            </div>                                    </div>              </div>  </div>");
+    var CRICKET_STATS = $("<div class=\"module\" id=\"cricket_players\" style=\"border:0px;color:white;\">                <!-- Player info -->                  <div class=\"row player_info\">                        <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\" style=\"margin-top:10px;\">                            <img class=\"cric_img media-object img-responsive\"  alt=\"image\">                        </div>                        <div class=\"pl_info col-xs-12 col-sm-9 col-md-9 col-lg-9\" style=\"margin-top:10px\">                                                                             </div>                  </div>                <!-- /Player info -->                             <div class=\"row\">  <div class=\"col-lg-6\">                   </div>  <div class=\"col-lg-6\"> <button type=\"button\" class=\"btn btn-us alpha-blur cricket_players_button\" style=\"float:right;font-size:20px;color:white;border:0px\" aria-label=\"Left Align\">                    <span class=\"glyphicon glyphicon-stats\" aria-hidden=\"true\"></span> Click for more information                </button>           </div>  <div class=\"row cricket_players_details\" style=\"margin:0px\">                  <div id=\"pl_other_info\" class=\"col-xs-12 alpha-blur\" style=\"border:0px solid;margin-bottom:5px>                                                                                                            </div>                                    </div>              </div>  </div>");
 
     function returnValue(k, v) {
         var returnString = "";
@@ -39,9 +39,10 @@
     if ($("#cricket_players").length === 0) {
     $("#smart_answer").addClass("hide");
         CRICKET_STATS.find(".cricket_players_details").hide();
-        CRICKET_STATS.find(".cricket_players_details").append("<ul class=\"nav nav-tabs\"><li role=\"presentaenttion\" class=\"active\"><a href=\"#\" onclick=\"changeDiv('CS');return false;\">Career Statistics</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('BOWL');return false;\">Bowling</a></li><li role=\"presentation\"><a href=\"#\" onclick=\"changeDiv('BAT');return false;\">Batting</a></li></ul>");
-        CRICKET_STATS.find(".cricket_players_details").append("<div class=\"row cricket_cont\"></div>");
-       
+        CRICKET_STATS.find(".cricket_players_details").append("<ul class=\"nav nav-tabs\"><li role=\"presentation\" class=\"active\"><a class=\"cricket_stats\" href=\"#\">Career Statistics</a></li><li role=\"presentation\"><a href=\"#\" class=\"cricket_bowl\">Bowling</a></li><li role=\"presentation\"><a class=\"cricket_bat\" href=\"#\">Batting</a></li></ul><div class=\"row cricket_cont\"></div>");
+        CRICKET_STATS.find(".cricket_bowl").on("click",function(){changeDiv(BOWL);return false;});
+        CRICKET_STATS.find(".cricket_stats").on("click",function(){changeDiv(BOWL);return false;});
+        CRICKET_STATS.find(".cricket_bat").on("click",function(){changeDiv(CS);return false;});
 
 
         CRICKET_STATS.find(".cricket_players_button").on("click", function() {
