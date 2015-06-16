@@ -221,27 +221,39 @@ $("#light_theme").remove();
             });
         };
 var u = 0; //toggle var
-        function arrowClick() {
-            if (u === 0) {
-                $(".arrow_div").remove();
+var wait=0;
+function showArrow(){
+ $(".arrow_div").remove();
                 $("#arrow_parent").append("<div class=\"arrow_div\"></div>");
                 dispBtns();
                 $(".side_btns").hide();
+                wait = 1;
                 $(".arrow_div").animate({
                     width: '150px'
                 }, 500, function() {
                     $(".side_btns").fadeIn();
+                    wait = 0;
                 });
                 ++u;
-            } else {
-                $(".side_btns").fadeOut(function() {
+                
+                }
+function hideArrow(){
+$(".side_btns").fadeOut(function() {
                     $(".side_btns").hide();
                     $(".arrow_div").css("padding-left", "0px");
+                    wait = 1;
                     $(".arrow_div").animate({
                         width: '0px'
-                    }, 500, function() {});
+                    }, 500, function() {wait = 0;});
                     u = 0;
                 });
+
+}
+        function arrowClick() {
+            if (u === 0) {
+               showArrow();
+            } else {
+                hideArrow();
             }
         }
         $("#arrow").on("click", arrowClick);
@@ -856,5 +868,20 @@ var u = 0; //toggle var
             $(this).html(t);
         }
     };
-    $.getScript("/js/jquery.mobile.custom.min.js");//load swipe event
+    $.getScript("/js/jquery.mobile.custom.min.js",function(){
+        $("#arrow,#arrow_parent").on("swipeleft",function(){
+            if (u === 0 && wait === 0) {
+                    showArrow();
+                    }
+            
+            });
+            $("#arrow,#arrow_parent").on("swiperight",function(){
+            if (u !== 0 && wait === 0) {
+                   hideArrow();
+                }
+            
+            });
+        
+        
+        });//load swipe event
 })();
