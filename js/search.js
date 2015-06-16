@@ -124,6 +124,21 @@
             $("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.css' />");
         }
         img2.attr("alt", "SRM Search Engine");
+        function loadedLightTheme(){
+
+$("#dark_theme").remove();
+                	$('#modalSwitchTheme').fadeOut(1000,function(){
+                		$(this).remove();
+                	});
+
+}
+function loadedDarkTheme(){
+$("#light_theme").remove();
+                	$('#modalSwitchTheme').fadeOut(1000,function(){
+                		$(this).remove();
+                	});
+
+}
         var dispBtns = function() {
             $(".arrow_div").css("padding-left", "20px");
             $(".arrow_div").append(ARROW_DIV_BTNS);
@@ -132,30 +147,58 @@
             	$("#light_theme").remove();
                 window.color = "light";
                 document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-                window.switchImg();
+                var calls=window.switchImg();
+                var fin=calls.length+1;
+                var loaded=0;
                 var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.css' />");
                 $("head").append(stylesheet);
                 showModal();
-                stylesheet.load(function(){
-                	$("#dark_theme").remove();
-                	$('#modalSwitchTheme').fadeOut(1000,function(){
-                		$(this).remove();
-                	});
+                $.each(calls,function(index,element){
+                    (function(el){
+                    	el.load(function(){
+                    	++loaded;
+                    	if(loaded===fin){
+                    	loadedLightTheme();
+                    	}
+                    	});
+                    
+                    })(element);
+                    });
+                    stylesheet.load(function(){
+                    ++loaded;
+                    if(loaded===fin){
+                    	loadedLightTheme();
+                    	}
+                	
                 });
             });
             $("#dark").on('click', function() {
             	$("#dark_theme").remove();
                 window.color = "dark";
                 document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-                window.switchImg();
+                var calls=window.switchImg();
+                var fin=calls.length+1;
+                var loaded=0;
                 var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.css' />");
                 $("head").append(stylesheet);
                 showModal();
-                stylesheet.load(function(){
-                	$("#light_theme").remove();
-                	$('#modalSwitchTheme').fadeOut(1000,function(){
-                		$(this).remove();
-                	});
+                $.each(calls,function(index,element){
+                    (function(el){
+                    	el.load(function(){
+                    	++loaded;
+                    	if(loaded===fin){
+                    	loadedDarkTheme();
+                    	}
+                    	});
+                    
+                    })(element);
+                    });
+                    stylesheet.load(function(){
+                    ++loaded;
+                    if(loaded===fin){
+                    	loadedDarkTheme();
+                    	}
+                	
                 });
                 
             });
