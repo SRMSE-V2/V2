@@ -139,6 +139,22 @@ $("#light_theme").remove();
                 	});
 
 }
+window.switchImg = function() {
+        var callbacks=[];
+            //To switch images path when switching themes shared by both the pages
+            var imgs = $(".switch");
+            $.each(imgs, function() {
+                if (window.color === "dark") {
+                    $(this).attr("src", $(this).attr("src").replace("/light/", "/dark/"));
+                }
+                if (window.color === "light") {
+                    $(this).attr("src", $(this).attr("src").replace("/dark/", "/light/"));
+                }
+                callbacks.push($(this));
+
+            });
+	return callbacks;
+        };
         var dispBtns = function() {
             $(".arrow_div").css("padding-left", "20px");
             $(".arrow_div").append(ARROW_DIV_BTNS);
