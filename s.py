@@ -39,12 +39,12 @@ else:
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-      <script src="/bootstrap/js/bootstrap.min.js"></script>
+      <!--script src="/bootstrap/js/bootstrap.min.js"></script-->
       <script>
-      $(document).ready(function(){
+      (function(){
+      	$(document).ready(function(){
       $("#search").val(\""""+u.unquote(keyword)+"""\");
          	$("#search").attr("value",\""""+u.unquote(keyword)+"""\");
-		window.query=\""""+u.unquote(keyword)+"""\";
 var cook=document.cookie.split(";");
 var co={};
 if(cook.toString().indexOf("color")>-1){
@@ -71,11 +71,11 @@ if(Math.random()*10>5){
 	
 }
 }
-    
- 
          	
 	});
-		
+      
+      
+      })();
       </script>
 
       <script type="text/javascript" src="/js/search.js"></script>
