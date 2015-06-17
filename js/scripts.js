@@ -28,15 +28,15 @@
         function searchQuery(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
-        window.switchImg = function(color) {
+        window.switchImg = function() {
         var callbacks=[];
             //To switch images path when switching themes shared by both the pages
             var imgs = $(".switch");
             $.each(imgs, function() {
-                if (color === "dark") {
+                if (window.color === "dark") {
                     $(this).attr("src", $(this).attr("src").replace("/light/", "/dark/"));
                 }
-                if (color=== "light") {
+                if (window.color === "light") {
                     $(this).attr("src", $(this).attr("src").replace("/dark/", "/light/"));
                 }
                 callbacks.push($(this));
@@ -484,10 +484,15 @@ $("#light_theme").remove();
 
 }
                 $("#light").on('click', function() {
+                if(window.color==="light"){
+                showModal();
+                loadedLightTheme();
+                return;
+                }
 			$("#light_theme").remove();
                     document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                     window.color = "light";
-                    var calls=window.switchImg("light");
+                    var calls=window.switchImg();
                     var fin=calls.length+1;
                     var loaded=0;
                      var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.min.css' />");
@@ -514,10 +519,15 @@ $("#light_theme").remove();
                 });
 
                 $("#dark").on('click', function() {
+                if(window.color==="dark"){
+                showModal();
+                loadedDarkTheme();
+                return;
+                }
                 $("#dark_theme").remove();
                     document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                     window.color = "dark";
-                    var calls=window.switchImg("dark");
+                    var calls=window.switchImg();
                     var fin=calls.length+1;
                     var loaded=0;
                     var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/styles.min.css' />");

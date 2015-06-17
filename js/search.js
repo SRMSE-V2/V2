@@ -161,6 +161,11 @@ $("#light_theme").remove();
             $(".arrow_div").append(ARROW_DIV_BTNS);
             $(".side_btns").css("cursor", "pointer");
             $("#light").on('click', function() {
+            if(window.color==="light"){
+                showModal();
+                loadedLightTheme();
+                return;
+                }
             	$("#light_theme").remove();
                 window.color = "light";
                 document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
@@ -190,6 +195,11 @@ $("#light_theme").remove();
                 });
             });
             $("#dark").on('click', function() {
+            if(window.color==="dark"){
+                showModal();
+                loadedDarkTheme();
+                return;
+                }
             	$("#dark_theme").remove();
                 window.color = "dark";
                 document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
