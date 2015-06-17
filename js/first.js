@@ -37,7 +37,7 @@ var l=$("<div id=\"prog\" class=\"progress\" style=\"margin-bottom:0;\"><div cla
 $("#load").append(l);
 }
 $.getScript( "/js/min/jquery-ui.min.js",function(){
-    $.getScript( "/js/min/scripts.js",function(){
+    $.getScript( "/js/min/scripts.min.js",function(){
 
  $("#prog").remove();
 });

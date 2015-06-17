@@ -293,7 +293,7 @@
         function loadLocation() {
             if (document.cookie.indexOf("latitude") < 0) {
                 //location not in the cookie
-                $.getScript("/js/location_centric.js");
+                $.getScript("/js/min/location_centric.js");
             }
 
         }
