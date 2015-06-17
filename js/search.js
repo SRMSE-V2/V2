@@ -10,8 +10,8 @@
         $.ajaxSetup({
             cache: true
         });
-        $.getScript("/js/jquery-ui.min.js", function() {
-            $.getScript("/js/auto.js");
+        $.getScript("/js/min/jquery-ui.min.js", function() {
+            $.getScript("/js/min/auto.min.js");
         });
         //end load scripts
         //global vars start
@@ -133,11 +133,11 @@
         var img2 = $("#srmse-logo");
         img2.addClass("switch");
         if (window.color === "dark") {
-            $("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.css' />");
+            $("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.min.css' />");
             img2.attr("src", "/images/dark/srmselogo.png");
         } else {
             img2.attr("src", "/images/light/srmselogo.png");
-            $("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.css' />");
+            $("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.min.css' />");
         }
         img2.attr("alt", "SRM Search Engine");
         function loadedLightTheme(){
@@ -167,7 +167,7 @@ $("#light_theme").remove();
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
-                var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.css' />");
+                var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.min.css' />");
                 $("head").append(stylesheet);
                 showModal();
                 $.each(calls,function(index,element){
@@ -196,7 +196,7 @@ $("#light_theme").remove();
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
-                var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.css' />");
+                var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.min.css' />");
                 $("head").append(stylesheet);
                 showModal();
                 $.each(calls,function(index,element){
@@ -249,7 +249,7 @@ $(".side_btns").fadeOut(function() {
                 });
 
 }
- $.getScript("/js/jquery.mobile.custom.min.js",function(){
+ $.getScript("/js/min/jquery.mobile.custom.min.js",function(){
         $("#arrow,#arrow_parent").on("swipeleft",function(){
             if (u === 0 && wait === 0) {
                     showArrow();
@@ -646,78 +646,78 @@ $(".side_btns").fadeOut(function() {
                                 window.SA = val;
                                 switch (key) {
                                     case "general":
-                                        $.getScript("/js/modules/general.js");
+                                        $.getScript("/js/min/general.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "sports":
-                                        $.getScript("/js/modules/cric_score.js");
+                                        $.getScript("/js/min/cric_score.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "stock":
-                                        $.getScript("/js/modules/stocks.js");
+                                        $.getScript("/js/min/stocks.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "train":
-                                        $.getScript("/js/modules/train.js");
+                                        $.getScript("/js/min/train.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "weather":
-                                        $.getScript("/js/modules/weather.js");
+                                        $.getScript("/js/min/weather.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "movie":
-                                        $.getScript("/js/modules/movie.js");
+                                        $.getScript("/js/min/movie.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "exam":
-                                        $.getScript("/js/modules/exam.js");
+                                        $.getScript("/js/min/exam.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "location":
-                                        $.getScript("/js/modules/locations.js");
+                                        $.getScript("/js/min/locations.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "minerals":
-                                        $.getScript("/js/modules/minerals.js");
+                                        $.getScript("/js/min/minerals.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "differences":
-                                        $.getScript("/js/modules/differences.js");
+                                        $.getScript("/js/min/differences.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "wiki":
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "dict":
-                                        $.getScript("/js/modules/meaning.js");
+                                        $.getScript("/js/min/meaning.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "theatre":
-                                        $.getScript("/js/modules/theater.js");
+                                        $.getScript("/js/min/theater.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "highway":
-                                        $.getScript("/js/modules/highway.js");
+                                        $.getScript("/js/min/highway.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "cricket-players":
-                                        $.getScript("/js/modules/cricket.js");
+                                        $.getScript("/js/min/cricket.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "ministers":
-                                        $.getScript("/js/modules/ministers.js");
+                                        $.getScript("/js/min/ministers.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "bank":
-                                        $.getScript("/js/modules/bank.js");
+                                        $.getScript("/js/min/bank.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "highcourt":
-                                        $.getScript("/js/modules/highcourt.js");
+                                        $.getScript("/js/min/highcourt.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "discography":
-                                        $.getScript("/js/modules/discography.js");
+                                        $.getScript("/js/min/discography.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     default:
@@ -728,9 +728,9 @@ $(".side_btns").fadeOut(function() {
                             });
                         } else {
                             if ($("#search").val().trim().toLowerCase().indexOf('convert') > -1) {
-                                $.getScript("/js/modules/glaConv.js");
-                                $.getScript("/js/modules/metric.js");
-                                $.getScript("/js/modules/convert.js");
+                                $.getScript("/js/min/glaConv.min.js");
+                                $.getScript("/js/min/metric.min.js");
+                                $.getScript("/js/min/convert.min.js");
                             }
                             console.log("No smart  ans questions !");
                             $("#smart_answer").addClass("hide");

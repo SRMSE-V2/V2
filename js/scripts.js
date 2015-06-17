@@ -347,7 +347,7 @@
         function loadLocation() {
             if (document.cookie.indexOf("latitude") < 0) {
                 //location not in the cookie
-                $.getScript("/js/location_centric.js");
+                $.getScript("/js/min/location_centric.js");
             }
 
         }
@@ -490,7 +490,7 @@ $("#light_theme").remove();
                     var calls=window.switchImg();
                     var fin=calls.length+1;
                     var loaded=0;
-                     var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.css' />");
+                     var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.min.css' />");
                     $("head").append(stylesheet);
                     showModal();
                     $.each(calls,function(index,element){
@@ -520,7 +520,7 @@ $("#light_theme").remove();
                     var calls=window.switchImg();
                     var fin=calls.length+1;
                     var loaded=0;
-                    var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/styles.css' />");
+                    var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/styles.min.css' />");
                 $("head").append(stylesheet);
                 showModal();
                 $.each(calls,function(index,element){
@@ -605,7 +605,7 @@ $("#light_theme").remove();
 
         
         $.getScript("/bootstrap.fp/js/bootstrap.min.js");
-        $.getScript("/js/jquery.mobile.custom.min.js",function(){
+        $.getScript("/js/min/jquery.mobile.custom.min.js",function(){
         $("#arrow,#arrow_parent").on("swipeleft",function(){
             if (u === 0 && wait === 0) {
                     showArrow();
