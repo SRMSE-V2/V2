@@ -2,7 +2,7 @@ set -x
 minify --output ./min/auto.min.js auto.js
 minify --output ./min/first.min.js first.js
 minify --output ./min/search.min.js search.js
-minify --output ./min/scripts.min.js scripts.js
+minify --output ./min/search.min.js scripts.js
 minify --output ./min/location_centric.min.js location_centric.js
 minify --output ./min/bank.min.js ./modules/bank.js
 minify --output ./min/cricket.min.js ./modules/cricket.js
