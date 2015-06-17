@@ -15,9 +15,9 @@ STOCKS.find(".stocks_status").html("&#8595;");
 
 }
 STOCKS.find(".stocks_percentage").html(window.SA["Percentage Change"].replace("+","").replace("-",""));
-STOCKS.find(".stocks_current").text(window.SA["Present Value"]);
+STOCKS.find(".stocks_current").text(window.SA["Present value"]);
 STOCKS.find(".stocks_name").text(window.SA["Company Name"]);
-STOCKS.find(".stocks_previous").text(window.SA["Previous Value"]);
+STOCKS.find(".stocks_previous").text(window.SA["Previous value"]);
 $("#smart_col").html(STOCKS);
 $("#smart_col").removeClass("hide");
 }
