@@ -444,9 +444,14 @@ $(".side_btns").fadeOut(function() {
                     }
                 }).done(function(text) {
                     var js = JSON.parse(text);
+                    if(js["error"]){
+                    	HAS_RESULTS = false;
+                    }
+                    else{
                     IDS = js["ids"];
                     renderResult(js["results"], $("#search_results"), false, true);
                     HAS_RESULTS = true;
+                    }
                 });
             }
         }
@@ -579,7 +584,12 @@ $(".side_btns").fadeOut(function() {
                         }
                     }).done(function(text) {
                         var arr = JSON.parse(text);
+                        if(arr["error"]){
+                    	HAS_RESULTS = false;
+                    }
+                    else{
                         renderResult(arr["results"], $("#search_results"), false, true);
+                        }
                     });
                 }
             } else {
@@ -615,7 +625,11 @@ $(".side_btns").fadeOut(function() {
             }).done(function(text) {
                 try {
                     var js = JSON.parse(text);
+                    if(js["error"]){
+                    }
+                    else{
                     renderResult(js["results"], $("#wikiMain"),true, true);
+                    }
                 } catch (err) {}
             });
         }
@@ -634,7 +648,11 @@ $(".side_btns").fadeOut(function() {
             }).done(function(text) {
                 try {
                     var js = JSON.parse(text);
+                    if(js["error"]){
+                    }
+                    else{
                     renderResult(js["results"], $("#news"), false, true);
+                    }
                 } catch (err) {}
             });
         }
@@ -656,6 +674,12 @@ $(".side_btns").fadeOut(function() {
                 }).done(function(textt) {
                     try {
                         var js = JSON.parse(textt.replace(/\n/g, "").trim());
+                        if(js["error"]){
+                        $("#smart_answer").removeClass("show");
+                        $("#smart_col").addClass("hide");
+                        return
+                    }
+                    
                         if (!$.isEmptyObject(js)) {
                             $.each(js, function(key, val) {
                                 window.SA = val;
@@ -759,6 +783,15 @@ $(".side_btns").fadeOut(function() {
                 });
             }
         }
+        function clustersError(){
+        CLUSTERS = [];
+                        $(".side").removeClass("col-md-2 col-lg-2 hide");
+                        $(".side").addClass("col-md-1 col-lg-1");
+                        $("#centre_parent").parent().removeClass("col-lg-7 col-md-7 col-lg-pull-3 col-md-pull-3");
+                        $("#centre_parent").parent().addClass("col-lg-8 col-md-8 col-lg-pull-3 col-md-pull-3");
+                        $("#smart_col").parent().removeClass("col-lg-push-7 col-md-push-7 col-lg-3 col-md-3");
+                        $("#smart_col").parent().addClass("col-lg-push-8 col-md-push-8 col-lg-3 col-md-3");
+        }
         function getClusters() {
             if ($("#search").val().trim() !== "") {
                 $.ajax({
@@ -771,16 +804,14 @@ $(".side_btns").fadeOut(function() {
                         authenticity_token:$("meta[name='csrf-token']").attr("content")
                     },
                     error: function() {
-                        CLUSTERS = [];
-                        $(".side").removeClass("col-md-2 col-lg-2 hide");
-                        $(".side").addClass("col-md-1 col-lg-1");
-                        $("#centre_parent").parent().removeClass("col-lg-7 col-md-7 col-lg-pull-3 col-md-pull-3");
-                        $("#centre_parent").parent().addClass("col-lg-8 col-md-8 col-lg-pull-3 col-md-pull-3");
-                        $("#smart_col").parent().removeClass("col-lg-push-7 col-md-push-7 col-lg-3 col-md-3");
-                        $("#smart_col").parent().addClass("col-lg-push-8 col-md-push-8 col-lg-3 col-md-3");
+                        clustersError();
                     }
                 }).done(function(textt) {
                     var res = JSON.parse(textt);
+                    if(res["error"]){
+                    clustersError();
+                    return
+                    }
                     CLUSTER_RESPONSE = res;
                     var arr = [];
                     $.each(res, function(k, v) {
@@ -858,7 +889,13 @@ $(".side_btns").fadeOut(function() {
                 }
             }).done(function(textt) {
                 var js = JSON.parse(textt);
+                if(js["error"]){
+                var prnt = ADD_NO_RESULTS();
+                    $("#search_results").append(prnt);
+                    }
+                else{
                 renderResult(js["results"], $("#search_results"), false, false);
+                }
             });
             return false;
         }
