@@ -449,13 +449,13 @@ $(".side_btns").fadeOut(function() {
                     }
                     else{
                     IDS = js["ids"];
-                    renderResult(js["results"], $("#search_results"), false, true);
+                    renderResult(js["results"], $("#search_results"), false, true,false);
                     HAS_RESULTS = true;
                     }
                 });
             }
         }
-        function renderResult(arr, fat, wiki, isappend) {
+        function renderResult(arr, fat, wiki, isappend,news) {
             if (arr[0]) {
                 if (wiki) {
                     INFO_BOX = arr[0]["infobox"];
@@ -554,15 +554,13 @@ $(".side_btns").fadeOut(function() {
                 $("#loading").remove();
                 $(window).scroll(bindScroll);
             } else {
-           
                 var prnt = ADD_NO_RESULTS();
                 
-                if (!wiki) {
+                if (!wiki && !news) {
                     HAS_RESULTS = false;
+                   fat.append(prnt);
                 }
-                else{
-               		fat.append(prnt);
-                }
+               
             }
         }
         function getMoreResults(i, j) {
@@ -628,7 +626,7 @@ $(".side_btns").fadeOut(function() {
                     if(js["error"]){
                     }
                     else{
-                    renderResult(js["results"], $("#wikiMain"),true, true);
+                    renderResult(js["results"], $("#wikiMain"),true, true,false);
                     }
                 } catch (err) {}
             });
@@ -651,7 +649,7 @@ $(".side_btns").fadeOut(function() {
                     if(js["error"]){
                     }
                     else{
-                    renderResult(js["results"], $("#news"), false, true);
+                    renderResult(js["results"], $("#news"), false, true,true);
                     }
                 } catch (err) {}
             });
@@ -894,7 +892,7 @@ $(".side_btns").fadeOut(function() {
                     $("#search_results").append(prnt);
                     }
                 else{
-                renderResult(js["results"], $("#search_results"), false, false);
+                renderResult(js["results"], $("#search_results"), false, false,false);
                 }
             });
             return false;

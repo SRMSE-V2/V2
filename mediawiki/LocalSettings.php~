@@ -160,3 +160,5 @@ require_once "$IP/extensions/Scribunto/Scribunto.php";
 $wgScribuntoDefaultEngine = 'luastandalone';
 $wgScribuntoEngineConf['luastandalone']['luaPath'] = '/var/www/html/srm/SRMSE/mediawiki/extensions/Scribunto/engines/LuaStandalone/binaries/lua5_1_5_linux_64_generic/lua';
 require_once "$IP/extensions/ParserFunctions/ParserFunctions.php";
+#for disambiguations+
+wfLoadExtension( 'Disambiguator' );
