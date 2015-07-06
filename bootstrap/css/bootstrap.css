@@ -1097,16 +1097,6 @@ a {
   color: #2196f3;
   text-decoration: none;
 }
-a:hover,
-a:focus {
-  color: #0a6ebd;
-  text-decoration: none;
-}
-a:focus {
-  outline: thin dotted;
-  outline: 0px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
 figure {
   margin: 0;
 }
