@@ -61,6 +61,9 @@
             "110": "Technology",
             "111": "Religion"
         };
+        function ls(url){
+        	$.getScript(url);
+        }
         function showModal(){
         $("#modalSwitchTheme").remove();
         if(window.color==="dark"){
@@ -75,18 +78,58 @@
         function searchQuery(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
+        function removeParentWiki(table){
+        var childs=table.children();
+        $.each(childs,function(index,elem){
+        try{
+        	if($(elem).attr("class").indexOf("infobox")<0){
+        	$(elem).remove();
+        	}
+        	}
+        	catch(err){$(elem).remove();}
+       
+        
+        
+        });
+       $.each(table.contents(),function(i,e){
+       	try{
+       	if($(e).prop('tagName')!=="TABLE"){
+       		$(e).remove();
+       	
+       	}
+       	}
+       	catch(err){$(e).remove();}
+       
+       });
+        }
         function dispInfoBox() {
-            var table = $(INFO_BOX.replace(/<img (.*?)\/>/g, ""));
+            var table = $(INFO_BOX.replace(/<img (.*?)\/>/g, "").replace(/\?+/g,""));
+            table.find(".hatnote").remove();
+            table.find(".ambox").remove();
+            table.find(".error").remove();
+            table.find(".mw-ext-cite-error").remove();
+            table.find("#softredirect").remove();
+            table.addClass("module").attr("id", "wiki")
             $.each(table.find("a"), function() {
+            $(this).addClass("wiki_link");
                 if ($(this).attr("href") && $(this).attr("href").indexOf("File") >= 0) {
                     $(this).text("");
                     var img = $("<img>");
                     var fn = $(this).attr("href").split("/");
+                    if($(this).parent().attr("title")==="Decrease" ||$(this).parent().attr("title")==="Increase" ||$(this).attr("title")==="File:Decrease Positive.svg"){
+                    img.attr("src", "http://en.wikipedia.org/wiki/en:Special:Filepath/" + fn[fn.length - 1].replace("File:", "") + "?width=11");
+                    
+                    }
+                    else{
                     img.attr("src", "http://en.wikipedia.org/wiki/en:Special:Filepath/" + fn[fn.length - 1].replace("File:", "") + "?width=140");
+                    }
                     $(this).append(img);
                 }
             });
-            $("#smart_col").html("").append(table.addClass("module").attr("id", "wiki"));
+            
+            
+            removeParentWiki(table);
+            $("#smart_col").html("").append(table);
             $("#wiki>a").on("click", function(e) {
                 e.stopPropagation();
             });
@@ -259,7 +302,7 @@ $(".side_btns").fadeOut(function() {
                 });
 
 }
- $.getScript("/js/min/jquery.mobile.custom.min.js",function(){
+ ls("/js/min/jquery.mobile.custom.min.js",function(){
         $("#arrow,#arrow_parent").on("swipeleft",function(){
             if (u === 0 && wait === 0) {
                     showArrow();
@@ -506,7 +549,11 @@ $(".side_btns").fadeOut(function() {
                     search_desc.addClass("search_info");
                     if (wiki) {
                         //as wiki as desc in html in db
-                        search_desc.html(element["body"]);
+                        var wiki_desc=$(element["body"]);
+                        wiki_desc.find(".ambox").remove();
+                        wiki_desc.find(".error").remove();
+                        wiki_desc.find(".mw-ext-cite-error").remove();
+                        search_desc.html($("<div/>").append(wiki_desc).html());
                     } else {
                         search_desc.text(element["body"]);
                     }
@@ -683,78 +730,78 @@ $(".side_btns").fadeOut(function() {
                                 window.SA = val;
                                 switch (key) {
                                     case "general":
-                                        $.getScript("/js/min/general.min.js");
+                                        ls("/js/min/general.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "sports":
-                                        $.getScript("/js/min/cric_score.min.js");
+                                        ls("/js/min/cric_score.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "stock":
-                                        $.getScript("/js/min/stocks.min.js");
+                                        ls("/js/min/stocks.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "train":
-                                        $.getScript("/js/min/train.min.js");
+                                        ls("/js/min/train.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "weather":
-                                        $.getScript("/js/min/weather.min.js");
+                                        ls("/js/min/weather.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "movie":
-                                        $.getScript("/js/min/movie.min.js");
+                                        ls("/js/min/movie.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "exam":
-                                        $.getScript("/js/min/exam.min.js");
+                                        ls("/js/min/exam.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "location":
-                                        $.getScript("/js/min/locations.min.js");
+                                        ls("/js/min/locations.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "minerals":
-                                        $.getScript("/js/min/minerals.min.js");
+                                        ls("/js/min/minerals.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "differences":
-                                        $.getScript("/js/min/differences.min.js");
+                                        ls("/js/min/differences.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "wiki":
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "dict":
-                                        $.getScript("/js/min/meaning.min.js");
+                                        ls("/js/min/meaning.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "theatre":
-                                        $.getScript("/js/min/theater.min.js");
+                                        ls("/js/min/theater.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "highway":
-                                        $.getScript("/js/min/highway.min.js");
+                                        ls("/js/min/highway.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "cricket-players":
-                                        $.getScript("/js/min/cricket.min.js");
+                                        ls("/js/min/cricket.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     case "ministers":
-                                        $.getScript("/js/min/ministers.min.js");
+                                        ls("/js/min/ministers.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "bank":
-                                        $.getScript("/js/min/bank.min.js");
+                                        ls("/js/min/bank.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "highcourt":
-                                        $.getScript("/js/min/highcourt.min.js");
+                                        ls("/js/min/highcourt.min.js");
                                         HIDE_INFOBOX = true;
                                         break;
                                     case "discography":
-                                        $.getScript("/js/min/discography.min.js");
+                                        ls("/js/min/discography.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
                                     default:
@@ -765,9 +812,9 @@ $(".side_btns").fadeOut(function() {
                             });
                         } else {
                             if ($("#search").val().trim().toLowerCase().indexOf('convert') > -1) {
-                                $.getScript("/js/min/glaConv.min.js");
-                                $.getScript("/js/min/metric.min.js");
-                                $.getScript("/js/min/convert.min.js");
+                                ls("/js/min/glaConv.min.js");
+                                ls("/js/min/metric.min.js");
+                                ls("/js/min/convert.min.js");
                             }
                             console.log("No smart  ans questions !");
                             $("#smart_answer").addClass("hide");

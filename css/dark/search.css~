@@ -403,8 +403,25 @@ border-color:none;
 color:#00b4ff !important;
 font-size:32px;
 }
+.infobox>th{
+color:#474747!important;
+font-weight:600;
+}
 #wiki>*{
-color:#DFDDDD!important;
+color:#474747!important;
+
+}
+.wiki_link{
+color:#337ab7!important;
+
+}
+.infobox>tbody{
+
+margin-left:20px!important;
+
+}
+.infobox>tbody>td{
+padding-top:10px!important;
 
 }
 #news,#wikiMain{
@@ -417,7 +434,7 @@ cursor:pointer;
 background-color:#383838!important;
 
 }
-a{color:#DFDDDD!important;font-weight:500word-wrap:break-word;}
+a{color:#DFDDDD!important;font-weight:500;word-wrap:break-word;}
 a:hover{text-decoration: underline;word-wrap:break-word;}
 .search_title{color:#DFDDDD!important;font-weight:500;font-size: 20px;word-wrap:break-word;}
 .search_title:hover{text-decoration: underline;word-wrap:break-word;}
@@ -539,6 +556,10 @@ margin-left:auto;
 margin-right:auto;
  table-layout:fixed;
     width:100%;
+    background-color: #FFFFFF;
+    border-spacing: 10px;
+    border-collapse: separate;
+
 }
 td{
 overflow: hidden;

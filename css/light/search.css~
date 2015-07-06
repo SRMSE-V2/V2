@@ -498,10 +498,6 @@ font-size:0.9em;
 opacity:0;
 
 }
-.infobox>th{
-color:#474747!important;
-font-weight:600;
-}
 .infobox{
 margin-left:auto;
 margin-right:auto;
