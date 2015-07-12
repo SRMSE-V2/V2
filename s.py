@@ -1,11 +1,17 @@
 #!/usr/bin/python
-import cgi,json,urllib2 as u
-print "Content-type:text/html\r\n\r\n"
-#cgitb.enable()  # for troubleshooting
+import cgi,cgitb,urllib2 as u
+import Cookie
+cookie = Cookie.SimpleCookie()
+import createCSRF as csrf
+cgitb.enable()  # for troubleshooting
 form = cgi.FieldStorage() 
-keyword=form.getvalue('q',"#123none123#").strip()
+keyword=form.getvalue('q',"#123none123#").replace("\\","").strip()
 #keyword is #123none123# when input from form is None is
-if keyword=="#123none123#" or keyword=="":
+token=csrf.generateToken()
+cookie["srmse_token"]=u.quote(token[1])
+print cookie
+print "Content-type:text/html\r\n\r\n"
+if keyword=="#123none123#":
 	print """<!DOCTYPE html>
 <html>
    <head>
@@ -27,6 +33,8 @@ else:
       <title>SRM Search Engine</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta name="csrf-param" content="authenticity_token" />
+	<meta name="csrf-token" content='"""+u.quote(token[0])+"""'/>
       <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <!--script src="/bootstrap/js/bootstrap.min.js"></script-->
@@ -148,7 +156,6 @@ if(Math.random()*10>5){
       </div>
    </body>
 <script type="text/javascript" src="/js/min/search.min.js"></script>
- 
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 </html>
-	"""
-
+"""
