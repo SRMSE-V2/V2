@@ -51,7 +51,7 @@
         BACKINPUT.removeAttr("id");
         BACKINPUT.removeAttr("placeholder");
         BACKINPUT.removeAttr("name");
-        BACKINPUT.removeClass("ui-autocomplete-BACKINPUTut");
+        BACKINPUT.removeClass("ui-autocomplete");
         BACKINPUT.removeClass("btn2");
         BACKINPUT.addClass("btn1");
         BACKINPUT.addClass("backinput");
