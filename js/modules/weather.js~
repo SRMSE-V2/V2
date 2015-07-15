@@ -19,12 +19,14 @@ var CYCLE=0;
 		}
 });
 });
+alert();
 var imgs=["clear sky","clear","haze","light rain","mainly clearly sky","mainly or generally cloudy sky","cloudy sky","mainly or generally cloudy sky with possibility of rain","mist","moderate rain","moderate snow","partly cloud sky with possibility of rain or thunder","partly cloudy","partly cloudy sky","partly cloudy sky with thundery development","rain or snow","thunderstorm with rain","fog"];
 
                                 $.each(imgs,function(index,element){
-
+				console.log(element);
+				alert();
                                 if(window.SA['forecast'].indexOf(element)>-1){
-                                
+                                console.log(element);
                                 WEATHER.find(".img_today").attr("src","/images/"+window.color+"/"+element+".png");
                                 
                                 WEATHER.find(".img_today").css("-webkit-filter");

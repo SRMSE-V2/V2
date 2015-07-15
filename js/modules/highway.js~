@@ -22,7 +22,7 @@ HIGHWAY.find(".highway_prev").on("click", function() {
 
    if (HIGHWAY_ARR.length > 1 && HIGHWAY_CUR < HIGHWAY_ARR.length && HIGHWAY_CUR !== 0) {
 	--HIGHWAY_CUR;
-	var val=window.SA["ans"][HIGHWAY_CUR];
+	var val=window.SA["ans"][chigh];
 	var k=val["route"];
 var cities=[];
 $.each(k,function(index,element){
@@ -48,7 +48,7 @@ HIGHWAY.find(".highway_next").on("click", function() {
 	if (HIGHWAY_ARR.length > 1 && HIGHWAY_CUR < (HIGHWAY_ARR.length - 1)) {
 		++HIGHWAY_CUR;
 		HIGHWAY.find(".highway_prev").removeAttr("disabled");
-		var val=window.SA["ans"][HIGHWAY_CUR];
+		var val=window.SA["ans"][chigh];
 			var k=val["route"];
 var cities=[];
 $.each(k,function(index,element){

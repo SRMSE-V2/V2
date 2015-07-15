@@ -21,7 +21,7 @@ var el=window.SA[kk];
 	else{
 	var date=el["release_date"];
 	}
-	var temp=$("<li><a style=\"text-decoration:none;\" href="+el["album_link"]+" target=\"_blank\"><img class=\"album_cover\" src="+img+" /><div class=\"album_info\"><div>"+el["album_name"]+"</div><div>"+date+"</div></div></a></li>");
+	var temp=$("<li><a href="+el["album_link"]+" target=\"_blank\"><img class=\"album_cover\" src="+img+" /><div class=\"album_info\"><div>"+el["album_name"]+"</div><div>"+date+"</div></div></a></li>");
 	
 	
 	}

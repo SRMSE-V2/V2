@@ -52,12 +52,12 @@ $(".active").removeClass("active");$(t).parent().addClass("active");
                 if (CYCLE === 0) {
                     CRICKET_STATS.find(".cricket_players_button").attr("title", "Click to see less statistics");
                     CRICKET_STATS.find(".cricket_players_button").text("Click to see less statistics");
-                    CRICKET_STATS.find(".cricket_players_button").prepend("<span class=\"glyphicon glyphicon-stats\" aria-hidden=\"true\"></span>");
+                    CRICKET_STATS.find(".cricket_players_button").prepend("<span class=\"glyphicon glyphicon-stats\" aria-hidden=\"true\">&nbsp;</span>");
                     ++CYCLE;
                 } else {
                     CRICKET_STATS.find(".cricket_players_button").attr("title", "Click to see more statistics");
                     CRICKET_STATS.find(".cricket_players_button").text("Click to see more statistics");
-                    CRICKET_STATS.find(".cricket_players_button").prepend("<span class=\"glyphicon glyphicon-stats\" aria-hidden=\"true\"></span>");
+                    CRICKET_STATS.find(".cricket_players_button").prepend("<span class=\"glyphicon glyphicon-stats\" aria-hidden=\"true\">&nbsp;</span>");
                     CRICKET_STATS.find(".cricket_cont").empty();
 		    CRICKET_STATS.find(".cricket_cont").append(CS);
                     CYCLE = 0;

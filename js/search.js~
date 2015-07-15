@@ -478,7 +478,7 @@ $(".side_btns").fadeOut(function() {
                     url: "/cgi-bin/queryret/getIds.py",
                     data: {
                         q: $("#search").val().trim().toLowerCase(),
-                        f: 1,
+                        f: 4,
                         authenticity_token:$("meta[name='csrf-token']").attr("content")
                     },
                     dataType: 'text',
