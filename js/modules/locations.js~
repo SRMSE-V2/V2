@@ -7,12 +7,12 @@
         var LOCATION = $("<div id=\"location\" class=\"col-lg-12 module\" style=\"border:0px;margin-top:20px;\">                  <div class=\"row\">                     <div class=\"col-lg-12\" style=\"text-align:center;\">                        <img class=\"location_img\" src=\"\"  height=\"62\" width=\"65\">                     </div>                  </div>                                                     <div class=\"row\">                     <div class=\"col-lg-12 location_name\" style=\"font-size:14px;text-align:center;word-break:none;color:white;\"></div>                  </div>                  <div class=\"row\" style=\"text-align:center;color:white;\">                     <span class=\"location_city\" style=\"font-size:25px;\"></span><span class=\"location_state\" style=\"font-size:25px;\"></span>                  </div><div class=\"row\" style=\"text-align:center;color:white;\">                     <span class=\"location_address\" style=\"font-size:25px;\"></span></span>                  </div><div class=\"row\" style=\"text-align:center;color:white;\">                     <span class=\"location_description\" style=\"font-size:25px;\"></span></span>                  </div><div class=\"row\" style=\"text-align:center;color:white;\">                    </span></br>                  </div>                  <div class=\"row\" style=\"text-align:center;\">                     <div style=\"float:left;width:50&percnt;;height:34px;\">                        <button  style=\"background-color:#008EFF;\" class=\"btn btn-us glyphicon glyphicon-chevron-left location_prev\" value=\"Previous\"/>                     </div>                     <div style=\"float:left;width:50&percnt;;height:34px;\">                     <button  style=\"background-color:#008EFF;\" class=\"btn btn-us glyphicon glyphicon-chevron-right location_next\" value=\"Next\"/>                     </div>                  </div>               </div>");
 
        
-        LOCATION.on("click", "#location_next", function() {
+        LOCATION.on("click", ".location_next", function() {
 
             if (LOCATIONS_ARR.length > 1 && CURRENT_LOC < (LOCATIONS_ARR.length - 1)) {
                 ++CURRENT_LOC;
                 var val = LOCATIONS_ARR[CURRENT_LOC];
-                LOCATION.find("#location_prev").removeAttr("disabled");
+                LOCATION.find(".location_prev").removeAttr("disabled");
                 var name = val['name'];
                 var city = val['city'];
                 var state = val['state'];
@@ -21,23 +21,23 @@
                 var address = val["address"];
                 var type = loc["type"];
                 var co = loc["coordinates"];
-                LOCATION.find("#locationimg").attr("src", "/ver1/images/hotel.png");
-                LOCATION.find("#location_name").setHtmlValue("<h3>" + name.capitalizeMe() + "</h3>", name);
-                LOCATION.find("#location_city").setHtmlValue("<h4>" + city.capitalizeMe() + "</h4>", city);
-                LOCATION.find("#location_state").setHtmlValue("<h4>" + state.capitalizeMe() + "</h4>", state);
-                LOCATION.find("#location_address").setHtmlValue("<h5>" + address.capitalizeMe() + "</h5>", address);
+                LOCATION.find(".location_img").attr("src", "/images/hotel.png");
+                LOCATION.find(".location_name").setHtmlValue("<h3>" + name.capitalizeMe() + "</h3>", name);
+                LOCATION.find(".location_city").setHtmlValue("<h4>" + city.capitalizeMe() + "</h4>", city);
+                LOCATION.find(".location_state").setHtmlValue("<h4>" + state.capitalizeMe() + "</h4>", state);
+                LOCATION.find(".location_address").setHtmlValue("<h5>" + address.capitalizeMe() + "</h5>", address);
 
-                LOCATION.find("#location_description").setHtmlValue("<h5>" + description.capitalizeMe() + "</h5>", description);
+                LOCATION.find(".location_description").setHtmlValue("<h5>" + description.capitalizeMe() + "</h5>", description);
                 LOCATION.removeClass("hide");
                 $("#smart_answer").addClass("hide");
             }
             if ((CURRENT_LOC === (LOCATIONS_ARR.length - 1)) && (LOCATIONS_ARR.length !== 1)) {
-                LOCATION.find("#location_next").attr("disabled", "disabled");
-                LOCATION.find("#location_prev").removeAttr("disabled");
+                LOCATION.find(".location_next").attr("disabled", "disabled");
+                LOCATION.find(".location_prev").removeAttr("disabled");
 
             }
         });
-        LOCATION.on("click", "#location_prev", function() {
+        LOCATION.on("click", ".location_prev", function() {
 
 
 
@@ -54,19 +54,19 @@
                 var address = val["address"];
                 var type = loc["type"];
                 var co = loc["coordinates"];
-                LOCATION.find("#locationimg").attr("src", "/ver1/images/hotel.png");
-                LOCATION.find("#location_name").setHtmlValue("<h3>" + name.capitalizeMe() + "</h3>", name);
-                LOCATION.find("#location_city").setHtmlValue("<h4>" + city.capitalizeMe() + "</h4>", city);
-                LOCATION.find("#location_state").setHtmlValue("<h4>" + state.capitalizeMe() + "</h4>", state);
-                LOCATION.find("#location_address").setHtmlValue("<h5>" + address.capitalizeMe() + "</h5>", address);
-                LOCATION.find("#location_description").setHtmlValue("<h5>" + description.capitalizeMe() + "</h5>", description);
-                //$("#location_co").setHtmlValue("<h5>"+(type+" "+co).capitalizeMe()+"</h5>",type+co);
-                LOCATION.find("#location_next").removeAttr("disabled");
+                LOCATION.find(".location_img").attr("src", "/images/hotel.png");
+                LOCATION.find(".location_name").setHtmlValue("<h3>" + name.capitalizeMe() + "</h3>", name);
+                LOCATION.find(".location_city").setHtmlValue("<h4>" + city.capitalizeMe() + "</h4>", city);
+                LOCATION.find(".location_state").setHtmlValue("<h4>" + state.capitalizeMe() + "</h4>", state);
+                LOCATION.find(".location_address").setHtmlValue("<h5>" + address.capitalizeMe() + "</h5>", address);
+                LOCATION.find(".location_description").setHtmlValue("<h5>" + description.capitalizeMe() + "</h5>", description);
+                //$(".location_co").setHtmlValue("<h5>"+(type+" "+co).capitalizeMe()+"</h5>",type+co);
+                LOCATION.find(".location_next").removeAttr("disabled");
                 $("#smart_answer").addClass("hide");
             }
             if (CURRENT_LOC === 0) {
-                LOCATION.find("#location_prev").attr("disabled", "disabled");
-                LOCATION.find("#location_next").removeAttr("disabled");
+                LOCATION.find(".location_prev").attr("disabled", "disabled");
+                LOCATION.find(".location_next").removeAttr("disabled");
             }
 
         });
@@ -74,8 +74,8 @@
 
 
         if (LOCATIONS_ARR.length === 1) {
-            LOCATION.find("#location_next").attr("disabled", "disabled");
-            LOCATION.find("#location_prev").attr("disabled", "disabled");
+            LOCATION.find(".location_next").attr("disabled", "disabled");
+            LOCATION.find(".location_prev").attr("disabled", "disabled");
         }
         var name = window.SA['name'];
         var city = window.SA['city'];
@@ -86,15 +86,15 @@
         var type = loc["type"];
         var co = loc["coordinates"];
 
-        LOCATION.find("#locationimg").attr("src", "/ver1/images/hotel.png");
+        LOCATION.find(".location_img").attr("src", "/images/hotel.png");
 
-        LOCATION.find("#location_name").setHtmlValue("<h3>" + name.capitalizeMe() + "</h3>", name);
+        LOCATION.find(".location_name").setHtmlValue("<h3>" + name.capitalizeMe() + "</h3>", name);
 
-        LOCATION.find("#location_city").setHtmlValue("<h4>" + city.capitalizeMe() + "</h4>", city);
+        LOCATION.find(".location_city").setHtmlValue("<h4>" + city.capitalizeMe() + "</h4>", city);
 
-        LOCATION.find("#location_state").setHtmlValue("<h4>" + state.capitalizeMe() + "</h4>", state);
-        //problem with db $("#location_address").setHtmlValue("<h5>"+address.capitalizeMe()+"</h5>",address);
-        LOCATION.find("#location_description").setHtmlValue("<h5>" + description + "</h5>", description);
+        LOCATION.find(".location_state").setHtmlValue("<h4>" + state.capitalizeMe() + "</h4>", state);
+        //problem with db $(".location_address").setHtmlValue("<h5>"+address.capitalizeMe()+"</h5>",address);
+        LOCATION.find(".location_description").setHtmlValue("<h5>" + description + "</h5>", description);
         $("#smart_col").html("").append(LOCATION);
         $("#smart_col").removeClass("hide");
     }

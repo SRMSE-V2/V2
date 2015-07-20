@@ -15,6 +15,8 @@
         });
         //end load scripts
         //global vars start
+        var CURRENT_FLAG=1;
+        var USER_QUERY=$("#search").val().trim();
         var START_RESULT = 0;
         var END_RESULT = 10;
         var IDS = [];
@@ -45,7 +47,8 @@
             "News": "108",
             "Sports": "109",
             "Technology": "110",
-            "Religion": "111"
+            "Religion": "111",
+	    "Videos":"000"
         };
         var MAP = {
             "100": "Architecture",
@@ -59,7 +62,8 @@
             "108": "News",
             "109": "Sports",
             "110": "Technology",
-            "111": "Religion"
+            "111": "Religion",
+            "000": "Videos"
         };
         function ls(url){
         	$.getScript(url);
@@ -556,7 +560,6 @@ $(".side_btns").fadeOut(function() {
                         wiki_desc.find(".mw-ext-cite-error").remove();
                         search_desc.html($("<div/>").append(wiki_desc).html());
                     } else {
-                    	console.log(element["body"].filter());
                         search_desc.text(element["body"].filter());
                     }
                     prnt.append(title);
@@ -622,7 +625,7 @@ $(".side_btns").fadeOut(function() {
                         async: true,
                         data: {
                             q: "" + IDS.slice(START_RESULT, END_RESULT).toString(),
-                            f: "1",
+                            f: CURRENT_FLAG,
                             authenticity_token:$("meta[name='csrf-token']").attr("content")
                         },
                         error: function() {
@@ -806,9 +809,13 @@ $(".side_btns").fadeOut(function() {
                                         ls("/js/min/discography.min.js");
                                         SHOW_INFOBOX = true;
                                         break;
-                                     case "flight":
+                                    case "flight":
                                         ls("/js/min/flight.min.js");
                                         SHOW_INFOBOX = false;
+                                        break;                                     
+                                    case "tennis":
+                                        ls("/js/min/tennis.min.js");
+                                        SHOW_INFOBOX = true;
                                         break;
                                     default:
                                         $("#smart_answer").addClass("hide");
@@ -870,7 +877,9 @@ $(".side_btns").fadeOut(function() {
                     });
                     if (arr.length > 0) {
                         var main = $();
+                        
                         CLUSTERS = arr;
+                        arr.push("Videos");
                         $.each(arr, function(index, element) {
                             if (element) {
                                 var li = $("<li></li>");
@@ -919,6 +928,36 @@ $(".side_btns").fadeOut(function() {
             } else {
                 $("#news").removeClass("hide");
             }
+            if(cluster==="Videos"){
+            CURRENT_FLAG=4;
+            $.ajax({
+                async: true,
+                url: "/cgi-bin/queryret/getIds.py",
+                dataType: 'text',
+                type: "GET",
+                data: {
+                    q: USER_QUERY,
+                    f: 4,
+                    authenticity_token:$("meta[name='csrf-token']").attr("content")
+                },
+                error: function() {
+                    var prnt = ADD_NO_RESULTS();
+                    $("#search_results").append(prnt);
+                }
+            }).done(function(textt) {
+            var js = JSON.parse(textt);
+                if(js["error"]){
+                var prnt = ADD_NO_RESULTS();
+                    $("#search_results").append(prnt);
+                    }
+                else{
+                renderResult(js["results"], $("#search_results"), false, false,false);
+                }
+            });
+            return false;
+            }
+            CURRENT_FLAG=1;
+            
             var cid = RMAP[cluster];
             var ids = CLUSTER_RESPONSE[cid];
             IDS = ids;
@@ -931,7 +970,7 @@ $(".side_btns").fadeOut(function() {
                 type: "GET",
                 data: {
                     q: IDS.slice(START_RESULT, END_RESULT).toString(),
-                    f: 1,
+                    f: CURRENT_FLAG,
                     authenticity_token:$("meta[name='csrf-token']").attr("content")
                 },
                 error: function() {
