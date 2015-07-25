@@ -74,7 +74,7 @@
                             <a href="/about_us"><span class="a_btm">About Us</span></a>
                         </div>
                         <div class="col-lg-4 footer-a">
-                            <span class="a_btm">&copy;&nbsp;srm search engine</span>
+                            <span class="a_btm">&copy;srm search engine</span>
                         </div>
                         <div class="col-lg-4 footer-a">
                             <a href="/feedback" data-toggle="modal" data-target="#myModal"><span class="a_btm">Feedback</span></a>

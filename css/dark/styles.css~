@@ -324,7 +324,7 @@ padding-left:0px !important;
 .table>tbody>tr>th, .table>tbody>tr>td {
     border-top: none;padding: 0px; padding-left:5px;padding-right: 5px;
 }
-#search{z-index:10 !important; color:#474747;border-radius:0px !important;}
+#search{z-index:10 !important; color:#474747;}
 #search_result{border:1px;}
 #search_title{color:#2A5DB0;font-size: 16px;}
 #search_title:hover{text-decoration: underline;}

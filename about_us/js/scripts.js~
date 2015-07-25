@@ -71,7 +71,7 @@ $(document).ready(function(){
       //-----------------------------Vertical 4--------------------------------
     $('#b4').click(function(){
         
-        var v4 = '[{"name":"Abhay Kumar","img":"images/v4/abhay.jpg","desc":"Senior Vertical Head"},{"name":"Punit Gupta","img":"images/v4/punit.jpg","desc":""},{"name":"Vageeswaran","img":"images/v3/vagee.jpg","desc":"Vertical Head"},{"name":"Sai Prashanth","img":"images/v3/prashant.jpg","desc":""},{"name":"Akshay Gugnani","img":"images/v4/akshayg.jpg","desc":""},{"name":"Anshuman Pandey","img":"images/v4/anshuman.jpg","desc":""},{"name":"Ayush Aggarwal","img":"images/v4/ayushagg.jpg","desc":""},{"name":"Rishav Medhi","img":"images/v4/rishav.jpg","desc":""},{"name":"Aditi Choudary","img":"images/v4/aditi.jpg","desc":""},{"name":"Shreya Chakraborty","img":"images/v4/shreya.jpg","desc":""}]';
+        var v4 = '[{"name":"Abhay Kumar","img":"images/v4/abhay.jpg","desc":"Senior Vertical Head"},{"name":"Punit Gupta","img":"images/v4/punit.jpg","desc":""},{"name":"Vageeswaran","img":"images/v3/vagee.jpg","desc":"Vertical Head"},{"name":"Sai Prashanth","img":"images/v3/prashant.jpg","desc":""},{"name":"Akshay Gugnani","img":"images/v4/akshayg.jpg","desc":""},{"name":"Anshuman Pandey","img":"images/v4/anshuman.jpg","desc":""},{"name":"Ayush Aggarwal","img":"images/v4/ayushagg.jpg","desc":""},{"name":"Rishav Medhi","img":"images/v4/rishav.jpg","desc":""},{"name":"Aditi Choudary","img":"images/v4/aditi.jpg","desc":""},{"name":"Shreya Chakraborty","img":"images/v4/shreya.jpg","desc":""},{"name":"T Balasubramanian","img":"images/v4/ashwin.jpg","desc":""}]';
               var lang4 = '';
               var obj = $.parseJSON(v4);
               $.each(obj, function() 

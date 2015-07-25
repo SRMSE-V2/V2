@@ -11,6 +11,9 @@ and open the template in the editor.
 /*
  * Base structure
  */
+  .bx-viewport{
+  height:200px;
+  }
   .no_cover{
  font-size: 80px;
 padding-left: 35px;

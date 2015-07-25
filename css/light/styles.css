@@ -2,10 +2,12 @@ html,body {
  height:100%;
   width:100%;
 min-width:320px;
-background-color:#F7F7F7;
+background-color:#F0F0F0!important;
 
 }
-
+.arrow_drawer{
+height:90px;
+}
 .logo{
 
 cursor:pointer;
@@ -31,9 +33,21 @@ background-color:#FF3E38;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
 }
+#search_btn{
+background-color:white !important;
+border-radius:0px !important;
+}
+#search_btn>span{
+color:#474747;
+background-color:white !important;
+
+}
 #arrow{
 
 position:relative;right:0px;float:left;cursor:pointer;height:80px;width:50px;background-repeat:no-repeat;background-size:contain;background-image:url('/images/light/arrow.png');
+}
+#arrow_parent{
+float:right;
 }
 #arrow_span{
 color:white;font-size:18px;position:relative;top:33px;left:25px;
@@ -192,10 +206,11 @@ border:0px solid transparent;background-color:#DDDDDD;color:white;
     }
     .ui-autocomplete{
         
-        background-color:rgba(176,191,198,0.7);
+        background-color:rgba(255, 255, 255, 0.8);
         z-index: 99;
         position: absolute;
 padding-left:0px !important;
+box-shadow: 0 0 10px rgba(0,0,0,0.5);
         
     }
     .ui-autocomplete > li    {
@@ -209,8 +224,7 @@ padding-left:0px !important;
         list-style: none;
         cursor:pointer;
         text-decoration: none;
-	padding-left:10px !important;
-        font-family: 'arial', sans-serif;font-weight: 500;color:#474747;font-size:1.5em;
+padding-left:10px !important;font-weight: 400;color:#474747;font-size:1.5em;
         
         
     }
@@ -228,6 +242,7 @@ padding-left:0px !important;
     -moz-transition: opacity 0.5s;
     -webkit-transition: opacity 0.5s;
     -o-transition: opacity 0.5s;
+    z-index:200;
 }
 
 .ui-autocomplete.opened {
@@ -303,7 +318,7 @@ padding-left:0px !important;
 .table>tbody>tr>th, .table>tbody>tr>td {
     border-top: none;padding: 0px; padding-left:5px;padding-right: 5px;
 }
-#search{z-index:10 !important; color:#474747;}
+#search{z-index:10 !important; color:#474747;background-color:white !important;border-radius:0px !important;}
 #search_result{border:1px;}
 #search_title{color:#2A5DB0;font-size: 16px;}
 #search_title:hover{text-decoration: underline;}
@@ -311,9 +326,9 @@ padding-left:0px !important;
 #search_info{color:#3d3d3d;word-break:normal;}
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-    background: #607d8b;
+    background: #ddd;
     border: none;
-    color:#000;
+    color:#F0F0F0;
     border-radius:0;
     font-weight: normal;
 }

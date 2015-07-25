@@ -11,9 +11,9 @@ and open the template in the editor.
 /*
  * Base structure
  */
- .bx-wrapper{
- top:90px;
- }
+  .bx-viewport{
+  
+  }
   .no_cover{
  font-size: 80px;
 padding-left: 35px;

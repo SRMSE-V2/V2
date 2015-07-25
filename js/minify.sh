@@ -28,6 +28,7 @@ minify --no-comments --output ./min/weather.min.js ./modules/weather.js
 minify --no-comments --output ./min/wiki.min.js ./modules/wiki.js
 minify --no-comments --output ./min/flight.min.js ./modules/flight.js
 minify --no-comments --output ./min/tennis.min.js ./modules/tennis.js
+minify --no-comments --output ./min/feedback.min.js ./modules/feedback.js
 #css files
 minify --no-comments ../css/dark/search.css
 minify --no-comments ../css/light/search.css

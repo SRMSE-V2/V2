@@ -20,7 +20,7 @@
         var START_RESULT = 0;
         var END_RESULT = 10;
         var IDS = [];
-        var I_CLUSTER = 0;
+        var I_CLUSTER = 0;u
         var J_CLUSTER = 4;
         var HAS_RESULTS = true;
         var CLUSTERS = [];
@@ -503,7 +503,7 @@ $(".side_btns").fadeOut(function() {
                 });
             }
         }
-        function renderResult(arr, fat, wiki, isappend,news) {
+        function renderResult(arr, fat, wiki, isappend,news,isVideos) {
             if (arr[0]) {
                 if (wiki) {
                     INFO_BOX = arr[0]["infobox"];
@@ -532,6 +532,7 @@ $(".side_btns").fadeOut(function() {
                         titlea.text(stripped_title.capitalizeMe() + " - Wikipedia, the free encyclopedia");
                         titlea.attr("href", "http://en.wikipedia.org/wiki/" + element["title"]);
                         element['url'] = "http://en.wikipedia.org/wiki/" + element["title"];
+                        
                     } else {
                         titlea.text(stripped_title.capitalizeMe());
                         titlea.attr("href", element["url"]);
@@ -559,7 +560,15 @@ $(".side_btns").fadeOut(function() {
                         wiki_desc.find(".error").remove();
                         wiki_desc.find(".mw-ext-cite-error").remove();
                         search_desc.html($("<div/>").append(wiki_desc).html());
-                    } else {
+                    } 
+                    else if(isVideos){
+                    search_desc = $("<div></div>");
+                    search_desc.addClass("search_info");
+                    var url_token=element["url"].replace("https://www.youtube.com/watch?v=","");
+                    search_desc.append("<div class=\"col-md-3 col-xs-3 col-sm-3 col-lg-3\"><img width=\"100%\" src=\"https://i.ytimg.com/vi_webp/"+url_token+"/default.webp\"/></div>");
+                    search_desc.append("<div class=\"col-md-9 col-xs-9 col-sm-9 col-lg-9\">"+element["body"].filter()+"</div>");
+                    }
+                    else {
                         search_desc.text(element["body"].filter());
                     }
                     prnt.append(title);
@@ -951,7 +960,7 @@ $(".side_btns").fadeOut(function() {
                     $("#search_results").append(prnt);
                     }
                 else{
-                renderResult(js["results"], $("#search_results"), false, false,false);
+                renderResult(js["results"], $("#search_results"), false, false,false,true);
                 }
             });
             return false;

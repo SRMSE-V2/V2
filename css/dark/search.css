@@ -11,6 +11,7 @@ and open the template in the editor.
  background-color: #333 !important;
 box-shadow: 0 0 5px #515050 !important;
 border: 5px solid #333 !important;
+height:200px;
  }
  .album_info{
  color:#DFDDDD!important;
