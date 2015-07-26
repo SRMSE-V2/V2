@@ -532,7 +532,7 @@ $(".side_btns").fadeOut(function() {
                         titlea.text(stripped_title.capitalizeMe() + " - Wikipedia, the free encyclopedia");
                         titlea.attr("href", "http://en.wikipedia.org/wiki/" + element["title"]);
                         element['url'] = "http://en.wikipedia.org/wiki/" + element["title"];
-                        console.log("wiki hey");
+                        
                     } else {
                         titlea.text(stripped_title.capitalizeMe());
                         titlea.attr("href", element["url"]);

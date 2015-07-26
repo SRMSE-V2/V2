@@ -180,11 +180,11 @@
         var img2 = $("#srmse-logo");
         img2.addClass("switch");
         if (window.color === "dark") {
-            $("head").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.min.css' />");
+            $("html").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.min.css' />");
             img2.attr("src", "/images/dark/srmselogo.png");
         } else {
             img2.attr("src", "/images/light/srmselogo.png");
-            $("head").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.min.css' />");
+            $("html").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.min.css' />");
         }
         img2.attr("alt", "SRM Search Engine");
         function loadedLightTheme(){
@@ -220,7 +220,7 @@ $("#light_theme").remove();
                 var fin=calls.length+1;
                 var loaded=0;
                 var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.min.css' />");
-                $("head").append(stylesheet);
+                $("html").append(stylesheet);
                 showModal();
                 $.each(calls,function(index,element){
                     (function(el){
@@ -254,7 +254,7 @@ $("#light_theme").remove();
                 var fin=calls.length+1;
                 var loaded=0;
                 var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.min.css' />");
-                $("head").append(stylesheet);
+                $("html").append(stylesheet);
                 showModal();
                 $.each(calls,function(index,element){
                     (function(el){

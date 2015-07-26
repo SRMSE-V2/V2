@@ -35,46 +35,6 @@ else:
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <meta name="csrf-param" content="authenticity_token" />
 	<meta name="csrf-token" content='"""+u.quote(token[0])+"""'/>
-      <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-      <!--script src="/bootstrap/js/bootstrap.min.js"></script-->
-      <script>
-      (function(){
-      	$(document).ready(function(){
-      $("#search").val(\""""+u.unquote(keyword)+"""\");
-         	$("#search").attr("value",\""""+u.unquote(keyword)+"""\");
-var cook=document.cookie.split(";");
-var co={};
-if(cook.toString().indexOf("color")>-1){
-$.each(cook,function(index,element){
-co[element.split("=")[0].trim()]=element.split("=")[1].trim();
-
-});
-window.color=co["color"];//default theme
-$.ajaxSetup({ cache: true });
-}
-else{
-window.color=undefined;
-}
-if(!window.color){
-
-if(Math.random()*10>5){
-	window.color="dark";
-	document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-	$("head").append('<link id="dark_theme" href="/css/dark/search.css" rel="stylesheet"> ');
-}else{
-	window.color="light";
-	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-	$("head").append('<link id="light_theme" href="/css/light/search.css" rel="stylesheet"> ');
-	
-}
-}
-         	
-	});
-      
-      
-      })();
-      </script>
    </head>
    <body class="background">
  
@@ -99,7 +59,7 @@ if(Math.random()*10>5){
                    <div id="search_bar" style="z-index:10;position:absolute;width:80%;height:46px;margin-top:8px;">
                               <div class="input_div input-group input-group-lg" style="">
                                  
-                                      <input data-toggle="tooltip" title="Search" style="font-size:1.5em;display:block;" type="text" class="form-control form-control1 fostyle btn2 simplebox" placeholder="Search here" name="q" id="search" autocomplete="off" autofocus/>
+                                      <input data-toggle="tooltip" spellcheck="false" title="Search" style="font-size:1.5em;display:block;" type="text" class="form-control form-control1 fostyle btn2 simplebox" placeholder="Search here" name="q" id="search" autocomplete="off" autofocus/>
 
                                   <span class="input-group-btn" style="font-size:18px;z-index:10;"> 
                                       <button id="search_btn" class="btn btn-default spanbtn">
@@ -155,7 +115,47 @@ if(Math.random()*10>5){
          </div>
       </div>
    </body>
-<script type="text/javascript" src="/js/min/search.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script async type="text/javascript" src="/js/min/search.min.js"></script>
+<!--script async src="/bootstrap/js/bootstrap.min.js"></script-->
+<script>
+      (function(){
+      	$(document).ready(function(){
+      $("#search").val(\""""+u.unquote(keyword)+"""\");
+         	$("#search").attr("value",\""""+u.unquote(keyword)+"""\");
+var cook=document.cookie.split(";");
+var co={};
+if(cook.toString().indexOf("color")>-1){
+$.each(cook,function(index,element){
+co[element.split("=")[0].trim()]=element.split("=")[1].trim();
+
+});
+window.color=co["color"];//default theme
+$.ajaxSetup({ cache: true });
+}
+else{
+window.color=undefined;
+}
+if(!window.color){
+
+if(Math.random()*10>5){
+	window.color="dark";
+	document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+	$("html").append('<link id="dark_theme" href="/css/dark/search.min.css" rel="stylesheet"> ');
+}else{
+	window.color="light";
+	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+	$("html").append('<link id="light_theme" href="/css/light/search.min.css" rel="stylesheet"> ');
+	
+}
+}
+         	
+	});
+      
+      
+      })();
+      </script>
 <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 </html>
 """

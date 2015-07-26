@@ -99,6 +99,11 @@ padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !im
      #search{
      background-color:white !important;
      border-radius:0px !important;
+       outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
      }
      #search_btn,.input_div{
      background-color:white !important;
@@ -107,7 +112,7 @@ padding-top:10px !important;padding-bottom:10px !important;padding-left:16px !im
 
 border:0px solid transparent;background-color:#DDDDDD;color:white;
 }
-    .form-control1:focus{border-color:#505050;outline:0;-webkit-box-shadow:inset 0 0px 0px rgba(0,0,0,.075),0 0 0px rgba(102,175,233,.6);box-shadow:inset 0 0px 0px rgba(0,0,0,.075),0 0 0px rgba(102,175,233,.6)}
+    .form-control1:focus{border-color:#505050;outline:0;-webkit-box-shadow:inset 000 rgba(0,0,0,.075),0 00 rgba(102,175,233,.6);box-shadow:inset 000 rgba(0,0,0,.075),0 00 rgba(102,175,233,.6)}
     .search_bar{
         width: 100%;
        
@@ -254,7 +259,7 @@ padding-left:0px !important;
 /* Sidebar navigation */
 .nav-sidebar {
 
-margin-left: 0px;
+margin-left:0;
 margin-top:82px;
 
 
@@ -402,7 +407,7 @@ height:62px;
 
 }
 .padded_body{
-    padding-top: 0px !important; 
+    padding-top:0 !important; 
 padding-right:15px !important;   
 }
 
