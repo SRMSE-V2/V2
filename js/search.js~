@@ -35,8 +35,11 @@
         	$.getScript(url);
         };
         var si=function(){
+        console.log("si1");
         	SHOW_INFOBOX = true;
+        	console.log("/js/min/"+Object.keys(this)[0]+".min.js");
         	ls("/js/min/"+Object.keys(this)[0]+".min.js");
+        	console.log("si2");
         };
         var hi=function(){
         	HIDE_INFOBOX = true;
@@ -753,7 +756,9 @@ $(".side_btns").fadeOut(function() {
                             $.each(js, function(key, val) {
                                 window.SA = val;
                                 try{
+                                console.log("here");
                               MODULES[key]();
+                              console.log("there");
                               }catch(err){
                               console.log(err);
                               SHOW_INFOBOX=true;
