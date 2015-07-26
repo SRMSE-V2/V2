@@ -340,7 +340,6 @@
             $("input").removeClass("hide");
             $(".input-group").removeClass("hide");
             var img2 = $("#srmse-logo");
-            img2.on('click',function(){window.location="http://www.srmuniv.ac.in/index.html";});
             img2.addClass("switch");
             if (window.color === "dark") {
                 img2.attr("src", "images/dark/srmselogo.png");
@@ -350,7 +349,6 @@
 
             img2.attr("alt", "SRM Search Engine");
             var img1 = $("#nixi-logo");
-            img2.on('click',function(){window.location="http://www.srmuniv.ac.in/index.html";});
             if (window.color === "dark") {
                 img1.attr("src", "images/dark/nixi.png");
             } else {
@@ -404,7 +402,7 @@ $("#light_theme").remove();
                     var fin=calls.length+1;
                     var loaded=0;
                      var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.min.css' />");
-                    $("head").append(stylesheet);
+                    $("html").append(stylesheet);
                     showModal();
                     $.each(calls,function(index,element){
                     (function(el){

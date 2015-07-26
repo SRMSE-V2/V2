@@ -15,6 +15,7 @@ AddOutputFilterByType DEFLATE application/json
 AddOutputFilterByType DEFLATE application/octet-stream#for glyphs
 
 <IfModule mod_expires.c>
+Redirect 301 / /about_us/index.html
   ExpiresActive on
  
 # Perhaps better to whitelist expires rules? Perhaps.

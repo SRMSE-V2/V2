@@ -40,7 +40,7 @@ $.getScript( "/js/min/jquery-ui.min.js",function(){
     $.getScript( "/js/min/scripts.min.js",function(){
 
  $("#prog").remove();
- $.getScript( "/js/min/feedback.min.js",function(){});
+
 });
 });
 });

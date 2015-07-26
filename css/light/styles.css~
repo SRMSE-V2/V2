@@ -2,7 +2,7 @@ html,body {
  height:100%;
   width:100%;
 min-width:320px;
-
+font-family: 'Roboto', sans-serif;
 }
 .arrow_drawer{
 height:90px;
@@ -136,27 +136,6 @@ color:#333333;
 
 
 }
-.scheme{
-  font-weight: bold;
-  color: #CFCDCD;
-  background-color: #F74C4C;
-  position: absolute;
-  z-index:200;
-  left: 0;
-  right: 0;
-  bottom:20%;
-  margin: auto;  
-  height: 70px;
-  width: 500px; 
-  padding: 20px;
-  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
--webkit-border-radius: 12px;
--moz-border-radius: 7px; 
-border-radius: 7px;
-}
-
 #search_front_page{
     width:100%;
     height:100%;
@@ -172,10 +151,10 @@ margin:0px;
     padding-top: 3%;
 }
     .fostyle{
-      font-family: 'arial', sans-serif;font-weight: 500;color:#FFFFFF;
+      font-weight: 500;color:#FFFFFF;
     }
 .backinput{
-      font-family: 'arial', sans-serif;font-weight: 400;color:#7b7b7b;
+      font-weight: 400;color:#7b7b7b;
 padding-top:10px;padding-bottom:10px;padding-left:16px;padding-right:16px;cursor:text;position:absolute;left:0px;z-index:0;height:100%;
     }
     
@@ -192,13 +171,6 @@ padding-top:10px;padding-bottom:10px;padding-left:16px;padding-right:16px;cursor
 
 border:0px solid transparent;background-color:#DDDDDD;color:white;
 }
-    .vcenter{
-    display:inline-block;
-    vertical-align:middle;
-    float:none;
-    
-    }
-
 .search_bar{
         width: inherit;
        
@@ -223,17 +195,11 @@ box-shadow: 0 0 10px rgba(0,0,0,0.5);
         list-style: none;
         cursor:pointer;
         text-decoration: none;
-padding-left:10px !important;font-weight: 400;color:#474747;font-size:1.5em;
+padding-left:10px;font-weight: 400;color:#474747;font-size:1.5em;
         
         
     }
-   
 
-    
-.sub-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
 .ui-autocomplete {
     opacity: 0;
     display: none;
@@ -295,29 +261,7 @@ padding-left:10px !important;font-weight: 400;color:#474747;font-size:1.5em;
   margin-top: 0;
 }
 
-
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders {
-  margin-bottom: 30px;
-  text-align: center;
-}
-.placeholders h4 {
-  margin-bottom: 0;
-}
-.placeholder {
-  margin-bottom: 20px;
-}
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
-}
-.table>tbody>tr>th, .table>tbody>tr>td {
-    border-top: none;padding: 0px; padding-left:5px;padding-right: 5px;
-}
-#search{z-index:10 !important; color:#474747;background-color:#F0F0F0 !important;border-radius:0px !important;}
+#search{z-index:10; color:#474747;background-color:#F0F0F0;border-radius:0px;font-weight:400;}
 #search_result{border:1px;}
 #search_title{color:#2A5DB0;font-size: 16px;}
 #search_title:hover{text-decoration: underline;}
@@ -332,7 +276,7 @@ padding-left:10px !important;font-weight: 400;color:#474747;font-size:1.5em;
     font-weight: normal;
 }
 .highlight{
-font-family: sans-serif;font-weight: 800;color:#474747;
+font-weight: 800;color:#474747;
 
 }
 

@@ -402,7 +402,7 @@ $("#light_theme").remove();
                     var fin=calls.length+1;
                     var loaded=0;
                      var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.min.css' />");
-                    $("head").append(stylesheet);
+                    $("html").append(stylesheet);
                     showModal();
                     $.each(calls,function(index,element){
                     (function(el){
@@ -437,7 +437,7 @@ $("#light_theme").remove();
                     var fin=calls.length+1;
                     var loaded=0;
                     var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/styles.min.css' />");
-                $("head").append(stylesheet);
+                $("html").append(stylesheet);
                 showModal();
                 $.each(calls,function(index,element){
                     (function(el){
