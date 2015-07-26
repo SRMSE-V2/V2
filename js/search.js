@@ -42,7 +42,7 @@
         	HIDE_INFOBOX = true;
         	ls("/js/min/"+Object.keys(this)[0]+".min.js");
         };
-        var MODULES={"general":si,"sports":hi,"stock":hi,"train":hi,"weather":si,"movie":si,"exam":hi,"location":hi,"minerals":hi,"differences":si,"wiki":si,"dict":si,"theatre":si,"highway":hi,"cricket-players":si,"ministers":hi,"bank":hi,"highcourt":hi,"discography":si,"flight":hi,"tennis":si}
+        var MODULES={"general":si,"sports":hi,"stock":hi,"train":hi,"weather":si,"movie":si,"exam":hi,"location":hi,"minerals":hi,"differences":si,"wiki":si,"dict":si,"theatre":si,"highway":hi,"cricket-players":si,"ministers":hi,"bank":hi,"highcourt":hi,"discography":si,"flight":hi,"tennis":si};
         var LOAD = $("<div id=\"loading\" style=\"background-color:#333333;\"><img src=\"/images/ajax-loader.gif\" width=\"20\" height=\"20\"/></div>");
         var ARROW_DIV_BTNS = $("<div style=\"position:relative;top:0;bottom:0;padding-top:18px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;\" src=\"/images/lighttheme.png\"></span><span   class=\"side_btns\" id=\"dark\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/images/darktheme.png\">   </span> <span class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/images/howtouse.png\">      </span> </div>");
         var TAP_DIV = $("<div id=\"tap\" style=\"position:absolute;top:122px;width:100%;height:46px;z-index:99;\"><button class=\"btn tap-btn\" style=\"width:100%;height:100%;\" type=\"button\">Tap to see clusters</button></div>");
@@ -753,7 +753,7 @@ $(".side_btns").fadeOut(function() {
                                 window.SA = val;
                                 try{
                               MODULES[key]();
-                              }catch(){
+                              }catch(err){
                               SHOW_INFOBOX=true;
                               }
                             });
