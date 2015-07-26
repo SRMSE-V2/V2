@@ -461,7 +461,7 @@ $("#light_theme").remove();
                 var clicked = false;
                 $('#help').on("click", function() {
                     if (!clicked) {
-                        $.getScript('js/modules/help.js');
+                       // $.getScript('js/modules/help.js');
                         clicked = true;
                     } else {
                         $("#help_box").animate({
