@@ -36,18 +36,12 @@
         };
         var KEY="";
         var si=function(){
-        console.log("si1");
         	SHOW_INFOBOX = true;
-        	console.log("/js/min/"+KEY+".min.js");
         	ls("/js/min/"+KEY+".min.js");
-        	console.log("si2");
         };
         var hi=function(){
-        console.log("hi1");
         	HIDE_INFOBOX = true;
-        	console.log("/js/min/"+KEY+".min.js");
         	ls("/js/min/"+KEY+".min.js");
-        	console.log("hi2");
         };
         var MODULES={"general":si,"sports":hi,"stock":hi,"train":hi,"weather":si,"movie":si,"exam":hi,"location":hi,"minerals":hi,"differences":si,"wiki":si,"dict":si,"theatre":si,"highway":hi,"cricket-players":si,"ministers":hi,"bank":hi,"highcourt":hi,"discography":si,"flight":hi,"tennis":si};
         console.log(MODULES);
@@ -760,10 +754,8 @@ $(".side_btns").fadeOut(function() {
                             $.each(js, function(key, val) {
                                 window.SA = val;
                                 try{
-                                console.log("here");
                                 KEY=key;
                               MODULES[key]();
-                              console.log("there");
                               }catch(err){
                               console.log(err);
                               SHOW_INFOBOX=true;
