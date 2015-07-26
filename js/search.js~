@@ -34,16 +34,20 @@
         var ls=function (url){
         	$.getScript(url);
         };
+        var KEY="";
         var si=function(){
         console.log("si1");
         	SHOW_INFOBOX = true;
-        	console.log("/js/min/"+Object.keys(this)[0]+".min.js");
-        	ls("/js/min/"+Object.keys(this)[0]+".min.js");
+        	console.log("/js/min/"+KEY+".min.js");
+        	ls("/js/min/"+KEY+".min.js");
         	console.log("si2");
         };
         var hi=function(){
+        console.log("hi1");
         	HIDE_INFOBOX = true;
-        	ls("/js/min/"+Object.keys(this)[0]+".min.js");
+        	console.log("/js/min/"+KEY+".min.js");
+        	ls("/js/min/"+KEY+".min.js");
+        	console.log("hi2");
         };
         var MODULES={"general":si,"sports":hi,"stock":hi,"train":hi,"weather":si,"movie":si,"exam":hi,"location":hi,"minerals":hi,"differences":si,"wiki":si,"dict":si,"theatre":si,"highway":hi,"cricket-players":si,"ministers":hi,"bank":hi,"highcourt":hi,"discography":si,"flight":hi,"tennis":si};
         console.log(MODULES);
