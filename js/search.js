@@ -20,7 +20,7 @@
         var START_RESULT = 0;
         var END_RESULT = 10;
         var IDS = [];
-        var I_CLUSTER = 0;u
+        var I_CLUSTER = 0;
         var J_CLUSTER = 4;
         var HAS_RESULTS = true;
         var CLUSTERS = [];
