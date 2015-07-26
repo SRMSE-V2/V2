@@ -751,11 +751,7 @@ $(".side_btns").fadeOut(function() {
                         if (!$.isEmptyObject(js)) {
                             $.each(js, function(key, val) {
                                 window.SA = val;
-                                try{
-                              MODULES[key]();
-                              }catch(){
-                              SHOW_INFOBOX=true;
-                              }
+                              
                             });
                         } else {
                             if ($("#search").val().trim().toLowerCase().indexOf('convert') > -1) {

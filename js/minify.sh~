@@ -5,7 +5,7 @@ minify --no-comments --output ./min/search.min.js search.js
 minify --no-comments --output ./min/scripts.min.js scripts.js
 minify --no-comments --output ./min/location_centric.min.js location_centric.js
 minify --no-comments --output ./min/bank.min.js ./modules/bank.js
-minify --no-comments --output ./min/cricket-players.min.js ./modules/cricket-players.js
+minify --no-comments --output ./min/cricket.min.js ./modules/cricket.js
 minify --no-comments --output ./min/sports.min.js ./modules/sports.js
 minify --no-comments --output ./min/differences.min.js ./modules/differences.js
 minify --no-comments --output ./min/discography.min.js ./modules/discography.js
