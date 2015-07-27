@@ -755,13 +755,13 @@ $(".side_btns").fadeOut(function() {
                                 window.SA = val;
                                 try{
                                 if(key==="wiki"){
-                                SHOW_INFOBOX=true;
+                                
                                 }
                                 else{
-		                        KEY=key;
-		                      MODULES[key]();
-                                }
                                 
+                                }
+                                KEY=key;
+                              MODULES[key]();
                               }catch(err){
                               console.log(err);
                               SHOW_INFOBOX=true;

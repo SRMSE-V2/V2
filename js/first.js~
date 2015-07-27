@@ -42,7 +42,7 @@ $.getScript( "/js/min/jquery-ui.min.js",function(){
  $("#prog").remove();
 
 });
-});
+});*/
 });
 
 })();

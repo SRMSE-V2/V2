@@ -1,7 +1,6 @@
 ErrorDocument 404 /err/index.html
 ErrorDocument 403 /err/index.html
 ErrorDocument 500 /err/500.html
-AddCharset UTF-8 .html
 #Added for gzip compression before only html used to get compressed, not others
 AddOutputFilterByType DEFLATE text/plain
 AddOutputFilterByType DEFLATE text/html
