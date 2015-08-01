@@ -1,5 +1,5 @@
 (function() {
-    $("#prog").remove(); //remove loading when script loaded
+   
     $(document).ready(function() {
         $.ajaxSetup({
             cache: true
@@ -12,38 +12,11 @@
         var ORIGINAL_QUERY="";
         var SPACE=false;
         var DEFAULT_LEFT=0;
-        var MODAL_BACK="";
 	//globals end
-	function showModal(){
-        $("#modalSwitchTheme").remove();
-        if(window.color==="dark"){
-        	MODAL_BACK="rgba(241, 241, 241, 0.74)";
-        }
-        else if(window.color==="light"){
-        	MODAL_BACK="rgba(51, 51, 51, 0.74)";
-        }
-        var modal=$('<div id="modalSwitchTheme"  style="width:'+$(document).width()+'px;height:'+$(document).height()+'px;position:absolute;left:0px;top:0px;z-index:1000;background-color:'+MODAL_BACK+';"></div>');
-        modal.hide().appendTo('body').fadeIn(1000);	
-        }
         function searchQuery(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
-        window.switchImg = function() {
-        var callbacks=[];
-            //To switch images path when switching themes shared by both the pages
-            var imgs = $(".switch");
-            $.each(imgs, function() {
-                if (window.color === "dark") {
-                    $(this).attr("src", $(this).attr("src").replace("/light/", "/dark/"));
-                }
-                if (window.color === "light") {
-                    $(this).attr("src", $(this).attr("src").replace("/dark/", "/light/"));
-                }
-                callbacks.push($(this));
-
-            });
-	return callbacks;
-        };
+        
         //setting up backinput for shadow suggestion
         $(".backinput").remove();
         var BACKINPUT = $("#search").clone();
@@ -51,11 +24,18 @@
         BACKINPUT.removeAttr("id");
         BACKINPUT.removeAttr("placeholder");
         BACKINPUT.removeAttr("name");
-        BACKINPUT.removeClass("ui-autocomplete");
+        BACKINPUT.removeClass("ui-autocomplete-BACKINPUTut");
         BACKINPUT.removeClass("btn2");
         BACKINPUT.addClass("btn1");
         BACKINPUT.addClass("backinput");
         BACKINPUT.attr("disabled", "");
+        
+       
+            //code for search page
+            BACKINPUT.css("margin-top", "8px");
+            BACKINPUT.css("width", "80%");
+            BACKINPUT.attr("id", "input_back");
+      
         $("#div_for_back").append(BACKINPUT);
         
 
@@ -140,16 +120,12 @@
                 event.preventDefault();
             },
             close: function() {
-            console.log('close');
-              $('.ui-menu-item').remove();
                 //clearing up the autocomplete after close 
                 $('ul.ui-autocomplete')
                     .removeClass('opened')
                     .css('display', 'block');
-                 
             },
             focus: function(event, ui) {
-            console.log('focused');
                 if ($("#search").val().trim() !== "") {
                     //checking for resize key in focus 
                     if (ui["item"]["resize"]) {
@@ -338,208 +314,7 @@
                 }
             }
         });
-       
-         
-         
-            $("input").removeClass("hide");
-            $(".input-group").removeClass("hide");
-            var img2 = $("#srmse-logo");
-            img2.addClass("switch");
-            if (window.color === "dark") {
-                img2.attr("src", "images/dark/srmselogo.png");
-            } else {
-                img2.attr("src", "images/light/srmselogo.png");
-            }
-
-            img2.attr("alt", "SRM Search Engine");
-            var img1 = $("#nixi-logo");
-            if (window.color === "dark") {
-                img1.attr("src", "images/dark/nixi.png");
-            } else {
-                img1.attr("src", "images/light/nixi.png");
-            }
-            img1.addClass("switch");
-            img1.attr("alt", "Nixi");
-            img1.attr("width", "103px");
-            img1.attr("height", "36px");
-            var img = $("#srm-logo");
-            if (window.color === "dark") {
-                img.attr("src", "images/dark/srm.png");
-            } else {
-                img.attr("src", "images/light/srm.png");
-            }
-            img.addClass("switch");
-            img.attr("alt", "SRM University");
-            img.attr("width", "93px");
-            img.attr("height", "36px");
-            var u = 0;
-            var wait = 0;
-            var dispBtns = function() {
-                $(".arrow_div").css("padding-left", "20px");
-                $(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:24px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"width:31px;height:27px;top:0;bottom:0;margin:auto;\" src=\"images/lighttheme.png\"></span><span id=\"dark\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/darktheme.png\">   </span> <span id=\"help\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/howtouse.png\">      </span> </div>");
-                $(".side_btns").css("cursor", "pointer");
-function loadedLightTheme(){
-
-$("#dark_theme").remove();
-                	$('#modalSwitchTheme').fadeOut(1000,function(){
-                		$(this).remove();
-                	});
-
-}
-function loadedDarkTheme(){
-$("#light_theme").remove();
-                	$('#modalSwitchTheme').fadeOut(1000,function(){
-                		$(this).remove();
-                	});
-
-}
-                $("#light").on('click', function() {
-                if(window.color==="light"){
-                showModal();
-                loadedLightTheme();
-                return;
-                }
-			$("#light_theme").remove();
-                    document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-                    window.color = "light";
-                    var calls=window.switchImg();
-                    var fin=calls.length+1;
-                    var loaded=0;
-                     var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.min.css' />");
-                    $("html").append(stylesheet);
-                    showModal();
-                    $.each(calls,function(index,element){
-                    (function(el){
-                    	el.load(function(){
-                    	++loaded;
-                    	if(loaded===fin){
-                    	loadedLightTheme();
-                    	}
-                    	});
-                    
-                    })(element);
-                    });
-                    stylesheet.load(function(){
-                    ++loaded;
-                    if(loaded===fin){
-                    	loadedLightTheme();
-                    	}
-                	
-                });
-                });
-
-                $("#dark").on('click', function() {
-                if(window.color==="dark"){
-                showModal();
-                loadedDarkTheme();
-                return;
-                }
-                $("#dark_theme").remove();
-                    document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-                    window.color = "dark";
-                    var calls=window.switchImg();
-                    var fin=calls.length+1;
-                    var loaded=0;
-                    var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/styles.min.css' />");
-                $("html").append(stylesheet);
-                showModal();
-                $.each(calls,function(index,element){
-                    (function(el){
-                    	el.load(function(){
-                    	++loaded;
-                    	if(loaded===fin){
-                    	loadedDarkTheme();
-                    	}
-                    	});
-                    
-                    })(element);
-                    });
-                    stylesheet.load(function(){
-                    ++loaded;
-                    if(loaded===fin){
-                    	loadedDarkTheme();
-                    	}
-                	
-                });
-                });
-                var clicked = false;
-                $('#help').on("click", function() {
-                    if (!clicked) {
-                       // $.getScript('js/modules/help.js');
-                        clicked = true;
-                    } else {
-                        $("#help_box").animate({
-                            opacity: '0'
-                        }, 500, function() {
-                            $("#help_box").remove();
-                        });
-
-                        clicked = false;
-                    }
-                });
-
-
-            };
-            function showArrow(){
-            $(".arrow_div").remove();
-                    $("#arrow_parent").append("<div class=\"arrow_div\" style=\"float:left;height:75px;float:right;width:0px;margin-top:5px;\"></div>");
-                    dispBtns();
-                    $(".side_btns").hide();
-                    $("#arrow").css("right", "-1px");
-                    wait = 1;
-                    $(".arrow_div").animate({
-                        width: '150px'
-                    }, 500, function() {
-                        $(".side_btns").fadeIn();
-                        $("#arrow").css("right", "-1px");
-                        wait = 0;
-                    });
-
-                    ++u;
-            }
-            function hideArrow(){
-             $(".side_btns").fadeOut(function() {
-                        $(".side_btns").hide();
-                        $(".arrow_div").css("padding-left", "0px");
-                        wait = 1;
-                        $(".arrow_div").animate({
-                            width: '0px'
-                        }, 500, function() {
-
-                            $("#arrow").css("right", "0px");
-                            wait = 0;
-                        });
-                        u = 0;
-                    });
-            
-            }
-            $("#arrow").on("click", function() {
-                if (u === 0 && wait === 0) {
-                    showArrow();
-                } else if (u !== 0 && wait === 0) {
-                   hideArrow();
-                }
-
-            });
-            
-
-        
-        $.getScript("/js/min/jquery.mobile.custom.min.js",function(){
-        $("#arrow,#arrow_parent").on("swipeleft",function(){
-            if (u === 0 && wait === 0) {
-                    showArrow();
-                    }
-            
-            });
-            $("#arrow,#arrow_parent").on("swiperight",function(){
-            if (u !== 0 && wait === 0) {
-                   hideArrow();
-                }
-            
-            });
-        
-        
-        });//load swipe event
+      
     });
 
 

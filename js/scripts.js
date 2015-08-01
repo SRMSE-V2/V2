@@ -140,10 +140,12 @@
                 event.preventDefault();
             },
             close: function() {
+              $('.ui-menu-item').remove();
                 //clearing up the autocomplete after close 
                 $('ul.ui-autocomplete')
                     .removeClass('opened')
                     .css('display', 'block');
+                 
             },
             focus: function(event, ui) {
                 if ($("#search").val().trim() !== "") {

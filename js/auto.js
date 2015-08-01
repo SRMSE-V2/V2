@@ -121,6 +121,7 @@
             },
             close: function() {
                 //clearing up the autocomplete after close 
+                $('.ui-menu-item').remove();
                 $('ul.ui-autocomplete')
                     .removeClass('opened')
                     .css('display', 'block');
