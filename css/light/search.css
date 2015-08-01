@@ -46,7 +46,7 @@ html,body {
 min-width:320px;
 font-family: 'Roboto', sans-serif;
 font-weight:400 !important;
-
+background-color: #eeeeee;
 }
 
 .arrow_div{
@@ -345,8 +345,6 @@ margin-bottom:10px !important;
 .search_result{
     padding:15px;
     clear:both;
-    background-color: #fff;
-    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
 }
 .search_result:hover{
 cursor:pointer;
@@ -368,9 +366,9 @@ background-color:#EAEBEB!important;
   background-color: #f9f9f9;
   border: 1px solid transparent;
   border-radius: 3px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  }
+  background-color: #fff;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+}
   .module>*{
 
  color: #474747 !important;
