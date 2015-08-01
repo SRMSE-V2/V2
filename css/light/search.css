@@ -336,14 +336,19 @@ border-radius:4px !important;
 
 #news,#wikiMain{
 margin-bottom:15px;
-
+background-color: #f9f9f9;
 }
 .wiki_head>h4{
 margin-top:15px !important;
 margin-bottom:10px !important;
 
 }
-.search_result{padding:15px;clear:both;}
+.search_result{
+    padding:15px;
+    clear:both;
+    background-color: #fff;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+}
 .search_result:hover{
 cursor:pointer;
 background-color:#EAEBEB!important;
