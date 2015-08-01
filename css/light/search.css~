@@ -371,7 +371,7 @@ background-color:#F7F7F7;
 
  color: #474747 !important;
 }
-a{color:#474747!important;font-weight:400;word-wrap:break-word;}
+a{color:#474747!important;font-weight:500;word-wrap:break-word;}
 a:hover{text-decoration: underline;word-wrap:break-word;}
 .search_title{color:#474747;font-size: 20px;font-weight:400;word-wrap:break-word;}
 .search_title:hover{text-decoration: underline;word-wrap:break-word;}
