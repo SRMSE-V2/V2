@@ -29,9 +29,11 @@ minify --no-comments --output ./min/wiki.min.js ./modules/wiki.js
 minify --no-comments --output ./min/flight.min.js ./modules/flight.js
 minify --no-comments --output ./min/tennis.min.js ./modules/tennis.js
 minify --no-comments --output ./min/feedback.min.js ./modules/feedback.js
-htmlminify --o ../index.html ../index1.html
+htmlminify -o ../index.html ../index1.html
 #css files
 minify --no-comments ../css/dark/search.css
 minify --no-comments ../css/light/search.css
 minify --no-comments ../css/dark/styles.css
 minify --no-comments ../css/light/styles.css
+minify --no-comments ../css/scripts.css
+/var/www/html/srm/SRMSE/css/scripts.css

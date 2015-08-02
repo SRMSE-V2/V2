@@ -5,9 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="bootstrap.fp/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/scripts.min.css" rel="stylesheet">
     </head>
     <body>
-        <div id="top_bar">
+        <div id="top_bar top_bar_sh">
             <div class="container-fluid w_i top_cont">
                 <div class="row w_i top_row">
                     <div class="col-lg-12 top_row">
@@ -37,7 +38,7 @@
                           <div class="col-lg-3 col-md-3 hidden-xs hidden-sm hidden-phone hidden-tablet">
                           </div>
                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 " id="load">
-                               <div class="f_w search_box>
+                               <div class="f_w search_box">
                               <div class="hide input-group input-group-lg">
                                  
                                       <input data-toggle="tooltip" title="Search" type="text" class="hide form-control form-control1 fostyle btn2 simplebox" placeholder="Search here" name="q" id="search" spellcheck="false" autocomplete="off" autofocus/>

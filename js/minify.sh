@@ -35,3 +35,4 @@ minify --no-comments ../css/dark/search.css
 minify --no-comments ../css/light/search.css
 minify --no-comments ../css/dark/styles.css
 minify --no-comments ../css/light/styles.css
+minify --no-comments ../css/scripts.css
