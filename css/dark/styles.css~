@@ -5,17 +5,38 @@ min-width:320px;
 background-color:#474747;
 font-family: 'Roboto', sans-serif;
 }
+.w_i{
+width:inherit;
+}
+.f_w{
+width:100%;
+}
+.search_container{
+height:inherit;margin-top:50px;
+}
+.top_cont,.top_row{
+height:70px;
+}
+.search_box{
+z-index:10;position:absolute;height:46px;
+}
 .arrow_drawer{
 height:90px;
 }
 .logo{
 cursor:pointer;
 }
+#nixi-logo{
+float:right;
+}
 #top_bar{
 height:60px;padding-top:15px;box-shadow:0 1px 15px #000;
 }
 .arrow_div{
 background-color:#00b4ff;
+}
+.foot{
+width:80%;margin-left:auto;margin-right:auto;
 }
 .hr_color{
   border-top: 1px solid #FFF;
@@ -26,6 +47,7 @@ background-color:#00b4ff;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
+  
 }
 #search_btn{
 border-radius:0px;
@@ -81,7 +103,7 @@ height:39px;
 #nixi-logo{
 width:83px;
 height:30px;
-
+float:right;
 }
 }
 
@@ -105,7 +127,7 @@ height:39px;
 #nixi-logo{
 width:83px;
 height:30px;
-
+float:right;
 }
 }
 #div_for_back{
@@ -253,7 +275,7 @@ padding-left:0px;
 .table>tbody>tr>th, .table>tbody>tr>td {
     border-top: none;padding:0; padding-left:5px;padding-right: 5px;
 }
-#search{z-index:10; color:#474747;border-radius:0px;font-weight:400;}
+#search{z-index:10; color:#474747;border-radius:0px;font-weight:400;font-size:1.5em;display:block;text-decoration:none;}
 #search_result{border:1px;}
 #search_title{color:#2A5DB0;font-size: 16px;}
 #search_title:hover{text-decoration: underline;}
@@ -268,7 +290,7 @@ padding-left:0px;
     font-weight: normal;
 }
 .highlight{
-font-weight: 800;color:#FFFFFF;
+font-weight: 500;color:#FFFFFF;
 
 }
 

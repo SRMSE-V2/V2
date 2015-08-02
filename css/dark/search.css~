@@ -164,14 +164,14 @@ border:0px solid transparent;background-color:transparent;color:white;
     @media (max-width: 767px) {
     #search_bar,#search,#input_back {
 
-width:95%;
+width:95% !important;
 }
 
     }
 @media (max-width: 480px) {
 #search_bar,#search,#input_back{
 
-width:95%;
+width:95% !important;
 }
 }
     
@@ -241,11 +241,7 @@ margin-bottom:25px;
     word-wrap:break-word;
     padding-top:10px;  
 }
-@media (max-width: 1000px) {
-    .affix {
-        position: static;
-    }
-}
+
 #collapsee{
     margin-bottom: 20px;
 }
@@ -509,7 +505,7 @@ border-top-right-radius:0px;
     font-weight: normal;
 }
 .highlight{
-font-weight: 600;color:#FFFFFF;
+font-weight: 500;color:#FFFFFF;
 
 }
 

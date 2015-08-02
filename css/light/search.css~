@@ -118,14 +118,14 @@ border:0px solid transparent;background-color:transparent;color:white;
     @media (max-width: 767px) {
     #search_bar,#search,#input_back {
 
-width:95%;
+width:95% !important;
 }
 
     }
 @media (max-width: 480px) {
 #search_bar,#search,#input_back{
 
-width:95%;
+width:95% !important;
 }
 }
  .btn-us{
@@ -219,11 +219,6 @@ margin-bottom:25px;
     color:white;
     word-wrap:break-word;
     padding-top:10px;    
-}
-@media (max-width: 1000px) {
-    .affix {
-        position: static;
-    }
 }
 #collapsee{
     margin-bottom: 20px;
@@ -454,7 +449,7 @@ font-family: sans-serif;font-weight: 400;color:#FFFFFF;font-size:18px;
     font-weight: normal;
 }
 .highlight{
-font-weight: 600;color:#474747;
+font-weight: 500;color:#474747;
 
 }
 
@@ -463,11 +458,6 @@ font-weight: 600;color:#474747;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-@media(max-width:480px){
-
-.col-tn-1{float:none;}
-.col-tn-10{float:none;}
 }
 .stocks_font{
 

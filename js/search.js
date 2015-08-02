@@ -58,11 +58,12 @@
         	HIDE_INFOBOX = true;
         	ls("/js/min/"+KEY+".min.js","js");
         };
+        
         var MODULES={"general":si,"sports":hi,"stock":hi,"train":hi,"weather":si,"movie":si,"exam":hi,"location":hi,"minerals":hi,"differences":si,"wiki":si,"dict":si,"theatre":si,"highway":hi,"cricket-players":si,"ministers":hi,"bank":hi,"highcourt":hi,"discography":si,"flight":hi,"tennis":si};
         console.log(MODULES);
-        var LOAD = $("<div id=\"loading\" style=\"background-color:#333333;\"><img src=\"/images/ajax-loader.gif\" width=\"20\" height=\"20\"/></div>");
-        var ARROW_DIV_BTNS = $("<div style=\"position:relative;top:0;bottom:0;padding-top:18px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;\" src=\"/images/lighttheme.png\"></span><span   class=\"side_btns\" id=\"dark\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/images/darktheme.png\">   </span> <span class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"/images/howtouse.png\">      </span> </div>");
-        var TAP_DIV = $("<div id=\"tap\" style=\"position:absolute;top:122px;width:100%;height:46px;z-index:99;\"><button class=\"btn tap-btn\" style=\"width:100%;height:100%;\" type=\"button\">Tap to see clusters</button></div>");
+        var LOAD = $("<div id='loading' style='background-color:#333333;'><img src='/images/ajax-loader.gif' width='20' height='20'/></div>");
+        var ARROW_DIV_BTNS = $("<div style='position:relative;top:0;bottom:0;padding-top:18px;height:50px;'><span id='light' class='side_btns' data-toggle='tooltip' title='Light Theme'><img style='top:0;bottom:0;margin:auto;width:31px;height:27px;' src='/images/lighttheme.png'></span><span   class='side_btns' id='dark' data-toggle='tooltip' title='Dark Theme'><img style='top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;' src='/images/darktheme.png'>   </span> <span class='side_btns' data-toggle='tooltip' title='Want Help !'>  <img style='top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;' src='/images/howtouse.png'>      </span> </div>");
+        var TAP_DIV = $("<div id='tap' style='position:absolute;top:122px;width:100%;height:46px;z-index:99;'><button class='btn tap-btn' style='width:100%;height:100%;' type='button'>Tap to see clusters</button></div>");
         var RMAP = {
             "Architecture": "100",
             "Arts": "101",
@@ -244,7 +245,7 @@ $("#light_theme").remove();
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
-                var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.min.css' />");
+                var stylesheet=$("<link id='light_theme' rel='stylesheet' type='text/css' href='/css/light/search.min.css' />");
                 $("html").append(stylesheet);
                 showModal();
                 $.each(calls,function(index,element){
@@ -278,7 +279,7 @@ $("#light_theme").remove();
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
-                var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.min.css' />");
+                var stylesheet=$("<link id='dark_theme' rel='stylesheet' type='text/css' href='/css/dark/search.min.css' />");
                 $("html").append(stylesheet);
                 showModal();
                 $.each(calls,function(index,element){
@@ -306,7 +307,7 @@ var u = 0; //toggle var
 var wait=0;
 function showArrow(){
  $(".arrow_div").remove();
-                $("#arrow_parent").append("<div class=\"arrow_div\"></div>");
+                $("#arrow_parent").append("<div class='arrow_div'></div>");
                 dispBtns();
                 $(".side_btns").hide();
                 wait = 1;
@@ -408,13 +409,13 @@ $(".side_btns").fadeOut(function() {
                 }
                 $(".side").addClass("hide");
                 $("#centre_parent").css("margin-top", "20px");
-                var newnav = $("<div class=\"newside\" style=\"width:" + $(".nav_changer").width() + "px;\"></div");
-                var lbtn = $("<button style=\"\" class=\"cluster_lbtn btn glyphicon glyphicon-chevron-left\"></button>");
-                var rcol = $("<div style=\"float:left;height:100%;width:40px;\" class=\"\"></div>");
-                var lcol = $("<div style=\"float:left;height:100%;width:40px;\" class=\"\"></div>");
-                var rbtn = $("<button style=\"\" class=\"cluster_rbtn btn glyphicon glyphicon-chevron-right\"></button>");
-                var r = $("<div style=\"width:100%;height:100%;padding-top:5px;padding-bottom:5px;\"></div>");
-                var main = $("<div style=\"padding:0px !important;height:50px;width:" + ($(".nav_changer").width() - 80) + "px;\" class=\"col-lg-10 col-md-10 col-sm-10 col-xs-10\"></div>");
+                var newnav = $("<div class='newside' style='width:" + $(".nav_changer").width() + "px;'></div");
+                var lbtn = $("<button style='' class='cluster_lbtn btn glyphicon glyphicon-chevron-left'></button>");
+                var rcol = $("<div style='float:left;height:100%;width:40px;' class=''></div>");
+                var lcol = $("<div style='float:left;height:100%;width:40px;' class=''></div>");
+                var rbtn = $("<button style='' class='cluster_rbtn btn glyphicon glyphicon-chevron-right'></button>");
+                var r = $("<div style='width:100%;height:100%;padding-top:5px;padding-bottom:5px;'></div>");
+                var main = $("<div style='padding:0px !important;height:50px;width:" + ($(".nav_changer").width() - 80) + "px;' class='col-lg-10 col-md-10 col-sm-10 col-xs-10'></div>");
                 rcol.append(rbtn);
                 lcol.append(lbtn);
                 r.append(lcol);
@@ -424,11 +425,11 @@ $(".side_btns").fadeOut(function() {
                         var h = ($(".nav_changer").width() - 105) / 4;
                         var temp;
                         if (index === J_CLUSTER) {
-                            temp = $("<div data-toggle=\"tooltip\" data-placement=\"bottom\" class=\"cluster_btn\" title=\"" + element.capitalizeMe() + "\" style=\"width:" + h + "px;\"></div>");
+                            temp = $("<div data-toggle='tooltip' data-placement='bottom' class='cluster_btn' title='" + element.capitalizeMe() + "' style='width:" + h + "px;'></div>");
                             temp.text(element.capitalizeMe());
                             m = m.add(temp);
                         } else {
-                            temp = $("<div data-toggle=\"tooltip\" data-placement=\"bottom\" class=\"cluster_btn\" title=\"" + element.capitalizeMe() + "\" style=\"width:" + h + "px;\"></div>");
+                            temp = $("<div data-toggle='tooltip' data-placement='bottom' class='cluster_btn' title='" + element.capitalizeMe() + "' style='width:" + h + "px;'></div>");
                             temp.text(element.capitalizeMe());
                             m = m.add(temp);
                         }
@@ -540,7 +541,7 @@ $(".side_btns").fadeOut(function() {
                 var main = $();
                 $.each(arr, function(index, element) {
                     var prnt = $("<div></div>");
-                    var title = $("<div style=\"display:block;\"></div>");
+                    var title = $("<div style='display:block;'></div>");
                     var titlea = $("<a></a>");
                     title.append(titlea);
                     prnt.addClass("search_result effect"); //remove effect class to remove fadeIn
@@ -590,8 +591,8 @@ $(".side_btns").fadeOut(function() {
                     search_desc = $("<div></div>");
                     search_desc.addClass("search_info");
                     var url_token=element["url"].replace("https://www.youtube.com/watch?v=","");
-                    search_desc.append("<div class=\"col-md-3 col-xs-3 col-sm-3 col-lg-3\"><img width=\"100%\" src=\"https://i.ytimg.com/vi_webp/"+url_token+"/default.webp\"/></div>");
-                    search_desc.append("<div class=\"col-md-9 col-xs-9 col-sm-9 col-lg-9\">"+element["body"].filter()+"</div>");
+                    search_desc.append("<div class='col-md-3 col-xs-3 col-sm-3 col-lg-3'><img width='100%' src='https://i.ytimg.com/vi_webp/"+url_token+"/default.webp'/></div>");
+                    search_desc.append("<div class='col-md-9 col-xs-9 col-sm-9 col-lg-9'>"+element["body"].filter()+"</div>");
                     }
                     else {
                         search_desc.text(element["body"].filter());
@@ -601,7 +602,7 @@ $(".side_btns").fadeOut(function() {
                     main = main.add(prnt);
                 });
                 //to add a line break hr
-                main = main.add("<hr class=\"hr_breaker\">");
+                main = main.add("<hr class='hr_breaker'>");
                 //to check if results is more or first
                 if (isappend) {
                     fat.append(main);
@@ -808,6 +809,7 @@ $(".side_btns").fadeOut(function() {
                         $("#centre_parent").parent().addClass("col-lg-8 col-md-8 col-lg-pull-3 col-md-pull-3");
                         $("#smart_col").parent().removeClass("col-lg-push-7 col-md-push-7 col-lg-3 col-md-3");
                         $("#smart_col").parent().addClass("col-lg-push-8 col-md-push-8 col-lg-3 col-md-3");
+                        $(".nav-sidebar").addClass("hide");
         }
         function getClusters() {
             if ($("#search").val().trim() !== "") {
