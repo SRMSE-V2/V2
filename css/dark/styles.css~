@@ -8,6 +8,9 @@ font-family: 'Roboto', sans-serif;
 .w_i{
 width:inherit;
 }
+.h_i{
+height:inherit;
+}
 .f_w{
 width:100%;
 }
@@ -167,7 +170,7 @@ margin:0px;
     }
 .backinput{
       font-family: 'arial', sans-serif;font-weight: 400;color:#7b7b7b;
-padding-top:10px;padding-bottom:10px;padding-left:16px;padding-right:16px;cursor:text;position:absolute;left:0px;z-index:0;height:100%;
+padding-top:10px;padding-bottom:10px;padding-left:16px;padding-right:16px;cursor:text;position:absolute;left:0px;z-index:0;height:100%;font-size:1.5em;display:block;text-decoration:none;
     }
     .fostyle1{
       font-weight: 600;color:#FFFFFF;font-size:6em;margin-bottom:0;
