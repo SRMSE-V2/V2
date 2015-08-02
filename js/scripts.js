@@ -315,7 +315,7 @@
         function loadLocation() {
             if (document.cookie.indexOf("latitude") < 0) {
                 //location not in the cookie
-                $.getScript("/js/min/location_centric.min.js");
+                ls("/js/min/location_centric.min.js","js");
             }
 
         }
@@ -522,7 +522,7 @@ $("#light_theme").remove();
             
 
         
-        $.getScript("/js/min/jquery.mobile.custom.min.js",function(){
+    ls("/js/min/jquery.mobile.custom.min.js","js").onload=function(){
         $("#arrow,#arrow_parent").on("swipeleft",function(){
             if (u === 0 && wait === 0) {
                     showArrow();
@@ -537,7 +537,7 @@ $("#light_theme").remove();
             });
         
         
-        });//load swipe event
+        };//load swipe event
     });
 
 

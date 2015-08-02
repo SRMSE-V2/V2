@@ -8,7 +8,7 @@
         <link href="/css/scripts.min.css" rel="stylesheet">
     </head>
     <body>
-        <div id="top_bar top_bar_sh">
+        <div id="top_bar">
             <div class="container-fluid w_i top_cont">
                 <div class="row w_i top_row">
                     <div class="col-lg-12 top_row">

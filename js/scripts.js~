@@ -140,7 +140,6 @@
                 event.preventDefault();
             },
             close: function() {
-            console.log('close');
               $('.ui-menu-item').remove();
                 //clearing up the autocomplete after close 
                 $('ul.ui-autocomplete')
@@ -149,7 +148,6 @@
                  
             },
             focus: function(event, ui) {
-            console.log('focused');
                 if ($("#search").val().trim() !== "") {
                     //checking for resize key in focus 
                     if (ui["item"]["resize"]) {
@@ -317,7 +315,7 @@
         function loadLocation() {
             if (document.cookie.indexOf("latitude") < 0) {
                 //location not in the cookie
-                $.getScript("/js/min/location_centric.min.js");
+                ls("/js/min/location_centric.min.js","js");
             }
 
         }
