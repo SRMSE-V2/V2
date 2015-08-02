@@ -10,9 +10,27 @@
         $.ajaxSetup({
             cache: true
         });
-        $.getScript("/js/min/jquery-ui.min.js", function() {
-            $.getScript("/js/min/auto.min.js");
-        });
+        function ls(filename, filetype,id){
+    if (filetype=="js"){ //if filename is a external JavaScript file
+        var fileref=document.createElement('script');
+        fileref.setAttribute("type","text/javascript");
+        fileref.setAttribute("src", filename);
+       
+    }
+    else if (filetype=="css"){ //if filename is an external CSS file
+        var fileref=document.createElement("link");
+        fileref.setAttribute("rel", "stylesheet");
+        fileref.setAttribute("type", "text/css");
+        fileref.setAttribute("href", filename);
+        fileref.setAttribute("id", id);
+    }
+    if (typeof fileref!="undefined"){
+        document.getElementsByTagName("head")[0].appendChild(fileref);}
+         return fileref;
+}
+       ls("/js/min/jquery-ui.min.js","js").onload=function() {
+            ls("/js/min/auto.min.js","js");
+        };
         //end load scripts
         //global vars start
         var CURRENT_FLAG=1;
@@ -31,17 +49,14 @@
         var CLUSTER_RESPONSE = [];
         var INFO_BOX = "";
         var MODAL_BACK="";
-        var ls=function (url){
-        	$.getScript(url);
-        };
         var KEY="";
         var si=function(){
         	SHOW_INFOBOX = true;
-        	ls("/js/min/"+KEY+".min.js");
+        	ls("/js/min/"+KEY+".min.js","js");
         };
         var hi=function(){
         	HIDE_INFOBOX = true;
-        	ls("/js/min/"+KEY+".min.js");
+        	ls("/js/min/"+KEY+".min.js","js");
         };
         var MODULES={"general":si,"sports":hi,"stock":hi,"train":hi,"weather":si,"movie":si,"exam":hi,"location":hi,"minerals":hi,"differences":si,"wiki":si,"dict":si,"theatre":si,"highway":hi,"cricket-players":si,"ministers":hi,"bank":hi,"highcourt":hi,"discography":si,"flight":hi,"tennis":si};
         console.log(MODULES);
@@ -190,11 +205,11 @@
         var img2 = $("#srmse-logo");
         img2.addClass("switch");
         if (window.color === "dark") {
-            $("html").append("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/search.min.css' />");
+            ls("/css/dark/search.min.css","css","dark_theme");
             img2.attr("src", "/images/dark/srmselogo.png");
         } else {
             img2.attr("src", "/images/light/srmselogo.png");
-            $("html").append("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='/css/light/search.min.css' />");
+            ls("/css/light/search.min.css","css","light_theme");
         }
         img2.attr("alt", "SRM Search Engine");
         function loadedLightTheme(){

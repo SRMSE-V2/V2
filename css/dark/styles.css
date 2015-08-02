@@ -21,7 +21,7 @@ background-color:#00b4ff;
   border-top: 1px solid #FFF;
 }
 .simplebox {
-  outline: none;
+  outline: none !important;
   border: none !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
@@ -148,12 +148,12 @@ margin:0px;
 padding-top:10px;padding-bottom:10px;padding-left:16px;padding-right:16px;cursor:text;position:absolute;left:0px;z-index:0;height:100%;
     }
     .fostyle1{
-      font-family: 'Quicksand', sans-serif;font-weight: 600;color:#FFFFFF;font-size:6em;margin-bottom:0;
+      font-weight: 600;color:#FFFFFF;font-size:6em;margin-bottom:0;
       text-shadow: black 0.1em 0.1em 0.2em;
     }
 
     .fostyle2{
-      font-family: 'Quicksand', sans-serif;font-weight: 400;color:#FFFFFF;font-size:3em;
+      font-weight: 400;color:#FFFFFF;font-size:3em;
     }
     .btn1{
       border:0px solid transparent;background-color:#DDDDDD;
@@ -268,7 +268,7 @@ padding-left:0px;
     font-weight: normal;
 }
 .highlight{
-font-family: 'Quicksand', sans-serif;font-weight: 800;color:#FFFFFF;
+font-weight: 500;color:#FFFFFF;
 
 }
 

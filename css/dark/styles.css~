@@ -21,7 +21,7 @@ background-color:#00b4ff;
   border-top: 1px solid #FFF;
 }
 .simplebox {
-  outline: none;
+  outline: none !important;
   border: none !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
@@ -141,10 +141,10 @@ margin:0px;
     padding-top: 3%;
 }
     .fostyle{
-      font-weight: 500;color:#FFFFFF;
+      font-family: 'arial', sans-serif;font-weight: 500;color:#FFFFFF;
     }
 .backinput{
-      font-weight: 400;color:#7b7b7b;
+      font-family: 'arial', sans-serif;font-weight: 400;color:#7b7b7b;
 padding-top:10px;padding-bottom:10px;padding-left:16px;padding-right:16px;cursor:text;position:absolute;left:0px;z-index:0;height:100%;
     }
     .fostyle1{
@@ -190,7 +190,7 @@ padding-left:0px;
         cursor:pointer;
         text-decoration: none;
 	padding-left:10px;
-        font-weight: 500;color:#b7b7b7;font-size:1.5em;
+        font-family: 'arial', sans-serif;font-weight: 500;color:#FFFFFF;font-size:1.5em;
         
         
     }
@@ -268,7 +268,7 @@ padding-left:0px;
     font-weight: normal;
 }
 .highlight{
-font-weight: 600;color:#FFFFFF;
+font-weight: 800;color:#FFFFFF;
 
 }
 
