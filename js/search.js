@@ -332,7 +332,7 @@ $(".side_btns").fadeOut(function() {
                 });
 
 }
- ls("/js/min/jquery.mobile.custom.min.js",function(){
+ ls("/js/min/jquery.mobile.custom.min.js","js").onload=function(){
         $("#arrow,#arrow_parent").on("swipeleft",function(){
             if (u === 0 && wait === 0) {
                     showArrow();
@@ -347,7 +347,7 @@ $(".side_btns").fadeOut(function() {
             });
         
         
-        });//load swipe event
+        };//load swipe event
         function arrowClick() {
             if (u === 0) {
                showArrow();
@@ -784,11 +784,6 @@ $(".side_btns").fadeOut(function() {
                               }
                             });
                         } else {
-                            if ($("#search").val().trim().toLowerCase().indexOf('convert') > -1) {
-                                ls("/js/min/glaConv.min.js");
-                                ls("/js/min/metric.min.js");
-                                ls("/js/min/convert.min.js");
-                            }
                             console.log("No smart  ans questions !");
                             $("#smart_answer").addClass("hide");
                             $("#smart_col").addClass("hide");

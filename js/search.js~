@@ -58,29 +58,7 @@
         	HIDE_INFOBOX = true;
         	ls("/js/min/"+KEY+".min.js","js");
         };
-        function store(key,js){
-        	if(typeof(Storage) !== "undefined") {
-    			// Code for localStorage/sessionStorage.
-    			var item=localStorage.getItem(key);
-    			if(item){
-    				//check timestamp
-    				item.split("#time#")[1]
-    			}
-    			else{
-    	          	 localStorage.setItem(key,JSON.stringify(js)+"#time#"+Date.now());
-    	          	 }
-		}
-        }
-        function fetch(key){
-        	var item=localStorage.getItem(key);
-        	if(item){
-    				//check timestamp
-    				item.split("#time#")[1]
-    		}
-    		else{
-    	         	 localStorage.setItem(key,JSON.stringify(js)+"#time#"+Date.now());
-    	         }
-        }
+        
         var MODULES={"general":si,"sports":hi,"stock":hi,"train":hi,"weather":si,"movie":si,"exam":hi,"location":hi,"minerals":hi,"differences":si,"wiki":si,"dict":si,"theatre":si,"highway":hi,"cricket-players":si,"ministers":hi,"bank":hi,"highcourt":hi,"discography":si,"flight":hi,"tennis":si};
         console.log(MODULES);
         var LOAD = $("<div id='loading' style='background-color:#333333;'><img src='/images/ajax-loader.gif' width='20' height='20'/></div>");
@@ -354,7 +332,7 @@ $(".side_btns").fadeOut(function() {
                 });
 
 }
- ls("/js/min/jquery.mobile.custom.min.js",function(){
+ ls("/js/min/jquery.mobile.custom.min.js","js").onload=function(){
         $("#arrow,#arrow_parent").on("swipeleft",function(){
             if (u === 0 && wait === 0) {
                     showArrow();
@@ -369,7 +347,7 @@ $(".side_btns").fadeOut(function() {
             });
         
         
-        });//load swipe event
+        };//load swipe event
         function arrowClick() {
             if (u === 0) {
                showArrow();
@@ -806,11 +784,6 @@ $(".side_btns").fadeOut(function() {
                               }
                             });
                         } else {
-                            if ($("#search").val().trim().toLowerCase().indexOf('convert') > -1) {
-                                ls("/js/min/glaConv.min.js");
-                                ls("/js/min/metric.min.js");
-                                ls("/js/min/convert.min.js");
-                            }
                             console.log("No smart  ans questions !");
                             $("#smart_answer").addClass("hide");
                             $("#smart_col").addClass("hide");
