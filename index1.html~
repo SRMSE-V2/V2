@@ -4,8 +4,218 @@
         <title>SRM Search Engine</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+     (function(){
+window.ls=function(filename, filetype,id){
+    if (filetype=="js"){ //if filename is a external JavaScript file
+        var fileref=document.createElement('script');
+        fileref.setAttribute("type","text/javascript");
+        fileref.setAttribute("src", filename);
+       
+    }
+    else if (filetype=="css"){ //if filename is an external CSS file
+        var fileref=document.createElement("link");
+        fileref.setAttribute("rel", "stylesheet");
+        fileref.setAttribute("type", "text/css");
+        fileref.setAttribute("href", filename);
+        fileref.setAttribute("id", id);
+    }
+    if (typeof fileref!="undefined"){
+        document.getElementsByTagName("head")[0].appendChild(fileref);}
+         return fileref;
+}
+var cook=document.cookie.split(";");
+var co={};
+if(cook.toString().indexOf("color")>-1){
+for(var i=0;i<cook.length;i++){
+co[cook[i].split("=")[0].trim()]=cook[i].split("=")[1].trim();
+
+}
+window.color=co["color"];//default theme
+}
+else{
+window.color=undefined;
+}
+if(!window.color){
+
+if(Math.random()*10>5){
+	window.color="dark";
+	document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+}else{
+	window.color="light";
+	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+	
+}
+}
+function prependCss(css){
+    elChild = document.createElement('style');
+elChild.innerHTML = css;
+document.getElementsByTagName("head")[0].appendChild(elChild);
+}
+if(window.color==="light"){ls("css/light/styles.min.css","css","light_theme");prependCss("html,body{height:100%;width:100%;min-width:320px;font-family: 'Roboto', sans-serif;}");}else{ls("css/dark/styles.min.css","css","dark_theme");prependCss("html,body { height:100%;width:100%;min-width:320px;background-color:#474747;font-family: 'Roboto', sans-serif;}.wrap{color: #eee;}");}
+var jquery=ls("https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js","js","");
+jquery.onload=function(){
+  ls("/bootstrap.fp/js/bootstrap.min.js","js");
+   ls("/js/min/scripts.min.js","js");
+
+
+
+};
+ 
+
+})();
+        </script>
+ <style>
+ @font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-search:before {
+  content: "\e003";
+}
+.glyphicon-plus:before {
+  content: "\2b";
+}
+.glyphicon-menu-hamburger:before {
+  content: "\e236";
+}
+.hidden_body{
+height:100%;
+}
+.wrap {
+font-size: 4em;
+  width: 250px;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-left: -125px;
+}
+.wrap div {
+  display: inline;
+  margin: -2px;
+}
+
+.l {
+  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+          animation: shrinkgrow 1.75s ease-in-out infinite;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.o {
+  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+          animation: shrinkgrow 1.75s ease-in-out infinite;
+  -webkit-animation-delay: 0.21875s;
+          animation-delay: 0.21875s;
+}
+
+.a {
+  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+          animation: shrinkgrow 1.75s ease-in-out infinite;
+  -webkit-animation-delay: 0.4375s;
+          animation-delay: 0.4375s;
+}
+
+.d {
+  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+          animation: shrinkgrow 1.75s ease-in-out infinite;
+  -webkit-animation-delay: 0.65625s;
+          animation-delay: 0.65625s;
+}
+
+.i {
+  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+          animation: shrinkgrow 1.75s ease-in-out infinite;
+  -webkit-animation-delay: 0.875s;
+          animation-delay: 0.875s;
+}
+
+.n {
+  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+          animation: shrinkgrow 1.75s ease-in-out infinite;
+  -webkit-animation-delay: 1.09375s;
+          animation-delay: 1.09375s;
+}
+
+.g {
+  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+          animation: shrinkgrow 1.75s ease-in-out infinite;
+  -webkit-animation-delay: 1.3125s;
+          animation-delay: 1.3125s;
+}
+
+@-webkit-keyframes shrinkgrow {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  12.5% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  25% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  33% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+
+@keyframes shrinkgrow {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  12.5% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  25% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  33% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+
+</style>
     </head>
     <body>
+  <div id="prog" class="wrap">
+  <div class="l">L</div>
+  <div class="o">O</div>
+  <div class="a">A</div>
+  <div class="d">D</div>
+  <div class="i">I</div>
+  <div class="n">N</div>
+  <div class="g">G</div>
+</div>
+    <div class="hidden_body" hidden>
         <div id="top_bar">
             <div class="container-fluid w_i top_cont">
                 <div class="row w_i top_row">
@@ -80,6 +290,6 @@
                 </div>
             </div>
         </div>
+        </div>
     </body>
-    <script async src="/js/min/first.min.js"></script>
 </html>
