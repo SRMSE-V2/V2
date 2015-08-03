@@ -2375,6 +2375,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .hidden {
   display: none !important;
 }
+
+html,body {
+ height:100%;
+  width:100%;
+min-width:320px;
+font-family: 'Roboto', sans-serif;
+}
 .w_i{
 width:inherit;
 }
@@ -2522,8 +2529,10 @@ text-align:center;
 color:#333333;
 padding-bottom:15px;
 }
+a{
+text-decoration:none;
+}
 .a_btm{
-
 color:#333333;
 }
 #back{
@@ -2635,7 +2644,7 @@ padding-left:10px;font-weight: 400;color:#474747;font-size:1.5em;
   margin-top: 0;
 }
 
-#search{z-index:10; color:#474747;background-color:#F0F0F0;border-radius:0px;font-weight:400; font-size:1.5em;display:block;text-decoration:none;}
+#search{z-index:10; color:#474747;background-color:transparent;border-radius:0px;font-weight:400; font-size:1.5em;display:block;text-decoration:none;}
 #search_result{border:1px;}
 #search_title{color:#2A5DB0;font-size: 16px;}
 #search_title:hover{text-decoration: underline;}

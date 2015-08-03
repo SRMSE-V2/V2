@@ -361,6 +361,10 @@
             }
 
             img2.attr("alt", "SRM Search Engine");
+            img2.on("load",function(){
+            $("#srmse-logo").removeAttr("hidden");
+            
+            });
             var img1 = $("#nixi-logo");
             if (window.color === "dark") {
                 img1.attr("src", "images/dark/nixi.png");
@@ -371,6 +375,10 @@
             img1.attr("alt", "Nixi");
             img1.attr("width", "103px");
             img1.attr("height", "36px");
+            img1.on("load",function(){
+            $("#nixi-logo").removeAttr("hidden");
+            
+            });
             var img = $("#srm-logo");
             if (window.color === "dark") {
                 img.attr("src", "images/dark/srm.png");
@@ -382,6 +390,10 @@
             img.attr("width", "93px");
             img.attr("height", "36px");
             $("#srmse-logo").addClass("center-block");
+            img.on("load",function(){
+            $("#srm-logo").removeAttr("hidden");
+            
+            });
             var u = 0;
             var wait = 0;
             var dispBtns = function() {

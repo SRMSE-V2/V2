@@ -2521,8 +2521,12 @@ text-align:center;
 color:#ffffff;
 padding-bottom:15px;
 }
+a{
+text-decoration:none;
+}
 .a_btm{
 color:#ffffff;
+
 
 }
 #back{
@@ -2549,7 +2553,7 @@ margin:0px;
       font-weight: 500;color:#FFFFFF;
     }
 .backinput{
-      font-weight: 400;color:#7b7b7b;
+      font-weight: 400;color:#7b7b7b;border-radius:0;
 padding-top:10px;padding-bottom:10px;padding-left:16px;padding-right:16px;cursor:text;position:absolute;left:0px;z-index:0;height:100%;font-size:1.5em;display:block;text-decoration:none;
     }
     .fostyle1{

@@ -2375,6 +2375,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .hidden {
   display: none !important;
 }
+
+
+
+html,body {
+ height:100%;
+  width:100%;
+min-width:320px;
+background-color:#474747;
+font-family: 'Roboto', sans-serif;
+}
 .w_i{
 width:inherit;
 }
@@ -2511,8 +2521,12 @@ text-align:center;
 color:#ffffff;
 padding-bottom:15px;
 }
+a{
+text-decoration:none;
+}
 .a_btm{
 color:#ffffff;
+
 
 }
 #back{

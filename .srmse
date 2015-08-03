@@ -15,6 +15,7 @@ AddOutputFilterByType DEFLATE application/javascript
 AddOutputFilterByType DEFLATE application/x-javascript
 AddOutputFilterByType DEFLATE application/json
 AddOutputFilterByType DEFLATE application/octet-stream#for glyphs
+AddOutputFilterByType DEFLATE image/svg+xml
 
 <IfModule mod_expires.c>
   ExpiresActive on
