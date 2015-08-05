@@ -386,7 +386,7 @@ $("#dark_theme").remove();
                 	$('#modalSwitchTheme').fadeOut(1000,function(){
                 		$(this).remove();
                 	});
-                	
+                	initImageStore();//storing when all the images are loaded and modal exited
 
 }
 function loadedDarkTheme(){
@@ -394,6 +394,7 @@ $("#light_theme").remove();
                 	$('#modalSwitchTheme').fadeOut(1000,function(){
                 		$(this).remove();
                 	});
+                	initImageStore();
 
 }
                 $("#light").on('click', function() {
@@ -569,7 +570,6 @@ $("#light_theme").remove();
     $.each(img_tags,function(index,element){
     	(function(element){
     		var el=document.getElementById(element);
-    		alert(element);
     		var k=function(){
 	    		if(typeof(Storage) !== "undefined") {
 	    			// Code for localStorage/sessionStorage.
