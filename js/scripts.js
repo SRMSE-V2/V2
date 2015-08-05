@@ -577,6 +577,11 @@ $("#light_theme").remove();
 	    catch (e) {
 		console.log("Storage failed: " + e);
 		img_fallback();
+		$.each(locationStorage,function(k,v){
+			if(element.id.indexOf(k)>=0){
+				locationStorage.removeItem(k);
+			}
+		});
 	    }
 	    k=null;//unload event
     }
