@@ -551,11 +551,10 @@ $("#light_theme").remove();
 	    imgCanvas.height = element.height;
 
 	    // Draw image into canvas element
-	    imgContext.drawImage(element, 0, 0, element.width, element.height);
+	    imgContext.drawImage(element, 0, 0);
 
 	    // Get canvas contents as a data URL
 	    var imgAsDataURL = imgCanvas.toDataURL("image/png");
-
 	    // Save image into localStorage
 	    try {
 		localStorage.setItem(key+"#"+window.color, imgAsDataURL);
