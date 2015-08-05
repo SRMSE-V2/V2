@@ -1,5 +1,6 @@
 (function() {
     $(document).ready(function() {
+    alert();
       $("#prog").remove(); 
     $(".hidden_body").removeAttr("hidden");//remove loading when script loaded
         $.ajaxSetup({
