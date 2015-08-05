@@ -577,6 +577,7 @@ $("#light_theme").remove();
 	    catch (e) {
 		console.log("Storage failed: " + e);
 		img_fallback();
+		console.log(element.id);
 		$.each(localStorage,function(k,v){
 			if(element.id.indexOf(k)>=0){
 				localStorage.removeItem(k);

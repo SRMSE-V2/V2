@@ -579,7 +579,7 @@ $("#light_theme").remove();
 		img_fallback();
 		$.each(localStorage,function(k,v){
 			if(element.id.indexOf(k)>=0){
-				locationStorage.removeItem(k);
+				localStorage.removeItem(k);
 			}
 		});
 	    }
