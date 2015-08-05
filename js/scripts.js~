@@ -541,10 +541,20 @@ $("#light_theme").remove();
                 }
             
             });
-  function initImageStore(){     
+  function initImageStore(){
+  function img_fallback(){
+    var img = document.getElementById("srm-logo");
+     var img1 = document.getElementById("nixi-logo");
+     var img2 = document.getElementById("srmse-logo");
+      if (window.color === "dark" || window.color==="light") {
+                img2.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srmselogo.png");
+                img1.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/nixi.png");
+                img.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srm.png");
+            }
+          
+  }     
      function storeImage(key,element){
       try {
-      var backup_img=element.cloneNode(true);
 	    var imgCanvas = document.createElement("canvas"),
 		imgContext = imgCanvas.getContext("2d");
 
@@ -565,9 +575,7 @@ $("#light_theme").remove();
 	    }
 	    catch (e) {
 		console.log("Storage failed: " + e);
-		element.setAttribute("hidden");
-		element.parentNode.insertBefore(element,backup_img);
-		element.remove();
+		img_fallback();
 	    }
 	    k=null;//unload event
     }
