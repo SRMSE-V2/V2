@@ -386,7 +386,7 @@ $("#dark_theme").remove();
                 	$('#modalSwitchTheme').fadeOut(1000,function(){
                 		$(this).remove();
                 	});
-                	initImageStore();//storing when all the images are loaded and modal exited
+                	//initImageStore();//storing when all the images are loaded and modal exited
 
 }
 function loadedDarkTheme(){
@@ -394,7 +394,7 @@ $("#light_theme").remove();
                 	$('#modalSwitchTheme').fadeOut(1000,function(){
                 		$(this).remove();
                 	});
-                	initImageStore();
+                	//initImageStore();
 
 }
                 $("#light").on('click', function() {
@@ -577,7 +577,6 @@ $("#light_theme").remove();
 	    catch (e) {
 		console.log("Storage failed: " + e);
 		img_fallback();
-		console.log(element.id);
 		$.each(localStorage,function(k,v){
 			if(element.id.indexOf(k)>=0){
 				localStorage.removeItem(k);
