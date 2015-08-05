@@ -557,6 +557,7 @@ $("#light_theme").remove();
 	    // Save image into localStorage
 	    try {
 		localStorage.setItem(key, imgAsDataURL);
+		element.removeAttribute("hidden");
 	    }
 	    catch (e) {
 		console.log("Storage failed: " + e);
@@ -564,17 +565,19 @@ $("#light_theme").remove();
     }
     var img_tags=["srmse-logo","srm-logo","nixi-logo"];
     $.each(img_tags,function(index,element){
-    	var el=document.getElementById(element);
-    	el.onload=function(){
-    		if(typeof(Storage) !== "undefined") {
-    			// Code for localStorage/sessionStorage.
-    			var item=localStorage.getItem(element);
-    			if(!item){
-    				storeImage(element,el);
-    			}
-		}
-    	};
-    
+    	(function(){
+    		var el=document.getElementById(element);
+    		el.onload=function(){
+	    		if(typeof(Storage) !== "undefined") {
+	    			// Code for localStorage/sessionStorage.
+	    			var item=localStorage.getItem(element);
+	    			if(!item){
+	    				storeImage(element,el);
+	    			}
+			}
+    		};
+    	
+    	})();
     
     });
     });

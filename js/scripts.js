@@ -565,17 +565,19 @@ $("#light_theme").remove();
     }
     var img_tags=["srmse-logo","srm-logo","nixi-logo"];
     $.each(img_tags,function(index,element){
-    	var el=document.getElementById(element);
-    	el.onload=function(){
-    		if(typeof(Storage) !== "undefined") {
-    			// Code for localStorage/sessionStorage.
-    			var item=localStorage.getItem(element);
-    			if(!item){
-    				storeImage(element,el);
-    			}
-		}
-    	};
-    
+    	(function(element){
+    		var el=document.getElementById(element);
+    		el.onload=function(){
+	    		if(typeof(Storage) !== "undefined") {
+	    			// Code for localStorage/sessionStorage.
+	    			var item=localStorage.getItem(element);
+	    			if(!item){
+	    				storeImage(element,el);
+	    			}
+			}
+    		};
+    	
+    	})();
     
     });
     });
