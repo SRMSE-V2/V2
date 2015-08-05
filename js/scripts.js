@@ -558,6 +558,7 @@ $("#light_theme").remove();
 	    try {
 		localStorage.setItem(key+"#"+window.color, imgAsDataURL);
 		element.removeAttribute("hidden");
+		k=null;//unload event
 	    }
 	    catch (e) {
 		console.log("Storage failed: " + e);
@@ -567,7 +568,7 @@ $("#light_theme").remove();
     $.each(img_tags,function(index,element){
     	(function(element){
     		var el=document.getElementById(element);
-    		el.onload=function(){
+    		var k=function(){
 	    		if(typeof(Storage) !== "undefined") {
 	    			// Code for localStorage/sessionStorage.
 	    			var item=localStorage.getItem(element);
@@ -576,6 +577,7 @@ $("#light_theme").remove();
 	    			}
 			}
     		};
+    		el.onload=k();
     	
     	})(element);
     

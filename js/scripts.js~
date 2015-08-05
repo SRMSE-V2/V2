@@ -556,8 +556,9 @@ $("#light_theme").remove();
 
 	    // Save image into localStorage
 	    try {
-		localStorage.setItem(key, imgAsDataURL);
+		localStorage.setItem(key+"#"+window.color, imgAsDataURL);
 		element.removeAttribute("hidden");
+		k=null;
 	    }
 	    catch (e) {
 		console.log("Storage failed: " + e);
@@ -567,7 +568,7 @@ $("#light_theme").remove();
     $.each(img_tags,function(index,element){
     	(function(element){
     		var el=document.getElementById(element);
-    		el.onload=function(){
+    		var k=function(){
 	    		if(typeof(Storage) !== "undefined") {
 	    			// Code for localStorage/sessionStorage.
 	    			var item=localStorage.getItem(element);
@@ -576,6 +577,7 @@ $("#light_theme").remove();
 	    			}
 			}
     		};
+    		el.onload=k();
     	
     	})(element);
     
