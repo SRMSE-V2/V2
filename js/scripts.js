@@ -544,6 +544,7 @@ $("#light_theme").remove();
   function initImageStore(){     
      function storeImage(key,element){
       try {
+      var backup_img=element.cloneNode(true);
 	    var imgCanvas = document.createElement("canvas"),
 		imgContext = imgCanvas.getContext("2d");
 
@@ -564,7 +565,9 @@ $("#light_theme").remove();
 	    }
 	    catch (e) {
 		console.log("Storage failed: " + e);
-		element.setAttribute("src",element.getAttribute("src"));
+		element.setAttribute("hidden");
+		element.parentNode.insertBefore(element,backup_img);
+		element.remove();
 	    }
 	    k=null;//unload event
     }
