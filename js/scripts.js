@@ -557,6 +557,7 @@ $("#light_theme").remove();
 	    // Save image into localStorage
 	    try {
 		localStorage.setItem(key, imgAsDataURL);
+		element.removeAttribute("hidden");
 	    }
 	    catch (e) {
 		console.log("Storage failed: " + e);
