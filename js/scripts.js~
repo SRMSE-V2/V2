@@ -190,7 +190,7 @@
 
             },
             response: function(event, ui) {
-
+console.log(ui);
                 if ($("#search").val().trim() !== "") {
                     if (ui.content[0]["resize"] === "true") {
                         //#DEBUGconsole.log("here");
