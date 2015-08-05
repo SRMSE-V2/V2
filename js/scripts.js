@@ -43,7 +43,6 @@
                 callbacks.push($(this));
 
             });
-             initImageStore();
 	return callbacks;
         };
         //setting up backinput for shadow suggestion
@@ -387,6 +386,7 @@ $("#dark_theme").remove();
                 	$('#modalSwitchTheme').fadeOut(1000,function(){
                 		$(this).remove();
                 	});
+                	  initImageStore();
 
 }
 function loadedDarkTheme(){
@@ -394,6 +394,7 @@ $("#light_theme").remove();
                 	$('#modalSwitchTheme').fadeOut(1000,function(){
                 		$(this).remove();
                 	});
+                	  initImageStore();
 
 }
                 $("#light").on('click', function() {
