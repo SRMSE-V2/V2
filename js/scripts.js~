@@ -565,7 +565,7 @@ $("#light_theme").remove();
     }
     var img_tags=["srmse-logo","srm-logo","nixi-logo"];
     $.each(img_tags,function(index,element){
-    	(function(){
+    	(function(element){
     		var el=document.getElementById(element);
     		el.onload=function(){
 	    		if(typeof(Storage) !== "undefined") {
