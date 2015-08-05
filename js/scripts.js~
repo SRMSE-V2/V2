@@ -567,7 +567,7 @@ $("#light_theme").remove();
 		console.log("Storage failed: " + e);
 		element.setAttribute("hidden");
 		element.parentNode.insertBefore(element,backup_img);
-		
+		element.remove();
 	    }
 	    k=null;//unload event
     }
