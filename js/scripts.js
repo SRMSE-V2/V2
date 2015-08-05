@@ -43,6 +43,7 @@
                 callbacks.push($(this));
 
             });
+             initImageStore();
 	return callbacks;
         };
         //setting up backinput for shadow suggestion
@@ -539,7 +540,7 @@ $("#light_theme").remove();
                 }
             
             });
-        
+  function initImageStore(){     
      function storeImage(key,element){
 	    var imgCanvas = document.createElement("canvas"),
 		imgContext = imgCanvas.getContext("2d");
@@ -571,9 +572,12 @@ $("#light_theme").remove();
     		var k=function(){
 	    		if(typeof(Storage) !== "undefined") {
 	    			// Code for localStorage/sessionStorage.
-	    			var item=localStorage.getItem(element);
+	    			var item=localStorage.getItem(element+"#"+window.color);
 	    			if(!item){
 	    				storeImage(element,el);
+	    			}
+	    			else{
+	    				el.setAttribute("src",item);
 	    			}
 			}
     		};
@@ -582,6 +586,8 @@ $("#light_theme").remove();
     	})(element);
     
     });
+    }
+    initImageStore();
     });
 
 
