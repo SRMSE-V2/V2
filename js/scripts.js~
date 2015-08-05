@@ -143,7 +143,7 @@ if(typeof(Storage) !== "undefined") {
     			// Code for localStorage/sessionStorage. so first check in cache
     			var item=localStorage.getItem("autocomplete#query#"+request.term);
     			if(item){
-    				response(JSON.parse(data));
+    				response(JSON.parse(item));
     			}
     			else{
     				ajaxResponse();

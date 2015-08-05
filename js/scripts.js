@@ -132,7 +132,7 @@ if(typeof(Storage) !== "undefined") {
 		    	  $.ajax({
 		  		url: "/cgi-bin/getWords.py",
 		  		dataType: "text",
-		  		data: request.term,
+		  		data: {term:request.term},
 		  		success: function(data) {
 		      			cacheAutocomplete(data,request.term);
 		      			response(JSON.parse(data));
