@@ -122,7 +122,7 @@
 function cacheAutocomplete(arr,query){
 
 if(typeof(Storage) !== "undefined") {
-   localStorage.setItem("autcomplete#query#"+query,arr);
+   localStorage.setItem("autocomplete#query#"+query,arr);
 }
 
 }
@@ -223,7 +223,6 @@ if(typeof(Storage) !== "undefined") {
 
             },
             response: function(event, ui) {
-            console.log(event);
                 if ($("#search").val().trim() !== "") {
                     if (ui.content[0]["resize"] === "true") {
                         //#DEBUGconsole.log("here");
