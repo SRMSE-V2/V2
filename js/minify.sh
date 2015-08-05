@@ -2,8 +2,9 @@ set -x
 minify --no-comments --output ./min/auto.min.js auto.js
 minify --no-comments --output ./min/first.min.js first.js
 minify --no-comments --output ./min/search.min.js search.js
-cat ./min/jquery-ui.min.js ./min/jquery.mobile.custom.min.js ./scripts.js >> min/temp.min.js
+cat ./min/jquery-ui.min.js ./min/jquery.mobile.custom.min.js ./scripts.js >> ./min/temp.min.js
 minify --no-comments --output ./min/scripts.min.js ./min/temp.min.js
+rm ./min/temp.min.js
 minify --no-comments --output ./min/location_centric.min.js location_centric.js
 minify --no-comments --output ./min/bank.min.js ./modules/bank.js
 minify --no-comments --output ./min/cricket-players.min.js ./modules/cricket-players.js
@@ -31,6 +32,9 @@ minify --no-comments --output ./min/flight.min.js ./modules/flight.js
 minify --no-comments --output ./min/tennis.min.js ./modules/tennis.js
 minify --no-comments --output ./min/feedback.min.js ./modules/feedback.js
 htmlminify -o ../index.html ../index1.html
+timestamp=$(date +%s)
+echo $timestamp
+replace "SECRET_KEY" $timestamp -- ../index.html
 cp -R ./* ../../git_cdn/js
 #css files
 minify --no-comments ../css/dark/search.css
