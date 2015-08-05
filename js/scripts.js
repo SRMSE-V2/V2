@@ -551,13 +551,13 @@ $("#light_theme").remove();
 	    imgCanvas.height = element.height;
 
 	    // Draw image into canvas element
-	    imgContext.drawImage(element, 0, 0);
+	    imgContext.drawImage(element, 0, 0, element.width, element.height);
 
 	    // Get canvas contents as a data URL
 	    var imgAsDataURL = imgCanvas.toDataURL("image/png");
 	    // Save image into localStorage
 	    try {
-		localStorage.setItem(key+"#"+window.color, imgAsDataURL);
+		localStorage.setItem(key+"#"+window.color+"#"+element.width, imgAsDataURL);
 		element.removeAttribute("hidden");
 		k=null;//unload event
 	    }
@@ -572,7 +572,7 @@ $("#light_theme").remove();
     		var k=function(){
 	    		if(typeof(Storage) !== "undefined") {
 	    			// Code for localStorage/sessionStorage.
-	    			var item=localStorage.getItem(element+"#"+window.color);
+	    			var item=localStorage.getItem(element+"#"+window.color+"#"+element.width);
 	    			if(!item){
 	    				storeImage(element,el);
 	    			}
