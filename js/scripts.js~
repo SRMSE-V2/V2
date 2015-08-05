@@ -577,7 +577,7 @@ $("#light_theme").remove();
 			}
     		};
     	
-    	})();
+    	})(element);
     
     });
     });

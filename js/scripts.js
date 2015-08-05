@@ -556,7 +556,7 @@ $("#light_theme").remove();
 
 	    // Save image into localStorage
 	    try {
-		localStorage.setItem(key, imgAsDataURL);
+		localStorage.setItem(key+"#"+window.color, imgAsDataURL);
 		element.removeAttribute("hidden");
 	    }
 	    catch (e) {
