@@ -560,11 +560,13 @@ $("#light_theme").remove();
 	   
 		localStorage.setItem(key+"#"+window.color+"#"+element.width, imgAsDataURL);
 		element.removeAttribute("hidden");
-		k=null;//unload event
+		
 	    }
 	    catch (e) {
 		console.log("Storage failed: " + e);
+		element.attr("src",element.attr("src"));
 	    }
+	    k=null;//unload event
     }
     var img_tags=["srmse-logo","srm-logo","nixi-logo"];
     $.each(img_tags,function(index,element){

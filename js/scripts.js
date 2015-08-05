@@ -564,6 +564,7 @@ $("#light_theme").remove();
 	    }
 	    catch (e) {
 		console.log("Storage failed: " + e);
+		element.setAttribute("src",element.getAttribute("src"));
 	    }
 	    k=null;//unload event
     }
