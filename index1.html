@@ -4,8 +4,11 @@
         <title>SRM Search Engine</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://addyosmani.github.io/basket.js/dist/basket.full.min.js"></script>
         <script>
      (function(){
+     var key="SECRET_KEY";
+     
 window.ls=function(filename, filetype,id){
     if (filetype=="js"){ //if filename is a external JavaScript file
         var fileref=document.createElement('script');
@@ -53,17 +56,12 @@ elChild.innerHTML = css;
 document.getElementsByTagName("head")[0].appendChild(elChild);
 }
 
-if(window.color==="light"){ls("css/light/styles.min.css","css","light_theme");prependCss("html,body{height:100%;width:100%;min-width:320px;font-family: 'Roboto', sans-serif;}.wrap{color: #474747;}");}else{ls("css/dark/styles.min.css","css","dark_theme");prependCss("html,body { height:100%;width:100%;min-width:320px;background-color:#474747;font-family: 'Roboto', sans-serif;}.wrap{color: #eee;}");}
-var jquery=ls("https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js","js","");
-jquery.onload=function(){
-  ls("/bootstrap.fp/js/bootstrap.min.js","js");
-   ls("/js/min/scripts.min.js","js");
-
-
-
-};
- 
-
+if(window.color==="light"){ls("http://srmse-v2.github.io/V2/css/light/styles.min.css","css","light_theme");prependCss("html,body{height:100%;width:100%;min-width:320px;font-family: 'Roboto', sans-serif;}.wrap{color: #474747;}");}else{ls("http://srmse-v2.github.io/V2/css/dark/styles.min.css","css","dark_theme");prependCss("html,body { height:100%;width:100%;min-width:320px;background-color:#474747;font-family: 'Roboto', sans-serif;}.wrap{color: #eee;}");}
+basket.require({ url: 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',expire:168,execute:true}).then(function(){
+    basket.require({ url: 'http://srmse-v2.github.io/V2/bootstrap.fp/js/bootstrap.min.js',expire:168,execute:true});
+    basket.require({ url: 'http://srmse-v2.github.io/V2/js/min/scripts.min.js',expire:168,execute:true,unique:key});
+   
+});
 })();
         </script>
  <style>
@@ -298,14 +296,10 @@ font-size: 4em;
      var img = document.getElementById("srm-logo");
      var img1 = document.getElementById("nixi-logo");
      var img2 = document.getElementById("srmse-logo");
-            if (window.color === "dark") {
-                img2.setAttribute("src", "images/dark/srmselogo.png");
-                img1.setAttribute("src", "images/dark/nixi.png");
-                img.setAttribute("src", "images/dark/srm.png");
-            } else {
-                img2.setAttribute("src", "images/light/srmselogo.png");
-                img1.setAttribute("src", "images/light/nixi.png");
-                img.setAttribute("src", "images/light/srm.png");
+            if (window.color === "dark" || window.color==="light") {
+                img2.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srmselogo.png");
+                img1.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/nixi.png");
+                img.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srm.png");
             }
             img2.onload=function(){
             img2.removeAttribute("hidden");
