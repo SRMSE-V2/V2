@@ -2439,7 +2439,7 @@ border-radius:0px;
 color:#474747;
 }
 #arrow{
-position:relative;right:0px;float:left;cursor:pointer;height:80px;width:50px;background-repeat:no-repeat;background-size:contain;background-image:url('V2/images/dark/arrow.png');
+position:relative;right:0px;float:left;cursor:pointer;height:80px;width:50px;background-repeat:no-repeat;background-size:contain;background-image:url('http://srmse-v2.github.io/V2/images/dark/arrow.png');
 }
 #arrow_parent{
 float:right;
