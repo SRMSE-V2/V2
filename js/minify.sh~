@@ -2,7 +2,7 @@ set -x
 minify --no-comments --output ./min/auto.min.js auto.js
 minify --no-comments --output ./min/first.min.js first.js
 minify --no-comments --output ./min/search.min.js search.js
-minify --no-comments --output ./min/scripts.min.js scripts.js
+minify --no-comments --output ./min/scripts.min.js | cat ./min/jquery-ui.min.js ./min/jquery.mobile.custom.min.js ./js/scripts.js
 minify --no-comments --output ./min/location_centric.min.js location_centric.js
 minify --no-comments --output ./min/bank.min.js ./modules/bank.js
 minify --no-comments --output ./min/cricket-players.min.js ./modules/cricket-players.js
@@ -36,4 +36,3 @@ minify --no-comments ../css/light/search.css
 minify --no-comments ../css/dark/styles.css
 minify --no-comments ../css/light/styles.css
 minify --no-comments ../css/scripts.css
-/var/www/html/srm/SRMSE/css/scripts.css
