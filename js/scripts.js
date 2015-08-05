@@ -569,6 +569,7 @@ $("#light_theme").remove();
     $.each(img_tags,function(index,element){
     	(function(element){
     		var el=document.getElementById(element);
+    		alert(element);
     		var k=function(){
 	    		if(typeof(Storage) !== "undefined") {
 	    			// Code for localStorage/sessionStorage.
