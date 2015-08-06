@@ -5,6 +5,7 @@
   */
 (function() {
     "use strict";
+    var KEY="1438871176";
     $(document).ready(function() {
         //load scripts
         $.ajaxSetup({
@@ -203,11 +204,9 @@
         var img2 = $("#srmse-logo");
         img2.addClass("switch");
         if (window.color === "dark") {
-            ls("/css/dark/search.min.css","css","dark_theme");
             img2.attr("src", "/images/dark/srmselogo.png");
         } else {
             img2.attr("src", "/images/light/srmselogo.png");
-            ls("/css/light/search.min.css","css","light_theme");
         }
         img2.attr("alt", "SRM Search Engine");
         function loadedLightTheme(){
@@ -242,8 +241,17 @@ $("#light_theme").remove();
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
-                var stylesheet=$("<link id='light_theme' rel='stylesheet' type='text/css' href='/css/light/search.min.css' />");
-                $("html").append(stylesheet);
+                basket.require({ url: "http://srmse-v2.github.io/V2/css/light/search"+KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
+        var css = responses[0].data;
+        prependCss(css,"light_theme");
+                    ++loaded;
+                    if(loaded===fin){
+                    	loadedLightTheme();
+                    	}
+                	
+              
+        }); 
+                
                 showModal();
                 $.each(calls,function(index,element){
                     (function(el){
@@ -256,13 +264,7 @@ $("#light_theme").remove();
                     
                     })(element);
                     });
-                    stylesheet.load(function(){
-                    ++loaded;
-                    if(loaded===fin){
-                    	loadedLightTheme();
-                    	}
-                	
-                });
+                    
             });
             $("#dark").on('click', function() {
             if(window.color==="dark"){
@@ -276,8 +278,17 @@ $("#light_theme").remove();
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
-                var stylesheet=$("<link id='dark_theme' rel='stylesheet' type='text/css' href='/css/dark/search.min.css' />");
-                $("html").append(stylesheet);
+                 basket.require({ url: "http://srmse-v2.github.io/V2/css/dark/search"+KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
+        var css = responses[0].data;
+        prependCss(css,"dark_theme");
+                    ++loaded;
+                    if(loaded===fin){
+                    	loadedDarkTheme();
+                    	}
+                	
+              
+        }); 
+                
                 showModal();
                 $.each(calls,function(index,element){
                     (function(el){
@@ -290,13 +301,7 @@ $("#light_theme").remove();
                     
                     })(element);
                     });
-                    stylesheet.load(function(){
-                    ++loaded;
-                    if(loaded===fin){
-                    	loadedDarkTheme();
-                    	}
-                	
-                });
+                   
                 
             });
         };
