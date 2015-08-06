@@ -47,7 +47,7 @@ minify --no-comments --output ../css/light/search$timestamp.min.css ../css/light
 minify --no-comments --output ../css/dark/styles$timestamp.min.css ../css/dark/styles.css
 minify --no-comments --output ../css/light/styles$timestamp.min.css ../css/light/styles.css
 minify --no-comments --output ../css/dark/scripts$timestamp.min.css ../css/scripts.css
-mv ../bootstrap/css/bootstrap.min.css ../bootstrap/css/bootstrap$timestamp.min.css 
+cp ../bootstrap/css/bootstrap.min.css ../bootstrap/css/bootstrap$timestamp.min.css 
 cp -R ../css ../../git_cdn/
 cp -R ../images ../../git_cdn/
 cp -R ../bootstrap ../../git_cdn/
