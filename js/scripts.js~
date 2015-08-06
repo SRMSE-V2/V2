@@ -63,7 +63,6 @@
                 	console.log("no image in cache thus loading scripts.js "+element.attr("id")+"  "+element.width());
                 	console.log("http://srmse-v2.github.io/V2/images/"+window.color+"/"+element.attr("name"));
                     $(this).attr("src","http://srmse-v2.github.io/V2/images/"+window.color+"/"+element.attr("name"));
-                initImageStore();
                 callbacks.push(element);
 
             });
@@ -441,6 +440,7 @@ $("#light_theme").remove();
                     $.each(calls,function(index,element){
                     (function(el){
                     	el.load(function(){
+                    	storeImage(el.attr("id"),el);
                     	++loaded;
                     	if(loaded===fin){
                     	loadedLightTheme();
@@ -569,20 +569,7 @@ $("#light_theme").remove();
                 }
             
             });
-  function initImageStore(){
-  function img_fallback(){
-    var img = document.getElementById("srm-logo");
-     var img1 = document.getElementById("nixi-logo");
-     var img2 = document.getElementById("srmse-logo");
-      if (window.color === "dark" || window.color==="light") {
-                img2.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srmselogo.png");
-                img1.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/nixi.png");
-                img.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srm.png");
-            }
-          
-  }     
-  $("img").on("error",img_fallback);
-     function storeImage(key,element){
+               function storeImage(key,element){
       try {
 	    var imgCanvas = document.createElement("canvas"),
 		imgContext = imgCanvas.getContext("2d");
@@ -612,6 +599,20 @@ $("#light_theme").remove();
 	    }
 	    k=null;//unload event
     }
+  function initImageStore(){
+  function img_fallback(){
+    var img = document.getElementById("srm-logo");
+     var img1 = document.getElementById("nixi-logo");
+     var img2 = document.getElementById("srmse-logo");
+      if (window.color === "dark" || window.color==="light") {
+                img2.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srmselogo.png");
+                img1.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/nixi.png");
+                img.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srm.png");
+            }
+          
+  }     
+  $("img").on("error",img_fallback);
+  
     var img_tags=["srmse-logo","srm-logo","nixi-logo"];
     $.each(img_tags,function(index,element){
     	(function(element){
