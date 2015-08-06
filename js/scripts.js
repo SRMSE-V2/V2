@@ -36,11 +36,15 @@
             //To switch images path when switching themes shared by both the pages
             var imgs = $(".switch");
             function checkImageInCache(element){
+            console.log("check image in cache scripts.js");
         	if(typeof(Storage) !== "undefined") {
-        		var item=localStorage.getItem(element.attr("id")+"#"+window.color+"#"+element.attr("width"));
+        	console.log("storage present scripts.js");
+        		var item=localStorage.getItem(element.attr("id")+"#"+window.color+"#"+element.width());
         		if(item){
+        			console.log("image in cache scripts.js "+element.attr("id")+"  "+element.width());
         			return true;
         		}else{
+        		console.log("no image in cache scripts.js "+element.attr("id")+"  "+element.width());
         			return false;
         		}
         	}
@@ -52,6 +56,8 @@
                 	if(checkImageInCache($(this))){
                 		return false;
                 	}
+                	console.log("no image in cache thus loading scripts.js "+element.attr("id")+"  "+element.width());
+                	console.log("http://srmse-v2.github.io/V2/images/"+window.color+"/"+$(this).attr("name"));
                     $(this).attr("src","http://srmse-v2.github.io/V2/images/"+window.color+"/"+$(this).attr("name"));
                 
                 callbacks.push($(this));
