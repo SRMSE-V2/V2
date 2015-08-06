@@ -61,7 +61,7 @@
                 	console.log("http://srmse-v2.github.io/V2/images/"+window.color+"/"+element.attr("name"));
                     $(this).attr("src","http://srmse-v2.github.io/V2/images/"+window.color+"/"+element.attr("name"));
                 
-                callbacks.push($(this));
+                callbacks.push(element);
 
             });
 	return callbacks;
@@ -427,7 +427,9 @@ $("#light_theme").remove();
 			$("#light_theme").remove();
                     document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                     window.color = "light";
+                    console.log(window.color);
                     var calls=window.switchImg();
+                    console.log(window.color+" e");
                     var fin=calls.length+1;
                     var loaded=0;
                      var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.min.css' />");
