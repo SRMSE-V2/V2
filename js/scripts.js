@@ -591,7 +591,6 @@ $("#light_theme").remove();
 	    // Save image into localStorage
 	   
 		localStorage.setItem(key+"#"+window.color+"#"+element.width, imgAsDataURL);
-		element.setAttribute("src",imgAsDataURL);
 		
 	    }
 	    catch (e) {

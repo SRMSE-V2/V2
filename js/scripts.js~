@@ -57,6 +57,7 @@
                 		return false;
                 	}
                 	console.log("no image in cache thus loading scripts.js "+element.attr("id")+"  "+element.width());
+                	console.log("http://srmse-v2.github.io/V2/images/"+window.color+"/"+$(this).attr("name"));
                     $(this).attr("src","http://srmse-v2.github.io/V2/images/"+window.color+"/"+$(this).attr("name"));
                 
                 callbacks.push($(this));
@@ -590,7 +591,6 @@ $("#light_theme").remove();
 	    // Save image into localStorage
 	   
 		localStorage.setItem(key+"#"+window.color+"#"+element.width, imgAsDataURL);
-		element.setAttribute("src",imgAsDataURL);
 		
 	    }
 	    catch (e) {
