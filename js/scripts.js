@@ -1,5 +1,6 @@
 (function() {
 //test cache busting
+alert();
     $(document).ready(function() {
       $("#prog").remove(); 
     $(".hidden_body").removeAttr("hidden");//remove loading when script loaded
