@@ -35,35 +35,14 @@
         var callbacks=[];
             //To switch images path when switching themes shared by both the pages
             var imgs = $(".switch");
-            function checkImageInCache(element){
-            console.log("check image in cache scripts.js");
-        	if(typeof(Storage) !== "undefined") {
-        	console.log("storage present scripts.js");
-        		var item=localStorage.getItem(element.attr("id")+"#"+window.color+"#"+element.width());
-        		console.log(item);
-        		if(item){
-        			console.log("image in cache setting scripts.js "+element.attr("id")+"  "+element.width());
-        			element.attr("src",item);
-        			console.log("image in cache scripts.js "+element.attr("id")+"  "+element.width());
-        			return true;
-        		}else{
-        		console.log("no image in cache scripts.js "+element.attr("id")+"  "+element.width());
-        			return false;
-        		}
-        	}
-        	else{
-        		return false;
-        	}
-        	}
             $.each(imgs, function() {
-            var element=$(this);
-                	if(checkImageInCache(element)){
-                		return;
-                	}
-                	console.log("no image in cache thus loading scripts.js "+element.attr("id")+"  "+element.width());
-                	console.log("http://srmse-v2.github.io/V2/images/"+window.color+"/"+element.attr("name"));
-                    $(this).attr("src","http://srmse-v2.github.io/V2/images/"+window.color+"/"+element.attr("name"));
-                callbacks.push(element);
+                if (window.color === "dark") {
+                    $(this).attr("src", $(this).attr("src").replace("/light/", "/dark/"));
+                }
+                if (window.color === "light") {
+                    $(this).attr("src", $(this).attr("src").replace("/dark/", "/light/"));
+                }
+                callbacks.push($(this));
 
             });
 	return callbacks;
@@ -429,9 +408,7 @@ $("#light_theme").remove();
 			$("#light_theme").remove();
                     document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                     window.color = "light";
-                    console.log(window.color);
                     var calls=window.switchImg();
-                    console.log(window.color+" e");
                     var fin=calls.length+1;
                     var loaded=0;
                      var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.min.css' />");
@@ -440,7 +417,6 @@ $("#light_theme").remove();
                     $.each(calls,function(index,element){
                     (function(el){
                     	el.load(function(){
-                    	storeImage(el.attr("id"),el[0]);
                     	++loaded;
                     	if(loaded===fin){
                     	loadedLightTheme();
@@ -467,9 +443,7 @@ $("#light_theme").remove();
                 $("#dark_theme").remove();
                     document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                     window.color = "dark";
-                    console.log(window.color);
                     var calls=window.switchImg();
-                    console.log(window.color+" e");
                     var fin=calls.length+1;
                     var loaded=0;
                     var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/styles.min.css' />");
@@ -478,7 +452,6 @@ $("#light_theme").remove();
                 $.each(calls,function(index,element){
                     (function(el){
                     	el.load(function(){
-                    	storeImage(el.attr("id"),el[0]);
                     	++loaded;
                     	if(loaded===fin){
                     	loadedDarkTheme();
@@ -570,73 +543,7 @@ $("#light_theme").remove();
                 }
             
             });
-               function storeImage(key,element){
-      try {
-	    var imgCanvas = document.createElement("canvas"),
-		imgContext = imgCanvas.getContext("2d");
-
-	    // Make sure canvas is as big as the picture
-	    imgCanvas.width = element.width;
-	    imgCanvas.height = element.height;
-
-	    // Draw image into canvas element
-	    imgContext.drawImage(element, 0, 0, element.width, element.height);
-
-	    // Get canvas contents as a data URL
-	    var imgAsDataURL = imgCanvas.toDataURL("image/png");
-	    // Save image into localStorage
-	   
-		localStorage.setItem(key+"#"+window.color+"#"+element.width, imgAsDataURL);
-		
-	    }
-	    catch (e) {
-		console.log("Storage failed: " + e);
-		img_fallback();
-		$.each(localStorage,function(k,v){
-			if(element.id.indexOf(k)>=0){
-				localStorage.removeItem(k);
-			}
-		});
-	    }
-	    k=null;//unload event
-    }
-  function initImageStore(){
-  function img_fallback(){
-    var img = document.getElementById("srm-logo");
-     var img1 = document.getElementById("nixi-logo");
-     var img2 = document.getElementById("srmse-logo");
-      if (window.color === "dark" || window.color==="light") {
-                img2.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srmselogo.png");
-                img1.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/nixi.png");
-                img.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srm.png");
-            }
-          
-  }     
-  $("img").on("error",img_fallback);
   
-    var img_tags=["srmse-logo","srm-logo","nixi-logo"];
-    $.each(img_tags,function(index,element){
-    	(function(element){
-    		var el=document.getElementById(element);
-    		var k=function(){
-	    		if(typeof(Storage) !== "undefined") {
-	    			// Code for localStorage/sessionStorage.
-	    			var item=localStorage.getItem(element+"#"+window.color+"#"+element.width);
-	    			if(!item){
-	    				storeImage(element,el);
-	    			}
-	    			else{
-	    				el.setAttribute("src",item);
-	    			}
-			}
-    		};
-    		el.onload=k();
-    	
-    	})(element);
-    
-    });
-    }
-    initImageStore();
     });
 
 
