@@ -92,6 +92,12 @@
             "111": "Religion",
             "000": "Videos"
         };
+        function prependCss(css,id){
+    elChild = document.createElement('style');
+    elChild.setAttribute("id",id);
+elChild.innerHTML = css;
+document.getElementsByTagName("head")[0].appendChild(elChild);
+}
         function showModal(){
         $("#modalSwitchTheme").remove();
         if(window.color==="dark"){
