@@ -38,6 +38,8 @@ htmlminify -o ../index.html ../index1.html
 timestamp=$(date +%s)
 echo $timestamp
 replace "SECRET_KEY" $timestamp -- ../index.html
+cp /usr/lib/cgi-bin/s1.py /usr/lib/cgi-bin/s.py
+replace "SECRET_KEY" $timestamp -- /usr/lib/cgi-bin/s.py
 cp -R ./* ../../git_cdn/js
 #css files
 minify --no-comments ../css/dark/search.css

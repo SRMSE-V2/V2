@@ -515,11 +515,7 @@ font-weight: 500;color:#FFFFFF;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media(max-width:480px){
 
-.col-tn-1{float:none;}
-.col-tn-10{float:none;}
-}
 .stocks_font{
 
 font-size:0.9em;
