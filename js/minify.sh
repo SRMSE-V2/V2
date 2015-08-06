@@ -50,3 +50,4 @@ minify --no-comments --output ../css/dark/scripts$timestamp.min.css ../css/scrip
 mv ../bootstrap/css/bootstrap.min.css ../bootstrap/css/bootstrap$timestamp.min.css 
 cp -R ../css ../../git_cdn/
 cp -R ../images ../../git_cdn/
+cp -R ../bootstrap ../../git_cdn/
