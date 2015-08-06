@@ -386,7 +386,7 @@ $("#dark_theme").remove();
                 	$('#modalSwitchTheme').fadeOut(1000,function(){
                 		$(this).remove();
                 	});
-                	initImageStore();//storing when all the images are loaded and modal exited
+                	//initImageStore();//storing when all the images are loaded and modal exited
 
 }
 function loadedDarkTheme(){
