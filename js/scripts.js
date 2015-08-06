@@ -30,18 +30,12 @@
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
         window.switchImg = function() {
+       
         var callbacks=[];
             //To switch images path when switching themes shared by both the pages
             var imgs = $(".switch");
             $.each(imgs, function() {
-                if (window.color === "dark") {
-                    $(this).attr("src", $(this).attr("src").replace("/light/", "/dark/"));
-                }
-                if (window.color === "light") {
-                    $(this).attr("src", $(this).attr("src").replace("/dark/", "/light/"));
-                }
                 callbacks.push($(this));
-
             });
 	return callbacks;
         };
@@ -412,6 +406,7 @@ $("#light_theme").remove();
                      var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.min.css' />");
                     $("head").append(stylesheet);
                     showModal();
+                    window.load_images_cache();
                     $.each(calls,function(index,element){
                     (function(el){
                     	el.load(function(){
@@ -447,6 +442,7 @@ $("#light_theme").remove();
                     var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/styles.min.css' />");
                 $("head").append(stylesheet);
                 showModal();
+                 window.load_images_cache();
                 $.each(calls,function(index,element){
                     (function(el){
                     	el.load(function(){
