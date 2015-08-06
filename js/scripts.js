@@ -610,7 +610,7 @@ $("#light_theme").remove();
 			}
 		});
 	    }
-	    k=null;//unload event
+	    
     }
     var img_tags=["srmse-logo","srm-logo","nixi-logo"];
     $.each(img_tags,function(index,element){
