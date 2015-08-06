@@ -4,9 +4,12 @@ echo $timestamp
 minify --no-comments --output ./min/auto.min.js auto.js
 minify --no-comments --output ./min/first.min.js first.js
 minify --no-comments --output ./min/search.min.js search.js
-cat ./min/jquery-ui.min.js ./min/jquery.mobile.custom.min.js ./scripts.js >> ./min/temp.min.js
+cp ./scripts.js ./scripts1.js
+replace "SECRET_KEY" $timestamp -- ./scripts1.js
+cat ./min/jquery-ui.min.js ./min/jquery.mobile.custom.min.js ./scripts1.js >> ./min/temp.min.js
 minify --no-comments --output ./min/scripts$timestamp.min.js ./min/temp.min.js
 rm ./min/temp.min.js
+rm ./scripts1.js
 cp ./search.js ./search1.js
 replace "SECRET_KEY" $timestamp -- ./search1.js
 cat ./min/jquery-ui.min.js ./min/jquery.mobile.custom.min.js ./auto.js  ./search1.js >> ./min/temp.min.js

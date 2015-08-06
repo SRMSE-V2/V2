@@ -15,7 +15,14 @@
         var SPACE=false;
         var DEFAULT_LEFT=0;
         var MODAL_BACK="";
+         var S_KEY="SECRET_KEY";
 	//globals end
+	    function prependCss(css,id){
+    elChild = document.createElement('style');
+    elChild.setAttribute("id",id);
+elChild.innerHTML = css;
+document.getElementsByTagName("head")[0].appendChild(elChild);
+}
 	function showModal(){
         $("#modalSwitchTheme").remove();
         if(window.color==="dark"){
@@ -412,8 +419,16 @@ $("#light_theme").remove();
                     var calls=window.switchImg();
                     var fin=calls.length+1;
                     var loaded=0;
-                     var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.min.css' />");
-                    $("head").append(stylesheet);
+                        basket.require({ url: "http://srmse-v2.github.io/V2/css/light/styles"+S_KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
+        var css = responses[0].data;
+        prependCss(css,"light_theme");
+                    ++loaded;
+                    if(loaded===fin){
+                    	loadedLightTheme();
+                    	}
+                	
+              
+        }); 
                     showModal();
                     $.each(calls,function(index,element){
                     (function(el){
@@ -426,13 +441,7 @@ $("#light_theme").remove();
                     
                     })(element);
                     });
-                    stylesheet.load(function(){
-                    ++loaded;
-                    if(loaded===fin){
-                    	loadedLightTheme();
-                    	}
-                	
-                });
+                  
                 });
 
                 $("#dark").on('click', function() {
@@ -447,8 +456,16 @@ $("#light_theme").remove();
                     var calls=window.switchImg();
                     var fin=calls.length+1;
                     var loaded=0;
-                    var stylesheet=$("<link id=\"dark_theme\" rel='stylesheet' type='text/css' href='/css/dark/styles.min.css' />");
-                $("head").append(stylesheet);
+                      basket.require({ url: "http://srmse-v2.github.io/V2/css/dark/styles"+S_KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
+        var css = responses[0].data;
+        prependCss(css,"dark_theme");
+                    ++loaded;
+                    if(loaded===fin){
+                    	loadedDarkTheme();
+                    	}
+                	
+              
+        }); 
                 showModal();
                 $.each(calls,function(index,element){
                     (function(el){
@@ -461,13 +478,7 @@ $("#light_theme").remove();
                     
                     })(element);
                     });
-                    stylesheet.load(function(){
-                    ++loaded;
-                    if(loaded===fin){
-                    	loadedDarkTheme();
-                    	}
-                	
-                });
+                  
                 });
                 var clicked = false;
                 $('#help').on("click", function() {
