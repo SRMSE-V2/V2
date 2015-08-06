@@ -5,7 +5,6 @@
   */
 (function() {
     "use strict";
-    var KEY="SECRET_KEY";
     $(document).ready(function() {
         //load scripts
         $.ajaxSetup({
@@ -48,6 +47,7 @@
         var INFO_BOX = "";
         var MODAL_BACK="";
         var KEY="";
+        var S_KEY="SECRET_KEY";
         var si=function(){
         	SHOW_INFOBOX = true;
         	ls("/js/min/"+KEY+".min.js","js");
@@ -242,7 +242,7 @@ $("#light_theme").remove();
                 var fin=calls.length+1;
                 var loaded=0;
                 console.log(KEY);
-                basket.require({ url: "http://srmse-v2.github.io/V2/css/light/search"+KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
+                basket.require({ url: "http://srmse-v2.github.io/V2/css/light/search"+S_KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
         var css = responses[0].data;
         prependCss(css,"light_theme");
                     ++loaded;
@@ -280,7 +280,7 @@ $("#light_theme").remove();
                 var fin=calls.length+1;
                 var loaded=0;
                 console.log(KEY);
-                 basket.require({ url: "http://srmse-v2.github.io/V2/css/dark/search"+KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
+                 basket.require({ url: "http://srmse-v2.github.io/V2/css/dark/search"+S_KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
         var css = responses[0].data;
         prependCss(css,"dark_theme");
                     ++loaded;
