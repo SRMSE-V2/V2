@@ -42,10 +42,10 @@ cp /usr/lib/cgi-bin/s1.py /usr/lib/cgi-bin/s.py
 replace "SECRET_KEY" $timestamp -- /usr/lib/cgi-bin/s.py
 cp -R ./* ../../git_cdn/js
 #css files
-minify --no-comments ../css/dark/search.css
-minify --no-comments ../css/light/search.css
-minify --no-comments ../css/dark/styles.css
-minify --no-comments ../css/light/styles.css
-minify --no-comments ../css/scripts.css
+minify --no-comments --output ../css/dark/search$timestamp.min.css ../css/dark/search.css
+minify --no-comments --output ../css/light/search$timestamp.min.css ../css/light/search.css
+minify --no-comments --output ../css/dark/styles$timestamp.min.css ../css/dark/styles.css
+minify --no-comments --output ../css/light/styles$timestamp.min.css ../css/light/styles.css
+minify --no-comments --output ../css/dark/scripts$timestamp.min.css ../css/scripts.css
 cp -R ../css ../../git_cdn/
 cp -R ../images ../../git_cdn/
