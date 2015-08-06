@@ -5,6 +5,9 @@ minify --no-comments --output ./min/search.min.js search.js
 cat ./min/jquery-ui.min.js ./min/jquery.mobile.custom.min.js ./scripts.js >> ./min/temp.min.js
 minify --no-comments --output ./min/scripts.min.js ./min/temp.min.js
 rm ./min/temp.min.js
+cat ./min/jquery-ui.min.js ./min/jquery.mobile.custom.min.js ./auto.js  ./search.js >> ./min/temp.min.js
+minify --no-comments --output ./min/search.min.js ./min/temp.min.js
+rm ./min/temp.min.js
 minify --no-comments --output ./min/location_centric.min.js location_centric.js
 minify --no-comments --output ./min/bank.min.js ./modules/bank.js
 minify --no-comments --output ./min/cricket-players.min.js ./modules/cricket-players.js

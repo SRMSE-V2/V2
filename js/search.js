@@ -28,9 +28,6 @@
         document.getElementsByTagName("head")[0].appendChild(fileref);}
          return fileref;
 }
-       ls("/js/min/jquery-ui.min.js","js").onload=function() {
-            ls("/js/min/auto.min.js","js");
-        };
         //end load scripts
         //global vars start
         var CURRENT_FLAG=1;
@@ -332,7 +329,6 @@ $(".side_btns").fadeOut(function() {
                 });
 
 }
- ls("/js/min/jquery.mobile.custom.min.js","js").onload=function(){
         $("#arrow,#arrow_parent").on("swipeleft",function(){
             if (u === 0 && wait === 0) {
                     showArrow();
@@ -347,7 +343,7 @@ $(".side_btns").fadeOut(function() {
             });
         
         
-        };//load swipe event
+      
         function arrowClick() {
             if (u === 0) {
                showArrow();

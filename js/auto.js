@@ -100,7 +100,34 @@
         })(jQuery);
 
         $("#search").autocomplete({
-            source: "/cgi-bin/getWords.py",
+            source:function(request,response){
+            function ajaxResponse(){
+		    	  $.ajax({
+		  		url: "/cgi-bin/getWords.py",
+		  		dataType: "text",
+		  		data: {term:request.term},
+		  		success: function(data) {
+		      			cacheAutocomplete(data,request.term);
+		      			response(JSON.parse(data));
+		  		}
+	      		});
+            }
+            	if(typeof(Storage) !== "undefined") {
+    			// Code for localStorage/sessionStorage. so first check in cache
+    			var item=localStorage.getItem("autocomplete#query#"+request.term);
+    			if(item){
+    				response(JSON.parse(item));
+    			}
+    			else{
+    				ajaxResponse();
+    			}
+		}
+		else{
+			//no localstorage so use ajax
+			ajaxResponse();
+		}
+            
+            },
             minLength: 1,
             autoFocus: false,
             appendTo: ".search_div", //setting up the container for the rendered list from autocomplete
