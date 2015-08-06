@@ -41,6 +41,7 @@
         	console.log("storage present scripts.js");
         		var item=localStorage.getItem(element.attr("id")+"#"+window.color+"#"+element.width());
         		if(item){
+        			element.attr("src",item);
         			console.log("image in cache scripts.js "+element.attr("id")+"  "+element.width());
         			return true;
         		}else{
