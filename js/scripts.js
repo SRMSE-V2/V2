@@ -63,7 +63,7 @@
                 	console.log("no image in cache thus loading scripts.js "+element.attr("id")+"  "+element.width());
                 	console.log("http://srmse-v2.github.io/V2/images/"+window.color+"/"+element.attr("name"));
                     $(this).attr("src","http://srmse-v2.github.io/V2/images/"+window.color+"/"+element.attr("name"));
-                
+                initImageStore();
                 callbacks.push(element);
 
             });
@@ -610,7 +610,7 @@ $("#light_theme").remove();
 			}
 		});
 	    }
-	    
+	    k=null;//unload event
     }
     var img_tags=["srmse-logo","srm-logo","nixi-logo"];
     $.each(img_tags,function(index,element){
