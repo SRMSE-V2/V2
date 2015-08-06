@@ -29,13 +29,33 @@
         function searchQuery(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
+        
         window.switchImg = function() {
        
         var callbacks=[];
             //To switch images path when switching themes shared by both the pages
             var imgs = $(".switch");
+            function checkImageInCache(element){
+        	if(typeof(Storage) !== "undefined") {
+        		var item=localStorage.getItem(element.attr("id")+"#"+window.color+"#"+element.attr("width"));
+        		if(item){
+        			return true;
+        		}else{
+        			return false;
+        		}
+        	}
+        	else{
+        		return false;
+        	}
+        	}
             $.each(imgs, function() {
+                	if(checkImageInCache($(this))){
+                		return false;
+                	}
+                    $(this).attr("src","http://srmse-v2.github.io/V2/images/"+window.color+"/"+$(this).attr("name")));
+                
                 callbacks.push($(this));
+
             });
 	return callbacks;
         };
@@ -406,7 +426,6 @@ $("#light_theme").remove();
                      var stylesheet=$("<link id=\"light_theme\" rel='stylesheet' type='text/css' href='css/light/styles.min.css' />");
                     $("head").append(stylesheet);
                     showModal();
-                    window.load_images_cache();
                     $.each(calls,function(index,element){
                     (function(el){
                     	el.load(function(){
