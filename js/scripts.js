@@ -440,7 +440,7 @@ $("#light_theme").remove();
                     $.each(calls,function(index,element){
                     (function(el){
                     	el.load(function(){
-                    	storeImage(el.attr("id"),el);
+                    	storeImage(el.attr("id"),document.getElementById(el.attr("id")));
                     	++loaded;
                     	if(loaded===fin){
                     	loadedLightTheme();
@@ -478,7 +478,7 @@ $("#light_theme").remove();
                 $.each(calls,function(index,element){
                     (function(el){
                     	el.load(function(){
-                    	storeImage(el.attr("id"),el);
+                    	storeImage(el.attr("id"),document.getElementById(el.attr("id")));
                     	++loaded;
                     	if(loaded===fin){
                     	loadedDarkTheme();
