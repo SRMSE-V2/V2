@@ -98,7 +98,13 @@
                 }
             });
         })(jQuery);
+function cacheAutocomplete(arr,query){
 
+if(typeof(Storage) !== "undefined") {
+   localStorage.setItem("autocomplete#query#"+query,arr);
+}
+
+}
         $("#search").autocomplete({
             source:function(request,response){
             function ajaxResponse(){
