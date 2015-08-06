@@ -241,6 +241,7 @@ $("#light_theme").remove();
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
+                console.log(KEY);
                 basket.require({ url: "http://srmse-v2.github.io/V2/css/light/search"+KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
         var css = responses[0].data;
         prependCss(css,"light_theme");
@@ -278,6 +279,7 @@ $("#light_theme").remove();
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
+                console.log(KEY);
                  basket.require({ url: "http://srmse-v2.github.io/V2/css/dark/search"+KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
         var css = responses[0].data;
         prependCss(css,"dark_theme");
