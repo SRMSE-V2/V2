@@ -60,12 +60,8 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
             //To switch images path when switching themes shared by both the pages
             var imgs = $(".switch");
             $.each(imgs, function() {
-                if (window.color === "dark") {
-                    $(this).attr("src", $(this).attr("src").replace("/light/", "/dark/"));
-                }
-                if (window.color === "light") {
-                    $(this).attr("src", $(this).attr("src").replace("/dark/", "/light/"));
-                }
+                    cacheImage("http://srmse-v2.github.io/V2/images/"+window.color+"/"+$(this).attr("alt"),$(this));
+                
                 callbacks.push($(this));
 
             });
