@@ -52,7 +52,7 @@
 		if(typeof(Storage) !== "undefined") {
 			var js=Object.keys(localStorage);
 			$.each(js,function(index,element){
-				if(element.indexOf(S_KEY)<0 && element.indexOf("autcomplete")<0){
+				if(element.indexOf(S_KEY)<0 && element.indexOf("autocomplete")<0){
 				localStorage.removeItem(element);
 				
 				}
