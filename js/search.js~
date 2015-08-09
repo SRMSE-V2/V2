@@ -48,6 +48,22 @@
         var MODAL_BACK="";
         var KEY="";
         var S_KEY="SECRET_KEY";
+        function clearCache(){
+		if(typeof(Storage) !== "undefined") {
+			var js=Object.keys(Storage);
+			$.each(js,function(index,element){
+				if(element.indexOf(S_KEY)<0 && element.indexOf("autcomplete")<0){
+				localStorage.removeItem(element);
+				
+				}
+			
+			
+			});	
+	
+		}
+	
+	}
+	clearCache();
         var si=function(){
         	SHOW_INFOBOX = true;
         	ls("/js/min/"+KEY+".min.js","js");

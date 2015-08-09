@@ -32,6 +32,7 @@
 		}
 	
 	}
+	clearCache();
 	    function prependCss(css,id){
     elChild = document.createElement('style');
     elChild.setAttribute("id",id);
