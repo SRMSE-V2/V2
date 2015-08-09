@@ -48,6 +48,42 @@
         var MODAL_BACK="";
         var KEY="";
         var S_KEY="SECRET_KEY";
+         window.cacheImage=function(src,element){
+        	if(typeof(Storage) !== "undefined") {
+        		var item=localStorage.getItem(src+"#image");
+        		if(item){
+        		element.setAttribute("src",item);
+        		}
+        		else{
+        	
+        		(function(element,src){
+        			var image=new Image();
+        			image.setAttribute("crossOrigin",'Anonymous');
+        			image.setAttribute("src",src);
+        			image.onload=function(){
+        			console.log(this.getAttribute("src"));
+        			var canvas = document.createElement('CANVAS'),
+        			ctx = canvas.getContext('2d');
+        			canvas.height = element.height;
+        			canvas.width = element.width;
+        			ctx.drawImage(image, 0, 0,element.width,element.height);
+        			dataURL = canvas.toDataURL("image/png");
+        			console.log(dataURL);
+        			element.setAttribute("src",dataURL);
+        			localStorage.setItem(src+"#image",dataURL);
+        			canvas=null;
+        		
+        		
+        		};
+        		
+        		
+        		})(element,src);
+        		
+        		}
+        	}
+        
+        
+        };
         function clearCache(){
 		if(typeof(Storage) !== "undefined") {
 			var js=Object.keys(localStorage);
@@ -212,25 +248,13 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
             //To switch images path when switching themes shared by both the pages
             var imgs = $(".switch");
             $.each(imgs, function() {
-                if (window.color === "dark") {
-                    $(this).attr("src", $(this).attr("src").replace("/light/", "/dark/"));
-                }
-                if (window.color === "light") {
-                    $(this).attr("src", $(this).attr("src").replace("/dark/", "/light/"));
-                }
+                 cacheImage("http://srmse-v2.github.io/V2/images/"+window.color+"/"+$(this).attr("name"),this);
                 callbacks.push($(this));
 
             });
 	return callbacks;
         };
-        var img2 = $("#srmse-logo");
-        img2.addClass("switch");
-        if (window.color === "dark") {
-            img2.attr("src", "/images/dark/srmselogo.png");
-        } else {
-            img2.attr("src", "/images/light/srmselogo.png");
-        }
-        img2.attr("alt", "SRM Search Engine");
+        cacheImage("http://srmse-v2.github.io/V2/images/"+window.color+"/srmselogo.png",document.getElementById("srmse-logo"));
         function loadedLightTheme(){
 
 $("#dark_theme").remove();
