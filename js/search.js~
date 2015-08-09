@@ -81,6 +81,9 @@
         		
         		}
         	}
+        	else{
+        		element.setAttribute("src",src);
+        	}
         
         
         };
@@ -254,10 +257,7 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
             });
 	return callbacks;
         };
-        var img2 = $("#srmse-logo");
-        img2.addClass("switch");
         cacheImage("http://srmse-v2.github.io/V2/images/"+window.color+"/srmselogo.png",document.getElementById("srmse-logo"));
-        img2.attr("alt", "SRM Search Engine");
         function loadedLightTheme(){
 
 $("#dark_theme").remove();

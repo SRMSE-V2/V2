@@ -81,6 +81,9 @@
         		
         		}
         	}
+        	else{
+        		element.setAttribute("src",src);
+        	}
         
         
         };
