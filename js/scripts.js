@@ -17,6 +17,22 @@
         var MODAL_BACK="";
          var S_KEY="SECRET_KEY";
 	//globals end
+	function clearCache(){
+		if(typeof(Storage) !== "undefined") {
+			var js=Object.keys(Storage);
+			$.each(js,function(index,element){
+				if(element.indexOf(S_KEY)<0 && element.indexOf("autcomplete")<0){
+				localStorage.removeItem(element);
+				
+				}
+			
+			
+			});	
+	
+		}
+	
+	}
+	clearCache();
 	    function prependCss(css,id){
     elChild = document.createElement('style');
     elChild.setAttribute("id",id);
