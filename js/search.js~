@@ -50,7 +50,7 @@
         var S_KEY="SECRET_KEY";
          window.cacheImage=function(src,element){
         	if(typeof(Storage) !== "undefined") {
-        		var item=localStorage.getItem(src+"#image");
+        		var item=localStorage.getItem(src+"#image#"+element.width+"#key#"+S_KEY);
         		if(item){
         		element.setAttribute("src",item);
         		}
@@ -67,10 +67,10 @@
         			canvas.height = element.height;
         			canvas.width = element.width;
         			ctx.drawImage(image, 0, 0,element.width,element.height);
-        			dataURL = canvas.toDataURL("image/png");
+        			var dataURL = canvas.toDataURL("image/png");
         			console.log(dataURL);
         			element.setAttribute("src",dataURL);
-        			localStorage.setItem(src+"#image",dataURL);
+        			localStorage.setItem(src+"#image#"+element.width+"#key#"+S_KEY,dataURL);
         			canvas=null;
         		
         		
