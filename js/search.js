@@ -285,8 +285,13 @@ $("#light_theme").remove();
                 return;
                 }
             	$("#light_theme").remove();
+            	if(typeof(Storage) !== "undefined") {
+			localStorage.setItem("color","light");
+		}
+		else{
+			document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+		}
                 window.color = "light";
-                document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
@@ -323,8 +328,13 @@ $("#light_theme").remove();
                 return;
                 }
             	$("#dark_theme").remove();
+            	if(typeof(Storage) !== "undefined") {
+			localStorage.setItem("color","dark");
+		}
+		else{
+			document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+		}
                 window.color = "dark";
-                document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
