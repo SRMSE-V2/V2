@@ -67,7 +67,7 @@
         			canvas.height = element.height;
         			canvas.width = element.width;
         			ctx.drawImage(image, 0, 0,element.width,element.height);
-        			dataURL = canvas.toDataURL("image/png");
+        			var dataURL = canvas.toDataURL("image/png");
         			console.log(dataURL);
         			element.setAttribute("src",dataURL);
         			localStorage.setItem(src+"#image",dataURL);
