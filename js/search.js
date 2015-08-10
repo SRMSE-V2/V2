@@ -49,13 +49,13 @@
         var KEY="";
         var S_KEY="SECRET_KEY";
          window.cacheImage=function(src,element){
-        	if(typeof(Storage) !== "undefined") {
+         var canvasEl = document.createElement('canvas');
+        	if(typeof(Storage) !== "undefined" && !!canvasEl.getContext) {
         		var item=localStorage.getItem(src+"#image#"+element.width+"#key#"+S_KEY);
         		if(item){
         		element.setAttribute("src",item);
         		}
         		else{
-        	
         		(function(element,src){
         			var image=new Image();
         			image.setAttribute("crossOrigin",'Anonymous');
