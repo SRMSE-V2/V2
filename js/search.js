@@ -665,24 +665,7 @@ $(".side_btns").fadeOut(function() {
                     window.location = $(this).find(".search_title").attr("href");
                 });
                 //hover on titles
-                $(".search_result").on("mouseenter", function() {
-                    if (window.color === "light") {
-                        $(this).find(".search_title").css("color", "rgba(71, 71, 71, 0.85)");
-                        $(this).find(".search_title").css("text-decoration", "underline");
-                    } else if (window.color === "dark") {
-                        $(this).find(".search_title").css("color", "#DDDDDD");
-                        $(this).find(".search_title").css("text-decoration", "underline");
-                    }
-                });
-                $(".search_result").on("mouseleave", function() {
-                    if (window.color === "light") {
-                        $(".search_title").css("color", "#474747");
-                        $(".search_title").css("text-decoration", "none");
-                    } else if (window.color === "dark") {
-                        $(".search_title").css("color", "#DFDDDD");
-                        $(".search_title").css("text-decoration", "none");
-                    }
-                });
+               
                 //end hover titles
                 //effect on render
                 $(".effect").animate({
