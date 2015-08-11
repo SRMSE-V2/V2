@@ -623,10 +623,6 @@ font-weight:600;
 color:#cfcfcf;
 
 }
-.wiki_link{
-color:#337ab7;
-
-}
 .infobox>tbody{
 
 margin-left:20px;
