@@ -326,16 +326,6 @@ min-width:320px;
   font-family: 'Roboto', sans-serif !important;
 }
 
-.search_title:hover{
-color:#DDDDDD;
-text-decoration:underline;
-
-}
-.search_title{
-color:#DFDDDD;
-text-decoration:none;
-
-}
 
 a{
 color:#DFDDDD;
@@ -601,7 +591,6 @@ position:relative;right:0px;float:left;cursor:pointer;height:68px;top:-6px;width
 
 .module{
   min-height: 20px;
-  padding: 19px;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 3px;
@@ -630,7 +619,7 @@ color:#474747;
 font-weight:600;
 }
 #wiki>*{
-color:#474747;
+color:#cfcfcf;
 
 }
 .wiki_link{
@@ -656,15 +645,10 @@ cursor:pointer;
 background-color:#383838;
 
 }
-a{color:#DFDDDD;font-weight:500;word-wrap:break-word;}
-a:hover{text-decoration: underline;word-wrap:break-word;}
-.search_title{color:#DFDDDD;font-weight:500;font-size: 20px;word-wrap:break-word;}
-.search_title:hover{text-decoration: underline;word-wrap:break-word;}
+.search_title{color:#DFDDDD;font-weight:500;font-size: 20px;text-decoration:none;word-wrap:break-word;}
+.search_title:hover{text-decoration: underline;word-wrap:break-word;color:#DDDDDD;}
 .search_green{color:#bcbbbb;;font-size:14px;word-wrap:break-word;}
 .search_info{color:#bcbbbb;;font-size:14px;margin-bottom:5px;word-break:normal;word-wrap:break-word;padding-top:5px;}
-.search_title:hover{
-color:#DDDDDD;
-}
 #search{
 
 font-size:1.5em;display:block;color:#474747;
@@ -775,7 +759,7 @@ margin-left:auto;
 margin-right:auto;
  table-layout:fixed;
     width:100%;
-    background-color: #FFFFFF;
+    background-color: #3e3e3e;
     border-spacing: 10px;
     border-collapse: separate;
 

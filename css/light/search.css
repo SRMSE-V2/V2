@@ -584,6 +584,7 @@ text-decoration:"underline";
 .search_title{
 color:#474747;
 text-decoration:none;
+word-wrap:break-word;
 }
 .hr_breaker{
 
@@ -605,15 +606,8 @@ text-decoration:none;
 
  color: #474747;
 }
-a{color:#474747;font-weight:400;word-wrap:break-word;}
-a:hover{text-decoration: underline;word-wrap:break-word;}
-.search_title{color:#474747;font-size: 20px;font-weight:400;word-wrap:break-word;}
-.search_title:hover{text-decoration: underline;word-wrap:break-word;}
 .search_green{color:rgba(71, 71, 71, 0.71);font-size:14px;word-wrap:break-word;}
 .search_info{color:rgba(71, 71, 71, 0.71);margin-bottom:5px;word-break:normal;word-wrap:break-word;padding-top:5px;}
-.search_title:hover{
-color:rgba(71, 71, 71, 0.85);
-}
 #search{
 
 font-size:1.5em;display:block;color:#474747;
