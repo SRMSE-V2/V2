@@ -336,6 +336,16 @@ color:#DFDDDD;
 text-decoration:none;
 
 }
+
+a{
+color:#DFDDDD;
+text-decoration:none;
+}
+a:hover{
+color:#DDDDDD;
+text-decoration:underline;
+
+}
  
 .wiki_head>h4{
 color:#474747;

@@ -333,8 +333,13 @@ text-decoration:underline;
 }
 .search_title{
 color:#DFDDDD;
-                        $(".search_title").css("text-decoration", "none");
+text-decoration:none;
 
+}
+
+a{
+color:#DFDDDD;
+text-decoration:none;
 }
  
 .wiki_head>h4{

@@ -573,6 +573,14 @@ background-color:#F7F7F7;
 color:rgba(71, 71, 71, 0.85);
 text-decoration:"underline";
 }
+a{
+color:#474747;
+text-decoration:none;
+}
+a:hover{
+color:rgba(71, 71, 71, 0.85);
+text-decoration:"underline";
+}
 .search_title{
 color:#474747;
 text-decoration:none;
