@@ -4,10 +4,10 @@
         <title>SRM Search Engine</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="http://addyosmani.github.io/basket.js/dist/basket.full.min.js"></script>
+       <script src="/js/min/basket.full.min.js"></script>
         <script>
      (function(){
-     var key="SECRET_KEY";
+     window.key="SECRET_KEY";
      
 window.ls=function(filename, filetype,id){
     if (filetype=="js"){ //if filename is a external JavaScript file
@@ -27,27 +27,32 @@ window.ls=function(filename, filetype,id){
         document.getElementsByTagName("head")[0].appendChild(fileref);}
          return fileref;
 }
-var cook=document.cookie.split(";");
-var co={};
-if(cook.toString().indexOf("color")>-1){
-for(var i=0;i<cook.length;i++){
-co[cook[i].split("=")[0].trim()]=cook[i].split("=")[1].trim();
 
-}
-window.color=co["color"];//default theme
-}
-else{
-window.color=undefined;
-}
+
+//no storage using cookie
+	var cook=document.cookie.split(";");
+	var co={};
+	if(cook.toString().indexOf("color")>-1){
+	//if color present
+		for(var i=0;i<cook.length;i++){
+		co[cook[i].split("=")[0].trim()]=cook[i].split("=")[1].trim();
+
+		}
+		window.color=co["color"];//default theme
+	}
+	else{
+	//if not
+	window.color=undefined;
+	}
+
 if(!window.color){
 
 if(Math.random()*10>5){
 	window.color="dark";
 	document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
 }else{
-	window.color="light";
 	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-	
+	window.color="light";
 }
 }
 function prependCss(css){
@@ -55,11 +60,24 @@ function prependCss(css){
 elChild.innerHTML = css;
 document.getElementsByTagName("head")[0].appendChild(elChild);
 }
-
-if(window.color==="light"){ls("http://srmse-v2.github.io/V2/css/light/styles.min.css","css","light_theme");prependCss("html,body{height:100%;width:100%;min-width:320px;font-family: 'Roboto', sans-serif;}.wrap{color: #474747;}");}else{ls("http://srmse-v2.github.io/V2/css/dark/styles.min.css","css","dark_theme");prependCss("html,body { height:100%;width:100%;min-width:320px;background-color:#474747;font-family: 'Roboto', sans-serif;}.wrap{color: #eee;}");}
-basket.require({ url: 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',expire:168,execute:true}).then(function(){
-    basket.require({ url: 'http://srmse-v2.github.io/V2/bootstrap.fp/js/bootstrap.min.js',expire:168,execute:true});
-    basket.require({ url: 'http://srmse-v2.github.io/V2/js/min/scripts.min.js',expire:168,execute:true,unique:key});
+ if(window.color==="light"){
+         basket.require({ url: "/css/light/styles"+key+".min.css", execute: false,expire:168,skipCache:true }).then(function(responses) {
+         prependCss("html,body{height:100%;width:100%;min-width:320px;font-family: 'Roboto', sans-serif;}.wrap{color: #474747;}");
+        var css = responses[0].data;
+        prependCss(css,"light_theme");
+        });
+       }else{
+     basket.require({ url: "/css/dark/styles"+key+".min.css", execute: false,expire:168,skipCache:true }).then(function(responses) {
+     prependCss("html,body { height:100%;width:100%;min-width:320px;background-color:#474747;font-family: 'Roboto', sans-serif;}.wrap{color: #eee;}");
+        var css = responses[0].data;
+        prependCss(css,"dark_theme");
+        });  
+       
+       }
+basket.require({ url: 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',expire:168,execute:true,skipCache:true}).then(function(){
+    basket.require({ url: '/bootstrap.fp/js/bootstrap.min.js',expire:168,execute:true,skipCache:true});
+    basket.require({ url: '/js/min/scripts'+key+'.min.js',expire:168,execute:true,skipCache:true});
+    
    
 });
 })();
@@ -93,139 +111,63 @@ basket.require({ url: 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery
 .hidden_body{
 height:100%;
 }
-.wrap {
-font-size: 4em;
-  width: 250px;
-  text-align: center;
+.loading {
+  display: block;
+  height: 7em;
+  width: 7em;
+  animation: rotation 1s infinite linear;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  transform: rotate(0deg);
+}
+
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Extra junk */
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.loading {
+  margin: auto;
+}
+
+#prog{
   position: absolute;
   top: 40%;
-  left: 50%;
-  margin-left: -125px;
+  left: 45%;
 }
-.wrap div {
-  display: inline;
-  margin: -2px;
-}
+html,body{
+background-color:#393939;
 
-.l {
-  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
-          animation: shrinkgrow 1.75s ease-in-out infinite;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-
-.o {
-  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
-          animation: shrinkgrow 1.75s ease-in-out infinite;
-  -webkit-animation-delay: 0.21875s;
-          animation-delay: 0.21875s;
-}
-
-.a {
-  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
-          animation: shrinkgrow 1.75s ease-in-out infinite;
-  -webkit-animation-delay: 0.4375s;
-          animation-delay: 0.4375s;
-}
-
-.d {
-  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
-          animation: shrinkgrow 1.75s ease-in-out infinite;
-  -webkit-animation-delay: 0.65625s;
-          animation-delay: 0.65625s;
-}
-
-.i {
-  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
-          animation: shrinkgrow 1.75s ease-in-out infinite;
-  -webkit-animation-delay: 0.875s;
-          animation-delay: 0.875s;
-}
-
-.n {
-  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
-          animation: shrinkgrow 1.75s ease-in-out infinite;
-  -webkit-animation-delay: 1.09375s;
-          animation-delay: 1.09375s;
-}
-
-.g {
-  -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
-          animation: shrinkgrow 1.75s ease-in-out infinite;
-  -webkit-animation-delay: 1.3125s;
-          animation-delay: 1.3125s;
-}
-
-@-webkit-keyframes shrinkgrow {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  12.5% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  25% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  33% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  100% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-}
-
-@keyframes shrinkgrow {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  12.5% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  25% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  33% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  100% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
 }
 
 </style>
     </head>
     <body>
-  <div id="prog" class="wrap">
-  <div class="l">L</div>
-  <div class="o">O</div>
-  <div class="a">A</div>
-  <div class="d">D</div>
-  <div class="i">I</div>
-  <div class="n">N</div>
-  <div class="g">G</div>
+  <div id="prog" class="loading">
+  
 </div>
-    <div class="hidden_body" hidden>
-        <div id="top_bar">
-            <div class="container-fluid w_i top_cont">
-                <div class="row w_i top_row">
-                    <div class="col-lg-12 top_row">
-                        <a href="http://www.srmuniv.ac.in/index.html" target="_blank"><img class="logo switch" id="srm-logo" hidden data-toggle="tooltip" title="Visit http://srmuniv.ac.in/" width="93" height="36" alt="SRM University" /></a>
-                        <a href="http://www.nixi.in/" target="_blank"><img class="logo switch" hidden id="nixi-logo" alt="Nixi" data-toggle="tooltip" title="Visit http://www.nixi.in/" width="103" height="36" /></a>
+    <div class="hidden_body container-fluid" style="padding:0;" hidden>
+        <div id="top_bar" class="row">
+            <div class="w_i top_cont">
+                <div class="w_i top_row">
+                    <div class="top_row">
+                        <a href="http://www.srmuniv.ac.in/index.html" target="_blank"><img class="logo switch" name="srm.png" id="srm-logo" hidden data-toggle="tooltip" title="Visit http://srmuniv.ac.in/" width="93" height="36" alt="SRM University" /></a>
+                        <a href="http://www.nixi.in/" target="_blank"><img class="logo switch" name="nixi.png" width="103" height="36"  hidden id="nixi-logo" alt="Nixi" data-toggle="tooltip" title="Visit http://www.nixi.in/"/></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="arrow_drawer">
+        <div class="arrow_drawer row" style="margin:0;">
             <div id="arrow_parent">
                 <div id="arrow">
                     <span id="arrow_span" class="glyphicon glyphicon-menu-hamburger"></span>
@@ -233,13 +175,10 @@ font-size: 4em;
             </div>
         </div>
         <div id="back">
-            <div id="search_front_page">
-                <div class="container full-size">
-                    <div class="row full-size">
                         <div class="col-lg-12 search_div">
-                            <p class="text-center">
-                              <img class="logo center-block switch center-block" hidden id="srmse-logo" data-toggle="tooltip" title="Home page srmse" alt="SRM Search Engine"/>
-                          </p>
+                            <div class="center-block">
+                              <img class="logo center-block switch center-block" hidden id="srmse-logo" name="srmselogo.png" data-toggle="tooltip" title="Home page srmse" width="376" height="78" alt="SRM Search Engine"/>
+                          </div>
 <div class="container search_container">
                           <div class="row h_i">
                           <div class="col-lg-3 col-md-3 hidden-xs hidden-sm hidden-phone hidden-tablet">
@@ -264,17 +203,14 @@ font-size: 4em;
                           </div>
                     </div>
                 </div>
-            </div>
+          
         
        
-        </div>
-            </div>
+     
+      
             
         </div>
-        <div class="w_i">
-            <div class="foot">
-                <hr class="text hr_color">
-                <div class="container-fluid" >
+                <div class="foot container-fluid" >
                     <div class="row">
                         <div class="col-lg-4 footer-a">
                             <a href="/about_us"><span class="a_btm">About Us</span></a>
@@ -288,34 +224,65 @@ font-size: 4em;
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
        <script>
        (function(){
-        var load_images=function(){
+              window.cacheImage=function(src,element){
+              var canvasEl = document.createElement('canvas');
+        	if(typeof(Storage) !== "undefined" && !!canvasEl.getContext) {
+        		var item=localStorage.getItem(src+"#image#"+element.width+"#key#"+key);
+        		if(item){
+        		element.setAttribute("src",item);
+        		}
+        		else{
+        		(function(element,src){
+        			var image=new Image();
+        			image.setAttribute("crossOrigin",'Anonymous');
+        			image.setAttribute("src",src);
+        			image.onload=function(){
+        			console.log(this.getAttribute("src"));
+        			var canvas = document.createElement('CANVAS'),
+        			ctx = canvas.getContext('2d');
+        			canvas.height = element.height;
+        			canvas.width = element.width;
+        			ctx.drawImage(image, 0, 0,element.width,element.height);
+        			var dataURL = canvas.toDataURL("image/png");
+        			console.log(dataURL);
+        			element.setAttribute("src",dataURL);
+        			localStorage.setItem(src+"#image#"+element.width+"#key#"+key,dataURL);
+        			canvas=null;
+        		
+        		
+        		};
+        		
+        		
+        		})(element,src);
+        		
+        		}
+        	}
+        	else{
+        		element.setAttribute("src",src);
+        	}
+        
+        
+        };
      var img = document.getElementById("srm-logo");
      var img1 = document.getElementById("nixi-logo");
      var img2 = document.getElementById("srmse-logo");
+     var load_images=function(){
+ 
             if (window.color === "dark" || window.color==="light") {
-                img2.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srmselogo.png");
-                img1.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/nixi.png");
-                img.setAttribute("src", "http://srmse-v2.github.io/V2/images/"+window.color+"/srm.png");
+                cacheImage("http://srmse-v2.github.io/V2/images/"+window.color+"/srmselogo.png",img2);
+                img2.onload=function(){img2.removeAttribute("hidden");};
+                cacheImage("http://srmse-v2.github.io/V2/images/"+window.color+"/nixi.png",img1);
+                img1.onload=function(){img1.removeAttribute("hidden");};
+                cacheImage("http://srmse-v2.github.io/V2/images/"+window.color+"/srm.png",img);
+            	img.onload=function(){img.removeAttribute("hidden");};
             }
-            img2.onload=function(){
-            img2.removeAttribute("hidden");
-            
-            };
-            img1.onload=function(){
-            img1.removeAttribute("hidden");
-            
-            };
-            img.onload=function(){
-            img.removeAttribute("hidden");
-            
-            };
+          
      
      };
      load_images();
+     
        
        })();
        </script>

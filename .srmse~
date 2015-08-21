@@ -15,6 +15,7 @@ AddOutputFilterByType DEFLATE application/javascript
 AddOutputFilterByType DEFLATE application/x-javascript
 AddOutputFilterByType DEFLATE application/json
 AddOutputFilterByType DEFLATE application/octet-stream#for glyphs
+AddOutputFilterByType DEFLATE image/svg+xml
 
 <IfModule mod_expires.c>
   ExpiresActive on
@@ -58,7 +59,7 @@ AddOutputFilterByType DEFLATE application/octet-stream#for glyphs
 # CSS and JavaScript
   ExpiresByType text/css                  "access plus 1 week"
   ExpiresByType application/javascript    "access plus 1 week"
-  ExpiresByType text/javascript           "access plus 1 week"
+  ExpiresByType text/javascript           "access plus 1 month"
    
   <IfModule mod_headers.c>
     Header append Cache-Control "public"

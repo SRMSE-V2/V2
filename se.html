@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SRM Search Engine</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <script src="/js/min/basket.full.min.js"></script>
+        <script>
+     (function(){
+     window.key="";//SECRET_KEY
+     
+window.ls=function(filename, filetype,id){
+    if (filetype=="js"){ //if filename is a external JavaScript file
+        var fileref=document.createElement('script');
+        fileref.setAttribute("type","text/javascript");
+        fileref.setAttribute("src", filename);
+       
+    }
+    else if (filetype=="css"){ //if filename is an external CSS file
+        var fileref=document.createElement("link");
+        fileref.setAttribute("rel", "stylesheet");
+        fileref.setAttribute("type", "text/css");
+        fileref.setAttribute("href", filename);
+        fileref.setAttribute("id", id);
+    }
+    if (typeof fileref!="undefined"){
+        document.getElementsByTagName("head")[0].appendChild(fileref);}
+         return fileref;
+}
+
+
+//no storage using cookie
+	var cook=document.cookie.split(";");
+	var co={};
+	if(cook.toString().indexOf("color")>-1){
+	//if color present
+		for(var i=0;i<cook.length;i++){
+		co[cook[i].split("=")[0].trim()]=cook[i].split("=")[1].trim();
+
+		}
+		window.color=co["color"];//default theme
+	}
+	else{
+	//if not
+	window.color=undefined;
+	}
+
+if(!window.color){
+
+if(Math.random()*10>5){
+	window.color="dark";
+	document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+}else{
+	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+	window.color="light";
+}
+}
+function prependCss(css){
+    elChild = document.createElement('style');
+elChild.innerHTML = css;
+document.getElementsByTagName("head")[0].appendChild(elChild);
+}
+ if(window.color==="light"){
+         basket.require({ url: "/css/light/styles"+key+".min.css", execute: false,expire:168,skipCache:true }).then(function(responses) {
+         prependCss("html,body{height:100%;width:100%;min-width:320px;font-family: 'Roboto', sans-serif;}.wrap{color: #474747;}");
+        var css = responses[0].data;
+        prependCss(css,"light_theme");
+        });
+       }else{
+     basket.require({ url: "/css/dark/styles"+key+".min.css", execute: false,expire:168,skipCache:true }).then(function(responses) {
+     prependCss("html,body { height:100%;width:100%;min-width:320px;background-color:#474747;font-family: 'Roboto', sans-serif;}.wrap{color: #eee;}");
+        var css = responses[0].data;
+        prependCss(css,"dark_theme");
+        });  
+       
+       }
+basket.require({ url: 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',expire:168,execute:true,skipCache:true}).then(function(){
+    basket.require({ url: '/bootstrap.fp/js/bootstrap.min.js',expire:168,execute:true,skipCache:true});
+    basket.require({ url: '/js/min/scripts'+key+'.min.js',expire:168,execute:true,skipCache:true});
+    
+   
+});
+})();
+        </script>
+ <style>
+ @font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-search:before {
+  content: "\e003";
+}
+.glyphicon-plus:before {
+  content: "\2b";
+}
+.glyphicon-menu-hamburger:before {
+  content: "\e236";
+}
+.hidden_body{
+height:100%;
+}
+.loading {
+  display: block;
+  height: 7em;
+  width: 7em;
+  animation: rotation 1s infinite linear;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  transform: rotate(0deg);
+}
+
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Extra junk */
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.loading {
+  margin: auto;
+}
+
+#prog{
+  position: absolute;
+  top: 40%;
+  left: 45%;
+}
+html,body{
+background-color:#393939;
+
+}
+
+</style>
+    </head>
+    <body>
+  <div id="prog" class="loading">
+  
+</div>
+    <div class="hidden_body container-fluid" style="padding:0;" hidden>
+        <div id="top_bar" class="row">
+            <div class="w_i top_cont">
+                <div class="w_i top_row">
+                    <div class="top_row">
+                        <a href="http://www.srmuniv.ac.in/index.html" target="_blank"><img class="logo switch" name="srm.png" id="srm-logo" hidden data-toggle="tooltip" title="Visit http://srmuniv.ac.in/" width="93" height="36" alt="SRM University" /></a>
+                        <a href="http://www.nixi.in/" target="_blank"><img class="logo switch" name="nixi.png" width="103" height="36"  hidden id="nixi-logo" alt="Nixi" data-toggle="tooltip" title="Visit http://www.nixi.in/"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="arrow_drawer row" style="margin:0;">
+            <div id="arrow_parent">
+                <div id="arrow">
+                    <span id="arrow_span" class="glyphicon glyphicon-menu-hamburger"></span>
+                </div>
+            </div>
+        </div>
+        <div id="back">
+                        <div class="col-lg-12 search_div">
+                            <div class="center-block">
+                              <img class="logo center-block switch center-block" hidden id="srmse-logo" name="srmselogo.png" data-toggle="tooltip" title="Home page srmse" width="376" height="78" alt="SRM Search Engine"/>
+                          </div>
+<div class="container search_container">
+                          <div class="row h_i">
+                          <div class="col-lg-3 col-md-3 hidden-xs hidden-sm hidden-phone hidden-tablet">
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 " id="load">
+                               <div class="f_w search_box">
+                              <div class="hide input-group input-group-lg">
+                                 
+                                      <input data-toggle="tooltip" title="Search" type="text" class="hide form-control form-control1 fostyle btn2 simplebox" placeholder="Search here" name="q" id="search" spellcheck="false" autocomplete="off" autofocus/>
+                                  <span class="input-group-btn"> 
+                                      <button id="search_btn" class="btn btn-default spanbtn">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                      </button>
+                                    </span>
+                                    </div>
+ </div>
+<div id="div_for_back">  
+                              </div>
+</div>
+                        <div class="col-lg-3 col-md-3 hidden-xs hidden-sm hidden-phone hidden-tablet">
+                          </div>
+                          </div>
+                    </div>
+                </div>
+          
+        
+       
+     
+      
+            
+        </div>
+                <div class="foot container-fluid" >
+                    <div class="row">
+                        <div class="col-lg-4 footer-a">
+                            <a href="/about_us"><span class="a_btm">About Us</span></a>
+                        </div>
+                        <div class="col-lg-4 footer-a">
+                            <span class="a_btm">&copy;&nbsp;srm search engine</span>
+                        </div>
+                        <div class="col-lg-4 footer-a">
+                            <a href="/feedback" data-toggle="modal" data-target="#myModal"><span class="a_btm">Feedback</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       <script>
+       (function(){
+              window.cacheImage=function(src,element){
+              element.setAttribute("src",src);
+              return;
+              var canvasEl = document.createElement('canvas');
+        	if(typeof(Storage) !== "undefined" && !!canvasEl.getContext) {
+        		var item=localStorage.getItem(src+"#image#"+element.width+"#key#"+key);
+        		if(item){
+        		element.setAttribute("src",item);
+        		}
+        		else{
+        		(function(element,src){
+        			var image=new Image();
+        			image.setAttribute("crossOrigin",'Anonymous');
+        			image.setAttribute("src",src);
+        			image.onload=function(){
+        			console.log(this.getAttribute("src"));
+        			var canvas = document.createElement('CANVAS'),
+        			ctx = canvas.getContext('2d');
+        			canvas.height = element.height;
+        			canvas.width = element.width;
+        			ctx.drawImage(image, 0, 0,element.width,element.height);
+        			var dataURL = canvas.toDataURL("image/png");
+        			console.log(dataURL);
+        			element.setAttribute("src",dataURL);
+        			localStorage.setItem(src+"#image#"+element.width+"#key#"+key,dataURL);
+        			canvas=null;
+        		
+        		
+        		};
+        		
+        		
+        		})(element,src);
+        		
+        		}
+        	}
+        	else{
+        		element.setAttribute("src",src);
+        	}
+        
+        
+        };
+     var img = document.getElementById("srm-logo");
+     var img1 = document.getElementById("nixi-logo");
+     var img2 = document.getElementById("srmse-logo");
+     var load_images=function(){
+ 
+            if (window.color === "dark" || window.color==="light") {
+                cacheImage("/images/"+window.color+"/srmselogo.png",img2);
+                img2.onload=function(){img2.removeAttribute("hidden");};
+                cacheImage("/images/"+window.color+"/nixi.png",img1);
+                img1.onload=function(){img1.removeAttribute("hidden");};
+                cacheImage("/images/"+window.color+"/srm.png",img);
+            	img.onload=function(){img.removeAttribute("hidden");};
+            }
+          
+     
+     };
+     load_images();
+     
+       
+       })();
+       </script>
+    </body>
+</html>
