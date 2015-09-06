@@ -1,8 +1,9 @@
 (function() {
 //test cache busting
     $(document).ready(function() {
-      $("#prog").remove(); 
+      $(".load_msg").remove(); 
     $(".hidden_body").removeAttr("hidden");//remove loading when script loaded
+            $('[data-toggle="tooltip"]').tooltip(); 
         $.ajaxSetup({
             cache: true
         });
@@ -60,7 +61,7 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
             //To switch images path when switching themes shared by both the pages
             var imgs = $(".switch");
             $.each(imgs, function() {
-                    cacheImage("http://srmse-v2.github.io/V2/images/"+window.color+"/"+$(this).attr("name"),this);
+                    cacheImage("/images/"+window.color+"/"+$(this).attr("name"),this);
                 
                 callbacks.push($(this));
 
@@ -196,11 +197,12 @@ if(typeof(Storage) !== "undefined") {
                 event.preventDefault();
             },
             close: function() {
-              $('.ui-menu-item').remove();
+             
                 //clearing up the autocomplete after close 
                 $('ul.ui-autocomplete')
                     .removeClass('opened')
                     .css('display', 'block');
+                     $('.ui-menu-item').remove();
                  
             },
             focus: function(event, ui) {
@@ -401,6 +403,7 @@ if(typeof(Storage) !== "undefined") {
             var dispBtns = function() {
                 $(".arrow_div").css("padding-left", "20px");
                 $(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:24px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"width:31px;height:27px;top:0;bottom:0;margin:auto;\" src=\"images/lighttheme.png\"></span><span id=\"dark\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/darktheme.png\">   </span> <span id=\"help\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/howtouse.png\">      </span> </div>");
+                 $('[data-toggle="tooltip"]').tooltip(); //init tooltip
                 $(".side_btns").css("cursor", "pointer");
 function loadedLightTheme(){
 
@@ -431,7 +434,7 @@ $("#light_theme").remove();
                     var calls=window.switchImg();
                     var fin=calls.length+1;
                     var loaded=0;
-                        basket.require({ url: "http://srmse-v2.github.io/V2/css/light/styles"+S_KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
+                        basket.require({ url: "/css/light/styles"+S_KEY+".css", execute: false,expire:168 }).then(function(responses) {
         var css = responses[0].data;
         prependCss(css,"light_theme");
                     ++loaded;
@@ -469,7 +472,7 @@ $("#light_theme").remove();
                     var calls=window.switchImg();
                     var fin=calls.length+1;
                     var loaded=0;
-                      basket.require({ url: "http://srmse-v2.github.io/V2/css/dark/styles"+S_KEY+".min.css", execute: false,expire:168 }).then(function(responses) {
+                      basket.require({ url: "/css/dark/styles"+S_KEY+".css", execute: false,expire:168 }).then(function(responses) {
         var css = responses[0].data;
         prependCss(css,"dark_theme");
                     ++loaded;
@@ -574,71 +577,55 @@ $("#light_theme").remove();
 
 })();
 (function(){
-var MODAL=$('<!--  Modal  -->  <div  class="modal  fade"  id="myModal"  tabindex="-1"  role="dialog"  aria-labelledby="myModalLabel"  aria-hidden="true">  <div  class="modal-dialog">  <div  class="modal-content">  <div  class="modal-header">  <h3  class="modal-title"  id="myModalLabel">Feedback</h3>  </div>  <div  class="modal-body">  <div  class="container-fluid">  <div  class="row">  <div  class="col-lg-12">  <form class="feedback_form">  <div  class="form-group">  <label  for="Name">Name</label>  <input  type="text"  class="form-control"  id="name"  placeholder="Name">  </div>  <div  class="form-group">  <label  for="Email">Email  address</label>  <input  type="email"  class="form-control"  id="email"  placeholder="Enter  email">  </div>  <div  class="form-group">  <table  id="moreBad"  >  <tr  style="font-size:14px;">  <th>Queries  Tried</th>  <th>Satisfactory  Results?</th>  </tr>  <tr  class="td_row">  <td  style="padding-top:8px;width:70%;">  <input  type="text"  class="form-control  query"  placeholder="Query">  </td>  <td  style="padding:8px  0px  0px  10px;width:30%;">  <div  class="form-inline">  <div  class="radio">  <label><input  class="y_n"  type="radio"  name="optionsRadios1"  id="Yes"  value="Yes" checked="checked">Yes  &nbsp  &nbsp  </label>  </div>  <div  class="radio">  <label><input  class="y_n"  type="radio"  name="optionsRadios1"  id="No"  value="No">No</label>  </div>  </div>  </td>  </tr></table><table>  <tr>  <td  style="padding-top:10px;"><button  id="more_btn"  type="button"  class="btn  btn-success  glyphicon  glyphicon-plus"></button></td>  <tr>  </table>  </div>  <textarea  class="form-control"  id="feedback_comments"  placeholder="  Any  comments  !"  rows="6"  cols="72"></textarea>  </form>  </div>  </div>  </div>  </div>  <div  class="modal-footer">  <button  type="button"  class="btn  btn-default reset_form"  data-dismiss="modal">Close</button>  <button  type="button"  class="btn  btn-primary"  id="save_btn">Submit</button>  </div>  </div>  </div>  </div>');
-$("body").append(MODAL);
-$(".reset_form").on("click",function(){
-$(".feedback_form").trigger('reset');
+var toggle=true;
+$(".feedback_btn").on("click",function(){
+if(toggle){
+$("#feedback_form").removeClass("hide");
+$("#feedback_form").animate({"height":"+=500px"},500,function(){});
+toggle=false;
+}
+else{
+$("#feedback_form").animate({"height":"-=500px"},200,function(){$(this).addClass("hide");$(this).css('height','0px');});
+toggle=true;
+}
 
 });
-   $("#more_btn").on("click", function() {
-                var num = parseInt($(".y_n").attr("name").replace("optionsRadios", "").trim()) + 1;
-                $(".y_n").removeClass("y_n");
-                var new_row = $("<tr> <td style=\"padding-top:8px;width:70%;\"> <input type=\"text\" class=\"form-control query\" placeholder=\"Query\"> </td> <td style=\"padding:8px 0px 0px 10px;width:30%;\"> <div class=\"form-inline\"> <div class=\"radio\"> <label><input class=\"y_n\" type=\"radio\" name=\"optionsRadios" + num + "\" id=\"Yes\" value=\"Yes\" checked=\"checked\" >Yes &nbsp &nbsp </label> </div> <div class=\"radio\"> <label><input class=\"y_n\" type=\"radio\" name=\"optionsRadios" + num + "\" id=\"No\" value=\"No\">No</label> </div> </div> </td> </tr>");
-                $("#moreBad").append(new_row);
-		
-            });
+$(".reset_form").on("click",function(){
+$(".feed_frm").trigger('reset');
+
+});
       $("#email").on("focusout", function() {
 
                 if (!validateEmail($(this).val())) {
-                    alertBox("#fcf8e3", "<strong>Warning !</strong> Better check yourself, you're email address not looking too good.  !!!");
+                    alertBox("#6889ff", "<strong>Warning !</strong> Better check yourself, you're email address not looking too good.  !!!");
                     $(this).val("");
                 }
 
             });
 
             
-            $("#save_btn").on("click", function() {
+            $("#save_button").on("click", function() {
                 var fk = {};
                 var queries = [];
                 var i = 0;
                 var EXIT=false;
-                $.each($(".query"), function() {
-                    i += 1;
-                    var temp = {};
-                    temp["status"] = $("input[name=optionsRadios" + i + "]:checked").val();
-                    temp["query"] = $(this).val();
-                    if(temp["query"]===""){
-                	alertBox("#fcf8e3", "<strong>Warning !</strong> Better check yourself, you have empty queries  !!!");
-                    $(this).val("");
-                    EXIT=true;
-                    return;
-                
-                }
-                    
-                    queries.push(temp);
-
-                });
                 
                 fk["email"] = $("#email").val();
                    if (!validateEmail(fk["email"])) {
-                    alertBox("#fcf8e3", "<strong>Warning !</strong> Better check yourself, you're email address not looking too good.  !!!");
+                    alertBox("#6889ff", "<strong>Warning !</strong> Better check yourself, you're email address not looking too good.  !!!");
                     $("#email").val("");
                     return;
                 }
-
-                fk["name"] = $("#name").val();
-                if(fk["name"]===""){
-                	alertBox("#fcf8e3", "<strong>Warning !</strong> Better check yourself, you're name not looking too good.  !!!");
-                    $("#name").val("");
+		if($("#frm_query").val()===""){
+                	alertBox("#6889ff", "<strong>Warning !</strong> Better check yourself, you have empty queries  !!!");
+                    $("#frm_query").val("");
                     return;
                 
                 }
-                if(EXIT){
-                	return;
-                }
-                fk["queries"] = queries;
+                  
+               
+                fk["queries"] = $("#frm_query").val()
                 fk["feedback"] = $("#feedback_comments").val();
-                console.log(fk);
 
 
                 $.ajax({
@@ -656,16 +643,17 @@ $(".feedback_form").trigger('reset');
                 }).done(function(text) {
                     text = text.trim();
                     if (text === "SUCCESS") {
-                        alertBox("#dff0d8", "<strong>Thank You !</strong> Your response has been saved !!!");
+                        alertBox("#259b24","<strong>Thank You !</strong> Your response has been saved !!!");
 
                     } else if (text === "DUPLICATE") {
-                        alertBox("#f1dddd", "<strong>Duplicate!</strong> email address  !!!");
+                        alertBox("#e51c23", "<strong>Duplicate!</strong> email address  !!!");
                     } else if (text === "WRONG") {
-                        alertBox("#f1dddd", "<strong>Oops</strong> Something Went Wrong !!!");
+                        alertBox("#e51c23", "<strong>Oops</strong> Something Went Wrong !!!");
                     }
 
 
                 });
+                return false;
             });
                    function validateEmail(sEmail) {
                 var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -678,12 +666,12 @@ $(".feedback_form").trigger('reset');
                 }
             }
         function alertBox(color, text) {
-                var alert = $("<div class=\"alert\" style=\"border-radius:4px;background-color:" + color + ";opacity:0;position:absolute;padding-top:15px;z-index:1100;height:50px;text-align:center;width:40%;left:30%;top:70%;\">" + text + "</div>");
+                var alert = $("<div class=\"alert\" style=\"border-radius:4px;background-color:" + color + ";opacity:0;position:absolute;padding-top:15px;z-index:1100;height:50px;text-align:center;width:40%;left:30%;top:70%;color:white;\">" + text + "</div>");
 
                 $("body").append(alert);
                 $(".alert").animate({
                     opacity: 1.0
-                }, 2000, function() {
+                }, 1000, function() {
 
                     setTimeout(function() {
                         $(".alert").animate({
@@ -699,5 +687,6 @@ $(".feedback_form").trigger('reset');
 
 
             }
+           
 
 })();

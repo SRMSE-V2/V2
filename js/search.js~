@@ -51,7 +51,10 @@
         var S_KEY="SECRET_KEY";
          window.cacheImage=function(src,element){
          var canvasEl = document.createElement('canvas');
+         element.setAttribute("src",src); //bypass
+         return;
         	if(typeof(Storage) !== "undefined" && !!canvasEl.getContext) {
+        		
         		var item=localStorage.getItem(src+"#image#"+element.width+"#key#"+S_KEY);
         		if(item){
         		element.setAttribute("src",item);
@@ -503,12 +506,12 @@ $(".side_btns").fadeOut(function() {
                     newnav.append(r);
                     newnav.height("50");
                     $(".nav_changer").prepend(newnav);//prepend so if disco is even there it will always come before disco
-                  
-                        main.on("click", "div", function() {
+                   
+                   
+                       main.on("click", "div", function() {
                             $(this).addClass("active");
                             clickOnCluster(this);
                         });
-                    });
                     lbtn.on("click", function() {
                         if (I_CLUSTER !== 0) {
                             I_CLUSTER -= 3;

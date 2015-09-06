@@ -20,19 +20,17 @@
         //setting up backinput for shadow suggestion
         $(".backinput").remove();
         var BACKINPUT = $("#search").clone();
-        BACKINPUT.removeClass("fostyle");
         BACKINPUT.removeAttr("id");
         BACKINPUT.removeAttr("placeholder");
         BACKINPUT.removeAttr("name");
         BACKINPUT.removeClass("ui-autocomplete-BACKINPUTut");
-        BACKINPUT.removeClass("btn2");
        // BACKINPUT.addClass("btn1");
         BACKINPUT.addClass("backinput");
         BACKINPUT.attr("disabled", "");
         
        
             //code for search page
-            BACKINPUT.css("margin-top", "8px");
+           
             BACKINPUT.attr("id", "input_back");
       
         $("#div_for_back").append(BACKINPUT);

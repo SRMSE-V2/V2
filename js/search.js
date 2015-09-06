@@ -51,7 +51,10 @@
         var S_KEY="SECRET_KEY";
          window.cacheImage=function(src,element){
          var canvasEl = document.createElement('canvas');
+         element.setAttribute("src",src); //bypass
+         return;
         	if(typeof(Storage) !== "undefined" && !!canvasEl.getContext) {
+        		
         		var item=localStorage.getItem(src+"#image#"+element.width+"#key#"+S_KEY);
         		if(item){
         		element.setAttribute("src",item);
@@ -938,7 +941,7 @@ $(".side_btns").fadeOut(function() {
                             }
                         });
                         $(".nav-sidebar").removeClass("hide");
-                        $(".nav-sidebar").append(main);
+                       // $(".nav-sidebar").append(main);
                         main.animate({
                             opacity: "1",
                             queue: false

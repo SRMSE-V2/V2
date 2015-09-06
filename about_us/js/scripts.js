@@ -3,7 +3,7 @@ $(document).ready(function(){
     //-----------------------------Vertical 1--------------------------
          
             
-              var v1 = '[{"name":"Shashank Prasad","img":"images/v1/shashank_pasad.jpg","desc":"Senior Vertical Head"},{"name":"Ketul Patani","img":"images/v1/ketul.jpg","desc":"Vertical Head"},{"name":"Akshith Gunasekaran","img":"images/v1/akshith.jpg","desc":""},{"name":"Shekhar Singh","img":"images/v1/shekhar.jpg","desc":""},{"name":"Arnab Kundu","img":"images/v1/arnab.jpg","desc":""},{"name":"Sonam Sherpa","img":"images/v1/sonam.jpg","desc":""},{"name":"Devaraj Phukan","img":"images/v1/devaraj.jpg","desc":""},{"name":"Tasdik Rehman","img":"images/v1/tasdik.JPG","desc":""}]';
+              var v1 = '[{"name":"Shashank Prasad","img":"images/v1/shashank_pasad.jpg","desc":"Senior Vertical Head"},{"name":"Ketul Patani","img":"images/v1/ketul.jpg","desc":"Vertical Head"},{"name":"Akshith Gunasekaran","img":"images/v1/akshith.jpg","desc":""},{"name":"Shekhar Singh","img":"images/v1/shekhar.jpg","desc":""},{"name":"Arnab Kundu","img":"images/v1/arnab.jpg","desc":""},{"name":"Sonam Sherpa","img":"images/v1/sonam.jpg","desc":""},{"name":"Devaraj Phukan","img":"images/v1/devaraj.jpg","desc":""},{"name":"Tasdik Rahman","img":"images/v1/tasdik.JPG","desc":""}]';
               var lang1 = '';
               var obj = $.parseJSON(v1);
               $.each(obj, function() 
@@ -49,7 +49,7 @@ $(document).ready(function(){
     //-----------------------------Vertical 3--------------------------------
     $('#b3').click(function(){
         
-        var v3 = '[{"name":"Guru Prakash","img":"images/v3/guru.jpg","desc":"Founder"},{"name":"B Sudershan","img":"images/v3/sudershan.jpg","desc":""},{"name":"Chinmay Kapoor","img":"images/v3/chinmay.jpg","desc":""},{"name":"Sai Prashanth","img":"images/v3/prashant.jpg","desc":"Vertical Head"},{"name":"Vageeswaran","img":"images/v3/vagee.jpg","desc":""},{"name":"Tilak Patidar","img":"images/v2/tilak.jpg","desc":""},{"name":"Anmol Sachan","img":"images/v3/anmol.jpg","desc":""}]';
+        var v3 = '[{"name":"Guru Prakash","img":"images/v3/guru.jpg","desc":"Founder"},{"name":"B Sudershan","img":"images/v3/sudershan.jpg","desc":""},{"name":"Chinmay Kapoor","img":"images/v3/chinmay.jpg","desc":""},{"name":"Sai Prashanth","img":"images/v3/prashant.jpg","desc":"Vertical Head"},{"name":"Vageeswaran","img":"images/v3/vagee.jpg","desc":""},{"name":"Tilak Patidar","img":"images/v2/tilak.jpg","desc":""},{"name":"Anmol Sachan","img":"images/v3/anmol.jpg","desc":""},{"name":"Akhil Gupta","img":"images/v3/akhil.jpg","desc":""}]';
               var lang3 = '';
               var obj = $.parseJSON(v3);
               $.each(obj, function() 

@@ -384,14 +384,24 @@
     "grid.less",
     "forms.less",
     "buttons.less",
+    "responsive-utilities.less",
     "button-groups.less",
     "input-groups.less",
-    "tooltip.less",
-    "modals.less"
+    "navs.less",
+    "navbar.less",
+    "labels.less",
+    "badges.less",
+    "media.less",
+    "list-group.less",
+    "close.less",
+    "component-animations.less",
+    "dropdowns.less",
+    "tooltip.less"
   ],
   "js": [
-    "modal.js",
-    "tooltip.js"
+    "dropdown.js",
+    "tooltip.js",
+    "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=564af2e86d6fca24730f"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=e65a26faa57a82bc2a3a"
 }

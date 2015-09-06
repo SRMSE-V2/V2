@@ -40,7 +40,7 @@ minify --no-comments --output ./min/wiki.min.js ./modules/wiki.js
 minify --no-comments --output ./min/flight.min.js ./modules/flight.js
 minify --no-comments --output ./min/tennis.min.js ./modules/tennis.js
 minify --no-comments --output ./min/feedback.min.js ./modules/feedback.js
-htmlminify -o ../index.html ../index1.html
+#htmlminify -o ../index.html ../index1.html
 replace "SECRET_KEY" "" -- ../index.html
 cp /usr/lib/cgi-bin/s1.py /usr/lib/cgi-bin/s.py
 replace "SECRET_KEY" "" -- /usr/lib/cgi-bin/s.py
@@ -48,8 +48,12 @@ cp -R ./* ../../git_cdn/js
 #css files
 minify --no-comments --output ../css/dark/search.min.css ../css/dark/search.css
 minify --no-comments --output ../css/light/search.min.css ../css/light/search.css
-minify --no-comments --output ../css/dark/styles.min.css ../css/dark/styles.css
-minify --no-comments --output ../css/light/styles.min.css ../css/light/styles.css
+cat ../bootstrap.fp/css/bootstrap.min.css ../css/dark/styles.css >> ../css/dark/temp.css
+minify --no-comments --output ../css/dark/styles.min.css ../css/dark/temp.css
+rm ../css/dark/temp.css
+cat ../bootstrap.fp/css/bootstrap.min.css ../css/light/styles.css >> ../css/light/temp.css
+minify --no-comments --output ../css/light/styles.min.css ../css/light/temp.css
+rm ../css/light/temp.css
 minify --no-comments --output ../css/dark/scripts.min.css ../css/scripts.css
 cp ../bootstrap/css/bootstrap.min.css ../bootstrap/css/bootstrap.min.css 
 cp -R ../css ../../git_cdn/
