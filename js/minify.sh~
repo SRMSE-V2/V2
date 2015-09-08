@@ -51,7 +51,9 @@ minify --no-comments --output ../css/light/search.min.css ../css/light/search.cs
 cat ../bootstrap.fp/css/bootstrap.min.css ../css/dark/styles.css >> ../css/dark/temp.css
 minify --no-comments --output ../css/dark/styles.min.css ../css/dark/temp.css
 rm ../css/dark/temp.css
-minify --no-comments --output ../css/light/styles.min.css ../css/light/styles.css
+cat ../bootstrap.fp/css/bootstrap.min.css ../css/light/styles.css >> ../css/light/temp.css
+minify --no-comments --output ../css/light/styles.min.css ../css/light/temp.css
+rm ../css/light/temp.css
 minify --no-comments --output ../css/dark/scripts.min.css ../css/scripts.css
 cp ../bootstrap/css/bootstrap.min.css ../bootstrap/css/bootstrap.min.css 
 cp -R ../css ../../git_cdn/

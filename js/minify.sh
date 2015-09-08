@@ -42,8 +42,8 @@ minify --no-comments --output ./min/tennis.min.js ./modules/tennis.js
 minify --no-comments --output ./min/feedback.min.js ./modules/feedback.js
 #htmlminify -o ../index.html ../index1.html
 replace "SECRET_KEY" "" -- ../index.html
-cp /usr/lib/cgi-bin/s1.py /usr/lib/cgi-bin/s.py
-replace "SECRET_KEY" "" -- /usr/lib/cgi-bin/s.py
+#cp /usr/lib/cgi-bin/s1.py /usr/lib/cgi-bin/s.py
+#replace "SECRET_KEY" "" -- /usr/lib/cgi-bin/s.py
 cp -R ./* ../../git_cdn/js
 #css files
 minify --no-comments --output ../css/dark/search.min.css ../css/dark/search.css

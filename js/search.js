@@ -10,6 +10,8 @@
         $.ajaxSetup({
             cache: true
         });
+        
+  		$('[data-toggle="tooltip"]').tooltip();
         function ls(filename, filetype,id){
     if (filetype=="js"){ //if filename is a external JavaScript file
         var fileref=document.createElement('script');
@@ -34,19 +36,22 @@
         var USER_QUERY=$("#search").val().trim();
         var START_RESULT = 0;
         var END_RESULT = 10;
-        var IDS = [];
-        var I_CLUSTER = 0;
-        var J_CLUSTER = 4;
-        var HAS_RESULTS = true;
-        var CLUSTERS = [];
+        var HAS_RESULTS = false;
+        var GOT_CLUSTERS=false;
+        var CLUSTERS = [];//clusters
         window.SA = {};
-        var TAP = false;
+        var CURRENT_PAGE=1;
         var SHOW_INFOBOX = false;
         var HIDE_INFOBOX = false;
-        var CLUSTER_RESPONSE = [];
+        var CLUSTER_RESPONSE ={};//clusters_docs
+        var CLUSTER_RESULTS={};//hits
+        var GENERAL_RESULTS=[];//general results
+        var GENERAL_RESULTS_COPY=[];//general results copy to hold gen results when var is swapped as clusters are selected
+        var BREAKERS=1;//get generated hr breaker counts
         var INFO_BOX = "";
         var MODAL_BACK="";
         var KEY="";
+        var OPEN_DRAWER=false;
         window.WIKI_TITLE="";
         var S_KEY="SECRET_KEY";
          window.cacheImage=function(src,element){
@@ -65,14 +70,14 @@
         			image.setAttribute("crossOrigin",'Anonymous');
         			image.setAttribute("src",src);
         			image.onload=function(){
-        			console.log(this.getAttribute("src"));
+        			//console.log(this.getAttribute("src"));
         			var canvas = document.createElement('CANVAS'),
         			ctx = canvas.getContext('2d');
         			canvas.height = element.height;
         			canvas.width = element.width;
         			ctx.drawImage(image, 0, 0,element.width,element.height);
         			var dataURL = canvas.toDataURL("image/png");
-        			console.log(dataURL);
+        			//console.log(dataURL);
         			element.setAttribute("src",dataURL);
         			localStorage.setItem(src+"#image#"+element.width+"#key#"+S_KEY,dataURL);
         			canvas=null;
@@ -117,40 +122,9 @@
         };
         
         var MODULES={"general":si,"sports":hi,"stock":hi,"train":hi,"weather":si,"movie":si,"exam":hi,"location":hi,"minerals":hi,"differences":si,"wiki":si,"dict":si,"theatre":si,"highway":hi,"cricket-players":si,"ministers":hi,"bank":hi,"highcourt":hi,"discography":si,"flight":hi,"tennis":si};
-        console.log(MODULES);
-        var LOAD = $('<div id="loading" style="background-color:transparent;">;<div class="cssload-container"><div class="cssload-loading"><i></i><i></i><i></i><i></i></div></div></div>');
-        var ARROW_DIV_BTNS = $("<div style='position:relative;top:0;bottom:0;padding-top:18px;height:50px;'><span id='light' class='side_btns' data-toggle='tooltip' title='Light Theme'><img style='top:0;bottom:0;margin:auto;width:31px;height:27px;' src='/images/lighttheme.png'></span><span   class='side_btns' id='dark' data-toggle='tooltip' title='Dark Theme'><img style='top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;' src='/images/darktheme.png'>   </span> <span class='side_btns' data-toggle='tooltip' title='Want Help !'>  <img style='top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;' src='/images/howtouse.png'>      </span> </div>");
-        var TAP_DIV = $("<div id='tap'><button class='btn tap-btn' type='button'>Tap to see clusters</button></div>");
-        var RMAP = {
-            "Architecture": "100",
-            "Arts": "101",
-            "Education": "102",
-            "Entertainment": "103",
-            "Finance": "104",
-            "Food": "105",
-            "Health": "106",
-            "History": "107",
-            "News": "108",
-            "Sports": "109",
-            "Technology": "110",
-            "Religion": "111",
-	    "Videos":"000"
-        };
-        var MAP = {
-            "100": "Architecture",
-            "101": "Arts",
-            "102": "Education",
-            "103": "Entertainment",
-            "104": "Finance",
-            "105": "Food",
-            "106": "Health",
-            "107": "History",
-            "108": "News",
-            "109": "Sports",
-            "110": "Technology",
-            "111": "Religion",
-            "000": "Videos"
-        };
+        //console.log(MODULES);
+        var LOAD = $('<div id="loading" style="background-color:transparent;">;<div class="cssload-container"><div class="cssload-jumping"><span></span><span></span><span></span><span></span><span></span></div></div>');
+        var ARROW_DIV_BTNS = $("<div class='arrow_cont'><span id='light' class='side_btns' data-toggle='tooltip' title='Light Theme'><img src='/images/lighttheme.png'></span><span   class='side_btns' id='dark' data-toggle='tooltip' title='Dark Theme'><img style='margin-left:5px;' src='/images/darktheme.png'>   </span> <span class='side_btns' data-toggle='tooltip' title='Want Help !'>  <img style='margin-left:5px;' src='/images/howtouse.png'>      </span> </div>");
         function prependCss(css,id){
     elChild = document.createElement('style');
     elChild.setAttribute("id",id);
@@ -199,6 +173,7 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
        });
         }
         function dispInfoBox() {
+        //console.log("1");
             var table = $(INFO_BOX.replace(/<img (.*?)\/>/g, "").replace(/\?+/g,"").replace(/background-color:(.*?);/g,"").replace(/background:(.*?);/g,""));
             table.find(".hatnote").remove();
             table.find(".ambox").remove();
@@ -211,7 +186,17 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
             table.find("caption.fn.org").remove();
             table.find(".fn,.org").remove();
             table.find(".summary").remove();
-            table.addClass("wiki_module").attr("id", "wiki");
+            table.addClass("wiki_module module").attr("id", "wiki");
+            var count=0;
+            $.each(table.find("tbody").children("tr"),function(index,element){
+            
+            if(count>8){
+            //console.log(count);
+            $(element).remove();
+            }
+            count+=1;
+            
+            });
             $.each(table.find("a"), function() {
             $(this).addClass("wiki_link");
                 if ($(this).attr("href") && $(this).attr("href").indexOf("File") >= 0) {
@@ -224,12 +209,16 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
                     
                     }
                     else{
-                    img.attr("src", "http://en.wikipedia.org/wiki/en:Special:Filepath/" + fn[fn.length - 1].replace("File:", "") + "?width=140");
+                    img.attr("src", "http://en.wikipedia.org/wiki/en:Special:Filepath/" + fn[fn.length - 1].replace("File:", "") + "?width=220");
                     }
                     $(this).append(img);
                 }
+                else{
+                
+                	$(this).attr("href",$(this).attr("href").replace("/wiki","https://en.wikipedia.org/wiki"));
+                }
             });
-            console.log(table.html());
+            //console.log(table.html());
             removeParentWiki(table);
             table.find("img").on("error",function(){
             $(this).remove();
@@ -273,7 +262,7 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
             });
 	return callbacks;
         };
-        cacheImage("/images/"+window.color+"/srmselogo.png",document.getElementById("srmse-logo"));
+        cacheImage("/images/"+window.color+"/nav_logo.png",document.getElementById("srmse-logo"));
         function loadedLightTheme(){
 
 $("#dark_theme").remove();
@@ -306,7 +295,7 @@ $("#light_theme").remove();
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
-                console.log(KEY);
+                //console.log(KEY);
                 basket.require({ url: "/css/light/search"+S_KEY+".css", execute: false,expire:168 }).then(function(responses) {
         var css = responses[0].data;
         prependCss(css,"light_theme");
@@ -344,7 +333,7 @@ $("#light_theme").remove();
                 var calls=window.switchImg();
                 var fin=calls.length+1;
                 var loaded=0;
-                console.log(KEY);
+                //console.log(KEY);
                  basket.require({ url: "/css/dark/search"+S_KEY+".css", execute: false,expire:168 }).then(function(responses) {
         var css = responses[0].data;
         prependCss(css,"dark_theme");
@@ -372,7 +361,7 @@ $("#light_theme").remove();
                 
             });
         };
-var u = 0; //toggle var
+var u = 0; //toggle var 
 var wait=0;
 function showArrow(){
  $(".arrow_div").remove();
@@ -427,129 +416,111 @@ $(".side_btns").fadeOut(function() {
         //end of theme switch
         //scroll button start
         $(function() {
-            $(document).on('scroll', function() {
-                if ($(window).scrollTop() > 100) {
+    	var dir="up";
+    	var position = $(window).scrollTop();
+    	var displayed=false;
+            $(document).on('scroll', function(e) {
+            
+
+		  var scroll = $(window).scrollTop();
+		  if (scroll > position) {
+		    	$(".switch_arrow").removeClass("glyphicon glyphicon-arrow-up");
+		    	$(".switch_arrow").addClass("glyphicon glyphicon-arrow-down");
+	     		dir="down";
+		  } else {
+		    	$(".switch_arrow").removeClass("glyphicon glyphicon-arrow-down");
+		    	$(".switch_arrow").addClass("glyphicon glyphicon-arrow-up");
+		    	dir="up"; 
+		  }
+		  position = scroll;
+
+           
+                if ($(window).scrollTop() > 100 && !displayed) {
                     $('.scroll-top-wrapper').addClass('show');
+                    displayed=true;
                     setTimeout(function() {
                         $('.scroll-top-wrapper').removeClass('show');
-                    }, 4000);
-                } else {
-                    $('.scroll-top-wrapper').removeClass('show');
-                }
+                        displayed=false;
+                    }, 8000);
+                } 
             });
-            $('.scroll-top-wrapper').on('click touch', scrollToTop);
+            $('.scroll-top-wrapper').on('click touch', function(){scrollToTop(dir);});
         });
-        function scrollToTop() {
+        function getNearestElement(dir){
+        	var h=$(window).scrollTop();
+        	//console.log(h);
+        	var diff=h;
+        	
+        	var elem;
+        	$.each($(".pages"),function(index,element){
+        	
+        		if(Math.abs(h-$(element).position().top)<diff && $(element).position().top<h && dir==="up"){
+        			diff=h-$(element).position().top;
+        			elem=$(element);
+        		}
+        		else if(Math.abs(h-$(element).position().top)<diff && $(element).position().top>h && dir==="down"){
+        			diff=h-$(element).position().top;
+        			elem=$(element);
+        		
+        		}
+        	
+        	});
+        	if(parseInt(elem.attr("name"))===CURRENT_PAGE && CURRENT_PAGE===1 && dir ==="up" ){
+        		//for first time
+        		return $(".page1");
+        	}
+        	if(parseInt(elem.attr("name"))===CURRENT_PAGE){
+        		//if same page again
+        		if(dir==="down"){
+        			elem=$(".page"+(parseInt(elem.attr("name"))+1));
+        		}
+        		else if(dir==="up"){
+        			elem=$(".page"+(parseInt(elem.attr("name"))-1));
+        		}
+        	
+        	}
+        	
+        	return elem;
+        
+        }
+        function scrollToTop(dir) {
+        	//scrolls to nearest top page
+        try{
+            var elem=getNearestElement(dir);
             var verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
-            var element = $('body');
+            var element = elem;
             var offset = element.offset();
-            var offsetTop = offset.top;
-            $('html, body').animate({
+            var offsetTop = offset.top-200;
+         
+            
+          }
+          catch(err){
+          	//if desired page not exists come 
+          	verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+          	if(dir==="down"){
+        			elem=$(".page"+CURRENT_PAGE+1);
+        		}
+        		else if(dir==="up"){
+        			elem=$(".page"+CURRENT_PAGE-1);
+        		}
+		    element = elem;
+		    offset = element.offset();
+		    offsetTop = offset.top-200;
+        	
+          	
+          }
+             $('html, body').animate({
                 scrollTop: offsetTop
-            }, 500, 'linear');
+            }, 500, 'linear',function(){
+            	elem.tooltip('show');
+            	(function(elem){
+            		setTimeout(function(){elem.tooltip('hide');}, 2000);
+            	
+            	})(elem);
+            	
+            });
         }
-        //scroll button ends
-        function navChanger() {
-            $(".newside").remove();
-            //hides autocomplete dropdown on screen resize
-            $(".ui-autocomplete").removeClass("show");
-            if ($(window).width() <= 1000) {
-                if ($("#tap").length <= 0 && !TAP && CLUSTERS.length > 0) {
-                    $("body").append(TAP_DIV);
-                    TAP_DIV.on("click", function() {
-                        $(this).slideUp("fast", function() {
-                            $(this).hide();
-                        });
-                    });
-                    TAP = true;
-                } else if (TAP) {} else {
-                    $("#tap").show();
-                }
-                if (CLUSTERS.length === 0) {
-                    $("#smart_answer").css("margin-top", "102px");
-                    $("#smart_col").css("margin-top", "140px");
-                    $(".side").removeClass("full-height");
-                } else {
-                    $("#smart_col").css("margin-top", "62px");
-                    $(".side").addClass("full-height");
-                }
-                $(".side").addClass("hide");
-                $("#centre_parent").css("margin-top", "20px");
-                var newnav = $("<div class='newside' style='width:" + $(".nav_changer").width() + "px;'></div");
-                var lbtn = $("<button style='' class='cluster_lbtn btn glyphicon glyphicon-chevron-left'></button>");
-                var rcol = $("<div style='float:left;height:100%;width:40px;' class=''></div>");
-                var lcol = $("<div style='float:left;height:100%;width:40px;' class=''></div>");
-                var rbtn = $("<button style='' class='cluster_rbtn btn glyphicon glyphicon-chevron-right'></button>");
-                var r = $("<div style='width:100%;height:100%;padding-top:5px;padding-bottom:5px;'></div>");
-                var main = $("<div style='padding:0px !important;height:50px;width:" + ($(".nav_changer").width() - 80) + "px;' class='col-lg-10 col-md-10 col-sm-10 col-xs-10'></div>");
-                rcol.append(rbtn);
-                lcol.append(lbtn);
-                r.append(lcol);
-                if (CLUSTERS.length > 0) {
-                    var m = $();
-                    $.each(CLUSTERS.slice(I_CLUSTER, J_CLUSTER), function(index, element) {
-                        var h = ($(".nav_changer").width() - 105) / 4;
-                        var temp;
-                        if (index === J_CLUSTER) {
-                            temp = $("<div data-toggle='tooltip' data-placement='bottom' class='cluster_btn' title='" + element.capitalizeMe() + "' style='width:" + h + "px;'></div>");
-                            temp.text(element.capitalizeMe());
-                            m = m.add(temp);
-                        } else {
-                            temp = $("<div data-toggle='tooltip' data-placement='bottom' class='cluster_btn' title='" + element.capitalizeMe() + "' style='width:" + h + "px;'></div>");
-                            temp.text(element.capitalizeMe());
-                            m = m.add(temp);
-                        }
-                    });
-                    main.append(m);
-                    r.append(main);
-                    r.append(rcol);
-                    newnav.append(r);
-                    newnav.height("50");
-                    $(".nav_changer").prepend(newnav);//prepend so if disco is even there it will always come before disco
-                   
-                   
-                       main.on("click", "div", function() {
-                            $(this).addClass("active");
-                            clickOnCluster(this);
-                        });
-                    lbtn.on("click", function() {
-                        if (I_CLUSTER !== 0) {
-                            I_CLUSTER -= 3;
-                            J_CLUSTER -= 3;
-                            $(".navside").remove();
-                            navChanger();
-                        }
-                    });
-                    rbtn.on("click", function() {
-                        if ((J_CLUSTER + 3) <= CLUSTERS.length) {
-                            I_CLUSTER += 3;
-                            J_CLUSTER += 3;
-                            $(".navside").remove();
-                            navChanger();
-                        }
-                    });
-                } else {
-                	
-                    getClusters();
-                }
-                $(".newside").css("margin-top", "122px");
-            } else {
-                $("#tap").hide();
-                $("#centre_parent").css("margin-top", "82px");
-                $(".newside").css("margin-top", "82px");
-                $("#smart_col").css("margin-top", "82px");
-                 if ($(".bx-wrapper").length) {
-                    $(".bx-wrapper").css("top", "90px");
-                }
-                if (CLUSTERS.length > 0) {
-                    $(".side").removeClass("hide");
-                } else {
-                    $("#smart_answer").css("margin-top", "22px");
-                }
-            }
-        }
-        navChanger();
-        $(window).on("resize", navChanger);
+     
         $("#search_btn").on("submit", function() {
             if ($("#search").val().trim() !== "") {
                 var query = $("#search").val().trim();
@@ -564,10 +535,11 @@ $(".side_btns").fadeOut(function() {
             if ($("#search").val().trim() !== "") {
                 $.ajax({
                     async: true,
-                    url: "/cgi-bin/queryret/getIds.py",
+                    url: "/cgi-bin/query_retrieval/ask_me.py",
                     data: {
                         q: $("#search").val().trim().toLowerCase(),
-                        f: 1,
+                        f: 0,
+                        t:2,
                         authenticity_token:$("meta[name='csrf-token']").attr("content")
                     },
                     dataType: 'text',
@@ -581,9 +553,9 @@ $(".side_btns").fadeOut(function() {
                     	HAS_RESULTS = false;
                     }
                     else{
-                    IDS = js["ids"];
-                    renderResult(js["results"], $("#search_results"), false, true,false);
-                    HAS_RESULTS = true;
+                    renderResult(js["content"], $("#search_results"), false, true,false);
+                    START_RESULT += 10;
+                    END_RESULT += 10
                     }
                 });
             }
@@ -592,12 +564,16 @@ $(".side_btns").fadeOut(function() {
             if (arr[0]) {
                 if (wiki) {
                     INFO_BOX = arr[0]["infobox"];
-                } else {
-                    HAS_RESULTS = true;
-                    START_RESULT += 10;
-                    END_RESULT += 10;
                 }
                 var main = $();
+                //to add a line break hr
+                if(!news && !wiki){
+                	main = main.add("<hr name='"+BREAKERS+"' class='hr_breaker pages page"+BREAKERS+"' data-toggle='tooltip' data-animation=true data-placement='bottom' title='page"+BREAKERS+"'>");
+                ++BREAKERS;
+                }
+                else if(!wiki){
+                	main = main.add("<hr class='hr_breaker'>");
+                }
                 $.each(arr, function(index, element) {
                     var prnt = $("<div><div class='search_result_1'></div></div>");
                     var title = $("<div style='display:block;'></div>");
@@ -633,11 +609,10 @@ $(".side_btns").fadeOut(function() {
                     	var item=localStorage.getItem("visited");
                     	if(item){
                     		var t=JSON.parse(item);
-                    	console.log(t);
-                    	console.log(titlea.attr("href"));
                     		if(t[titlea.attr("href")]){
                     		//visited
-                    		prnt.find(".search_result_1").addClass("search_result_visited");
+                    		prnt.addClass("search_result_visited");
+                    		
                     		}
                     	
                     	}
@@ -654,8 +629,7 @@ $(".side_btns").fadeOut(function() {
                     var img = new Image();
                     var url = "http://www.google.com/s2/favicons?domain=" + element['url'];
                     img.src = url;
-                    img.width = 15;
-                    img.height = 15;
+                    img.className="img_fav";
                     $(img).css("margin-right", "10px");
                     img.onload = function() {
                         imgspan.prepend(img);
@@ -668,7 +642,14 @@ $(".side_btns").fadeOut(function() {
                         var wiki_desc=$(element["body"]);
                         wiki_desc.find(".ambox").remove();
                         wiki_desc.find(".error").remove();
+                        wiki_desc.find("img").remove();
                         wiki_desc.find(".mw-ext-cite-error").remove();
+                        $.each(wiki_desc.find("a"),function(index,element){
+                        
+                        
+                        $(this).attr("href",$(this).attr("href").replace("/wiki","https://en.wikipedia.org/wiki"));
+                        
+                        });
                         search_desc.html($("<div/>").append(wiki_desc).html());
                     } 
                     else if(isVideos){
@@ -678,15 +659,17 @@ $(".side_btns").fadeOut(function() {
                     search_desc.append("<div class='col-md-3 col-xs-3 col-sm-3 col-lg-3'><img class='yt_img' src='https://i.ytimg.com/vi_webp/"+url_token+"/default.webp'/></div>");
                     search_desc.append("<div class='col-md-9 col-xs-9 col-sm-9 col-lg-9'>"+element["body"].filter()+"</div>");
                     }
+                    else if(news){
+                    	search_desc.text(element["body"].substr(0,200).filter());
+                    }
                     else {
-                        search_desc.text(element["body"].filter());
+                        search_desc.text(element["content"].substr(0,200).filter());
                     }
                     prnt.find(".search_result_1").append(title);
                     prnt.find(".search_result_1").append(search_desc);
                     main = main.add(prnt);
                 });
-                //to add a line break hr
-                main = main.add("<hr class='hr_breaker'>");
+                
                 //to check if results is more or first
                 if (isappend) {
                     fat.append(main);
@@ -694,9 +677,9 @@ $(".side_btns").fadeOut(function() {
                     fat.html(main);
                 }
                 $(".search_result").on("click", function() {
-                    $(this).find(".search_result_1").addClass("search_result_visited");
+                    $(this).addClass("search_result_visited");
                     if(typeof(Storage)!==undefined){
-                    console.log('1');
+                   
                     	//use local storage
                     	var item=localStorage.getItem("visited");
                     	if(item){
@@ -724,7 +707,7 @@ $(".side_btns").fadeOut(function() {
                 }, 1000, function() {});
                 $(".effect").removeClass("effect");
                 $("#loading").remove();
-                $(window).scroll(bindScroll);
+                $(window).scroll(bindScroll);//we unbinded scroll in bindScroll after rendering bind it again
             } else {
                 
                 if (!wiki && !news) {
@@ -733,49 +716,52 @@ $(".side_btns").fadeOut(function() {
                
             }
         }
-        function getMoreResults(i, j) {
-            if (START_RESULT < IDS.length) {
-                if (IDS && HAS_RESULTS) {
-                    $.ajax({
-                        url: "/cgi-bin/queryret/getMore.py",
-                        dataType: 'text',
-                        type: "GET",
-                        async: true,
-                        data: {
-                            q: "" + IDS.slice(START_RESULT, END_RESULT).toString(),
-                            f: CURRENT_FLAG,
-                            authenticity_token:$("meta[name='csrf-token']").attr("content")
-                        },
-                        error: function() {
-                            $("#search_results").append(prnt);
-                            HAS_RESULTS = false;
-                        }
-                    }).done(function(text) {
-                        var arr = JSON.parse(text);
-                        if(arr["error"]){
-                    	HAS_RESULTS = false;
-                    }
-                    else{
-                        renderResult(arr["results"], $("#search_results"), false, true,false);
-                        }
-                    });
+        function getMoreResults() {
+            if (START_RESULT < GENERAL_RESULTS.length) {
+                if (GENERAL_RESULTS && HAS_RESULTS) {
+                        var arr = GENERAL_RESULTS.slice(START_RESULT,END_RESULT);
+                        renderResult(arr, $("#search_results"), false, true,false);
+                         START_RESULT += 10;
+                    	 END_RESULT += 10;
                 }
             } else {
-                var prnt = ADD_NO_RESULTS();
-                $("#search_results").append(prnt);
-                HAS_RESULTS = false;
-            }
-        }
-        function bindScroll() {
-            if ($("#centre_parent").scrollTop() + $("#centre_parent").innerHeight() >= document.getElementById("centre_parent").scrollHeight) {
-                $(window).unbind('scroll');
-                if (HAS_RESULTS) {
-                    $("#search_results").append(LOAD);
-                    setTimeout(function() {
-                        getMoreResults(START_RESULT, END_RESULT, true);
-                    }, 1000);
+           
+            	if(GOT_CLUSTERS){
+            		//check if we got more results from getClusters first before marking no more results
+		        var prnt = ADD_NO_RESULTS();
+		        $("#search_results").append(prnt);
                 }
             }
+        }
+        function bindScroll(event) {
+        	var curr=$(window).scrollTop();
+        	$.each($(".pages"),function(index,element){
+        		var elem=$(element);
+        		if((elem.position().top<(curr+100)) && (elem.position().top>(curr-100))){
+        		elem.tooltip('show');
+		    	(function(elem){
+		    		CURRENT_PAGE=parseInt(elem.attr("name"));
+		    		setTimeout(function(){elem.tooltip('hide');}, 2000);
+		    	
+		    	})(elem);
+        		return false;
+        	
+        		}
+        	
+        	});
+        	
+        	 if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            		 $(window).unbind('scroll');
+		        if (HAS_RESULTS) {
+		            $("#search_results").append(LOAD);
+		            setTimeout(function() {
+		                getMoreResults();
+		            }, 3000);
+                	}
+   		}
+        	/*if($(window).scrollTop() + $("#centre_parent").innerHeight() >= that.scrollHeight) {
+            		
+        	}*/
         }
         function getIDSwiki() {
             $.ajax({
@@ -887,7 +873,7 @@ $(".side_btns").fadeOut(function() {
             if ($("#search").val().trim() !== "") {
                 $.ajax({
                     async: true,
-                    url: "/cgi-bin/cluster/getClusters.py",
+                    url: "/cgi-bin/cluster_retrieval/ask_me.py",
                     dataType: 'text',
                     type: "GET",
                     data: {
@@ -896,6 +882,7 @@ $(".side_btns").fadeOut(function() {
                     },
                     error: function() {
                         clustersError();
+                        GOT_CLUSTERS=true;
                     }
                 }).done(function(textt) {
                     var res = JSON.parse(textt);
@@ -903,19 +890,32 @@ $(".side_btns").fadeOut(function() {
                     clustersError();
                     return
                     }
-                    CLUSTER_RESPONSE = res;
-                    var arr = [];
-                    $.each(res, function(k, v) {
-                        arr.push(MAP[k]);
+                    CLUSTER_RESPONSE = res["cluster_docs"];
+                    CLUSTER_RESULTS={};
+                    var temp_gen=[];
+                    $.each(res["hits"]["hits"],function(index,element){
+                    	var temp={};
+                    	temp["content"]=element["fields"]["content"][0];
+                    	temp["url"]=element["fields"]["url"][0];
+                    	temp["title"]=element["fields"]["title"][0];
+                    	CLUSTER_RESULTS[element["_id"]]=temp;
+                    	temp_gen.push(temp);
+                    
                     });
+                    GENERAL_RESULTS=temp_gen;
+                    GENERAL_RESULTS_COPY=temp_gen;
+                    HAS_RESULTS=true;//now we have more results
+                    GOT_CLUSTERS=true;//now mark that we have clusters
+                    var arr = res["clusters"];
                     if (arr.length > 0) {
                         var main = $();
                         
                         CLUSTERS = arr;
-                        arr.push("Videos");
+                        //arr.push("Videos"); for old
                         $.each(arr, function(index, element) {
+                       
                             if (element) {
-                                var li = $("<li></li>");
+                                var li = $("<li role='presentation' class='cluster'></li>");
                                 var a = $("<a></a>");
                                 a.attr("data-toggle", "tooltip");
                                 a.attr("data-placement", "right");
@@ -931,21 +931,15 @@ $(".side_btns").fadeOut(function() {
                                     $(this).parent().toggleClass("not_active active");
                                     clickOnCluster(this);
                                 });
-                                a.text(element.capitalizeMe());
+                                a.text(element);
                                 li.append(a);
                                 li.addClass("not_active");
-                                li.css("opacity", "0");
                                 main = main.add(li);
-                                $(".side").removeClass("hide");
-                                navChanger(); //for nav
+                                 //console.log(element);
                             }
                         });
-                        $(".nav-sidebar").removeClass("hide");
-                       // $(".nav-sidebar").append(main);
-                        main.animate({
-                            opacity: "1",
-                            queue: false
-                        }, 1000, function() {});
+                       $(".cluster_li").append(main);
+                       
                     } else {
                         console.log("no clusters");
                         clustersError();
@@ -953,6 +947,60 @@ $(".side_btns").fadeOut(function() {
                 });
             }
         }
+        //put window on resize if in open drawer someone resizes
+        $(window).on("resize",function(){
+        	var mar="";
+        	if($(document).width()<=768 && OPEN_DRAWER){
+        		mar="207px";
+        		$(".nav_changer").css({"position":"absolute","left":mar});
+        	}
+        	else if($(document).width()>768 && OPEN_DRAWER){
+        		mar="127px";
+        		$(".nav_changer").css({"position":"absolute","left":mar});
+        	}
+        	
+        
+        });
+        $(".show_cluster").on("click",function(){
+        
+        	var margin="127px";
+        	if($(document).width()<=768){
+        		margin="207px";
+        	}
+        	if(OPEN_DRAWER){
+			//drawer is open close it
+			
+			$(function () {
+	    				$(".show_cluster").parent().animate({
+	      						 left: '-200px'
+	    				}, { duration: 500, queue: false });
+	    				$(".nav_changer").animate({
+	       						left: '0px'
+	    				}, { duration: 500, queue: false,complete:function(){
+	    				
+	    					$(".nav_changer").css("position","");
+	    				
+	    				}});
+				});
+			
+			OPEN_DRAWER=false;
+		}
+		else{
+			//drawer is close open it
+			$(".nav_changer").css({"position":"absolute","left":"0px"});
+			
+			$(function () {
+	    				$(".show_cluster").parent().animate({
+	      						 left: '0px'
+	    				}, { duration: 500, queue: false });
+	    				$(".nav_changer").animate({
+	       						left: margin
+	    				}, { duration: 500, queue: false});
+			});
+			OPEN_DRAWER=true;
+		}
+		
+        });
         function clickOnCluster(that) {
             var cluster = $(that).text();
             if (cluster !== "News") {
@@ -960,74 +1008,53 @@ $(".side_btns").fadeOut(function() {
             } else {
                 $("#news").removeClass("hide");
             }
-            if(cluster==="Videos"){
-            CURRENT_FLAG=4;
-            $.ajax({
-                async: true,
-                url: "/cgi-bin/queryret/getIds.py",
-                dataType: 'text',
-                type: "GET",
-                data: {
-                    q: USER_QUERY,
-                    f: 4,
-                    authenticity_token:$("meta[name='csrf-token']").attr("content")
-                },
-                error: function() {
-                    var prnt = ADD_NO_RESULTS();
-                    $("#search_results").append(prnt);
-                }
-            }).done(function(textt) {
-            var js = JSON.parse(textt);
-                if(js["error"]){
-                var prnt = ADD_NO_RESULTS();
-                    $("#search_results").append(prnt);
-                    }
-                else{
-                renderResult(js["results"], $("#search_results"), false, false,false,true);
-                }
-            });
-            return false;
+            if(cluster=="General"){
+            	$("#news").removeClass("hide");
+            	START_RESULT=0;
+            	END_RESULT=10;
+            	GENERAL_RESULTS=GENERAL_RESULTS_COPY;//load general results back
+            	renderResult(GENERAL_RESULTS.slice(0,10), $("#search_results"), false, false,false);
+            	START_RESULT+=10;
+            	END_RESULT+=10;
             }
-            CURRENT_FLAG=1;
+            else{
+            START_RESULT=0;
+            END_RESULT=10;
+            var ids = CLUSTER_RESPONSE[cluster];
+            var js=[];
+            $.each(ids,function(index,element){
+            	js.push(CLUSTER_RESULTS[element]);
             
-            var cid = RMAP[cluster];
-            var ids = CLUSTER_RESPONSE[cid];
-            IDS = ids;
-            START_RESULT = 0;
-            END_RESULT = 10;
-            $.ajax({
-                async: true,
-                url: "/cgi-bin/queryret/getMore.py",
-                dataType: 'text',
-                type: "GET",
-                data: {
-                    q: IDS.slice(START_RESULT, END_RESULT).toString(),
-                    f: CURRENT_FLAG,
-                    authenticity_token:$("meta[name='csrf-token']").attr("content")
-                },
-                error: function() {
-                    var prnt = ADD_NO_RESULTS();
-                    $("#search_results").append(prnt);
-                }
-            }).done(function(textt) {
-                var js = JSON.parse(textt);
-                if(js["error"]){
-                var prnt = ADD_NO_RESULTS();
-                    $("#search_results").append(prnt);
-                    }
-                else{
-                renderResult(js["results"], $("#search_results"), false, false,false);
-                }
             });
+            	GENERAL_RESULTS=js;//swap
+            	renderResult(js.slice(0,10), $("#search_results"), false, false,false);//just send 10 results to render
+            	START_RESULT+=10;
+            	END_RESULT+=10;
+            }
+           
             return false;
         }
         //fix scroll later
-        $(window).bind('scroll', bindScroll);
+        $(window).bind('scroll',bindScroll);
         getIDSresults();
         getIDSwiki();
         getIDSnews();
         getSmartAns();
         getClusters();
+    });
+    
+    $("#search").on("keypress",function(){
+    	if($(this).val().length>0){
+    		if($(window).width()<991){
+    			$(".mob_close").css("display","inline");
+    		}
+    	
+    	}
+    });
+    $(".mob_close").on("click touch",function(){
+    	$("#search,.backinput").val("");
+    	$(".mob_close").css("display","none");
+    
     });
     //prototypes
     String.prototype.capitalizeMe = function() {
