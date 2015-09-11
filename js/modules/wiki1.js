@@ -52,7 +52,7 @@ $.ajax({
                }
               
                desc=$(new_html);
-               table.addClass("module");
+               table.addClass("wiki_module module");
                table.css({"margin-top":"20px","border":"0px"});
                table.attr("id","wiki");
                 $("#wikiMain > div > .search_info").html(desc);

@@ -45,6 +45,10 @@ window.ls=function(filename, filetype,id){
 	//if not
 	window.color=undefined;
 	}
+	if(!co["search_type"]){
+			document.cookie = "search_type=web;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+		
+	}
 
 if(!window.color){
 
@@ -190,7 +194,7 @@ color: rgb(214, 209, 209);
                                <div class="f_w search_box">
                               <div class="hide input-group input-group-lg">
                                  
-                                      <input type="text" class="hide form-control form-control1 fostyle btn2 simplebox" placeholder="Search here" name="q" id="search" spellcheck="false" autocomplete="off" autofocus/>
+                                      <input type="text" class="hide form-control simplebox" placeholder="Search here" name="q" id="search" spellcheck="false" autocomplete="off" autofocus/>
                                   <span class="input-group-btn"> 
                                       <button id="search_btn" class="btn spanbtn">
                                         <span class="glyphicon glyphicon-search"></span>

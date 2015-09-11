@@ -1,5 +1,5 @@
 (function(){
-var STOCKS=$("<div id=\"stocks\" class=\"module\">               <h4 class=\"stocks_name\"></h4>                 <h6 class=\"stocks_code\"></h6>                <h5>Pre-market:               <span class=\"stocks_previous\"></span>               </h5>               <h2>               <span class=\"stocks_current\" ></span>               <span style=\"color:#e74c3c\">               <span class=\"stocks_status\" style=\"position:relative;font-size:28px;top:-5px;left:6px;\"></span>               <span class=\"stocks_percentage\"></span></span>               </h2>               </div>");
+var STOCKS=$("<div id=\"stocks\" class=\"wiki_module module\">               <h4 class=\"stocks_name\"></h4>                 <h6 class=\"stocks_code\"></h6>                <h5>Pre-market:               <span class=\"stocks_previous\"></span>               </h5>               <h2>               <span class=\"stocks_current\" ></span>               <span style=\"color:#e74c3c\">               <span class=\"stocks_status\" style=\"position:relative;font-size:28px;top:-5px;left:6px;\"></span>               <span class=\"stocks_percentage\"></span></span>               </h2>               </div>");
 if($("#stocks").length===0){
 $("#smart_answer").addClass("hide");
 STOCKS.find("#stocks2").attr("src","/images/stocks2.png");

@@ -1,5 +1,5 @@
 (function() {
-var BANK = $("<div class=\"module col-lg-12\" style=\"text-align:center;padding:0px;\" id=\"bank\">   <div style=\"margin-bottom:0px;\">       <div> <h3 class=\"bank_name\" style=\"text-align: center\"> </h3></div> <div>  <div class=\"row\">   <div class=\"col-lg-12 col-md-12\"><a href=\"#\">      <img class=\"bank_img\" src=\"\" alt=\"Bank\">  </a></div>  <div class=\"col-lg-12 col-md-12 col-sm-8 col-xs-8\"> <table class=\"table bank_table\" style=\"text-align: center \"></table> </div>   </div>   </div>  </div>");
+var BANK = $("<div class=\"wiki_module module col-lg-12\" style=\"text-align:center;\" id=\"bank\">   <div ">       <div> <h3 class=\"bank_name\" style=\"text-align: center\"> </h3></div> <div>  <div class=\"row\">   <div class=\"col-lg-12 col-md-12\"><a href=\"#\">      <img class=\"bank_img\" src=\"\" alt=\"Bank\">  </a> <table class=\"table bank_table\" style=\"text-align: center \"></table> </div>   </div>   </div>  </div>");
     if ($("#bank").length === 0) {
         $("#smart_answer").addClass("hide");
         BANK.find(".bank_name").text(window.SA["main-ans"]["name"]);

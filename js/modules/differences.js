@@ -1,5 +1,5 @@
 (function() {
-    var DIFFERENCES = $('<div class="module" style="border:0px;color:white;text-align:left" id="differences"><h3 style="margin-top:0px;">Difference between <span class="dif_title1"></span> and <span class="dif_title2"></span></h3><p class="dif_text"></p><h5><a href="#" class="dif_link"></a></h5></div>');
+    var DIFFERENCES = $('<div class="wiki_module module" style="border:0px;color:white;text-align:left" id="differences"><h3 style="margin-top:0px;">Difference between <span class="dif_title1"></span> and <span class="dif_title2"></span></h3><p class="dif_text"></p><h5><a href="#" class="dif_link"></a></h5></div>');
     if ($("#differences").length === 0) {
     $("#smart_answer").addClass("hide");
         DIFFERENCES.find(".dif_title1").setTextValue(window.SA["title1"]);

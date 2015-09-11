@@ -9,7 +9,7 @@ var temperature = ["farenheit","kelvin","celcius","c","f","k"];
 var digital = ["byte","kilobyte","megabyte","gigabyte","terabyte","kb","mb","gb","tb"];
 var getType = {4:"Length",9:"Area",16:"Time",25:"Mass",36:"Temperature",49:"DigitalStorage"};
 var getMetricType = {"m":"meter","meter":"meter","metre":"meter","centimeter":"centimeter","mm":"millimeter","km":"kilometer","kilo meter":"kilometer","ft":"foot","foot":"foot","yard":"yard","inch":"inch","kelvin":"kelvin","k":"kelvin","c":"celcius","celcius":"celcius","farenheit":"farenheit","f":"farenheit","sec":"second","seconds":"second","min":"minute","minutes":"minute","kg":"kilogram","kilogram":"kilogram","gram":"gram","g":"gram","mg":"milligram","milligram":"milligram","pound":"pound","ounce":"ounce","ton":"metric_ton","byte":"byt_","kilobyte":"kilobyte","megabyte":"megabyte","gigabyte":"gigabyte","terabyte":"terabyte","kb":"kilobyte","mb":"megabyte","gb":"gigabyte","tb":"terabyte"};
-var modules = [length,area,time,mass,temperature,digital];
+var wiki_module modules = [length,area,time,mass,temperature,digital];
 
 
 function getWords(query){
@@ -57,12 +57,12 @@ if (flag == 2){
 		}
 	}
 
-	for(j=0;j<modules.length;j++)
+	for(j=0;j<wiki_module modules.length;j++)
 		{
 			for (i=0;i<splitString.length;i++)
 			{
 
-				if (modules[j].indexOf(splitString[i])>=0) 
+				if (wiki_module modules[j].indexOf(splitString[i])>=0) 
 				{
 					console.log(splitString[i]);
 					determine = determine*(j+2);
@@ -94,5 +94,5 @@ return finalReturn;
 }
 
 window.conv=getWords($("#search").val().trim().toLowerCase());
-$.getScript("/main/js/modules/metric.js", function( data ){ from_gla( window.conv["type"], window.conv["value"], window.conv["from"]) ;}) ;
+$.getScript("/main/js/wiki_module modules/metric.js", function( data ){ from_gla( window.conv["type"], window.conv["value"], window.conv["from"]) ;}) ;
 

@@ -13,9 +13,9 @@
         var SPACE=false;
         var DEFAULT_LEFT=0;
 	//globals end
-        function searchQuery(q) {
+        window.searchQuery=function(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
-        }
+        };
         
         //setting up backinput for shadow suggestion
         $(".backinput").remove();
@@ -148,6 +148,7 @@ if(typeof(Storage) !== "undefined") {
                     $(".ui-autocomplete >li>a").css("white-space", "nowrap");
                 }
                 event.preventDefault();
+                $(".ui-menu-item >a").append("<span class='glyphicon glyphicon-pencil pen'></span>");
             },
             close: function() {
                 //clearing up the autocomplete after close 
@@ -245,10 +246,8 @@ if(typeof(Storage) !== "undefined") {
             select: function(e, ui) {
 
                 e.preventDefault();
-
-                var query = $("#search").val().trim();
-                searchQuery(query);
-
+               
+              
 
             },
             delay: 300

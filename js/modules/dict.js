@@ -1,10 +1,10 @@
 (function(){
-var DICTIONARY=$("<div class=\"module\" id=\"dictionary\"> <div><h2 class=\"dict_keyword\"></h2></div><div class=\"dict_details\" style=\"padding-top:0px\"></div><div class=\"row\"><div class=\"col-md-6\" style=\"padding-top:15px;\"> <div style=\"padding-top:0px;display:block;height:28px;\"><button class=\" glyphicon glyphicon-th-list dict_button\"  style=\"border:0px;background-color:transparent;\">&nbsp;Verbs, synonyms etc</button></div></div><div class=\"col-md-6\" style=\"padding-top:15px;\"> <a href=\"http://dictionary.reference.com/browse/"+window.SA["keyword"]+"\" target=\"_blank\" class=\"dic\" style=\"float:right;border:0px;background-color:transparent;line-height:16px;font-size:16px;\"><img src=\"http://www.google.com/s2/favicons?domain=http://dictionary.com\" height=\"16\" style=\"padding-right:5px;\"/>Dictionary.com</a> </div></div></div></div>");
+var DICTIONARY=$("<div class=\"wiki_module module\" id=\"dictionary\"> <div><h2 class=\"dict_keyword\"></h2></div><div class=\"dict_details\" style=\"padding-top:0px\"></div><div class=\"row\"><div class=\"col-md-6\" style=\"padding-top:15px;\"> <div style=\"padding-top:0px;display:block;height:28px;\"><button class=\" glyphicon glyphicon-th-list dict_button\"  style=\"border:0px;background-color:transparent;\">&nbsp;Verbs, synonyms etc</button></div></div><div class=\"col-md-6\" style=\"padding-top:15px;\"> <a href=\"http://dictionary.reference.com/browse/"+window.SA["keyword"]+"\" target=\"_blank\" class=\"dic\" style=\"float:right;border:0px;background-color:transparent;line-height:16px;font-size:16px;\"><img src=\"http://www.google.com/s2/favicons?domain=http://dictionary.com\" height=\"16\" style=\"padding-right:5px;\"/>Dictionary.com</a> </div></div></div></div>");
 var COUNT=0;
 var ONCE=1;
 if($("#dictionary").length===0){
 $("#smart_answer").addClass("hide");
-$.getScript("/js/modules/voice.js");
+$.getScript("/js/wiki_module modules/voice.js");
 DICTIONARY.find(".dict_keyword").html(window.SA["keyword"]);
 var keys=Object.keys(window.SA);
 keys.sort();

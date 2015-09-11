@@ -1,5 +1,5 @@
 (function() {
-    var TENNIS_STATS = $("<div class=\"module\" id=\"tennis_players\" style=\"color:white;\">    <div class=\"row\">            <div class=\"col-md-2 col-lg-2 col-sm-12 col-xs-12\" style=\"margin-top:10px;\">            	<img alt=\"image\" class=\"tennis_img\">    	    </div>    	    <div class=\"pl_info col-md-10 col-lg-10 col-sm-12 col-xs-12\" style=\"margin-top:10px\">           </div>    </div>");
+    var TENNIS_STATS = $("<div class=\"wiki_module module\" id=\"tennis_players\" style=\"color:white;\">    <div class=\"row\">            <div class=\"col-md-2 col-lg-2 col-sm-12 col-xs-12\" style=\"margin-top:10px;\">            	<img alt=\"image\" class=\"tennis_img\">    	    </div>    	    <div class=\"pl_info col-md-10 col-lg-10 col-sm-12 col-xs-12\" style=\"margin-top:10px\">           </div>    </div>");
        
  TENNIS_STATS.find(".tennis_img").css({
                     "display": "block",
