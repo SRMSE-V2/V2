@@ -40,6 +40,7 @@ minify --no-comments --output ./min/wiki.min.js ./modules/wiki.js
 minify --no-comments --output ./min/flight.min.js ./modules/flight.js
 minify --no-comments --output ./min/tennis.min.js ./modules/tennis.js
 minify --no-comments --output ./min/feedback.min.js ./modules/feedback.js
+minify --no-comments --output ./min/neo.min.js ./modules/neo.js
 #htmlminify -o ../index.html ../index1.html
 replace "SECRET_KEY" "" -- ../index.html
 #cp /usr/lib/cgi-bin/s1.py /usr/lib/cgi-bin/s.py

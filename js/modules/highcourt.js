@@ -1,5 +1,5 @@
 (function(){
-var HC=$("<div class=\"wiki_module module\" id=\"high_court\">   <div style=\"margin-bottom:0px;\">       <div> <h3 class=\"highcourt_name\"  style=\"text-align: center\"> </h3></div> <div>  <div class=\"row\">   <div class=\"col-lg-12 col-md-12 col-sm-4 col-xs-4\"><a href=\"#\" class=\"thumbnail\">      <img class=\"highcourt_img\" src=\"\" alt=\"...\">  </a></div>  <div class=\"col-lg-12 col-md-12 col-sm-8 col-xs-8\"> <table class=\"highcourt_table\"></table> </div>   </div>   </div>  </div>");
+var HC=$("<div class=\"wiki_module module\" id=\"high_court\">   <div style=\"margin-bottom:0px;\">       <div> <h3 class=\"highcourt_name\"  style=\"text-align: center\"> </h3></div> <div>  <div class=\"row\">   <div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\"><a href=\"#\" class=\"thumbnail\">      <img class=\"highcourt_img\" src=\"\" alt=\"...\">  </a></div>  <div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\"> <table class=\"highcourt_table\"></table> </div>   </div>   </div>  </div>");
 if($("#high_court").length===0){
 $("#smart_answer").addClass("hide");
 var dic=window.SA["main-ans"];

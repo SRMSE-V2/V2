@@ -4,7 +4,7 @@
         LOCATIONS_ARR = window.SA;
         CURRENT_LOC = 0;
         window.SA = window.SA[0];
-        var LOCATION = $("<div id=\"location\" class=\"col-lg-12 wiki_module module\">                  <div class=\"row\">                     <div class=\"col-lg-12 cent\">                        <img class=\"location_img\" src=\"\"  height=\"62\" width=\"65\">                     </div>                  </div>                                                     <div class=\"row\">                     <div class=\"col-lg-12 cent location_name\" style=\"font-size:14px;word-break:none;\"></div>                  </div>                  <div class=\"row cent\"><div class=\"col-lg-12\">                     <span class=\"location_city\" style=\"font-size:25px;\"></span><span class=\"location_state\" style=\"font-size:25px;\"></span>      </div>            </div><div class=\"row cent\">   <div class=\"col-lg-12\">                    <span class=\"location_address\" style=\"font-size:25px;\"></span></span>            </div>      </div><div class=\"row cent\">  <div class=\"col-lg-12\">                     <span class=\"location_description\"></span></span>     </div>             </div><div class=\"cent\">                    </span></br>                  </div>                  <div class=\"row cent\">                     <div style=\"float:left;width:50&percnt;;\">                        <button class=\"btn btn-us glyphicon glyphicon-chevron-left location_prev\" value=\"Previous\"/>                     </div>                     <div style=\"float:left;width:50&percnt;;\">                     <button class=\"btn btn-us glyphicon glyphicon-chevron-right location_next\" value=\"Next\"/>                     </div>                  </div>               </div>");
+        var LOCATION = $("<div id=\"location\" class=\"col-lg-12 wiki_module module\">                  <div class=\"row\">                     <div class=\"col-lg-12 cent\">                        <img class=\"location_img\" src=\"\"  height=\"62\" width=\"65\">                     </div>                  </div>                                                     <div class=\"row\">                     <div class=\"col-lg-12 cent location_name\" style=\"font-size:14px;word-break:none;\"></div>                  </div>                  <div class=\"row cent\"><div class=\"col-lg-12\">                     <span class=\"location_city\" style=\"font-size:25px;\"></span><span class=\"location_state\" style=\"font-size:25px;\"></span>      </div>            </div><div class=\"row cent\">   <div class=\"col-lg-12\">                    <span class=\"location_address\" style=\"font-size:25px;\"></span></span>            </div>      </div><div class=\"row cent\">  <div class=\"col-lg-12\">                     <span class=\"location_description\"></span></span>     </div>             </div><div class=\"cent\">                    </span></br>                  </div>                  <div class=\"row cent\">                     <div style=\"float:left;width:50&percnt;;\">                        <button class=\"btn btn-us btn-us-round glyphicon glyphicon-chevron-left location_prev\" value=\"Previous\"/>                     </div>                     <div style=\"float:left;width:50&percnt;;\">                     <button class=\"btn btn-us btn-us-round glyphicon glyphicon-chevron-right location_next\" value=\"Next\"/>                     </div>                  </div>               </div>");
 
        
         LOCATION.on("click", ".location_next", function() {
@@ -59,7 +59,7 @@
                 LOCATION.find(".location_city").setHtmlValue("<h4>" + city.capitalizeMe() + "</h4>", city);
                 LOCATION.find(".location_state").setHtmlValue("<h4>" + state.capitalizeMe() + "</h4>", state);
                 LOCATION.find(".location_address").setHtmlValue("<h5>" + address.capitalizeMe() + "</h5>", address);
-                LOCATION.find(".location_description").setHtmlValue("<h5>" + description.capitalizeMe() + "</h5>", description);
+                LOCATION.find(".location_description").setHtmlValue(description.capitalizeMe(), description);
                 //$(".location_co").setHtmlValue("<h5>"+(type+" "+co).capitalizeMe()+"</h5>",type+co);
                 LOCATION.find(".location_next").removeAttr("disabled");
                 $("#smart_answer").addClass("hide");
@@ -95,6 +95,11 @@
         LOCATION.find(".location_state").setHtmlValue("<h4>" + state.capitalizeMe() + "</h4>", state);
         //problem with db $(".location_address").setHtmlValue("<h5>"+address.capitalizeMe()+"</h5>",address);
         LOCATION.find(".location_description").setHtmlValue(description, description);
+        LOCATION.append('<div class="row"> <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12"><hr><a href="" class="se_rest">See restaurants near you</a></div> </div>');
+        LOCATION.find(".se_rest").on("click touch",function(){
+        	window.location="http://srmsearchengine.in/cgi-bin/s.py?q=restaurants%20near%20me";
+        	return false;
+        });
         $("#smart_col").html("").append(LOCATION);
         $("#smart_col").removeClass("hide");
         $("head").append("<style>.cent{text-align:center;}");

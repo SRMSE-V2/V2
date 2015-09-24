@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>SRMSE</title>
+
+  <!-- CSS  -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/animate.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    
+    #j1{
+            background-image: url('images/i2.jpeg');
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            height:400px;
+        width: 100%;
+            
+        }
+        body{background-color: #EDEDED; }
+        blockquote{border-left: 5px solid #fff;}
+        i{color: #1976d2}
+        .tech{max-height: 70px; float:inherit}
+        .card{padding:4px;margin: 0px}
+    </style>
+</head>
+<body>
+  <nav role="navigation" style="background-color:#1976d2;" >
+    <div class="nav-wrapper container">
+        <a href="index.html" class="brand-logo"><img class="responsive-img" src="images/srmselogo.png" style="position:relative;top:5px">           </a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="team.html"><i class="material-icons left" style="color:white">group</i>Team</a></li>
+          <li><a href="join.html"><i class="material-icons left" style="color:white">person_add</i>Join us</a></li> 
+      </ul>
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="team.html"><i class="mdi-action-account-circle left"></i>Team</a></li>
+         <li><a href="team.html"><i class="mdi-social-person-add left"></i>Team</a></li> 
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu" style="color:white"></i></a>
+    </div>         
+  </nav>
+    
+ <div class="container animated fadeIn" id="j1">
+        <blockquote style="position:relative;top:60px;left:50px;margin:0px;color:white">A Search Engine for the Indian in you.</blockquote>
+ </div>    
+  <div class="container animated slideInUp">
+    <div class="section">
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center"><i class="mdi-image-flash-on"></i></h2>
+            <h6 class="center">Speed up searching</h6>
+
+            <p class="light center">We deliver accurate and fast results with speeds that exceed Industry Benchmark.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+              <h2 class="center"><i class="mdi-action-view-quilt"></i></h2>
+            <h6 class="center">User Focused</h6>
+
+            <p class="light center">Our simple yet efficient User Interface makes the entire search experience enjoyable.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center"><i class="mdi-action-settings"></i></h2>
+            <h6 class="center">Regular Updates</h6>
+            <p class="light center">As a Research Organisation we invest a lot of time and effort in R&D and strive to continuously improve the user search experience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="container animated slideInUp">
+        <div class="row">
+            <div class="col-lg-12">
+                <h5>Tech we use</h5>
+                <img class="responsive-img card tech materialboxed" src="images/logos/bootstrap.png">
+                <img class="responsive-img card tech materialboxed" src="images/logos/apache.png">
+                <img class="responsive-img card tech materialboxed" src="images/logos/hadoop-logo.jpg">
+                <img class="responsive-img card tech materialboxed" src="images/logos/kibana-logo.png">
+                <img class="responsive-img card tech materialboxed" src="images/logos/nodejs-logo.png">
+                <img class="responsive-img card tech" src="images/logos/nutch.png">
+                <img class="responsive-img card tech" src="images/logos/python-logo-master.png">
+                <img class="responsive-img card tech" src="images/logos/ubuntu.png">
+                <img class="responsive-img card tech" src="images/logos/mongo.jpg">
+                <img class="responsive-img card tech" src="images/logos/mysql_logo_intro.jpg">
+                <img class="responsive-img card tech" src="images/logos/nagios-300x123.png">
+                <img class="responsive-img card tech" src="images/logos/neo4j-logo-2015.png">
+                 <img class="responsive-img card tech" src="images/logos/java.png">
+                <img class="responsive-img card tech" src="images/logos/elastic_search.png">
+                <img class="responsive-img card tech" src="images/logos/git-logo.jpg">
+                <img class="responsive-img card tech" src="images/logos/jquery.png">
+                <img class="responsive-img card tech" src="images/logos/materialize.png">
+                <img class="responsive-img card tech" src="images/logos/mediawiki.png">
+                <img class="responsive-img card tech" src="images/logos/HTML5_logo_and_wordmark.svg.png">
+                <img class="responsive-img card tech" src="images/logos/css3.png">
+                <img class="responsive-img card tech" src="images/logos/jsLogo.png">
+            </div>
+          </div>
+      </div>
+  <footer class="page-footer blue darken-1 animated fadeInUp">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Team Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job.</p>
+        </div>
+        <div class="col l6 s12">
+          <h5 class="white-text">Contact Us <i class="mdi-communication-message white-text"></i></h5>
+          <ul>
+            <li class="white-text">Room No. 29, 4th Floor, University Block, SRM University Chennai-603203 Tamil nadu</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by students from SRM University            
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+    <script>
+    $( document ).ready(function(){   
+        $(".button-collapse").sideNav();
+       
+    });
+  
+    </script>
+
+  </body>
+</html>

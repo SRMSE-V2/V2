@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+       
        <script src="/js/min/basket.full.min.js"></script>
         <script>
      (function(){
@@ -51,14 +52,9 @@ window.ls=function(filename, filetype,id){
 	}
 
 if(!window.color){
-
-if(Math.random()*10>5){
-	window.color="dark";
-	document.cookie="color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-}else{
 	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
 	window.color="light";
-}
+
 }
 function prependCss(css){
     elChild = document.createElement('style');
@@ -74,15 +70,6 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
         var css = responses[0].data;
         prependCss(css,"light_theme");
         });
-       }else{
-       //initial css
-       prependCss("html,body { height:100%;width:100%;min-width:320px;background-color:#474747 !important;font-family: 'Roboto', sans-serif;}.wrap{color: #eee;}.msg_light{color:#b4bcc2;}.msg_dark{color:#b4bcc2;}");
-       
-     basket.require({ url: "/css/dark/styles"+key+".min.css", execute: false,expire:168,skipCache:true }).then(function(responses) {
-        var css = responses[0].data;
-        prependCss(css,"dark_theme");
-        });  
-       
        }
 basket.require({ url: 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',expire:168,execute:true,skipCache:true}).then(function(){
     basket.require({ url: '/bootstrap.fp/js/bootstrap.min.js',expire:168,execute:true,skipCache:true}).then(function(){
@@ -123,41 +110,26 @@ basket.require({ url: 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery
 }
 .hidden_body{
 height:100%;
-}
-.prog{
-margin-top:20%;
+width:100%;
 }
 .load_msg{
-width:50%;
+width:60%;
 font-size:1em;
-text-align:center;
+  height: 100px;
+  padding: 20px;
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  right: 15%;
 }
-
-.feedback{
-position:relative;
-bottom:0;
-float:right;
-padding-right:30px;
-
-}
-.feedback>button{
-width:220px;
-background-color:#3d5afe;
-color:white;
-}
-.feedback>button:hover,.feedback>button:active,.feedback>button:focus{
-color: rgb(214, 209, 209);
-}
-
 </style>
     </head>
     <body>
-    <center>
 <div class="load_msg prog">
  <h3 class="msg_dark" style="display:inline;">SRMSE</h3><div class="msg_light" style="display:inline;font-weight:300;"> is loading. Give me a moment here. I'm loading a whole bunch of code. Don't worry, all this good stuff will be cached up for next time!</div>
 </div>
-</center>
     <div class="hidden_body container-fluid" style="padding:0;" hidden>
+    <div id="blur_back" class="hide"></div>
         <div id="top_bar" style="margin:0px;" class="row">
             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <div id="nav_btn_cont">
@@ -166,7 +138,7 @@ color: rgb(214, 209, 209);
 		    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Home page srmse" class="btn navs_btn">Tour</a>
 	    </div>
             </div>
-            <div class="col-md-6 col-lg-6 hidden-xs">
+            <div class="col-md-6 col-lg-6 hidden-xs hidden-sm">
             <button class="btn navs1_btn"><img width=50 id="git" height=50/></button>
             	<button class="btn navs1_btn"><img hidden width=50 id="googlep" height=50/></button>
             	<button class="btn navs1_btn"><img hidden width=50 id="twitter" height=50/></button>
@@ -175,11 +147,11 @@ color: rgb(214, 209, 209);
             </div>
         </div>
         <div class="arrow_drawer row" style="margin:0;">
-            <div id="arrow_parent">
+            <!--div id="arrow_parent">
                 <div id="arrow">
                    
                 </div>
-            </div>
+            </div-->
         </div>
         <div id="back">
                         <div class="col-lg-12 search_div">
@@ -332,7 +304,7 @@ color: rgb(214, 209, 209);
      var img9 = document.getElementById("git1");
      var load_images=function(){
  
-            if (window.color === "dark" || window.color==="light") {
+            if (window.color==="light") {
                 cacheImage("/images/"+window.color+"/srmselogo.png",img2);
                 img2.onload=function(){img2.removeAttribute("hidden");};
             	cacheImage("/images/git.png",img3);

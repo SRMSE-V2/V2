@@ -27,7 +27,7 @@ $(document).ready(function(){
     //----------------------------Vertical 2-----------------------------  
      $('#b2').click(function(){
          
-              var v2 = '[{"name":"Andrew Gates","img":"images/v2/gates.jpg","desc":"Web Design"},{"name":"Tilak Patidar","img":"images/v2/tilak.jpg","desc":"Vertical Head"},{"name":"Siddharth Kulkarni","img":"images/v2/sid.jpg","desc":"Web Design"},{"name":"Pratik Shenoy","img":"images/v2/pratik.jpg","desc":"Web Design"},{"name":"Varun Dey","img":"images/v2/varun.jpg","desc":"Web Development"},{"name":"Arpit Parwal","img":"images/v2/arpit.jpg","desc":"Web Development"}]';
+              var v2 = '[{"name":"Andrew Gates","img":"images/v2/gates.jpg","desc":"Web Design"},{"name":"Tilak Patidar","img":"images/v2/tilak.jpg","desc":"Vertical Head"},{"name":"Siddharth Kulkarni","img":"images/v2/sid.jpg","desc":"Web Design"},{"name":"Pratik Shenoy","img":"images/v2/pratik.jpg","desc":"Web Design"},{"name":"Varun Dey","img":"images/v2/varun.jpg","desc":"Web Development"}]';
               var lang2 = '';
               var obj = $.parseJSON(v2);
               $.each(obj, function() 
@@ -71,7 +71,7 @@ $(document).ready(function(){
       //-----------------------------Vertical 4--------------------------------
     $('#b4').click(function(){
         
-        var v4 = '[{"name":"Vageeswaran","img":"images/v3/vagee.jpg","desc":"Vertical Head"},{"name":"Sai Prashanth","img":"images/v3/prashant.jpg","desc":""},{"name":"Akshay Gugnani","img":"images/v4/akshayg.jpg","desc":""},{"name":"Anshuman Pandey","img":"images/v4/anshuman.jpg","desc":""},{"name":"Ayush Aggarwal","img":"images/v4/ayushagg.jpg","desc":""},{"name":"Rishav Medhi","img":"images/v4/rishav.jpg","desc":""}]';
+        var v4 = '[{"name":"Vageeswaran","img":"images/v3/vagee.jpg","desc":"Vertical Head"},{"name":"Sai Prashanth","img":"images/v3/prashant.jpg","desc":""},{"name":"Akshay Gugnani","img":"images/v4/akshayg.jpg","desc":""},{"name":"Ayush Aggarwal","img":"images/v4/ayushagg.jpg","desc":""},{"name":"Rishav Medhi","img":"images/v4/rishav.jpg","desc":""}]';
               var lang4 = '';
               var obj = $.parseJSON(v4);
               $.each(obj, function() 

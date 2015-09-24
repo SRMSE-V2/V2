@@ -106,9 +106,9 @@ if(typeof(Storage) !== "undefined") {
             source:function(request,response){
             function ajaxResponse(){
 		    	  $.ajax({
-		  		url: "/cgi-bin/getWords.py",
+		  		url: "/cgi-bin/ac/getWords.py",
 		  		dataType: "text",
-		  		data: {term:request.term},
+		  		data: {q:request.term},
 		  		success: function(data) {
 		      			cacheAutocomplete(data,request.term);
 		      			response(JSON.parse(data));
@@ -144,11 +144,43 @@ if(typeof(Storage) !== "undefined") {
                 if (LEFT_AUTO !== -1) {
                     $(".ui-autocomplete").css("postion", "relative").css("left", LEFT_AUTO + "px");
                     $(".ui-autocomplete").css("width", "");
-                    $(".ui-autocomplete >li").css("width", "100%");
+              	    $(".ui-autocomplete >li").css("width", "100%");
                     $(".ui-autocomplete >li>a").css("white-space", "nowrap");
                 }
                 event.preventDefault();
-                $(".ui-menu-item >a").append("<span class='glyphicon glyphicon-pencil pen'></span>");
+                if($(window).width()<767){
+                var big;
+                var small;
+                	if(LEFT_AUTO!==-1){
+                		big=((LAST_WORD_WIDTH)*(0.90)) + "px";
+                		small=((LAST_WORD_WIDTH)*(0.10)) + "px";
+                	
+                	}
+                	else{
+                		big=($("#search").parent().width()*(0.90)) + "px";
+                		small=($("#search").parent().width()*(0.10)) + "px";
+                	
+                	}
+		        $(".ui-menu-item >a").css("width",big).css("float","left");
+		        $(".ui-menu-item >a").after("<span class='pen'><span class='glyphicon glyphicon-arrow-up copy_g'></span></span>");
+		        $(".pen").css("width",small);
+		        $.each($(".pen"),function(index,element){
+		        	$(this).css("height",parseInt($(this).parent().find("a").height())+"px");
+		        
+		        
+		        });
+                }
+                else{
+                
+                if(LEFT_AUTO!==-1){
+				 $(".ui-menu-item >a").css("width",(LAST_WORD_WIDTH) + "px").css("float","left");                	
+                	}
+                	else{
+                	 	$(".ui-menu-item >a").css("width",($("#search").parent().width()) + "px").css("float","left");
+                	
+                	}
+                
+                }
             },
             close: function() {
                 //clearing up the autocomplete after close 
@@ -200,10 +232,11 @@ if(typeof(Storage) !== "undefined") {
             },
             response: function(event, ui) {
 
+                 var arrr =[];
                 if ($("#search").val().trim() !== "") {
                     if (ui.content[0]["resize"] === "true") {
                         //#DEBUGconsole.log("here");
-                        var arrr = $("#search").val().trim().split(" ");
+                        arrr = $("#search").val().trim().split(" ");
                         if (ENABLE_BACKINPUT) {
                             BACKINPUT.val(arrr.slice(0, arrr.length - 1).join(" ") + " " + ui.content[0]["value"]);
                         }
@@ -215,7 +248,7 @@ if(typeof(Storage) !== "undefined") {
                 }
 
 
-                //#DEBUGconsole.log(ui);
+               // console.log(ui);
                 if (ui.content[0]["resize"] === "true") {
                     //#DEBUGconsole.log("here1");
                     ORIGINAL_QUERY = $("#search").val().trim();
@@ -225,14 +258,18 @@ if(typeof(Storage) !== "undefined") {
                         DEFAULT_LEFT = parseInt($("#search").offset().left);
                         FIRST_RESIZE = false;
                         
-                        pos = $("#search").val().length * parseInt($("#search").css("font-size").replace("px", ""));
+                        pos = arrr.slice(0,arrr.length-1).join(" ").length * parseInt($("#search").css("font-size").replace("px", ""));
+                        var temp=arrr.pop().length * parseInt($("#search").css("font-size").replace("px", ""));
+                        LAST_WORD_WIDTH=temp+100; //adding a 100 px assuming biggest word
                         STRLEN = parseInt(pos) * 0.7;
-                        LEFT_AUTO = (DEFAULT_LEFT + parseInt(pos)) * 0.7; //setting up new left auto position
+                        LEFT_AUTO = DEFAULT_LEFT + pos; //setting up new left auto position
                     } else {
                         if (SPACE) {
-                            pos = $("#search").val().length * parseInt($("#search").css("font-size").replace("px", ""));
-                            STRLEN = parseInt(pos) * 0.7;
-                            LEFT_AUTO = (DEFAULT_LEFT + parseInt(pos)) * 0.7;
+                            pos = arrr.slice(0,arrr.length-1).join(" ").length * parseInt($("#search").css("font-size").replace("px", ""));
+                            var temp=arrr.pop().length * parseInt($("#search").css("font-size").replace("px", ""));
+                        LAST_WORD_WIDTH=temp+100;
+                            STRLEN = pos * 0.7;
+                            LEFT_AUTO =DEFAULT_LEFT + pos;
                             SPACE = false;
                         }
                     }
@@ -329,7 +366,7 @@ if(typeof(Storage) !== "undefined") {
         }
         loadLocation(); //init location
         $("#search").on("keyup", function(event) {
-            commonTest();
+            commonTest(event);
             if (event.keyCode === 32) {
                 SPACE = true;
             } else if (event.keyCode === 8) {

@@ -3,7 +3,7 @@ var HC=$("<div class=\"wiki_module module\" id=\"high_court\">   <div style=\"ma
 if($("#high_court").length===0){
 $("#smart_answer").addClass("hide");
 var dic=window.SA["main-ans"];
-HC.find(".highcourt_name").text(dic["name"].capitalizeMe());
+HC.find(".highcourt_name").text(dic["name"].trim().capitalizeMe());
 HC.find(".highcourt_img").attr("src",dic["image"]);
 $.each(dic,function(k,v){
  if(k.indexOf("image")<0 && k!=="name"){

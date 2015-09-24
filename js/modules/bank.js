@@ -5,7 +5,10 @@ var BANK = $("<div class=\"wiki_module module col-lg-12\" style=\"text-align:cen
         BANK.find(".bank_name").text(window.SA["main-ans"]["name"]);
         var end = "";
         $.each(window.SA["main-ans"], function(key, element) {
-
+	   if(key==="website"){
+	   end += "<tr><td class=\"td_border\"><b>" + key.capitalizeMe() + " :<a href='"+element+"'> " + element + "</a></b></td></tr> ";
+	   return;
+	   }
             if (key !== "name" && key !== "image source") {
                 if (window.SA["required"].join(" ").indexOf(key) >= 0) {
                     end += "<tr><td class=\"td_border\"><b>" + key.capitalizeMe() + " : " + element + "</b></td></tr> ";
@@ -21,8 +24,7 @@ var BANK = $("<div class=\"wiki_module module col-lg-12\" style=\"text-align:cen
                 } catch (err) {
                     BANK.find(".bank_img").attr("src", "http://upload.wikimedia.org/wikipedia/commons/1/1b/Seal_of_the_Reserve_Bank_of_India.svg");
 
-                }
-          
+                }  
 	$("#smart_col").html(BANK);
         $("#smart_col").removeClass("hide");
     }

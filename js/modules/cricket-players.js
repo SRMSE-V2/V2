@@ -4,7 +4,7 @@
     var BOWL = "";
     var BAT = "";
     var RECENT = "";
-    var CRICKET_STATS = $("<div class=\"wiki_module module\" id=\"cricket_players\">   <div class=\"row player_info\">                        <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\" style=\"margin-top:10px;\">                            <img class=\"cric_img media-object img-responsive\"  alt=\"image\">                        </div>                        <div class=\"pl_info col-xs-12 col-sm-9 col-md-9 col-lg-9\" style=\"margin-top:10px\">                                                                             </div>                  </div>                <!-- /Player info -->                             <div class=\"row\">  <div class=\"col-lg-6\">                   </div>  <div class=\"col-lg-6\"> <button type=\"button\" class=\"btn btn-us cricket_players_button\" style=\"float:right;font-size:20px;border:0px\" aria-label=\"Left Align\">                    <span class=\"glyphicon glyphicon-stats\" aria-hidden=\"true\"></span> Click for more information                </button>           </div></div>  <div class=\"row\" style=\"margin:0px\"><div class=\"col-md-12 cricket_players_details\"></div>                  <div id=\"pl_other_info\" class=\"col-xs-12\" style=\"border:0px solid;margin-bottom:5px>                                                                                                            </div>                                    </div>              </div>  </div>");
+    var CRICKET_STATS = $("<div class=\"wiki_module module\" id=\"cricket_players\">   <div class=\"row player_info\">                        <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\" style=\"margin-top:10px;\">                            <img class=\"cric_img media-object img-responsive\"  alt=\"image\">                        </div>                        <div class=\"pl_info col-xs-12 col-sm-9 col-md-9 col-lg-9\" style=\"margin-top:10px\">                                                                             </div>                  </div>                <!-- /Player info -->                             <div class=\"row\">  <div class=\"col-lg-6\">                   </div>  <div class=\"col-lg-6\"> <button type=\"button\" class=\"btn btn-us cricket_players_button\" style=\"float:right;font-size:20px;border:0px\" aria-label=\"Left Align\">                    <span class=\"glyphicon glyphicon-stats\" style=\"margin-right:8px;\" aria-hidden=\"true\"></span> Click for more information                </button>           </div></div>  <div class=\"row\" style=\"margin-top:20px\"><div class=\"col-md-12 cricket_players_details\"></div>                  <div id=\"pl_other_info\" class=\"col-xs-12\" style=\"border:0px solid;margin-bottom:5px>                                                                                                            </div>                                    </div>              </div>  </div>");
 
     function returnValue(k, v) {
         var returnString = "";
@@ -52,14 +52,14 @@ $(".active").removeClass("active");$(t).parent().addClass("active");
                 if (CYCLE === 0) {
                     CRICKET_STATS.find(".cricket_players_button").attr("title", "Click to see less statistics");
                     CRICKET_STATS.find(".cricket_players_button").text("Click to see less statistics");
-                    CRICKET_STATS.find(".cricket_players_button").prepend("<span class=\"glyphicon glyphicon-stats\" aria-hidden=\"true\"></span>");
+                    CRICKET_STATS.find(".cricket_players_button").prepend("<span class=\"glyphicon glyphicon-stats\" style=\"margin-right:8px;\" aria-hidden=\"true\"></span>");
                     CRICKET_STATS.find(".cricket_cont").empty();
 		    CRICKET_STATS.find(".cricket_cont").append(CS);
                     ++CYCLE;
                 } else {
                     CRICKET_STATS.find(".cricket_players_button").attr("title", "Click to see more statistics");
                     CRICKET_STATS.find(".cricket_players_button").text("Click to see more statistics");
-                    CRICKET_STATS.find(".cricket_players_button").prepend("<span class=\"glyphicon glyphicon-stats\" aria-hidden=\"true\"></span>");
+                    CRICKET_STATS.find(".cricket_players_button").prepend("<span class=\"glyphicon glyphicon-stats\" style=\"margin-right:8px;\" aria-hidden=\"true\"></span>");
                     CYCLE = 0;
                 }
             });
@@ -126,7 +126,7 @@ $(".active").removeClass("active");$(t).parent().addClass("active");
 
 
         });
-        $('head').append("<style>.no-margin{margin:0;}.bot_margin{margin-bottom:5px;}.inl{display:inline;}.cric_img{display:block;margin-left:auto;margin-right:auto;}.flat_nav>li>a,.active{background-color:#00b4ff;  border: 0;  cursor: pointer;  text-decoration: none !important;border-radius:0;}</style>");
+        $('head').append("<style>.no-margin{margin:0;}.bot_margin{margin-bottom:5px;}.inl{display:inline;}.cric_img{display:block;margin-left:auto;margin-right:auto;}</style>");
 	$("#centre_parent").prepend(CRICKET_STATS);
         $("#smart_col").removeClass("hide");
         

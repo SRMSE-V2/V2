@@ -16,6 +16,7 @@
         var SPACE=false;
         var DEFAULT_LEFT=0;
         var MODAL_BACK="";
+        var LAST_WORD_WIDTH=0;
          var S_KEY="SECRET_KEY";
 	//globals end
 	function clearCache(){
@@ -40,17 +41,7 @@
 elChild.innerHTML = css;
 document.getElementsByTagName("head")[0].appendChild(elChild);
 }
-	function showModal(){
-        $("#modalSwitchTheme").remove();
-        if(window.color==="dark"){
-        	MODAL_BACK="rgba(241, 241, 241, 0.74)";
-        }
-        else if(window.color==="light"){
-        	MODAL_BACK="rgba(51, 51, 51, 0.74)";
-        }
-        var modal=$('<div id="modalSwitchTheme"  style="width:'+$(document).width()+'px;height:'+$(document).height()+'px;position:absolute;left:0px;top:0px;z-index:1000;background-color:'+MODAL_BACK+';"></div>');
-        modal.hide().appendTo('body').fadeIn(1000);	
-        }
+	
         function searchQuery(q) {
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
@@ -108,7 +99,7 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
 
         $("#search").on("keypress", checkback); //checks backinput when text size exceeds the input
 
-
+	
         $("#srmse-logo").on("click", function() {
             window.location = "http://srmsearchengine.in";
         });
@@ -153,9 +144,9 @@ if(typeof(Storage) !== "undefined") {
             source: function(request,response){
             function ajaxResponse(){
 		    	  $.ajax({
-		  		url: "/cgi-bin/getWords.py",
+		  		url: "/cgi-bin/ac/getWords.py",
 		  		dataType: "text",
-		  		data: {term:request.term},
+		  		data: {q:request.term},
 		  		success: function(data) {
 		      			cacheAutocomplete(data,request.term);
 		      			response(JSON.parse(data));
@@ -183,6 +174,10 @@ if(typeof(Storage) !== "undefined") {
             appendTo: ".search_div", //setting up the container for the rendered list from autocomplete
             html: true, //tweak done to highlight the searched text
             open: function(event, ui) {
+            $('html,body').animate({scrollTop: $("#search").offset().top});
+              if($(window).width()<=767){
+            	$('.feedback').fadeOut();
+            }
                 $('ul.ui-autocomplete').addClass('opened');
                 $(".ui-helper-hidden-accessible").remove();
                 $(this).autocomplete("widget").css({
@@ -191,18 +186,55 @@ if(typeof(Storage) !== "undefined") {
                 if (LEFT_AUTO !== -1) {
                     $(".ui-autocomplete").css("postion", "relative").css("left", LEFT_AUTO + "px");
                     $(".ui-autocomplete").css("width", "");
-                    $(".ui-autocomplete >li").css("width", "100%");
+              	    $(".ui-autocomplete >li").css("width", "100%");
                     $(".ui-autocomplete >li>a").css("white-space", "nowrap");
                 }
                 event.preventDefault();
+                if($(window).width()<767){
+                var big;
+                var small;
+                	if(LEFT_AUTO!==-1){
+                		big=((LAST_WORD_WIDTH)*(0.90)) + "px";
+                		small=((LAST_WORD_WIDTH)*(0.10)) + "px";
+                	
+                	}
+                	else{
+                		big=($("#search").parent().width()*(0.90)) + "px";
+                		small=($("#search").parent().width()*(0.10)) + "px";
+                	
+                	}
+		        $(".ui-menu-item >a").css("width",big).css("float","left");
+		        $(".ui-menu-item >a").after("<span class='pen'><span class='glyphicon glyphicon-arrow-up copy_g'></span></span>");
+		        $(".pen").css("width",small);
+		        $.each($(".pen"),function(index,element){
+		        	$(this).css("height",parseInt($(this).parent().find("a").height())+"px");
+		        
+		        
+		        });
+                }
+                else{
+                
+                if(LEFT_AUTO!==-1){
+				 $(".ui-menu-item >a").css("width",(LAST_WORD_WIDTH) + "px").css("float","left");                	
+                	}
+                	else{
+                	 	$(".ui-menu-item >a").css("width",($("#search").parent().width()) + "px").css("float","left");
+                	
+                	}
+                
+                }
             },
             close: function() {
-             
-                //clearing up the autocomplete after close 
+             //clearing up the autocomplete after close 
+                $('.ui-menu-item').remove();
                 $('ul.ui-autocomplete')
                     .removeClass('opened')
                     .css('display', 'block');
-                     $('.ui-menu-item').remove();
+              if($(window).width()<=767){
+		     $('.feedback').fadeIn();
+		     $("#search").focus();//to disable bottom feed
+             }
+               
                  
             },
             focus: function(event, ui) {
@@ -242,15 +274,16 @@ if(typeof(Storage) !== "undefined") {
                     }
                 }
 
-
+		
 
 
             },
             response: function(event, ui) {
+            var arrr =[];
                 if ($("#search").val().trim() !== "") {
                     if (ui.content[0]["resize"] === "true") {
                         //#DEBUGconsole.log("here");
-                        var arrr = $("#search").val().trim().split(" ");
+                        arrr = $("#search").val().trim().split(" ");
                         if (ENABLE_BACKINPUT) {
                             BACKINPUT.val(arrr.slice(0, arrr.length - 1).join(" ") + " " + ui.content[0]["value"]);
                         }
@@ -262,7 +295,7 @@ if(typeof(Storage) !== "undefined") {
                 }
 
 
-                //#DEBUGconsole.log(ui);
+               // console.log(ui);
                 if (ui.content[0]["resize"] === "true") {
                     //#DEBUGconsole.log("here1");
                     ORIGINAL_QUERY = $("#search").val().trim();
@@ -272,14 +305,18 @@ if(typeof(Storage) !== "undefined") {
                         DEFAULT_LEFT = parseInt($("#search").offset().left);
                         FIRST_RESIZE = false;
                         
-                        pos = $("#search").val().length * parseInt($("#search").css("font-size").replace("px", ""));
+                        pos = arrr.slice(0,arrr.length-1).join(" ").length * parseInt($("#search").css("font-size").replace("px", ""));
+                        var temp=arrr.pop().length * parseInt($("#search").css("font-size").replace("px", ""));
+                        LAST_WORD_WIDTH=temp+100; //adding a 100 px assuming biggest word
                         STRLEN = parseInt(pos) * 0.7;
-                        LEFT_AUTO = (DEFAULT_LEFT + parseInt(pos)) * 0.7; //setting up new left auto position
+                        LEFT_AUTO = DEFAULT_LEFT + pos; //setting up new left auto position
                     } else {
                         if (SPACE) {
-                            pos = $("#search").val().length * parseInt($("#search").css("font-size").replace("px", ""));
-                            STRLEN = parseInt(pos) * 0.7;
-                            LEFT_AUTO = (DEFAULT_LEFT + parseInt(pos)) * 0.7;
+                            pos = arrr.slice(0,arrr.length-1).join(" ").length * parseInt($("#search").css("font-size").replace("px", ""));
+                            var temp=arrr.pop().length * parseInt($("#search").css("font-size").replace("px", ""));
+                        LAST_WORD_WIDTH=temp+100;
+                            STRLEN = pos * 0.7;
+                            LEFT_AUTO =DEFAULT_LEFT + pos;
                             SPACE = false;
                         }
                     }
@@ -294,15 +331,38 @@ if(typeof(Storage) !== "undefined") {
 
                 e.preventDefault();
 
-                var query = $("#search").val().trim();
-                searchQuery(query);
+               // var query = $("#search").val().trim();
+               // searchQuery(query);
 
 
             },
             delay: 300
 
         });
-
+ $(document).on("click",".ui-menu-item",function(event){
+        	if(event.target.tagName==="SPAN"){
+        		if($(event.target).attr("class")==="pen"){
+			$("#search").val($(event.target).parent().text());
+			}
+			else{
+			
+			$("#search").val($(event.target).parent().parent().text());
+			}
+			event.stopPropagation();
+			$("#search").focus();
+			return false;
+        	}
+        	else{
+        		window.searchQuery($("#search").val().trim());
+        	}
+        
+        });
+        $("#search").on("focusin",function(){
+        	  if($(window).width()<=767){
+        		$(".feedback").hide();
+        	}
+        	
+        });
         function commonTest(event) {
             if ($("#search").val().indexOf(" ") === 0) {
                 $("#search").val($("#search").val().replace(/\s+/g, " ").trim()); //blocking multiple spaces in the beginning
@@ -327,6 +387,17 @@ if(typeof(Storage) !== "undefined") {
             }
 
         }
+        $("#search").on("click touch",function(event){
+          if($(window).width()<=767){
+        	$('.feedback').fadeOut();
+        	$('html,body').animate({scrollTop: $("#search").offset().top});
+        	}
+        });
+        $("#search").on("focusout",function(event){
+          if($(window).width()<=767){
+        	$('.feedback').fadeIn();
+        	}
+        });
         $("#search").on("keypress", function(event) {
             commonTest(event);
             submit(event);
@@ -335,6 +406,7 @@ if(typeof(Storage) !== "undefined") {
         $("#search").on("keyup", function(event) {
             commonTest(event);
             submit(event);
+            
         });
         $("#search").on("keydown", function(event) {
             commonTest(event);
@@ -378,13 +450,13 @@ if(typeof(Storage) !== "undefined") {
         }
         loadLocation(); //init location
         $("#search").on("keyup", function(event) {
-            commonTest();
+            commonTest(event);
             if (event.keyCode === 32) {
                 SPACE = true;
             } else if (event.keyCode === 8) {
                 var a = $("#search").val();
-                if (a.slice(a.length - 1, a.length) === " ") {
-                    if (a.slice(a.length - 2, a.length) === "  ") {
+                if (a.slice(a.length - 1, a.length) === " ") {//single space rem on backspace
+                    if (a.slice(a.length - 2, a.length) === "  ") {//double space rem on backspace
                         SPACE = false;
                     } else {
                         SPACE = true;
@@ -400,178 +472,11 @@ if(typeof(Storage) !== "undefined") {
             $(".input-group").removeClass("hide");
             var u = 0;
             var wait = 0;
-            var dispBtns = function() {
-                $(".arrow_div").css("padding-left", "20px");
-                $(".arrow_div").append("<div style=\"position:relative;top:0;bottom:0;padding-top:24px;height:50px;\"><span id=\"light\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Light Theme\"><img style=\"width:31px;height:27px;top:0;bottom:0;margin:auto;\" src=\"images/lighttheme.png\"></span><span id=\"dark\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Dark Theme\"><img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/darktheme.png\">   </span> <span id=\"help\" class=\"side_btns\" data-toggle=\"tooltip\" title=\"Want Help !\">  <img style=\"top:0;bottom:0;margin:auto;width:31px;height:27px;margin-left:5px;\" src=\"images/howtouse.png\">      </span> </div>");
-                 $('[data-toggle="tooltip"]').tooltip(); //init tooltip
-                $(".side_btns").css("cursor", "pointer");
-function loadedLightTheme(){
-
-$("#dark_theme").remove();
-                	$('#modalSwitchTheme').fadeOut(1000,function(){
-                		$(this).remove();
-                	});
-                	//initImageStore();//storing when all the images are loaded and modal exited
-
-}
-function loadedDarkTheme(){
-$("#light_theme").remove();
-                	$('#modalSwitchTheme').fadeOut(1000,function(){
-                		$(this).remove();
-                	});
-                	//initImageStore();
-
-}
-                $("#light").on('click', function() {
-                if(window.color==="light"){
-                showModal();
-                loadedLightTheme();
-                return;
-                }
-			$("#light_theme").remove();
-			document.cookie = "color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-                    window.color = "light";
-                    var calls=window.switchImg();
-                    var fin=calls.length+1;
-                    var loaded=0;
-                        basket.require({ url: "/css/light/styles"+S_KEY+".css", execute: false,expire:168 }).then(function(responses) {
-        var css = responses[0].data;
-        prependCss(css,"light_theme");
-                    ++loaded;
-                    if(loaded===fin){
-                    	loadedLightTheme();
-                    	}
-                	
-              
-        }); 
-                    showModal();
-                    $.each(calls,function(index,element){
-                    (function(el){
-                    	el.load(function(){
-                    	++loaded;
-                    	if(loaded===fin){
-                    	loadedLightTheme();
-                    	}
-                    	});
-                    
-                    })(element);
-                    });
-                  
-                });
-
-                $("#dark").on('click', function() {
-                if(window.color==="dark"){
-                showModal();
-                loadedDarkTheme();
-                return;
-                }
-                $("#dark_theme").remove();
-			document.cookie = "color=dark;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-		
-                    window.color = "dark";
-                    var calls=window.switchImg();
-                    var fin=calls.length+1;
-                    var loaded=0;
-                      basket.require({ url: "/css/dark/styles"+S_KEY+".css", execute: false,expire:168 }).then(function(responses) {
-        var css = responses[0].data;
-        prependCss(css,"dark_theme");
-                    ++loaded;
-                    if(loaded===fin){
-                    	loadedDarkTheme();
-                    	}
-                	
-              
-        }); 
-                showModal();
-                $.each(calls,function(index,element){
-                    (function(el){
-                    	el.load(function(){
-                    	++loaded;
-                    	if(loaded===fin){
-                    	loadedDarkTheme();
-                    	}
-                    	});
-                    
-                    })(element);
-                    });
-                  
-                });
-                var clicked = false;
-                $('#help').on("click", function() {
-                    if (!clicked) {
-                       // $.getScript('js/modules/help.js');
-                        clicked = true;
-                    } else {
-                        $("#help_box").animate({
-                            opacity: '0'
-                        }, 500, function() {
-                            $("#help_box").remove();
-                        });
-
-                        clicked = false;
-                    }
-                });
-
-
-            };
-            function showArrow(){
-            $(".arrow_div").remove();
-                    $("#arrow_parent").append("<div class=\"arrow_div\" style=\"float:left;height:75px;float:right;width:0px;margin-top:5px;\"></div>");
-                    dispBtns();
-                    $(".side_btns").hide();
-                    $("#arrow").css("right", "-1px");
-                    wait = 1;
-                    $(".arrow_div").animate({
-                        width: '150px'
-                    }, 500, function() {
-                        $(".side_btns").fadeIn();
-                        $("#arrow").css("right", "-1px");
-                        wait = 0;
-                    });
-
-                    ++u;
-            }
-            function hideArrow(){
-             $(".side_btns").fadeOut(function() {
-                        $(".side_btns").hide();
-                        $(".arrow_div").css("padding-left", "0px");
-                        wait = 1;
-                        $(".arrow_div").animate({
-                            width: '0px'
-                        }, 500, function() {
-
-                            $("#arrow").css("right", "0px");
-                            wait = 0;
-                        });
-                        u = 0;
-                    });
             
-            }
-            $("#arrow").on("click", function() {
-                if (u === 0 && wait === 0) {
-                    showArrow();
-                } else if (u !== 0 && wait === 0) {
-                   hideArrow();
-                }
-
-            });
-            
-
-        
-   
-        $("#arrow,#arrow_parent").on("swipeleft",function(){
-            if (u === 0 && wait === 0) {
-                    showArrow();
-                    }
+            $(window).on("keyup",function(){
+            	$("#search").focus();
             
             });
-            $("#arrow,#arrow_parent").on("swiperight",function(){
-            if (u !== 0 && wait === 0) {
-                   hideArrow();
-                }
-            
-            });
-  
     });
 
 
@@ -582,12 +487,29 @@ $(".feedback_btn").on("click",function(){
 if(toggle){
 $("#feedback_form").removeClass("hide");
 $("#feedback_form").animate({"height":"+=500px"},500,function(){});
+$("#blur_back").removeClass("hide");
 toggle=false;
 }
 else{
-$("#feedback_form").animate({"height":"-=520px"},200,function(){$(this).addClass("hide");$(this).css('height','0px');});
+$("#blur_back").addClass("hide");
+$("#feedback_form").animate({"height":"-=500px"},200,function(){$(this).addClass("hide");$(this).css('height','0px');});
 toggle=true;
 }
+
+});
+$(":not(#feedback_form)").on("click touch",function(e){
+var container = $("#feedback_form");
+    if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0 && $(e.target).attr("class").indexOf("feedback_btn")<0) // ... nor a descendant of the container
+    {
+    $("#blur_back").addClass("hide");
+        $("#feedback_form").animate({"height":"-=500px"},200,function(){$(this).addClass("hide");$(this).css('height','0px');});
+toggle=true;
+    }
+
+
+
+
 
 });
 $(".reset_form").on("click",function(){
