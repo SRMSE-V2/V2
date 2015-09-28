@@ -172,7 +172,7 @@
         
         var MODULES={"general":si,"sports":hi,"stock":hi,"train":hi,"weather":si,"movie":si,"exam":hi,"location":hi,"minerals":hi,"differences":si,"wiki":si,"dict":si,"theatre":si,"highway":hi,"cricket-players":si,"ministers":hi,"bank":hi,"highcourt":hi,"discography":si,"flight":hi,"tennis":si};
         //console.log(MODULES);
-        var LOAD = $('<div id="loading" style="background-color:transparent;">;<div class="cssload-container"><div class="cssload-jumping"><span></span><span></span><span></span><span></span><span></span></div></div>');
+        var LOAD = $('<div id="loading" style="background-color:transparent;"><div class="cssload-container"><div class="cssload-jumping"><span></span><span></span><span></span><span></span><span></span></div></div>');
         function prependCss(css,id){
     elChild = document.createElement('style');
     elChild.setAttribute("id",id);
@@ -447,6 +447,10 @@ if(CURRENT_TYPE!=="images"){
         });
         function getIDSresults() {
           if(USER_QUERY!==""){
+          getSmartAns();//get smart ans
+          getIDSwiki();
+          getIDSnews();
+          getClusters();
               START_RESULT = 0;
     END_RESULT = 10;
     CURRENT_RESULTS=[];
@@ -634,7 +638,6 @@ if(CURRENT_TYPE!=="images"){
                     		
                     		}
                     	}
-                    	console.log(search_desc.html());
                     	
                     }
                     else {
@@ -692,7 +695,8 @@ if(CURRENT_TYPE!=="images"){
                 }
                
             }
-            $(".cluster_drawer").css("height",$(document).height()+"");
+            $(".cluster_drawer").height($(document).height());
+            $("#blur_back").height($(document).height());
         }
         function getMoreResults() {
         console.log(START_RESULT);
@@ -1194,10 +1198,7 @@ if(CURRENT_TYPE!=="images"){
         //fix scroll later
         $(window).bind('scroll',bindScroll);
         
-        getIDSwiki();
-        getIDSnews();
-        getSmartAns();
-         getClusters();
+        
           function getNews(fromLink){
         if(USER_QUERY!==""){
     START_RESULT = 0;
@@ -1379,24 +1380,24 @@ if(CURRENT_TYPE!=="images"){
         function showResults(typ){
         	if(typ==="web"){
         		$(".img-container,#videos,.gallery-single-view").attr("style","display:none;");
-        		$("#search_results,#wikiMain,#news").attr("style","");
+        		$("#search_results,#wikiMain,#news,.module").attr("style","");
         		$("#smart_col,.cluster_drawer").removeClass("hide");
         	}
         	else if(typ==="videos"){
-        		$(".img-container,#news,#search_results,.gallery-single-view,#wikiMain").attr("style","display:none;");
+        		$(".img-container,#news,#search_results,.gallery-single-view,#wikiMain,.module").attr("style","display:none;");
         		$("#videos").attr("style","");
         		$("#smart_col").addClass("hide");
         		$(".cluster_drawer").addClass("hide");
         	}
         	else if(typ==="news"){
-        		$(".img-container,#search_results,#videos,.gallery-single-view,#wikiMain").attr("style","display:none;");
+        		$(".img-container,#search_results,#videos,.gallery-single-view,#wikiMain,.module").attr("style","display:none;");
         		$("#news").attr("style","");
         		$("#smart_col").addClass("hide");
         		$(".cluster_drawer").addClass("hide");
         	}
         	else if(typ==="images"){
         		$(".img-container,.gallery-single-view").attr("style","");
-        		$("#videos,#news,#search_results,#wikiMain").attr("style","display:none;");
+        		$("#videos,#news,#search_results,#wikiMain,.module").attr("style","display:none;");
         		$("#smart_col").addClass("hide");
         		$(".cluster_drawer").addClass("hide");
         		$('.scroll-top-wrapper').removeClass('show');
