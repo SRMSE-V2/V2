@@ -1628,8 +1628,13 @@ if(CURRENT_TYPE!=="images"){
             $(this).html(t);
         }
     };
-     $(window).on("keyup",function(){
-            	$("#search").focus();
+           $(window).on("keyup",function(e){
+    if ($.isWindow(e.target) || $(e.target).prop("tagName")==="BODY")
+    {
+   	$("#search").focus().val(String.fromCharCode(e.keyCode));
+    }
+
+            
             
             });
    

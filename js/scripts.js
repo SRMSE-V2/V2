@@ -473,8 +473,13 @@ if(typeof(Storage) !== "undefined") {
             var u = 0;
             var wait = 0;
             
-            $(window).on("keyup",function(){
-            	$("#search").focus();
+            $(window).on("keyup",function(e){
+    if ($.isWindow(e.target) || $(e.target).prop("tagName")==="BODY")
+    {
+   	$("#search").focus().val(String.fromCharCode(e.keyCode));
+    }
+
+            
             
             });
     });
