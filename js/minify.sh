@@ -48,12 +48,14 @@ cp /usr/lib/cgi-bin/s1.py /usr/lib/cgi-bin/s.py
 replace "SECRET_KEY" $timestamp -- /usr/lib/cgi-bin/s.py
 cp -R ./* ../../git_cdn/js
 #css files
-minify --no-comments --output ../css/dark/search$timestamp.min.css ../css/dark/search.css
+#minify --no-comments --output ../css/dark/search$timestamp.min.css ../css/dark/search.css
 minify --no-comments --output ../css/light/search$timestamp.min.css ../css/light/search.css
-minify --no-comments --output ../css/dark/styles$timestamp.min.css ../css/dark/styles.css
+#minify --no-comments --output ../css/dark/styles$timestamp.min.css ../css/dark/styles.css
 minify --no-comments --output ../css/light/styles$timestamp.min.css ../css/light/styles.css
-minify --no-comments --output ../css/dark/scripts$timestamp.min.css ../css/scripts.css
+#minify --no-comments --output ../css/dark/scripts$timestamp.min.css ../css/scripts.css
 cp ../bootstrap/css/bootstrap.min.css ../bootstrap/css/bootstrap$timestamp.min.css 
+cat ../bootstrap/css/bootstrap$timestamp.min.css ../css/light/styles$timestamp.min.css > ../css/light/temp.min.css
+mv ../css/light/temp.min.css ../css/light/styles$timestamp.min.css
 cp -R ../css ../../git_cdn/
 cp -R ../images ../../git_cdn/
 cp -R ../bootstrap ../../git_cdn/
