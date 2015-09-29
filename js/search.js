@@ -293,8 +293,8 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
         //global vars closed
         //start of theme switch
        
-        cacheImage("/images/light/nav_logo.png",document.getElementById("srmse-logo"));
-     
+        cacheImage("http://srmse-v2.github.io/V2/images/light/nav_logo.png",document.getElementById("srmse-logo"));
+	cacheImage("http://srmse-v2.github.io/V2/images/clusters%20button1.jpg",document.getElementById("cluster-img"));
 
        
 var TOP_DRAWER = true; //toggle var
