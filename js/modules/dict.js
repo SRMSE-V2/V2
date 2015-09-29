@@ -1,5 +1,5 @@
 (function(){
-var DICTIONARY=$("<div class=\"module\" style=\"margin-bottom:30px;border:0px;color:white;text-align:left;\" id=\"dictionary\"> <div><h1 class=\"dict_keyword\" style=\"margin:0px;display:inline;\"></h1></div><div class=\"dict_details\" style=\"padding-top:0px\"></div> <div style=\"padding-top:0px;display:block;height:28px;\"><button class=\"btn glyphicon glyphicon-th-list dict_button\"  style=\"border:0px;background-color:transparent;\">&nbsp;Verbs, synonyms etc</button><a href=\"http://dictionary.reference.com/browse/"+window.SA["keyword"]+"\" target=\"_blank\" class=\"btn dic\" style=\"float:right;border:0px;background-color:transparent;line-height:16px;font-size:16px;\"><img src=\"http://www.google.com/s2/favicons?domain=http://dictionary.com\" height=\"16\" style=\"padding-right:5px;\"/>Dictionary.com</a> </div></div>");
+var DICTIONARY=$("<div class=\"wiki_module module\" id=\"dictionary\"> <div><h2 class=\"dict_keyword\"></h2></div><div class=\"dict_details\" style=\"padding-top:0px\"></div><div class=\"row\"><div class=\"col-md-6 col-xs-6 col-sm-6 col-lg-6\" style=\"padding-top:15px;\"><button class=\"btn btn-us dict_button\"><span style=\"margin-right:8px;\" class=\"glyphicon glyphicon-th-list\"></span>Verbs, synonyms etc</button></div><div class=\"col-md-6 col-xs-6 col-sm-6 col-lg-6\" style=\"padding-top:15px;\"> <a href=\"http://dictionary.reference.com/browse/"+window.SA["keyword"]+"\" target=\"_blank\" class=\"btn btn-us dic\" style=\"float:right;border:0px;font-size:16px;text-decoration:none !important;\"><img src=\"http://www.google.com/s2/favicons?domain=http://dictionary.com\" height=\"16\" style=\"padding-right:5px;\"/>Dictionary.com</a> </div></div></div></div>");
 var COUNT=0;
 var ONCE=1;
 if($("#dictionary").length===0){
@@ -18,11 +18,11 @@ $.each(keys,function(index,el){
 		$.each(element,function(k,element){
 			if(element.indexOf(":")>=0){
 				var k=element.split(":");
-				main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+k[0]+"</h5>"));
-	main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:25px;\" >\""+k[1]+"\"</h5>"));
+				main=main.add($("<h4 style=\"padding-left:15px;\" >"+k[0]+"</h4>"));
+	main=main.add($("<h5 style=\"padding-left:25px;\" ><i>\""+k[1]+"\"</i></h5>"));
 			}
 else{
-			main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+element+"</h5>"));
+			main=main.add($("<h5 style=\"padding-left:15px;\" >"+element+"</h5>"));
 }
 		});
 		DICTIONARY.find(".fs_key").after(main);
@@ -39,11 +39,11 @@ else{
 else{
 		if(e.indexOf(":")>=0){
 				var k=e.split(":");
-				main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+k[0]+"</h5>"));
-	main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:25px;\" ><i>\""+k[1].trim()+"\"</i></h5>"));
+				main=main.add($("<h4 style=\"padding-left:15px;\" >"+k[0]+"</h4>"));
+	main=main.add($("<h5 style=\"padding-left:25px;\" ><i>\""+k[1].trim()+"\"</i></h5>"));
 			}
 else{
-			main=main.add($("<h5 class=\"dict_noun_meaning\" style=\"padding-left:15px;\" >"+e+"</h5>"));
+			main=main.add($("<h5 style=\"padding-left:15px;\" >"+e+"</h5>"));
 }
 rem=false;
 }
@@ -71,12 +71,13 @@ DICTIONARY.find(".dict_details").prepend("<hr>");
 DICTIONARY.find(".dict_details").hide();
 DICTIONARY.find(".dict_button").click ( function() { $(".dict_details").slideToggle(); } );
 }
-DICTIONARY.find(".fs_key").before("<span class=\"glyphicon glyphicon-volume-up\" class=\"speak\" style=\"font-size:22px;padding-left:15px;cursor:pointer;\"></span>");
+DICTIONARY.find(".fs_key").before("<button  style=\"margin-left: 15px;margin-top: -7px;\" class=\"btn btn-us btn-us-round speak\"><span class=\"glyphicon glyphicon-volume-up\" style=\"font-size:22px;  right: 3px; top: 2px;\"></span></button>");
 DICTIONARY.find(".speak").click(function(){
 
 responsiveVoice.speak(window.SA["keyword"]);
 
 });
+   $('head').append("<style>.dict_keyword{margin:0px;display:inline;}</style>");
 $("#centre_parent").prepend(DICTIONARY);
 $("#smart_col").removeClass("hide");
 }
