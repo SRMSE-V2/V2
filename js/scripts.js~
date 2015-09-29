@@ -474,9 +474,8 @@ if(typeof(Storage) !== "undefined") {
             var wait = 0;
             
             $(window).on("keyup",function(e){
-            var container = $("#feedback_form");
-    if (!container.is(e.target) // if the target of the click isn't the container...
-        && container.has(e.target).length === 0 && $(e.target).attr("class").indexOf("feedback_btn")<0) // ... nor a descendant of the container
+            
+    if ($.isWindow(e.target))
     {
    	$("#search").focus();
     }
