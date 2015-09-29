@@ -293,7 +293,7 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
         //global vars closed
         //start of theme switch
        
-        cacheImage("/images/"+window.color+"/nav_logo.png",document.getElementById("srmse-logo"));
+        cacheImage("/images/light/nav_logo.png",document.getElementById("srmse-logo"));
      
 
        
