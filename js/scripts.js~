@@ -474,8 +474,7 @@ if(typeof(Storage) !== "undefined") {
             var wait = 0;
             
             $(window).on("keyup",function(e){
-            
-    if ($.isWindow(e.target))
+    if ($.isWindow(e.target) || $(e.target).prop("tagName")==="BODY")
     {
    	$("#search").focus();
     }
