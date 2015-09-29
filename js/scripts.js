@@ -476,7 +476,7 @@ if(typeof(Storage) !== "undefined") {
             $(window).on("keyup",function(e){
     if ($.isWindow(e.target) || $(e.target).prop("tagName")==="BODY")
     {
-   	$("#search").focus();
+   	$("#search").focus().val(String.fromCharCode(e.keyCode));
     }
 
             
