@@ -60,3 +60,7 @@ mv ../css/light/temp.min.css ../css/light/search$timestamp.min.css
 cp -R ../css ../../git_cdn/
 cp -R ../images ../../git_cdn/
 cp -R ../bootstrap ../../git_cdn/
+rm ../css/light/styles[0-9]*
+rm ../css/light/search[0-9]*
+rm ./min/search[0-9]*
+rm ./min/scripts[0-9]*

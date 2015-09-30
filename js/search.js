@@ -877,17 +877,14 @@ if(CURRENT_TYPE!=="images"){
                                 }
                                 
                               }catch(err){
-                              console.log(err);
                               SHOW_INFOBOX=true;
                               }
                             });
                         } else {
-                            console.log("No smart  ans questions !");
                             $("#smart_answer").addClass("hide");
                             $("#smart_col").addClass("hide");
                         }
                     } catch (err) {
-                        console.log("No smart  ans questions !");
                         $("#smart_answer").addClass("hide");
                         $("#smart_col").addClass("hide");
                     }
