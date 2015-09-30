@@ -10,27 +10,6 @@
         <script>
      (function(){
      window.key="SECRET_KEY";//SECRET_KEY
-     
-window.ls=function(filename, filetype,id){
-    if (filetype=="js"){ //if filename is a external JavaScript file
-        var fileref=document.createElement('script');
-        fileref.setAttribute("type","text/javascript");
-        fileref.setAttribute("src", filename);
-       
-    }
-    else if (filetype=="css"){ //if filename is an external CSS file
-        var fileref=document.createElement("link");
-        fileref.setAttribute("rel", "stylesheet");
-        fileref.setAttribute("type", "text/css");
-        fileref.setAttribute("href", filename);
-        fileref.setAttribute("id", id);
-    }
-    if (typeof fileref!="undefined"){
-        document.getElementsByTagName("head")[0].appendChild(fileref);}
-         return fileref;
-}
-
-
 //no storage using cookie
 	var cook=document.cookie.split(";");
 	var co={};
@@ -297,23 +276,23 @@ font-size:1em;
      var load_images=function(){
  
          
-                cacheImage("http://srmse-v2.github.io/V2/images/light/srmselogo.png",img2);
+                cacheImage("http://srmse-v2.github.io/V2/images"+key+"/light/srmselogo.png",img2);
                 img2.onload=function(){img2.removeAttribute("hidden");};
-            	cacheImage("http://srmse-v2.github.io/V2/images/git.png",img3);
+            	cacheImage("http://srmse-v2.github.io/V2/images"+key+"/git.png",img3);
             	img3.onload=function(){img3.removeAttribute("hidden");};
-            	cacheImage("http://srmse-v2.github.io/V2/images/twitter.png",img5);
+            	cacheImage("http://srmse-v2.github.io/V2/images"+key+"/twitter.png",img5);
             	img5.onload=function(){img5.removeAttribute("hidden");};
-            	cacheImage("http://srmse-v2.github.io/V2/images/fb.png",img4);
+            	cacheImage("http://srmse-v2.github.io/V2/images"+key+"/fb.png",img4);
             	img4.onload=function(){img4.removeAttribute("hidden");};
-            	cacheImage("http://srmse-v2.github.io/V2/images/g+.png",img6);
+            	cacheImage("http://srmse-v2.github.io/V2/images"+key+"/g+.png",img6);
             	img6.onload=function(){img6.removeAttribute("hidden");};
-            	cacheImage("http://srmse-v2.github.io/V2/images/git.png",img9);
+            	cacheImage("http://srmse-v2.github.io/V2/images"+key+"/git.png",img9);
             	img9.onload=function(){img9.removeAttribute("hidden");};
-            	cacheImage("http://srmse-v2.github.io/V2/images/twitter.png",img7);
+            	cacheImage("http://srmse-v2.github.io/V2/images"+key+"/twitter.png",img7);
             	img7.onload=function(){img7.removeAttribute("hidden");};
-            	cacheImage("http://srmse-v2.github.io/V2/images/fb.png",img8);
+            	cacheImage("http://srmse-v2.github.io/V2/images"+key+"/fb.png",img8);
             	img8.onload=function(){img8.removeAttribute("hidden");};
-            	cacheImage("http://srmse-v2.github.io/V2/images/g+.png",img10);
+            	cacheImage("http://srmse-v2.github.io/V2/images"+key+"/g+.png",img10);
             	img10.onload=function(){img10.removeAttribute("hidden");};
             
           
