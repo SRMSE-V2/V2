@@ -381,7 +381,9 @@
     "@hr-border": "@gray-lighter"
   },
   "css": [
+    "code.less",
     "grid.less",
+    "tables.less",
     "forms.less",
     "buttons.less",
     "responsive-utilities.less",
@@ -390,18 +392,13 @@
     "navs.less",
     "navbar.less",
     "labels.less",
-    "badges.less",
-    "media.less",
     "list-group.less",
-    "close.less",
     "component-animations.less",
-    "dropdowns.less",
     "tooltip.less"
   ],
   "js": [
-    "dropdown.js",
     "tooltip.js",
     "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=e65a26faa57a82bc2a3a"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=d60708020a74269b8ee8"
 }

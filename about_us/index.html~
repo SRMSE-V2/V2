@@ -13,7 +13,7 @@
     <style>
     
     #j1{
-            background-image: url('images/i2.jpeg');
+            background-image: url('images/joinbg2.jpeg');
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -32,7 +32,7 @@
 <body>
   <nav role="navigation" style="background-color:#1976d2;" >
     <div class="nav-wrapper container">
-        <a href="index.html" class="brand-logo"><img class="responsive-img" src="images/srmselogo.png" style="position:relative;top:5px">           </a>
+        <a href="/index.html" class="brand-logo"><img class="responsive-img" src="images/srmselogo.png" style="position:relative;top:5px">           </a>
       <ul class="right hide-on-med-and-down">
         <li><a href="team.html"><i class="material-icons left" style="color:white">group</i>Team</a></li>
           <li><a href="join.html"><i class="material-icons left" style="color:white">person_add</i>Join us</a></li> 
@@ -84,11 +84,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <h5>Tech we use</h5>
-                <img class="responsive-img card tech materialboxed" src="images/logos/bootstrap.png">
-                <img class="responsive-img card tech materialboxed" src="images/logos/apache.png">
-                <img class="responsive-img card tech materialboxed" src="images/logos/hadoop-logo.jpg">
-                <img class="responsive-img card tech materialboxed" src="images/logos/kibana-logo.png">
-                <img class="responsive-img card tech materialboxed" src="images/logos/nodejs-logo.png">
+                <img class="responsive-img card tech" src="images/logos/bootstrap.png">
+                <img class="responsive-img card tech" src="images/logos/apache.png">
+                <img class="responsive-img card tech" src="images/logos/hadoop-logo.jpg">
+                <img class="responsive-img card tech" src="images/logos/kibana-logo.png">
+                <img class="responsive-img card tech" src="images/logos/nodejs-logo.png">
                 <img class="responsive-img card tech" src="images/logos/nutch.png">
                 <img class="responsive-img card tech" src="images/logos/python-logo-master.png">
                 <img class="responsive-img card tech" src="images/logos/ubuntu.png">

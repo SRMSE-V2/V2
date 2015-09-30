@@ -53,7 +53,7 @@ minify --no-comments --output ../css/light/search$timestamp.min.css ../css/light
 #minify --no-comments --output ../css/dark/styles$timestamp.min.css ../css/dark/styles.css
 minify --no-comments --output ../css/light/styles$timestamp.min.css ../css/light/styles.css
 #minify --no-comments --output ../css/dark/scripts$timestamp.min.css ../css/scripts.css
-cat ../bootstrap/css/bootstrap.min.css ../css/light/styles$timestamp.min.css > ../css/light/temp.min.css
+cat ../bootstrap.fp/css/bootstrap.min.css ../css/light/styles$timestamp.min.css > ../css/light/temp.min.css
 mv ../css/light/temp.min.css ../css/light/styles$timestamp.min.css
 cat ../bootstrap/css/bootstrap.min.css ../css/light/search$timestamp.min.css > ../css/light/temp.min.css
 mv ../css/light/temp.min.css ../css/light/search$timestamp.min.css

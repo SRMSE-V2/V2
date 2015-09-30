@@ -71,7 +71,7 @@ $(document).ready(function(){
       //-----------------------------Vertical 4--------------------------------
     $('#b4').click(function(){
         
-        var v4 = '[{"name":"Abhay Kumar","img":"images/v4/abhay.jpg","desc":"Senior Vertical Head"},{"name":"Punit Gupta","img":"images/v4/punit.jpg","desc":""},{"name":"Shreya Chakraborty","img":"images/v4/shreya.jpg","desc":""}]';
+        var v4 = '[{"name":"Abhay Kumar","img":"images/v4/abhay.jpg","desc":"Senior Vertical Head"},{"name":"Punit Gupta","img":"images/v4/punit.jpg","desc":""},{"name":"Shreya Chakraborty","img":"images/v4/shreya.jpg","desc":""},{"name":"Anshuman Pandey","img":"images/v4/anshuman.jpg","desc":""}]';
               var lang4 = '';
               var obj = $.parseJSON(v4);
               $.each(obj, function() 
