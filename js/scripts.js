@@ -431,7 +431,7 @@ if(typeof(Storage) !== "undefined") {
         function loadLocation() {
             if (document.cookie.indexOf("latitude") < 0) {
                 //location not in the cookie
-                ls("/js/min/location_centric.min.js","js");
+                $.getScript("/js/min/location_centric.min.js");
             }
 
         }
