@@ -93,48 +93,7 @@
 	
 	}
 	
-         window.cacheImage=function(src,element){
-         var canvasEl = document.createElement('canvas');
-         element.setAttribute("src",src); //bypass
-         return;
-        	if(typeof(Storage) !== "undefined" && !!canvasEl.getContext) {
-        		
-        		var item=localStorage.getItem(src+"#image#"+element.width+"#key#"+S_KEY);
-        		if(item){
-        		element.setAttribute("src",item);
-        		}
-        		else{
-        		(function(element,src){
-        			var image=new Image();
-        			image.setAttribute("crossOrigin",'Anonymous');
-        			image.setAttribute("src",src);
-        			image.onload=function(){
-        			//console.log(this.getAttribute("src"));
-        			var canvas = document.createElement('CANVAS'),
-        			ctx = canvas.getContext('2d');
-        			canvas.height = element.height;
-        			canvas.width = element.width;
-        			ctx.drawImage(image, 0, 0,element.width,element.height);
-        			var dataURL = canvas.toDataURL("image/png");
-        			//console.log(dataURL);
-        			element.setAttribute("src",dataURL);
-        			localStorage.setItem(src+"#image#"+element.width+"#key#"+S_KEY,dataURL);
-        			canvas=null;
-        		
-        		
-        		};
-        		
-        		
-        		})(element,src);
-        		
-        		}
-        	}
-        	else{
-        		element.setAttribute("src",src);
-        	}
-        
-        
-        };
+       
         function hideFloatSearchBar(){
 		$(".extra_search").css("display","inline").animate({opacity:1},500,function(){$(this).finish();});
         	$(".nav_col").animate({opacity:0},500,function(){
