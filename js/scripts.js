@@ -489,6 +489,14 @@ toggle=true;
 }
 
 });
+$(".reset_form").on("click",function(){
+if(!toggle){
+$(".feed_frm").trigger('reset');
+$("#blur_back").addClass("hide");
+$("#feedback_form").animate({"height":"-=500px"},200,function(){$(this).addClass("hide");$(this).css('height','0px');});
+toggle=true;
+}
+});
 $(":not(#feedback_form)").on("click touch",function(e){
 var container = $("#feedback_form");
     if (!container.is(e.target) // if the target of the click isn't the container...
@@ -504,10 +512,7 @@ toggle=true;
 
 
 });
-$(".reset_form").on("click",function(){
-$(".feed_frm").trigger('reset');
 
-});
       $("#email").on("focusout", function() {
 
                 if (!validateEmail($(this).val())) {
