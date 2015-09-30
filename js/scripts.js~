@@ -340,7 +340,7 @@ if(typeof(Storage) !== "undefined") {
 			return false;
         	}
         	else{
-        		window.searchQuery($("#search").val().trim());
+        		searchQuery($("#search").val().trim());
         	}
         
         });
