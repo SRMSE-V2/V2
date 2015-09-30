@@ -34,34 +34,28 @@ window.ls=function(filename, filetype,id){
 //no storage using cookie
 	var cook=document.cookie.split(";");
 	var co={};
-	if(cook.toString().indexOf("color")>-1){
-	//if color present
-		for(var i=0;i<cook.length;i++){
+	if(document.cookie!==""){
+	for(var i=0;i<cook.length;i++){
 		co[cook[i].split("=")[0].trim()]=cook[i].split("=")[1].trim();
 
-		}
-		window.color=co["color"];//default theme
+	}
 	}
 	else{
-	//if not
-	window.color=undefined;
+		co["search_type"]=true;//this will set default as web
 	}
+	
 	if(!co["search_type"]){
 			document.cookie = "search_type=web;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
 		
 	}
 
-if(!window.color){
-	document.cookie="color=light;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
-	window.color="light";
 
-}
 function prependCss(css){
     elChild = document.createElement('style');
 elChild.innerHTML = css;
 document.getElementsByTagName("head")[0].appendChild(elChild);
 }
- if(window.color==="light"){
+
  
  //initial css
   prependCss("html,body{height:100%;width:100%;min-width:320px;font-family: 'Roboto', sans-serif;background-color:#EBEBEB !important;}.wrap{color: #474747;}.msg_light{color:#b4bcc2;}.msg_dark{color:#474747;}");
@@ -70,7 +64,7 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
         var css = responses[0].data;
         prependCss(css,"light_theme");
         });
-       }
+     
 basket.require({ url: 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',expire:168,execute:true,skipCache:false}).then(function(){
     basket.require({ url: 'http://srmse-v2.github.io/V2/bootstrap.fp/js/bootstrap.min.js',expire:168,execute:true,skipCache:false}).then(function(){
     basket.require({ url: 'http://srmse-v2.github.io/V2/js/min/scripts'+key+'.min.js',expire:168,execute:true,skipCache:false});
@@ -302,8 +296,8 @@ font-size:1em;
      var img9 = document.getElementById("git1");
      var load_images=function(){
  
-            if (window.color==="light") {
-                cacheImage("http://srmse-v2.github.io/V2/images/"+window.color+"/srmselogo.png",img2);
+         
+                cacheImage("http://srmse-v2.github.io/V2/images/light/srmselogo.png",img2);
                 img2.onload=function(){img2.removeAttribute("hidden");};
             	cacheImage("http://srmse-v2.github.io/V2/images/git.png",img3);
             	img3.onload=function(){img3.removeAttribute("hidden");};
@@ -321,7 +315,7 @@ font-size:1em;
             	img8.onload=function(){img8.removeAttribute("hidden");};
             	cacheImage("http://srmse-v2.github.io/V2/images/g+.png",img10);
             	img10.onload=function(){img10.removeAttribute("hidden");};
-            }
+            
           
      
      };

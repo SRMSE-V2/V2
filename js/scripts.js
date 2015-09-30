@@ -46,19 +46,6 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
             window.location = "/cgi-bin/s.py?q=" + encodeURIComponent(q);
         }
         
-        window.switchImg = function() {
-       
-        var callbacks=[];
-            //To switch images path when switching themes shared by both the pages
-            var imgs = $(".switch");
-            $.each(imgs, function() {
-                    cacheImage("/images/"+window.color+"/"+$(this).attr("name"),this);
-                
-                callbacks.push($(this));
-
-            });
-	return callbacks;
-        };
         //setting up backinput for shadow suggestion
         $(".backinput").remove();
         var BACKINPUT = $("#search").clone();

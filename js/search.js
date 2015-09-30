@@ -38,7 +38,7 @@
         var USER_QUERY=$("#search").val().trim();
         var START_RESULT = 0;
         var END_RESULT = 10;
-        var HAS_RESULTS ={"web":false,"vidoes":false,"images":false,"news":false};
+        var HAS_RESULTS ={"web":false,"vidoes":false,"images":false,"news":false,"wiki":false,"clusters":false};
         var CURRENT_TYPE="web";
         var GOT_CLUSTERS=false;
         var CLUSTERS = [];//clusters
@@ -293,8 +293,8 @@ document.getElementsByTagName("head")[0].appendChild(elChild);
         //global vars closed
         //start of theme switch
        
-        cacheImage("/images/"+window.color+"/nav_logo.png",document.getElementById("srmse-logo"));
-     
+        cacheImage("http://srmse-v2.github.io/V2/images/light/nav_logo.png",document.getElementById("srmse-logo"));
+	cacheImage("http://srmse-v2.github.io/V2/images/clusters%20button1.jpg",document.getElementById("cluster-img"));
 
        
 var TOP_DRAWER = true; //toggle var
@@ -786,6 +786,7 @@ if(CURRENT_TYPE!=="images"){
         	}*/
         }
         function getIDSwiki() {
+        if(!HAS_RESULTS["wiki"]){
             $.ajax({
                 async: true,
                 url: "/cgi-bin/queryret/getIds.py",
@@ -806,9 +807,12 @@ if(CURRENT_TYPE!=="images"){
                     renderResult(js["results"], $("#wikiMain"),true, true,false);
                     }
                 } catch (err) {}
+                HAS_RESULTS["wiki"]=true;
             });
+            }
         }
         function getIDSnews() {
+        if(!HAS_RESULTS["news"]){
             $.ajax({
                 async: true,
                 url: "/cgi-bin/query_retrieval/ask_me.py",
@@ -833,10 +837,11 @@ if(CURRENT_TYPE!=="images"){
                     }
                 } catch (err) {}
             });
+            }
         }
        
         function getSmartAns() {
-            if (USER_QUERY !== "") {
+            if (USER_QUERY !== "" && !HAS_RESULTS["smart"]) {
                 $.ajax({
                     async: true,
                     url: "/cgi-bin/new2/smart/getSmartAns.py",
@@ -872,20 +877,18 @@ if(CURRENT_TYPE!=="images"){
                                 }
                                 
                               }catch(err){
-                              console.log(err);
                               SHOW_INFOBOX=true;
                               }
                             });
                         } else {
-                            console.log("No smart  ans questions !");
                             $("#smart_answer").addClass("hide");
                             $("#smart_col").addClass("hide");
                         }
                     } catch (err) {
-                        console.log("No smart  ans questions !");
                         $("#smart_answer").addClass("hide");
                         $("#smart_col").addClass("hide");
                     }
+                    HAS_RESULTS["smart"]=true;
                 });
             }
         }
@@ -895,7 +898,7 @@ if(CURRENT_TYPE!=="images"){
                         $(".nav-sidebar").addClass("hide");
         }
         function getClusters() {
-            if (USER_QUERY !== "" && !GOT_CLUSTERS) {
+            if (USER_QUERY !== "" && !GOT_CLUSTERS && !HAS_RESULTS["clusters"]) {
                 $.ajax({
                     async: true,
                     url: "/cgi-bin/cluster_retrieval/ask_me.py",
@@ -976,7 +979,7 @@ if(CURRENT_TYPE!=="images"){
                             }
                         });
                        $(".cluster_li").append(main);
-                       
+                       HAS_RESULTS["clusters"]=true;
                     } else {
                         console.log("no clusters");
                         clustersError();
