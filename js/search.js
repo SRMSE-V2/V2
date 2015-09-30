@@ -11,7 +11,7 @@
             cache: true
         });
         
-
+	$("#search").focus();
 
   		$('[data-toggle="tooltip"]').tooltip();
         function ls(filename, filetype,id){
