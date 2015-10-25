@@ -13,22 +13,22 @@
     <style>
     
     #j1{
-            background-image: url('images/joinbg2.jpg');
+            background-image: url('images/j4.jpeg');
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
             height:400px;
-        width: 100%;
+            width: 100%;
             
         }
-        body{background-color: #EDEDED; }
         blockquote{border-left: 5px solid #fff;}
         i{color: #1976d2}
         </style>
 </head>
 <body>
-  <nav class="animated fadeInDown" role="navigation" style="background-color:#1976d2;">
+    
+  <nav class="" role="navigation" style="background-color:#1976d2;">
     <div class="nav-wrapper container">
         <a href="index.html" class="brand-logo"><img class="responsive-img" src="images/srmselogo.png" style="position:relative;top:5px">           </a>
       <ul class="right hide-on-med-and-down">
@@ -36,24 +36,30 @@
           <li><a href="join.html"><i class="material-icons left" style="color:white">person_add</i>Join us</a></li> 
       </ul>
       <ul id="nav-mobile" class="side-nav">
+        <li><a href="index.html"><i class="mdi-action-home left"></i>Home</a></li>  
         <li><a href="team.html"><i class="mdi-action-account-circle left"></i>Team</a></li>
-         <li><a href="team.html"><i class="mdi-social-person-add left"></i>Team</a></li> 
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu" style="color:white"></i></a>
     </div>         
   </nav>
     
- <div class="container animated fadeIn" id="j1">
-        <blockquote style="position:relative;top:60px;left:50px;margin:0px;color:white">A chance to learn and develop with the best.</div>    
+     <div class="parallax-container">
+      <div class="parallax"><img src="images/j4.jpeg"></div>
+    </div>
   <div class="container animated fadeInUp">
     <div class="section">
-
       <!--   Icon Section   -->
       <div class="row">
-            <h3 class="blue-text text-darken-1">Join Us</h3>
+          <div class="col s12 m8 l9">
+            <h3 class="blue-text text-darken-1" style="font-weight:300">Join Us</h3>
           <p>SRM Search Engine is a student run project that offers the opportunity to work in a friendly creative environment. We operate in an atmosphere of co-operation where people are treated as equal and responsibility is shared: a team of creative, marketing and strategic thinkers who care.</p>
           <p>We look for innovative thinkers, creative minds and technical excellence, individuals who share our passion for creativity and a heart for the environment. If you feel the same way, we would love to hear from you: we look at every CV, letter or portfolio submitted regardless of age, skill level or experience and we respect all applicants’ confidentiality. We are always open to expanding our team and if you believe that you can bring some new creative approach or thinking then we would love to hear from you.</p>
-          <p>If  that sounds like you and you would like to be the next budding team player in our family, then send your details to: <a href="mailto:srmse@outlook.com"><span class="blue-text text-darken-2">srmse@outlook.com</span></a><br><a href="mailto:tilakpatidar@gmail.com"><span class="blue-text text-darken-2">tilakpatidar@gmail.com</span></a></p>
+          <p>If  that sounds like you and you would like to be the next budding team player in our family, then head over to our <a href="recruitment.html">recruitment page.</a></p>
+              </div>
+          <div class="col s12 m4 l3">
+            <a href="recruitment.html" class="waves-effect waves-light btn btn-large tooltipped pink animated infinite pulse" data-position="bottom" data-delay="50" data-tooltip="Head over to our recruitment page!" style="position:relative;top:80px;"><i class="material-icons left white-text">forum</i>Apply Now</a>
+     </div>
+         
       </div>
     </div>
   </div>
@@ -86,8 +92,10 @@
   <script src="js/init.js"></script>
     <script>
     $( document ).ready(function(){   
+        $('.parallax').parallax();
         $(".button-collapse").sideNav();
-       
+         
+
     });
   
     </script>
