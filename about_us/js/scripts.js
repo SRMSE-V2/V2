@@ -27,7 +27,7 @@ $(document).ready(function(){
     //----------------------------Vertical 2-----------------------------  
      $('#b2').click(function(){
          
-              var v2 = '[{"name":"Andrew Gates","img":"images/v2/gates.jpg","desc":"Web Design"},{"name":"Tilak Patidar","img":"images/v2/tilak.jpg","desc":"Vertical Head"},{"name":"Siddharth Kulkarni","img":"images/v2/sid.jpg","desc":"Web Design"},{"name":"Pratik Shenoy","img":"images/v2/pratik.jpg","desc":"Web Design"},{"name":"Varun Dey","img":"images/v2/varun.jpg","desc":"Web Development"}]';
+              var v2 = '[{"name":"Tilak Patidar","img":"images/v2/tilak.jpg","desc":"Vertical Head"},{"name":"Siddharth Kulkarni","img":"images/v2/sid.jpg","desc":"Web Design"},{"name":"Andrew Gates","img":"images/v2/gates.jpg","desc":"Web Design"},{"name":"Pratik Shenoy","img":"images/v2/pratik.jpg","desc":"Web Design"},{"name":"Varun Dey","img":"images/v2/varun.jpg","desc":"Web Development"}]';
               var lang2 = '';
               var obj = $.parseJSON(v2);
               $.each(obj, function() 
