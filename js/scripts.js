@@ -1,6 +1,7 @@
 (function() {
 //test cache busting
     $(document).ready(function() {
+    $("#search").focus();
       $(".load_msg").remove(); 
     $(".hidden_body").removeAttr("hidden");//remove loading when script loaded
             $('[data-toggle="tooltip"]').tooltip(); 
@@ -419,7 +420,7 @@ if(typeof(Storage) !== "undefined") {
 
 
         $(window).on("resize", function() {
-
+	    $("#blur_back").width($(document).width()).height($(document).height());
             //hides autocomplete dropdown on screen resize
             $(".ui-autocomplete").hide();
             LEFT_AUTO = -1;
@@ -481,6 +482,7 @@ $("#feedback_form").removeClass("hide");
 $("#feedback_form").animate({"height":"+=500px"},500,function(){});
 $("#blur_back").removeClass("hide");
 toggle=false;
+$("#email").focus();
 }
 else{
 $("#blur_back").addClass("hide");
@@ -502,9 +504,12 @@ var container = $("#feedback_form");
     if (!container.is(e.target) // if the target of the click isn't the container...
         && container.has(e.target).length === 0 && $(e.target).attr("class").indexOf("feedback_btn")<0) // ... nor a descendant of the container
     {
+    if(!toggle){
     $("#blur_back").addClass("hide");
+    
         $("#feedback_form").animate({"height":"-=500px"},200,function(){$(this).addClass("hide");$(this).css('height','0px');});
 toggle=true;
+}
     }
 
 
@@ -585,7 +590,7 @@ toggle=true;
                 }
             }
         function alertBox(color, text) {
-                var alert = $("<div class=\"alert\" style=\"border-radius:4px;background-color:" + color + ";opacity:0;position:absolute;padding-top:15px;z-index:1100;height:50px;text-align:center;width:40%;left:30%;top:70%;color:white;\">" + text + "</div>");
+                var alert = $("<div class=\"alert\" style=\"border-radius:4px;background-color:" + color + ";\">" + text + "</div>");
 
                 $("body").append(alert);
                 $(".alert").animate({

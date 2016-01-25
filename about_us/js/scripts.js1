@@ -71,7 +71,7 @@ $(document).ready(function(){
       //-----------------------------Vertical 4--------------------------------
     $('#b4').click(function(){
         
-        var v4 = '[{"name":"Vageeswaran","img":"images/v3/vagee.jpg","desc":"Vertical Head"},{"name":"Sai Prashanth","img":"images/v3/prashant.jpg","desc":""},{"name":"Akshay Gugnani","img":"images/v4/akshayg.jpg","desc":""},{"name":"Ayush Aggarwal","img":"images/v4/ayushagg.jpg","desc":""},{"name":"Rishav Medhi","img":"images/v4/rishav.jpg","desc":""},{"name":"Rishav Mishra","img":"images/v4/mishra.jpg","desc":""}]';
+        var v4 = '[{"name":"Vageeswaran","img":"images/v3/vagee.jpg","desc":"Vertical Head"},{"name":"Sai Prashanth","img":"images/v3/prashant.jpg","desc":""},{"name":"Akshay Gugnani","img":"images/v4/akshayg.jpg","desc":""},{"name":"Ayush Aggarwal","img":"images/v4/ayushagg.jpg","desc":""},{"name":"Rishav Medhi","img":"images/v4/rishav.jpg","desc":""},{"name":"Rishav Mishra","img":"images/v4/rishav_m.jpg","desc":""}]';
               var lang4 = '';
               var obj = $.parseJSON(v4);
               $.each(obj, function() 
@@ -94,7 +94,7 @@ $(document).ready(function(){
       //-----------------------------Vertical 5--------------------------------
     $('#b5').click(function(){
         
-        var v5 = '[{"name":"Prashasti Varshney","img":"images/prashashti.jpg","desc":""},{"name":"Shrijata Mukherjee","img":"images/pr/shrijata.jpg","desc":""},{"name":"G Chaitanya Sai","img":"images/pr/chaitanya.jpg","desc":""},{"name":"Vaibhav Sharma","img":"images/pr/vaibhav.jpg","desc":""},{"name":"Shreya Surana","img":"images/pr/shreyasurana.jpg","desc":""},{"name":"Parth Dixit","img":"images/pr/parth.jpg","desc":""},{"name":"Ihit Srivastava","img":"images/ihit.jpg","desc":""}]';
+        var v5 = '[{"name":"Shrijata Mukherjee","img":"images/pr/shrijata.jpg","desc":""},{"name":"G Chaitanya Sai","img":"images/pr/chaitanya.jpg","desc":""},{"name":"Vaibhav Sharma","img":"images/pr/vaibhav.jpg","desc":""},{"name":"Shreya Surana","img":"images/pr/shreyasurana.jpg","desc":""},{"name":"Parth Dixit","img":"images/pr/parth.jpg","desc":""},{"name":"Ihit Srivastava","img":"images/ihit.jpg","desc":""}]';
               var lang5 = '';
               var obj = $.parseJSON(v5);
               $.each(obj, function() 
