@@ -39,12 +39,12 @@
             </form>
         </li> -->
         <li><a href="faculty.html"><i class="mdi-action-assignment-ind left white-text"></i>Faculty</a></li>
-          <li><a href="past.html"><i class="material-icons left white-text">recent_actors</i>Past Members</a></li>
+          <li><a href="past.html"><i class="material-icons left white-text"></i>Past Members</a></li>
       </ul>
       <ul id="nav-mobile" class="side-nav">
         <li><a href="index.html"><i class="mdi-hardware-keyboard-arrow-left left"></i>Back</a></li>
         <li><a href="faculty.html"><i class="mdi-action-assignment-ind left"></i>Faculty</a></li>
-          <li><a href="past.html"><i class="material-icons left">recent_actors</i>Past Members</a></li>
+          <li><a href="past.html"><i class="material-icons left"></i>Past Members</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu white-text"></i></a>
     </div>
@@ -241,9 +241,20 @@
         </div>
    </div>    
   <!--  Scripts-->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/scripts.js"></script>  
+
+<script type="text/javascript">
+[
+  'js/jquery.min.js',
+  'js/materialize.js',
+  'js/init.js',
+  'js/scripts.js'
+].forEach(function(src) {
+  var script = document.createElement('script');
+  script.src = src;
+  script.async = false; 
+  document.head.appendChild(script);
+});
+</script>
+
   </body>
 </html>
