@@ -1,3 +1,14 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^se$ se.html [NC]
+RewriteRule ^about_us/team$ about_us/team.html [NC]
+RewriteRule ^about_us/faculty$ about_us/faculty.html [NC]
+RewriteRule ^about_us/join$ about_us/join.html [NC]
+RewriteRule ^about_us/past$ about_us/past.html [NC]
+RewriteRule ^about_us/recruitment$ about_us/recruitment.html [NC]
+RewriteRule ^about_us/feedback$ about_us/feedback.html [NC]
+RewriteRule ^about_us/technical$ about_us/technical.html [NC]
+</IfModule>
 ErrorDocument 404 /err/index.html
 ErrorDocument 403 /err/index.html
 ErrorDocument 500 /err/500.html
