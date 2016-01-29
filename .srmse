@@ -66,3 +66,10 @@ AddOutputFilterByType DEFLATE image/svg+xml
   </IfModule>
    
 </IfModule>
+
+## rewrite rule to hide html at end
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)\.html$ /$1 [L,R=301] 
+
