@@ -134,7 +134,7 @@ if(typeof(Storage) !== "undefined") {
 		    	  $.ajax({
 		  		url: "/cgi-bin/ac/getWords.py",
 		  		dataType: "text",
-		  		data: {q:request.term},
+		  		data: {q:request.term,authenticity_token:$("meta[name='csrf-token']").attr("content")},
 		  		success: function(data) {
 		      			cacheAutocomplete(data,request.term);
 		      			response(JSON.parse(data));
